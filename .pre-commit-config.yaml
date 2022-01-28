@@ -1,6 +1,6 @@
 repos:
  - repo: https://github.com/Quantco/pre-commit-mirrors-black
-   rev: 20.8b1
+   rev: 21.5b1
    hooks:
      - id: black-conda
        args:
@@ -8,25 +8,25 @@ repos:
          - --target-version=py36
        exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-flake8
-   rev: v3.8.4
+   rev: v3.9.2
    hooks:
     - id: flake8-conda
       additional_dependencies: [flake8-docstrings, flake8-rst-docstrings]
       exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-isort
-   rev: 5.6.4
+   rev: 5.8.0
    hooks:
     - id: isort-conda
       additional_dependencies: [toml]
       exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-mypy
-   rev: "0.790"
+   rev: "0.931"
    hooks:
     - id: mypy-conda
       additional_dependencies: [ mypy=0.800, python=3.7.9 ]
       exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-pyupgrade
-   rev: 2.7.2
+   rev: 2.31.0
    hooks:
     - id: pyupgrade-conda
       exclude: ^src/pytsql/grammar/
