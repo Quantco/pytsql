@@ -1,0 +1,30 @@
+package:
+  name: pytsql
+  version: {{ environ.get('GIT_DESCRIBE_TAG', '').lstrip('v') }}{% if environ.get('GIT_DESCRIBE_NUMBER', 0)|int != 0 %}.post{{ GIT_DESCRIBE_NUMBER }}+{{ GIT_DESCRIBE_HASH }}{% endif %}
+
+source:
+  git_url: ../
+
+
+build:
+  number: 0
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv --no-use-pep517 --disable-pip-version-check"
+
+
+requirements:
+  host:
+    - python >=3.7
+    - pip
+    - setuptools_scm
+  run:
+    - python >=3.7
+    - sqlalchemy
+    - antlr4-python3-runtime 4.9.2
+test:
+  imports:
+    - pytsql
+
+about:
+  home: https://github.com/Quantco/pytsql_oss
+  license: BSD-3
