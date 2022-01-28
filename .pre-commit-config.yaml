@@ -23,7 +23,6 @@ repos:
    rev: "0.931"
    hooks:
     - id: mypy-conda
-      additional_dependencies: [ mypy=0.800, python=3.7.9 ]
       exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-pyupgrade
    rev: 2.31.0

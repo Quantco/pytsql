@@ -9,7 +9,7 @@ source:
 build:
   number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv --no-use-pep517 --disable-pip-version-check"
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv --no-build-isolation --disable-pip-version-check"
 
 
 requirements:
@@ -22,6 +22,10 @@ requirements:
     - sqlalchemy
     - antlr4-python3-runtime 4.9.2
 test:
+  requires:
+    - pip
+  commands:
+    - pip check
   imports:
     - pytsql
 
