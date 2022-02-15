@@ -19,7 +19,6 @@ dependencies = [
 ]
 
 [project.urls]
-Documentation = "https://github.com/quantco/pytsql"
 Source = "https://github.com/quantco/pytsql"
 
 
