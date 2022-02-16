@@ -59,7 +59,7 @@ conda env create
 
 # Install this package in editable mode.
 conda activate pytsql
-pip install --no-use-pep517 --disable-pip-version-check -e .
+pip install --no-build-isolation --disable-pip-version-check -e .
 ```
 
 ### Unit tests
