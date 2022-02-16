@@ -1,34 +1,23 @@
 # pytsql
 
-**Description**: `Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI.
+**Description**: `pytsql` allows to run mssql scripts, typically run via GUIs, via CLI.
 This, in turn, eases concurrent execution, scheduled execution as well as chained execution
-of scripts in a worflow. Put differently, it enables automated execution of sql
+of scripts in a workflow. Put differently, it enables automated execution of sql
 scripts.
 
 This project is in an early stage. Hence suggestions as well as contributions are very welcome.
-
-
-## Dependencies
-
-`Pytsql` is tailored to run with MSSQL. Other sql dialects are not supported.
-You are only required to use python and `sqlalchemy` to connect to your database.
-
-Some of the commands below will require additional prerequisites:
-* Java runtime (JRE)
-* Docker runtime
-
-[pre-commit]: https://pre-commit.com/
-[antlr]: https://pypi.org/project/antlr4-python3-runtime/
 
 ## Installation
 
 To install, execute:
 
 ```bash
-conda install pytsql
+pip install pytsql
 ```
 
 ## Usage
+
+`pytsql` is tailored to run with MSSQL. Other sql dialects are not supported.
 
 The main function of interest is `execute`. It requires a `sqlalchemy` [`Engine`][engine]
 object as well as the path to a sql script. A typical use case might look as follows:
@@ -47,7 +36,30 @@ pytsql.execute(my_sql_script, engine)
 
 [engine]: https://docs.sqlalchemy.org/en/14/core/engines.html
 
-## How to test the software
+## Development
+
+We use `conda` to manage the development environment.
+
+```bash
+conda config --add channels conda-forge
+
+# And install pre-commit
+conda install -y pre-commit
+
+# Clone the repository
+git clone git@github.com:Quantco/pytsql.git
+cd glum
+
+# Set up our pre-commit hooks for black, mypy, isort and flake8.
+pre-commit install
+
+# Set up a conda environment with name "pytsql"
+conda env create
+
+# Install this package in editable mode.
+conda activate pytsql
+pip install --no-use-pep517 --disable-pip-version-check -e .
+```
 
 ### Unit tests
 
@@ -58,7 +70,7 @@ pytest tests/unit/
 ```
 
 ### Integration tests
-Integration tests are run against a database. For that matter, start a local mssql database first:
+Integration tests are run against a database. You can start a local docker based mssql database as follows:
 ```bash
 cd pytsql
 ./start_mssql
