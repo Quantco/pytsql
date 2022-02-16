@@ -4,7 +4,12 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "pytsql"
-authors = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
+authors = [
+  {name = "Alex Gonopolskiy", email = "agonopol@gmail.com"},
+  {name = "Kevin Klein", email = "kevin.klein@quantco.com"},
+  {name= "Encho Mishinev", email = "encho.mishinev@quantco.com"}
+]
+
 maintainers = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
 keywords = []
 classifiers = [

@@ -4,6 +4,7 @@ channels:
   - nodefaults
 dependencies:
   - python =3.7
+  - flit-core
   - pre-commit
   - pytest
   - pytest-mock
