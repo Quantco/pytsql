@@ -49,7 +49,7 @@ conda install -y pre-commit
 
 # Clone the repository
 git clone git@github.com:Quantco/pytsql.git
-cd glum
+cd pytsql
 
 # Set up our pre-commit hooks for black, mypy, isort and flake8.
 pre-commit install
