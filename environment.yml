@@ -1,6 +1,5 @@
 name: pytsql
 channels:
-  - quantco_main
   - conda-forge
   - nodefaults
 dependencies:
@@ -15,6 +14,3 @@ dependencies:
   - sphinxcontrib-apidoc
   - sqlalchemy
   - antlr4-python3-runtime =4.9.2
-  - freetds
-  - msodbcsql17
-  - pyodbc
