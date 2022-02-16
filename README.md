@@ -15,6 +15,7 @@ To install, execute:
 pip install pytsql
 ```
 
+Be aware that depending on your platform, you'will need specific drivers ([Windows](https://docs.microsoft.com/en-us/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?view=sql-server-ver15), [Linux](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15), [macOS](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver15)).
 ## Usage
 
 `pytsql` is tailored to run with MSSQL. Other sql dialects are not supported.
@@ -101,8 +102,10 @@ Once the docker container is running, run the tests:
 ```bash
 conda activate pytsql
 cd pytsql
-pytest tests/integration --backend=mssql-freetds
+pytest tests/integration
 ```
+
+Add the option ` --backend=mssql-freetds` to the test command to run the tests using the `freetds` driver.
 
 ## How to create a new grammar
 
