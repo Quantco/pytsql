@@ -59,7 +59,7 @@ conda env create
 
 # Install this package in editable mode.
 conda activate pytsql
-pip install --no-build-isolation --disable-pip-version-check -e .
+pip install --no-build-isolation -e .
 ```
 
 ### Unit tests
@@ -83,7 +83,7 @@ docker run \
     --rm -it mcr.microsoft.com/mssql/server:2019-latest
 ```
 
-or in case of running on a ARM based Apple device
+or in case of running on a ARM based device
 
 ```bash
 docker run \
@@ -95,7 +95,7 @@ docker run \
     --rm -it mcr.microsoft.com/azure-sql-edge
 ```
 
-Alternatively, the script at the root level called `start_mssql.sh` can be used in Linux based environments (Linux, OSX, WSL).
+Alternatively, the script at the root level called `start_mssql.sh` can be used in Unix based environments (Linux, OSX, WSL).
 
 Once the docker container is running, run the tests:
 
