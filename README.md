@@ -15,7 +15,14 @@ To install, execute:
 pip install pytsql
 ```
 
+or in a `conda` environment
+
+```bash
+mamba install pytsql
+```
+
 Be aware that depending on your platform, you'will need specific drivers ([Windows](https://docs.microsoft.com/en-us/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?view=sql-server-ver15), [Linux](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15), [macOS](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/install-microsoft-odbc-driver-sql-server-macos?view=sql-server-ver15)).
+
 ## Usage
 
 `pytsql` is tailored to run with MSSQL. Other sql dialects are not supported.
@@ -39,14 +46,9 @@ pytsql.execute(my_sql_script, engine)
 
 ## Development
 
-We use `conda` to manage the development environment.
+We use `conda` to manage the development environment. We strongly suggest to use `mamba` as a replacement for `conda`.
 
 ```bash
-conda config --add channels conda-forge
-
-# And install pre-commit
-conda install -y pre-commit
-
 # Clone the repository
 git clone git@github.com:Quantco/pytsql.git
 cd pytsql
@@ -55,11 +57,11 @@ cd pytsql
 pre-commit install
 
 # Set up a conda environment with name "pytsql"
-conda env create
+mamba env create
 
 # Install this package in editable mode.
 conda activate pytsql
-pip install --no-build-isolation --disable-pip-version-check -e .
+pip install --no-build-isolation -e .
 ```
 
 ### Unit tests
@@ -105,7 +107,7 @@ cd pytsql
 pytest tests/integration
 ```
 
-Add the option ` --backend=mssql-freetds` to the test command to run the tests using the `freetds` driver.
+Add the option `--backend=mssql-freetds` to the test command to run the tests using the `freetds` driver.
 
 ## How to create a new grammar
 
