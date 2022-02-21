@@ -56,11 +56,12 @@ cd pytsql
 # Set up a conda environment with name "pytsql"
 mamba env create
 
+# Install this package in editable mode.
+conda activate pytsql
+
 # Set up our pre-commit hooks for black, mypy, isort and flake8.
 pre-commit install
 
-# Install this package in editable mode.
-conda activate pytsql
 pip install --no-build-isolation -e .
 ```
 
