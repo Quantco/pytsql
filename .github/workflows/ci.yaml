@@ -26,5 +26,5 @@ jobs:
           activate-environment: pytsql
       - name: Run Unit Tests
         run: |
-          python -m flit install 
+          python -m pip install 
           pytest tests
