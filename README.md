@@ -53,15 +53,14 @@ We use `conda` to manage the development environment. We strongly suggest to use
 git clone git@github.com:Quantco/pytsql.git
 cd pytsql
 
-# Set up a conda environment with name "pytsql"
+# Set up a conda environment with name "pytsql" and activate it.
 mamba env create
-
-# Install this package in editable mode.
 conda activate pytsql
 
 # Set up our pre-commit hooks for black, mypy, isort and flake8.
 pre-commit install
 
+# Install this package in editable mode.
 pip install --no-build-isolation -e .
 ```
 
