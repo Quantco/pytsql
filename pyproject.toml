@@ -1,0 +1,56 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "pytsql"
+authors = [
+  {name = "Alex Gonopolskiy", email = "agonopol@gmail.com"},
+  {name = "Kevin Klein", email = "kevin.klein@quantco.com"},
+  {name= "Encho Mishinev", email = "encho.mishinev@quantco.com"}
+]
+
+maintainers = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
+keywords = []
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Topic :: Database"
+]
+readme = "README.md"
+dynamic = ["version", "description"]
+
+requires-python = ">=3.7.0"
+
+dependencies = [
+    "sqlalchemy >=1.4",
+    "antlr4-python3-runtime >=4.9.2",
+    "pyodbc >=4.0.30"
+]
+
+[project.urls]
+Source = "https://github.com/quantco/pytsql"
+
+
+[tool.black]
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+ensure_newline_before_comments = true
+line_length = 88
+known_first_party = "pytsql"
+skip_glob = '\.eggs/*,\.git/*,\.venv/*,build/*,dist/*'
+default_section = 'THIRDPARTY'
