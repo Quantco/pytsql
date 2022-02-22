@@ -3,8 +3,8 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - python =3.7
   - flit-core
+  - flit
   - pre-commit
   - pytest
   - pytest-mock

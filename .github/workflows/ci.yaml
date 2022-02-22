@@ -1,0 +1,31 @@
+name: CI
+on: [push]
+
+jobs:
+  linux:
+    name: "Linux - unit tests - Python ${{ matrix.PYTHON_VERSION }}"
+    runs-on: ubuntu-latest
+    env:
+      CI: True
+    strategy:
+      fail-fast: true
+      matrix:
+        PYTHON_VERSION: ['3.7', '3.8', '3.9', '3.10']
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2.3.5
+        with:
+          ref: ${{ github.head_ref }}
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: ${{ matrix.PYTHON_VERSION }}
+          miniforge-variant: Mambaforge
+          miniforge-version: 4.11.0-2
+          use-mamba: true
+          environment-file: environment.yml
+          activate-environment: pytsql
+      - name: Run Unit Tests
+        shell: bash -l {0}
+        run: |
+          flit install -s
+          pytest tests/unit
