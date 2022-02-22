@@ -23,9 +23,10 @@ jobs:
           miniforge-version: 4.10.0-0
           use-mamba: true
           environment-file: environment.yml
-          activate-environment: pytsql
+          # activate-environment: pytsql
       - name: Run Unit Tests
         run: |
+          conda activate pytsql
           mamba list
           flit install -s
           pytest tests
