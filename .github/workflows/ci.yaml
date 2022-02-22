@@ -27,5 +27,5 @@ jobs:
       - name: Run Unit Tests
         run: |
           mamba list
-          python -m pip install -e .
+          flit install -s
           pytest tests
