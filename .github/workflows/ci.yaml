@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   linux:
-    name: "Linux - tests - Py${{ matrix.PYTHON_VERSION }}"
+    name: "Linux - tests - Python ${{ matrix.PYTHON_VERSION }}"
     runs-on: ubuntu-latest
     env:
       CI: True
@@ -26,5 +26,6 @@ jobs:
           activate-environment: pytsql
       - name: Run Unit Tests
         run: |
+          mamba list
           python -m pip install -e .
           pytest tests
