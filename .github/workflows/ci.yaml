@@ -3,14 +3,14 @@ on: [push]
 
 jobs:
   linux:
-    name: "Linux - tests - Python ${{ matrix.PYTHON_VERSION }}"
+    name: "Linux - unit tests - Python ${{ matrix.PYTHON_VERSION }}"
     runs-on: ubuntu-latest
     env:
       CI: True
     strategy:
       fail-fast: true
       matrix:
-        PYTHON_VERSION: ['3.7']
+        PYTHON_VERSION: ['3.7', '3.8', '3.9', '3.10']
     steps:
       - name: Checkout branch
         uses: actions/checkout@v2.3.5
@@ -27,6 +27,5 @@ jobs:
       - name: Run Unit Tests
         shell: bash -l {0}
         run: |
-          mamba list
           flit install -s
-          pytest tests
+          pytest tests/unit
