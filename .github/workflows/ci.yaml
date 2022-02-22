@@ -20,13 +20,13 @@ jobs:
         with:
           python-version: ${{ matrix.PYTHON_VERSION }}
           miniforge-variant: Mambaforge
-          miniforge-version: 4.10.0-0
+          miniforge-version: 4.11.0-2
           use-mamba: true
           environment-file: environment.yml
-          # activate-environment: pytsql
+          activate-environment: pytsql
       - name: Run Unit Tests
+        shell: bash -l {0}
         run: |
-          conda activate pytsql
           mamba list
           flit install -s
           pytest tests
