@@ -29,3 +29,42 @@ jobs:
         run: |
           flit install -s
           pytest tests/unit
+
+  linux-integration_tests-sqlserver:
+    name: "Linux - integration tests - Python ${{ matrix.PYTHON_VERSION }} - SQL server with ${{ matrix.DRIVER }} driver"
+    runs-on: ubuntu-latest
+    env:
+      CI: True
+    strategy:
+      fail-fast: false
+      matrix:
+        PYTHON_VERSION: ['3.8', '3.9']
+        DRIVER: ["mssql", "mssql-freetds"]
+    services:
+      DB:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: QuantCo@MSSQL
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Fetch full git history
+        run: git fetch --prune --unshallow
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: ${{ matrix.PYTHON_VERSION }}
+          miniforge-variant: Mambaforge
+          miniforge-version: 4.11.0-2
+          use-mamba: true
+          environment-file: environment.yml
+          activate-environment: pytsql
+      - name: Run Unit Tests
+        shell: bash -l {0}
+        env:
+          DB_ADDR: DB:1433
+        run: |
+          flit install -s
+          pytest tests/unit --backend=${{ matrix.DRIVER }} tests/integration
