@@ -45,7 +45,7 @@ jobs:
         image: mcr.microsoft.com/mssql/server:2019-latest
         env:
           ACCEPT_EULA: Y
-          SA_PASSWORD: QuantCo@MSSQL
+          SA_PASSWORD: pytsql
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -71,7 +71,7 @@ jobs:
       - name: Run Unit Tests
         shell: bash -l {0}
         env:
-          DB_ADDR: DB:1433
+          DB_ADDR: DB
         run: |
           flit install -s
           pytest --backend=${{ matrix.DRIVER }} tests/integration
