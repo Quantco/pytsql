@@ -44,5 +44,5 @@ def pytest_generate_tests(metafunc):
 @pytest.fixture(scope="session", autouse=True)
 def setup_odbcsysini():
     os.environ["ODBCSYSINI"] = str(
-        Path(os.environ["CONDA_PREFIX"]) / "etc" / "msodbcsql17"
+        Path("etc" / "msodbcsql17"
     )
