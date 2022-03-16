@@ -32,7 +32,7 @@ jobs:
 
   linux-integration_tests-sqlserver:
     name: "Linux - integration tests - Python ${{ matrix.PYTHON_VERSION }} - SQL server with ${{ matrix.DRIVER }} driver"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       CI: True
     strategy:
@@ -64,14 +64,8 @@ jobs:
       - name: Install msodbcsql17 driver
         shell: bash -l {0}
         run: |
-          sudo su
-          curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-
-          curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list > /etc/apt/sources.list.d/mssql-release.list
-
-          exit
-          sudo apt-get update
-          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17
+          wget https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msodbcsql17/msodbcsql17_17.9.1.1-1_amd64.deb
+          ACCEPT_EULA=Y sudo apt install msodbcsql17_17.9.1.1-1_amd64.deb
       - name: Run Unit Tests
         shell: bash -l {0}
         env:
