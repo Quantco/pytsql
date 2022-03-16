@@ -61,17 +61,21 @@ jobs:
           use-mamba: true
           environment-file: environment.yml
           activate-environment: pytsql
+      - name: Install msodbcsql17 driver
+        shell: bash -l {0}
+        run: |
+          sudo su
+          curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+
+          curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list > /etc/apt/sources.list.d/mssql-release.list
+
+          exit
+          sudo apt-get update
+          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17
       - name: Run Unit Tests
         shell: bash -l {0}
         env:
           DB_ADDR: DB:1433
         run: |
-          sudo su
-          curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-
-          sudo curl https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/prod.list > sudo /etc/apt/sources.list.d/mssql-release.list
-          exit
-          sudo apt-get update
-          sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17
           flit install -s
           pytest --backend=${{ matrix.DRIVER }} tests/integration
