@@ -67,6 +67,7 @@ jobs:
           wget https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msodbcsql17/msodbcsql17_17.9.1.1-1_amd64.deb
           ACCEPT_EULA=Y sudo apt install ./msodbcsql17_17.9.1.1-1_amd64.deb
           odbcinst -j
+          cat /etc/odbcinst.ini
       - name: Run Unit Tests
         shell: bash -l {0}
         env:
