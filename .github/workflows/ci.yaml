@@ -70,7 +70,7 @@ jobs:
           cat /etc/odbcinst.ini
       - name: Wait for SQL Server
         timeout-minutes: 1
-        run: until docker logs "${{ job.services.mssql.id }}" 2>&1 | grep -q "SQL Server is now ready"; do sleep 10; done
+        run: until docker logs "${{ job.services.db.id }}" 2>&1 | grep -q "SQL Server is now ready"; do sleep 10; done
       - name: Run Unit Tests
         shell: bash -l {0}
         env:
