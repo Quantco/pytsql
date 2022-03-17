@@ -22,8 +22,7 @@ def get_engine(backend) -> sa.engine.Engine:
 
 @pytest.fixture(scope="function")
 def engine(backend):
-    engine = get_engine(backend)
-    return engine
+    yield get_engine(backend)
 
 
 def pytest_addoption(parser):
