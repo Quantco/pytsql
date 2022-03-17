@@ -45,7 +45,7 @@ jobs:
         image: mcr.microsoft.com/mssql/server:2019-latest
         env:
           ACCEPT_EULA: Y
-          SA_PASSWORD: pytsql
+          SA_PASSWORD: pytsql-Test-123
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
