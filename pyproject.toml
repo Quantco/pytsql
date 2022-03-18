@@ -11,7 +11,12 @@ authors = [
 ]
 
 maintainers = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
-keywords = []
+keywords = [
+  "sql",
+  "databases",
+  "automation",
+  "parametrization",
+]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "License :: OSI Approved :: BSD License",
