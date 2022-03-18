@@ -13,6 +13,7 @@ authors = [
 maintainers = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
 keywords = [
   "sql",
+  "mssql",
   "databases",
   "automation",
   "parametrization",
