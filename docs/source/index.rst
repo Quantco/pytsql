@@ -19,3 +19,4 @@ Contents
    installation
    usage
    api
+   pytsql
