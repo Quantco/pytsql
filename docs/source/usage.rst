@@ -3,7 +3,8 @@ Usage
 
 ``pytsql`` is tailored to run with MSSQL. Other sql dialects are not supported.
 
-The main function of interest is `execute`. It requires a `sqlalchemy` [`Engine`][engine]
+The main function of interest is ``execute``. It requires a ``sqlalchemy``
+`Engine <https://docs.sqlalchemy.org/en/14/core/engines.html>`
 object as well as the path to a sql script. A typical use case might look as follows:
 
 .. code-block:: python
@@ -18,5 +19,3 @@ object as well as the path to a sql script. A typical use case might look as fol
 
     pytsql.execute(my_sql_script, engine)
 
-
-[engine]: https://docs.sqlalchemy.org/en/14/core/engines.html
