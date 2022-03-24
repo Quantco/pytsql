@@ -1,5 +1,5 @@
 Installation
-=====
+============
 
 To install, execute:
 
