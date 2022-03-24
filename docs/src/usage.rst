@@ -1,34 +1,22 @@
 Usage
 =====
 
-.. _installation:
+``pytsql`` is tailored to run with MSSQL. Other sql dialects are not supported.
 
-Installation
-------------
+The main function of interest is `execute`. It requires a `sqlalchemy` [`Engine`][engine]
+object as well as the path to a sql script. A typical use case might look as follows:
 
-To use Lumache, first install it using pip:
+.. code-block:: python
 
-.. code-block:: console
+    import pytsql
+    from sqlalchemy import sa
 
-   (.venv) $ pip install lumache
+    my_sql_script = "my_sql_script.sql"
 
-Creating recipes
-----------------
+    db_connection_string = "connection_to_my_database"
+    engine = sa.get_engine(db_connection_string)
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
+    pytsql.execute(my_sql_script, engine)
 
-.. autofunction:: lumache.get_random_ingredients
 
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
-
-.. autoexception:: lumache.InvalidKindError
-
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
-
+[engine]: https://docs.sqlalchemy.org/en/14/core/engines.html
