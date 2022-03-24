@@ -1,4 +1,4 @@
-Welcome to Lumache's documentation!
+Welcome to pytsql's documentation!
 ===================================
 
 ``pytsql`` allows for running mssql scripts, which are typically run via GUIs, to be executed via CLI instead.
