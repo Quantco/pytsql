@@ -1,7 +1,8 @@
 API
 ===
 
-.. autosummary::
-   :toctree: generated
+.. automodule:: pytsql
+   :members:
+   :inherited-members:
+   :show-inheritance:
 
-   pytsql
