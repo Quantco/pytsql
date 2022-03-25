@@ -18,4 +18,4 @@ Contents
 
    installation
    usage
-   api
+   API Reference <api/pytsql.rst>
