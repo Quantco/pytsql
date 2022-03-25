@@ -2,8 +2,7 @@
 import os
 import sys
 
-print(f"READ THE DOCS DEBUG {os.getcwd()}")
-sys.path.insert(0, os.path.abspath("../.."))
+sys.path.insert(0, os.path.abspath("../../.."))
 
 # -- Project information
 
