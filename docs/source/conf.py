@@ -2,6 +2,8 @@
 import os
 import sys
 
+autodoc_mock_imports = ["antlr4"]
+
 print(f"READ THE DOCS DEBUG {os.getcwd()}")
 sys.path.insert(0, os.path.abspath("../../src"))
 new_path = os.path.abspath('../../src')
