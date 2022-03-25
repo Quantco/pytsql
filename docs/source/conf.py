@@ -3,8 +3,8 @@ import os
 import sys
 
 print(f"READ THE DOCS DEBUG {os.getcwd()}")
-sys.path.insert(0, os.path.abspath("../../.."))
-new_path = os.path.abspath('../../..')
+sys.path.insert(0, os.path.abspath("../../src"))
+new_path = os.path.abspath('../../src')
 print(f"{new_path} added to path.")
 
 # -- Project information
