@@ -1,5 +1,7 @@
 # pytsql
 
+[![Documentation Status](https://readthedocs.org/projects/pytsql/badge/?version=latest)](https://pytsql.readthedocs.io/en/latest/?badge=latest)
+
 **Description**: `pytsql` allows to run mssql scripts, which are typically run via GUIs, to be executed via CLI instead.
 This, in turn, eases concurrent execution, scheduled execution as well as chained execution
 of scripts in a workflow. Put differently, it enables automated execution of sql
