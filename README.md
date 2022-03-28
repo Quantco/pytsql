@@ -1,6 +1,10 @@
 # pytsql
 
+[![CI](https://github.com/Quantco/pytsql/workflows/CI/badge.svg)](https://github.com/Quantco/pytsql/actions)
 [![Documentation Status](https://readthedocs.org/projects/pytsql/badge/?version=latest)](https://pytsql.readthedocs.io/en/latest/?badge=latest)
+[![Conda-forge](https://img.shields.io/conda/vn/conda-forge/pytsql?logoColor=white&logo=conda-forge)](https://anaconda.org/conda-forge/pytsql)
+[![PypiVersion](https://img.shields.io/pypi/v/pytsql.svg?logo=pypi&logoColor=white)](https://pypi.org/project/pytsql)
+
 
 **Description**: `pytsql` allows to run mssql scripts, which are typically run via GUIs, to be executed via CLI instead.
 This, in turn, eases concurrent execution, scheduled execution as well as chained execution
