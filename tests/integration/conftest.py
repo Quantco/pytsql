@@ -17,7 +17,7 @@ def get_engine(backend) -> sa.engine.Engine:
     else:
         msodbc_driver_name = urllib.parse.quote_plus("ODBC Driver 17 for SQL Server")
         connection_string += f"?driver={msodbc_driver_name}"
-    return sa.create_engine(connection_string, connect_args={"autocommit": True})
+    return sa.create_engine(connection_string, connect_args={"autocommit": True, "timeout": 30})
 
 
 @pytest.fixture(scope="function")
