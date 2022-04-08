@@ -46,6 +46,8 @@ jobs:
         env:
           ACCEPT_EULA: Y
           SA_PASSWORD: pytsql-Test-123
+        ports:
+          - 1433:1433
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
