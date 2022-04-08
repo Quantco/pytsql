@@ -53,8 +53,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
       - name: Fetch full git history
         run: git fetch --prune --unshallow
       - uses: conda-incubator/setup-miniconda@v2
@@ -75,6 +73,8 @@ jobs:
       - name: Wait for SQL Server
         timeout-minutes: 1
         run: until docker logs "${{ job.services.db.id }}" 2>&1 | grep -q "SQL Server is now ready"; do sleep 10; done
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Run Unit Tests
         shell: bash -l {0}
         env:
