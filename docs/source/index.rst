@@ -1,7 +1,7 @@
 Welcome to pytsql's documentation!
 ===================================
 
-``pytsql`` allows to run mssql scripts, typically run from GUIs, from python.
+``pytsql`` allows to run mssql scripts, typically run from GUIs, from Python.
 
 This, in turn, eases concurrent, scheduled and chained execution of scripts in a
 workflow. Put differently, it enables automated execution of Microsoft sql server scripts.

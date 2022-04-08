@@ -12,12 +12,10 @@ object as well as the path to a sql script. A typical use case might look as fol
     import pytsql
     from sqlalchemy import sa
 
-    my_sql_script = "my_sql_script.sql"
-
     db_connection_string = "connection_to_my_database"
     engine = sa.get_engine(db_connection_string)
 
-    pytsql.execute(my_sql_script, engine)
+    pytsql.execute("my_sql_script.sql", engine)
 
 
 Parametrization

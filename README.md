@@ -6,7 +6,7 @@
 [![PypiVersion](https://img.shields.io/pypi/v/pytsql.svg?logo=pypi&logoColor=white)](https://pypi.org/project/pytsql)
 
 
-`pytsql` allows to run mssql scripts, typically run from GUIs, from python.
+`pytsql` allows to run mssql scripts, typically run from GUIs, from Python.
 
 This, in turn, eases concurrent, scheduled and chained execution of scripts in a
 workflow. Put differently, it enables automated execution of Microsoft sql server scripts.
@@ -42,13 +42,14 @@ object as well as the path to the sql script of interest. A typical use case mig
 import pytsql
 from sqlalchemy import sa
 
-my_sql_script = "my_sql_script.sql"
-
 db_connection_string = "connection_to_my_database"
 engine = sa.get_engine(db_connection_string)
 
-pytsql.execute(my_sql_script, engine)
+pytsql.execute("my_sql_script.sql", engine)
 ```
+
+Please also have a look at our documentation sections on [usage](https://pytsql.readthedocs.io/en/latest/usage.html#parametrization) and
+[development](https://pytsql.readthedocs.io/en/latest/development.html).
 
 [engine]: https://docs.sqlalchemy.org/en/14/core/engines.html
 
