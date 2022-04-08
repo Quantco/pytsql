@@ -30,7 +30,7 @@ Unit tests
 ``pytsql`` comes with some unit tests. Provided that the environment has been set
 up as illustrated in the previous step, they can be run as such:
 
-.. code_block:: bash
+::
 
     conda activate pytsql
     cd pytsql
