@@ -50,7 +50,7 @@ from. At the same time, we can parametrize the table which is selected from:
         pytsql.execute(my_sql_script, engine, parameters)
 
 
-Logging the Prints
+Logging the prints
 ------------------
 
 When working in SQL IDEs or GUIs, some developers seem to use the sql ``PRINT`` function
