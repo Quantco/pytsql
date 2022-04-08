@@ -1,15 +1,12 @@
 Welcome to pytsql's documentation!
 ===================================
 
-``pytsql`` allows for running mssql scripts, which are typically run via GUIs, to be executed via CLI instead.
-This, in turn, eases concurrent execution, scheduled execution as well as chained execution
-of scripts in a workflow. Put differently, it enables automated execution of sql
-scripts.
+``pytsql`` allows to run mssql scripts, typically run from GUIs, from Python.
 
+This, in turn, eases concurrent, scheduled and chained execution of scripts in a
+workflow. Put differently, it enables automated execution of Microsoft sql server scripts.
 
-.. note::
-
-   This project is under active development.
+Moreover, ``pytsql`` supports parametrization of scripts, akin to templating.
 
 Contents
 --------
@@ -18,4 +15,6 @@ Contents
 
    installation
    usage
+   development
+
    API Reference <api/pytsql.rst>

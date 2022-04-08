@@ -3,13 +3,13 @@ Installation
 
 To install, execute:
 
-.. code-block:: bash
+::
 
     pip install pytsql
 
 or from a ``conda`` environment
 
-.. code-block:: bash
+::
 
     mamba install pytsql
 
