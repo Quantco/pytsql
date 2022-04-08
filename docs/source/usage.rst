@@ -53,7 +53,7 @@ from. At the same time, we can parametrize the table which is selected from:
 Logging the prints
 ------------------
 
-When working in SQL IDEs or GUIs, some developers seem to use the sql ``PRINT`` function
+When working in sql IDEs or GUIs, some developers seem to use the sql ``PRINT`` function
 as a logging or debugging mechanism. We have observed use cases ranging from
 ``PRINT 'section 4 completed'`` over
 ``PRINT(CAST(GETDATE() AS VARCHAR) + ': start section 5')`` to printing intermediate
