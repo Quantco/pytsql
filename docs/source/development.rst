@@ -59,8 +59,8 @@ the ``freetds`` driver.
 Creating a grammar
 ------------------
 
-``Pytsql`` relies on parsing the sql script at hand. In order to do so, it uses
-[``antlr``](https://www.antlr.org/), a parser generator. ``Antlr`` expects grammar files
+``pytsql`` relies on parsing the sql script at hand. In order to do so, it uses
+`antlr <https://www.antlr.org>`), a parser generator. ``antlr`` expects grammar files
 and produces parsing python code.
 
 If you want to adapt the grammar please have a look at ``pytsql/src/pytsql/grammar/tsql.g4``.
