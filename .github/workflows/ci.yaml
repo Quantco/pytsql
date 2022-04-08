@@ -73,12 +73,12 @@ jobs:
       - name: Wait for SQL Server
         timeout-minutes: 1
         run: until docker logs "${{ job.services.db.id }}" 2>&1 | grep -q "SQL Server is now ready"; do sleep 10; done
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+      # - name: Setup tmate session
+      #   uses: mxschmitt/action-tmate@v3
       - name: Run Unit Tests
         shell: bash -l {0}
-        env:
-          DB_ADDR: DB
+        # env:
+        #   DB_ADDR: DB
         run: |
           flit install -s
           pytest --backend=${{ matrix.DRIVER }} tests/integration
