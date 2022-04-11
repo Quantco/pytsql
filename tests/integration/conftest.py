@@ -9,8 +9,9 @@ TEST_DB_NAME = "tempdb"
 
 
 def get_engine(backend) -> sa.engine.Engine:
-    # address = os.environ.get("DB_ADDR", "localhost")
-    address = "127.0.0.1"
+    address = os.environ.get("DB_ADDR", "localhost")
+    print(address)
+    # address = "127.0.0.1"
     # auth = "sa:QuantCo%40MSSQL@" if backend != "mssql-windows-ci" else ""
     connection_string = f"mssql+pyodbc://sa:pytsql-Test-123@{address}:1433/{TEST_DB_NAME}"
     if backend == "mssql-freetds":

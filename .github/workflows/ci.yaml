@@ -81,4 +81,4 @@ jobs:
         #   DB_ADDR: DB
         run: |
           flit install -s
-          pytest --backend=${{ matrix.DRIVER }} tests/integration
+          pytest --backend=${{ matrix.DRIVER }} -sk multiple_statements tests/integration
