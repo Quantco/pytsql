@@ -38,8 +38,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        PYTHON_VERSION: ['3.8']
-        DRIVER: ["mssql"] #, "mssql-freetds"]
+        PYTHON_VERSION: ['3.7', '3.8', '3.9', '3.10']
+        DRIVER: ["mssql", "mssql-freetds"]
     services:
       DB:
         image: mcr.microsoft.com/mssql/server:2019-latest
