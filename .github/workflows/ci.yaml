@@ -31,7 +31,7 @@ jobs:
           pytest tests/unit
 
   linux-integration_tests-sqlserver:
-    name: "Linux - integration tests - Python ${{ matrix.PYTHON_VERSION }} - SQL server with ${{ matrix.DRIVER }} driver"
+    name: "Linux - integration tests - Python ${{ matrix.PYTHON_VERSION }} - mssql"
     runs-on: ubuntu-20.04
     env:
       CI: True
@@ -39,7 +39,6 @@ jobs:
       fail-fast: false
       matrix:
         PYTHON_VERSION: ['3.7', '3.8', '3.9', '3.10']
-        DRIVER: ["mssql", "mssql-freetds"]
     services:
       DB:
         image: mcr.microsoft.com/mssql/server:2019-latest
@@ -75,4 +74,4 @@ jobs:
         shell: bash -l {0}
         run: |
           flit install -s
-          pytest --backend=${{ matrix.DRIVER }} tests/integration
+          pytest --backend=mssql tests/integration
