@@ -10,8 +10,6 @@ TEST_DB_NAME = "tempdb"
 
 def get_engine(backend) -> sa.engine.Engine:
     address = os.environ.get("DB_ADDR", "localhost")
-    print(address)
-    # address = "127.0.0.1"
     # auth = "sa:QuantCo%40MSSQL@" if backend != "mssql-windows-ci" else ""
     connection_string = f"mssql+pyodbc://sa:pytsql-Test-123@{address}:1433/{TEST_DB_NAME}"
     if backend == "mssql-freetds":
@@ -40,8 +38,3 @@ def pytest_generate_tests(metafunc):
         metafunc.parametrize(
             "backend", [metafunc.config.getoption("backend")], scope="module"
         )
-
-
-# @pytest.fixture(scope="session", autouse=True)
-# def setup_odbcsysini():
-#     os.environ["ODBCSYSINI"] = str(Path("etc" / "msodbcsql17"))
