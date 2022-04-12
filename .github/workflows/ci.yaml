@@ -2,6 +2,23 @@ name: CI
 on: [push]
 
 jobs:
+  linter:
+    name: "Linter (pre-commit)"
+    runs-on: ubuntu-latest
+    env:
+      CI: True
+    strategy:
+      fail-fast: true
+    steps:
+     - name: Pull image
+       run: docker pull condaforge/mambaforge:latest
+     - name: Checkout branch
+       uses: actions/checkout@v3
+       with:
+         ref: ${{ github.head_ref }}
+     - name: Run linter inside of container
+       uses: ./.github/actions/linter
+
   linux:
     name: "Linux - unit tests - Python ${{ matrix.PYTHON_VERSION }}"
     runs-on: ubuntu-latest
