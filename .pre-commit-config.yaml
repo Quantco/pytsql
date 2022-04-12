@@ -1,11 +1,11 @@
 repos:
  - repo: https://github.com/Quantco/pre-commit-mirrors-black
-   rev: 20.8b1
+   rev: 22.3.0
    hooks:
      - id: black-conda
        args:
          - --safe
-         - --target-version=py36
+         - --target-version=py37
        exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-flake8
    rev: v3.8.4
@@ -29,3 +29,5 @@ repos:
    hooks:
     - id: pyupgrade-conda
       exclude: ^src/pytsql/grammar/
+      args:
+          - --py37-plus
