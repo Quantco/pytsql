@@ -3,7 +3,6 @@
 
 from .tsql import execute, executes
 
-
 __version__ = "1.0.0"
 
 __all__ = ["execute", "executes"]

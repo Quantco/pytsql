@@ -1,6 +1,5 @@
 import os
 import urllib.parse
-from pathlib import Path
 
 import pytest
 import sqlalchemy as sa
@@ -11,13 +10,17 @@ TEST_DB_NAME = "tempdb"
 def get_engine(backend) -> sa.engine.Engine:
     address = os.environ.get("DB_ADDR", "localhost")
     # auth = "sa:QuantCo%40MSSQL@" if backend != "mssql-windows-ci" else ""
-    connection_string = f"mssql+pyodbc://sa:pytsql-Test-123@{address}:1433/{TEST_DB_NAME}"
+    connection_string = (
+        f"mssql+pyodbc://sa:pytsql-Test-123@{address}:1433/{TEST_DB_NAME}"
+    )
     if backend == "mssql-freetds":
         connection_string += "?driver=libtdsodbc.so&tds_version=7.4"
     else:
         msodbc_driver_name = urllib.parse.quote_plus("ODBC Driver 17 for SQL Server")
         connection_string += f"?driver={msodbc_driver_name}"
-    return sa.create_engine(connection_string, connect_args={"autocommit": True, "timeout": 10})
+    return sa.create_engine(
+        connection_string, connect_args={"autocommit": True, "timeout": 10}
+    )
 
 
 @pytest.fixture(scope="function")

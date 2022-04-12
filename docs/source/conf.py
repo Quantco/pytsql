@@ -1,12 +1,12 @@
 # Configuration file for the Sphinx documentation builder.
 
 # -- Project information
-project = 'pytsql'
+project = "pytsql"
 copyright = "(C) 2020-2021 QuantCo Inc."
 author = "QuantCo Inc."
 
-release = '1.0'
-version = '1.0.0'
+release = "1.0"
+version = "1.0.0"
 
 extensions = ["numpydoc", "sphinxcontrib.apidoc"]
 

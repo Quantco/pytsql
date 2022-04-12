@@ -2,6 +2,23 @@ name: CI
 on: [push]
 
 jobs:
+ 
+  pre-commit-checks:
+    name: "Linux - pre-commit checks - Python 3.8"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Install Python 3.8
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      - name: Run pre-commit checks
+        uses: pre-commit/action@v2.0.3
+
+
   linux:
     name: "Linux - unit tests - Python ${{ matrix.PYTHON_VERSION }}"
     runs-on: ubuntu-latest
