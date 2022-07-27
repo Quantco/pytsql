@@ -9,8 +9,7 @@ import sqlalchemy
 from antlr4 import InputStream, Token
 from sqlalchemy.engine import Connection
 
-from pytsql.grammar import sa_tsql
-from pytsql.grammar.sa_tsql import SA_ErrorListener, tsqlParser
+from pytsql.grammar import SA_ErrorListener, parse, tsqlParser
 
 _REPLACE_START = "<replace>"
 _REPLACE_END = "</replace>"
@@ -148,7 +147,7 @@ def _split(code: str) -> List[str]:
 
     # The default error listener only prints to the console without raising exceptions.
     error_listener = _RaisingErrorListener()
-    tree = sa_tsql.parse(InputStream(data=code), "tsql_file", error_listener)
+    tree = parse(InputStream(data=code), "tsql_file", error_listener)
     visitor = _TSQLVisitor()
 
     # Our current definition of a 'batch' is a single top-level SQL clause.
