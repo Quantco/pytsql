@@ -44,12 +44,12 @@ jobs:
       - name: Run Unit Tests
         shell: bash -l {0}
         run: |
-          flit install -s
+          pip install . --no-build-isolation --no-deps --disable-pip-version-check
           pytest tests/unit
 
   linux-integration_tests-sqlserver:
     name: "Linux - integration tests - Python ${{ matrix.PYTHON_VERSION }} - mssql"
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       CI: True
     strategy:
@@ -82,13 +82,13 @@ jobs:
       - name: Install msodbcsql17 driver
         shell: bash -l {0}
         run: |
-          wget https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msodbcsql17/msodbcsql17_17.9.1.1-1_amd64.deb
-          ACCEPT_EULA=Y sudo apt install ./msodbcsql17_17.9.1.1-1_amd64.deb
+          wget https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msodbcsql17/msodbcsql17_17.10.1.1-1_amd64.deb
+          ACCEPT_EULA=Y sudo apt install ./msodbcsql17_17.10.1.1-1_amd64.deb --allow-downgrades
       - name: Wait for SQL Server
         timeout-minutes: 1
         run: until docker logs "${{ job.services.db.id }}" 2>&1 | grep -q "SQL Server is now ready"; do sleep 10; done
       - name: Run Unit Tests
         shell: bash -l {0}
         run: |
-          flit install -s
+          pip install . --no-build-isolation --no-deps --disable-pip-version-check
           pytest --backend=mssql tests/integration

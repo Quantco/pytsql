@@ -1,9 +1,10 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ['setuptools', 'setuptools-scm', 'wheel']
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "pytsql"
+description = "`Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI."
 authors = [
   {name = "Alex Gonopolskiy", email = "agonopol@gmail.com"},
   {name = "Kevin Klein", email = "kevin.klein@quantco.com"},
@@ -24,10 +25,13 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
   "Topic :: Database"
 ]
 readme = "README.md"
-dynamic = ["version", "description"]
+dynamic = ["version"]
 
 requires-python = ">=3.7.0"
 
@@ -39,7 +43,6 @@ dependencies = [
 
 [project.urls]
 Source = "https://github.com/quantco/pytsql"
-
 
 [tool.black]
 exclude = '''
@@ -60,3 +63,7 @@ line_length = 88
 known_first_party = "pytsql"
 skip_glob = '\.eggs/*,\.git/*,\.venv/*,build/*,dist/*'
 default_section = 'THIRDPARTY'
+
+[[tool.mypy.overrides]]
+module = "pytsql.grammar.*"
+follow_imports = "silent"
