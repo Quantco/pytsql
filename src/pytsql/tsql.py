@@ -6,12 +6,10 @@ from typing import Any, Dict, List, Optional, Union
 
 import antlr4.tree.Tree
 import sqlalchemy
-from antlr4 import CommonTokenStream, InputStream, RecognitionException, Token
-from antlr4.error.ErrorListener import ErrorListener
-from antlr4.Recognizer import Recognizer
+from antlr4 import InputStream, Token
 from sqlalchemy.engine import Connection
 
-from pytsql.grammar import tsqlLexer, tsqlParser
+from pytsql.grammar import SA_ErrorListener, parse, tsqlParser
 
 _REPLACE_START = "<replace>"
 _REPLACE_END = "</replace>"
@@ -127,15 +125,15 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
         return aggregate + next_result
 
 
-class _RaisingErrorListener(ErrorListener):
+class _RaisingErrorListener(SA_ErrorListener):
     def syntaxError(
         self,
-        recognizer: Optional[Recognizer],
+        input_stream: InputStream,
         offendingSymbol: Optional[Token],
+        char_index: int,
         line: int,
         column: int,
         msg: str,
-        e: Optional[RecognitionException],
     ):
         error_message = f"Line {line}:{column} {msg}."
         if offendingSymbol is not None:
@@ -150,16 +148,8 @@ def _split(code: str) -> List[str]:
     # The default error listener only prints to the console without raising exceptions.
     error_listener = _RaisingErrorListener()
 
-    lexer = tsqlLexer(InputStream(data=code))
-    lexer.removeErrorListeners()
-    lexer.addErrorListener(error_listener)
-    stream = CommonTokenStream(lexer)
-
-    parser = tsqlParser(stream)
-    parser.removeErrorListeners()
-    parser.addErrorListener(error_listener)
-    tree = parser.tsql_file()
-
+    # Using code created by `speedy-antlr-tool` to parse the input.
+    tree = parse(InputStream(data=code), "tsql_file", error_listener)
     visitor = _TSQLVisitor()
 
     # Our current definition of a 'batch' is a single top-level SQL clause.
