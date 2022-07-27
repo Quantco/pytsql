@@ -44,7 +44,7 @@ jobs:
       - name: Run Unit Tests
         shell: bash -l {0}
         run: |
-          flit install -s
+          pip install .
           pytest tests/unit
 
   linux-integration_tests-sqlserver:
@@ -90,5 +90,5 @@ jobs:
       - name: Run Unit Tests
         shell: bash -l {0}
         run: |
-          flit install -s
+          pip install .
           pytest --backend=mssql tests/integration

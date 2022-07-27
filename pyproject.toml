@@ -1,45 +1,9 @@
 [build-system]
-requires = ["flit_core >=3.2,<4"]
-build-backend = "flit_core.buildapi"
+requires = ['setuptools', 'setuptools-scm', 'wheel']
+build-backend = "setuptools.build_meta"
 
-[project]
-name = "pytsql"
-authors = [
-  {name = "Alex Gonopolskiy", email = "agonopol@gmail.com"},
-  {name = "Kevin Klein", email = "kevin.klein@quantco.com"},
-  {name= "Encho Mishinev", email = "encho.mishinev@quantco.com"}
-]
-
-maintainers = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
-keywords = [
-  "sql",
-  "mssql",
-  "databases",
-  "automation",
-  "parametrization",
-]
-classifiers = [
-  "Development Status :: 5 - Production/Stable",
-  "License :: OSI Approved :: BSD License",
-  "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.7",
-  "Topic :: Database"
-]
-readme = "README.md"
-dynamic = ["version", "description"]
-
-requires-python = ">=3.7.0"
-
-dependencies = [
-    "sqlalchemy >=1.4",
-    "antlr4-python3-runtime ==4.9.2",
-    "pyodbc >=4.0.30"
-]
-
-[project.urls]
-Source = "https://github.com/quantco/pytsql"
-
+[tool.setuptools_scm]
+version_scheme = "post-release"
 
 [tool.black]
 exclude = '''
