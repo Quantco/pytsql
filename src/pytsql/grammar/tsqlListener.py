@@ -1,5 +1,3 @@
-#type: ignore
-
 # Generated from tsql.g4 by ANTLR 4.9.2
 from antlr4 import *
 if __name__ is not None and "." in __name__:
