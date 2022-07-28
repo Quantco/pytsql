@@ -5,6 +5,9 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 version_scheme = "post-release"
 
+# Note: Required for `upload_testpypi` job (default local distribution naming is incompatible with PEP 440)
+local_scheme = "no-local-version"
+
 [tool.black]
 exclude = '''
 /(
