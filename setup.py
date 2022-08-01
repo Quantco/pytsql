@@ -8,7 +8,8 @@ def get_dev_timestamp(version: ScmVersion) -> str:
     """Return a new distribution version string.
 
     Returns the version found in the git tag if currently checked out commit has a tag.
-    Otherwise, returns the version found in the latest previous git tag, appended with `dev` + current timestamp
+    Otherwise, returns the version found in the most recent git tag, appended with
+    `dev` and the current timestamp in seconds.
     """
 
     if version.exact:
