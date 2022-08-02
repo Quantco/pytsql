@@ -1,3 +1,1 @@
-from .tsqlLexer import tsqlLexer
-from .tsqlListener import tsqlListener
-from .tsqlParser import tsqlParser
+from .sa_tsql import parse, SA_ErrorListener, tsqlParser

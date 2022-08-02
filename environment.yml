@@ -16,3 +16,4 @@ dependencies:
   - sqlalchemy
   - antlr-python-runtime==4.9.2
   - pyodbc
+  - mock
