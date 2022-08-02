@@ -1,16 +1,9 @@
-import fnmatch
-import os
+import glob
 import platform
 from time import time
 
 import setuptools
 from setuptools_scm.version import ScmVersion
-
-target = platform.system().lower()
-PLATFORMS = {"windows", "linux", "darwin", "cygwin"}
-for known in PLATFORMS:
-    if target.startswith(known):
-        target = known
 
 
 def get_dev_timestamp(version: ScmVersion) -> str:
@@ -26,7 +19,26 @@ def get_dev_timestamp(version: ScmVersion) -> str:
     return version.format_with(f"{{tag}}.dev{int(time())}")
 
 
-def run_setup():
+def get_platform() -> str:
+    """Return the platform on which this code is run
+
+    Returns the platform name stripped of unnecessary information if the platform is known.
+    Otherwise, returns the full platform name.
+    """
+
+    known_platforms = {"windows", "linux", "darwin", "cygwin"}
+
+    target = platform.system().lower()
+    for known in known_platforms:
+        if target.startswith(known):
+            return known
+
+    return target
+
+
+def create_extension() -> setuptools.Extension:
+    """Create the ANTLR C++ extension to be passed to `setuptools.setup`"""
+
     extra_compile_args = {
         "windows": ["/DANTLR4CPP_STATIC", "/Zc:__cplusplus"],
         "linux": ["-std=c++11"],
@@ -34,31 +46,26 @@ def run_setup():
         "cygwin": ["-std=c++11"],
     }
 
-    parser_ext = setuptools.Extension(
+    sources = glob.glob("src/pytsql/grammar/cpp_src/**/*.cpp", recursive=True)
+    depends = glob.glob("src/pytsql/grammar/cpp_src/**/*.h", recursive=True)
+
+    return setuptools.Extension(
         name="pytsql.grammar.sa_tsql_cpp_parser",
         include_dirs=["src/pytsql/grammar/cpp_src/antlr4-cpp-runtime"],
-        sources=get_files("src/pytsql/grammar/cpp_src", "*.cpp"),
-        depends=get_files("src/pytsql/grammar/cpp_src", "*.h"),
-        extra_compile_args=extra_compile_args.get(target, []),
+        sources=sources,
+        depends=depends,
+        extra_compile_args=extra_compile_args.get(get_platform(), []),
     )
 
+
+def run_setup():
     setuptools.setup(
-        ext_modules=[parser_ext],
+        ext_modules=[create_extension()],
         use_scm_version={
             "version_scheme": get_dev_timestamp,
             "local_scheme": "dirty-tag",
         },
     )
-
-
-def get_files(path, pattern):
-    """Return all filenames matching the path and the pattern"""
-
-    matches = []
-    for root, _, filenames in os.walk(path):
-        for filename in fnmatch.filter(filenames, pattern):
-            matches.append(os.path.join(root, filename))
-    return matches
 
 
 run_setup()
