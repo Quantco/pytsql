@@ -2,6 +2,48 @@
 requires = ['setuptools', 'setuptools-scm', 'wheel']
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "pytsql"
+description = "`Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI."
+authors = [
+  {name = "Alex Gonopolskiy", email = "agonopol@gmail.com"},
+  {name = "Kevin Klein", email = "kevin.klein@quantco.com"},
+  {name= "Encho Mishinev", email = "encho.mishinev@quantco.com"}
+]
+
+maintainers = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
+keywords = [
+  "sql",
+  "mssql",
+  "databases",
+  "automation",
+  "parametrization",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "License :: OSI Approved :: BSD License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Topic :: Database"
+]
+readme = "README.md"
+dynamic = ["version"]
+
+requires-python = ">=3.7.0"
+
+dependencies = [
+    "sqlalchemy >=1.4",
+    "antlr4-python3-runtime ==4.9.2",
+    "pyodbc >=4.0.30"
+]
+
+[project.urls]
+Source = "https://github.com/quantco/pytsql"
+
 [tool.black]
 exclude = '''
 /(
