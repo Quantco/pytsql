@@ -147,6 +147,8 @@ def _split(code: str) -> List[str]:
 
     # The default error listener only prints to the console without raising exceptions.
     error_listener = _RaisingErrorListener()
+
+    # Using code created by `speedy-antlr-tool` to parse the input.
     tree = parse(InputStream(data=code), "tsql_file", error_listener)
     visitor = _TSQLVisitor()
 
