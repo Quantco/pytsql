@@ -20,7 +20,7 @@ def get_dev_timestamp(version: ScmVersion) -> str:
 
 
 def get_platform() -> str:
-    """Return the platform on which this code is run
+    """Return the platform on which this code is run.
 
     Returns the platform name stripped of unnecessary information if the platform is known.
     Otherwise, returns the full platform name.
