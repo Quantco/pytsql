@@ -83,7 +83,7 @@ def validate_context(py_context, cpp_context):
         elif isinstance(py_context.children[i], ParserRuleContext):
             validate_context(py_context.children[i], cpp_context.children[i])
         else:
-            raise RuntimeError
+            raise TypeError(f"Unexpected node type: {py_context.children[i]}")
         assert py_context.children[i].parentCtx is py_context
         assert cpp_context.children[i].parentCtx is cpp_context
 
