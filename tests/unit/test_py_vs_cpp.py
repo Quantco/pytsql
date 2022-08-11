@@ -1,5 +1,6 @@
 import inspect
 import re
+from typing import List
 from unittest import mock
 
 import pytest
@@ -35,7 +36,7 @@ WHERE kind = 1
 GROUP BY nr, short_nr;"""
 
 
-def get_rule_labels(context_cls):
+def get_rule_labels(context_cls: ParserRuleContext) -> List[str]:
     init_func = context_cls.__init__
 
     # Detect any context/token labels from the init function's assignments
@@ -50,7 +51,7 @@ def get_rule_labels(context_cls):
     return labels
 
 
-def compare_common_token(py_token, cpp_token):
+def compare_common_token(py_token: CommonToken, cpp_token: CommonToken) -> None:
     assert type(py_token) == type(cpp_token)
     if py_token is None:
         return
@@ -65,14 +66,18 @@ def compare_common_token(py_token, cpp_token):
     assert py_token.getInputStream() is cpp_token.getInputStream()
 
 
-def compare_terminal_node(py_terminal_node, cpp_terminal_node):
+def compare_terminal_node(
+    py_terminal_node: TerminalNodeImpl, cpp_terminal_node: TerminalNodeImpl
+) -> None:
     assert type(py_terminal_node) is type(cpp_terminal_node)
     assert type(py_terminal_node.symbol) is type(cpp_terminal_node.symbol)  # noqa: E721
 
     compare_common_token(py_terminal_node.symbol, cpp_terminal_node.symbol)
 
 
-def validate_context(py_context, cpp_context):
+def compare_context(
+    py_context: ParserRuleContext, cpp_context: ParserRuleContext
+) -> None:
     assert type(py_context) == type(cpp_context)
     assert len(py_context.children) == len(cpp_context.children)
 
@@ -81,7 +86,7 @@ def validate_context(py_context, cpp_context):
         if isinstance(py_context.children[i], TerminalNodeImpl):
             compare_terminal_node(py_context.children[i], cpp_context.children[i])
         elif isinstance(py_context.children[i], ParserRuleContext):
-            validate_context(py_context.children[i], cpp_context.children[i])
+            compare_context(py_context.children[i], cpp_context.children[i])
         else:
             raise TypeError(f"Unexpected node type: {py_context.children[i]}")
         assert py_context.children[i].parentCtx is py_context
@@ -95,7 +100,7 @@ def validate_context(py_context, cpp_context):
         if isinstance(py_label, CommonToken):
             compare_common_token(py_label, cpp_label)
         elif isinstance(py_label, ParserRuleContext):
-            validate_context(py_label, cpp_label)
+            compare_context(py_label, cpp_label)
 
 
 def test_compare_py_and_cpp_parse_trees(seed):
@@ -113,7 +118,10 @@ def test_compare_py_and_cpp_parse_trees(seed):
     py_context = sa_tsql._py_parse(stream, "tsql_file")
     cpp_context = sa_tsql._cpp_parse(stream, "tsql_file")
 
-    validate_context(py_context, cpp_context)
+    assert py_context.parentCtx is None
+    assert cpp_context.parentCtx is None
+
+    compare_context(py_context, cpp_context)
 
 
 @mock.patch("pytsql.grammar.sa_tsql._cpp_parse", wraps=sa_tsql._cpp_parse)
