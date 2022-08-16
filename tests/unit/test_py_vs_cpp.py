@@ -40,7 +40,6 @@ def get_rule_labels(context_cls: ParserRuleContext) -> List[str]:
     init_func = context_cls.__init__
 
     # Detect any context/token labels from the init function's assignments
-    # Conveniently, the type name is provided as a comment
     lines, _ = inspect.getsourcelines(init_func)
     labels = []
     for line in lines:
