@@ -135,3 +135,10 @@ def test_compare_py_and_cpp__split(py_parse_mock, cpp_parse_mock, seed):
     cpp_parse_mock.assert_called_once()
 
     assert py_result == cpp_result
+
+
+def test__py_parse__warns(caplog):
+    stream = InputStream(data="")
+    sa_tsql._py_parse(stream, "tsql_file")
+
+    assert "Using Python version of the parser" in caplog.text
