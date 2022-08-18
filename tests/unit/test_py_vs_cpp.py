@@ -11,6 +11,10 @@ from antlr4.tree.Tree import TerminalNodeImpl
 from pytsql.grammar import sa_tsql
 from pytsql.tsql import _split
 
+PY_PARSER_WARNING_PREFIX = "Using Python version of the parser"
+
+pytestmark = pytest.mark.filterwarnings(f"ignore:{PY_PARSER_WARNING_PREFIX}")
+
 
 @pytest.fixture
 def seed():
@@ -137,8 +141,6 @@ def test_compare_py_and_cpp__split(py_parse_mock, cpp_parse_mock, seed):
     assert py_result == cpp_result
 
 
-def test__py_parse__warns(caplog):
-    stream = InputStream(data="")
-    sa_tsql._py_parse(stream, "tsql_file")
-
-    assert "Using Python version of the parser" in caplog.text
+def test__py_parse__warns():
+    with pytest.warns(match=PY_PARSER_WARNING_PREFIX):
+        sa_tsql._py_parse(InputStream(data=""), "tsql_file")
