@@ -2,7 +2,6 @@
 #  https://github.com/amykyta3/speedy-antlr-tool
 import sys
 import types
-import warnings
 from typing import Optional
 
 import antlr4
@@ -142,12 +141,6 @@ class _FallbackErrorTranslator(ErrorListener):
 
 
 def _py_parse(stream:InputStream, entry_rule_name:str, sa_err_listener:SA_ErrorListener=None) -> ParseTree:
-    warnings.warn(
-        "Using Python version of the parser."
-        " Something is likely wrong with your installation of the package,"
-        " and is preventing the use of the faster C++ parser."
-    )
-
     if sa_err_listener is not None:
         err_listener = _FallbackErrorTranslator(sa_err_listener, stream)
 

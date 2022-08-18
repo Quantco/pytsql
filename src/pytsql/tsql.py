@@ -1,5 +1,6 @@
 import logging
 import re
+import warnings
 from pathlib import Path
 from re import Match
 from typing import Any, Dict, List, Optional, Union
@@ -9,7 +10,7 @@ import sqlalchemy
 from antlr4 import InputStream, Token
 from sqlalchemy.engine import Connection
 
-from pytsql.grammar import SA_ErrorListener, parse, tsqlParser
+from pytsql.grammar import USE_CPP_IMPLEMENTATION, SA_ErrorListener, parse, tsqlParser
 
 _REPLACE_START = "<replace>"
 _REPLACE_END = "</replace>"
@@ -143,6 +144,13 @@ class _RaisingErrorListener(SA_ErrorListener):
 
 
 def _split(code: str) -> List[str]:
+    if not USE_CPP_IMPLEMENTATION:
+        warnings.warn(
+            "Can not find C++ version of the parser, Python version will be used instead."
+            " Something is likely wrong with your installation of the package,"
+            " and is preventing the use of the faster C++ parser."
+        )
+
     logging.info("Started SQL script parsing")
 
     # The default error listener only prints to the console without raising exceptions.
