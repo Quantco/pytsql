@@ -8,6 +8,7 @@ from antlr4 import InputStream, ParserRuleContext
 from antlr4.Token import CommonToken
 from antlr4.tree.Tree import TerminalNodeImpl
 
+from pytsql import tsql
 from pytsql.grammar import sa_tsql
 from pytsql.tsql import _split
 
@@ -135,3 +136,9 @@ def test_compare_py_and_cpp__split(py_parse_mock, cpp_parse_mock, seed):
     cpp_parse_mock.assert_called_once()
 
     assert py_result == cpp_result
+
+
+def test__py_parse__warns():
+    tsql.USE_CPP_IMPLEMENTATION = False
+    with pytest.warns(match=r"Can not find C\+\+ version of the parser"):
+        _split("")
