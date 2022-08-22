@@ -12,10 +12,6 @@ from pytsql import tsql
 from pytsql.grammar import sa_tsql
 from pytsql.tsql import _split
 
-MISSING_PARSER_WARNING_PREFIX = r"Can not find C\+\+ version of the parser"
-
-pytestmark = pytest.mark.filterwarnings(f"ignore:{MISSING_PARSER_WARNING_PREFIX}")
-
 
 @pytest.fixture
 def seed():
@@ -144,5 +140,5 @@ def test_compare_py_and_cpp__split(py_parse_mock, cpp_parse_mock, seed):
 
 def test__py_parse__warns():
     tsql.USE_CPP_IMPLEMENTATION = False
-    with pytest.warns(match=MISSING_PARSER_WARNING_PREFIX):
+    with pytest.warns(match=r"Can not find C\+\+ version of the parser"):
         _split("")
