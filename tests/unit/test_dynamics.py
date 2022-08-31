@@ -29,9 +29,10 @@ def test_dont_append_dynamics_on_create_schema():
         DECLARE @A INT = 5
         CREATE SCHEMA s
         SELECT * FROM x
+        CREATE VIEW y AS SELECT 1
         """
     splits = _split(seed)
-    assert len(splits) == 3
+    assert len(splits) == 4
 
     assert splits[0] == "DECLARE @A INT = 5"
     assert splits[1] == "CREATE SCHEMA s"
@@ -42,3 +43,4 @@ def test_dont_append_dynamics_on_create_schema():
         SELECT * FROM x
         """,
     )
+    assert splits[3] == "CREATE VIEW y AS SELECT 1"
