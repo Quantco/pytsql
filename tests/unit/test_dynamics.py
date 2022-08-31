@@ -44,3 +44,28 @@ def test_dont_append_dynamics_on_create_schema():
         """,
     )
     assert splits[3] == "CREATE VIEW y AS SELECT 1"
+
+
+def test_dynamics_no_isolation():
+    seed = """
+    DECLARE @A INT = 5
+    SELECT @A
+    GO
+    SELECT @A
+    """
+    splits = _split(seed, isolate_top_level_statements=False)
+    assert len(splits) == 2
+    assert_strings_equal_disregarding_whitespace(
+        splits[0],
+        """
+        DECLARE @A INT = 5
+        SELECT @A
+        """,
+    )
+    assert_strings_equal_disregarding_whitespace(
+        splits[1],
+        """
+        DECLARE @A INT = 5
+        SELECT @A
+        """,
+    )

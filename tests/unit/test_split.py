@@ -313,3 +313,15 @@ def test_linked_server():
     FROM linked_server.db.schm.table2
     """
     assert len(_split(seed)) == 1
+
+
+def test_rowcount_no_isolation():
+    seed = """
+    USE new_db
+    PRINT('Using new_db')
+    GO
+    SELECT * FROM my_table
+    PRINT(@@ROWCOUNT)
+    """
+    assert len(_split(seed)) == 4
+    assert len(_split(seed, isolate_top_level_statements=False)) == 2

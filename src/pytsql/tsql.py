@@ -83,16 +83,19 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
         # batches.
         self.dynamics: List[str] = []
 
-    def visit(self, tree: tsqlParser.Sql_clauseContext) -> str:
+    def visit(
+        self, tree: tsqlParser.Sql_clauseContext, prepend_dynamics: bool = True
+    ) -> str:
         dynamics = self.dynamics[:]
 
         chunks = tree.accept(self)
 
         # CREATE SCHEMA/VIEW must be the only statement in a batch
-        if tree.ddl_clause() is not None and (
+        is_create_schema_or_view = tree.ddl_clause() is not None and (
             tree.ddl_clause().create_schema() is not None
             or tree.ddl_clause().create_view() is not None
-        ):
+        )
+        if not prepend_dynamics or is_create_schema_or_view:
             return " ".join(chunks)
 
         return " ".join(dynamics + chunks)
@@ -143,7 +146,7 @@ class _RaisingErrorListener(SA_ErrorListener):
         raise ValueError(f"Error parsing SQL script: {error_message}")
 
 
-def _split(code: str) -> List[str]:
+def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
     if not USE_CPP_IMPLEMENTATION:
         warnings.warn(
             "Can not find C++ version of the parser, Python version will be used instead."
@@ -160,15 +163,24 @@ def _split(code: str) -> List[str]:
     tree = parse(InputStream(data=code), "tsql_file", error_listener)
     visitor = _TSQLVisitor()
 
-    # Our current definition of a 'batch' is a single top-level SQL clause.
+    # Our current definition of a 'batch' in isolation mode is a single top-level SQL clause in isolation mode.
     # Note that this differs from the grammar definition of a batch, which is
-    # a group of clauses between GO statements
+    # a group of clauses between GO statements. The latter matches the definition of batches
+    # in non-isolation mode.
     batches = []
     for batch in tree.batch():
+        clauses = []
+        first_clause_in_batch = True
         for sql_clause in batch.sql_clauses().sql_clause():
-            batch_query = visitor.visit(sql_clause)
-            if batch_query != "":
-                batches.append(batch_query)
+            prepend_dynamics = first_clause_in_batch or isolate_top_level_statements
+            clause = visitor.visit(sql_clause, prepend_dynamics=prepend_dynamics)
+            if clause != "":
+                clauses.append(clause)
+                first_clause_in_batch = False
+        if isolate_top_level_statements:
+            batches.extend(clauses)
+        else:
+            batches.append("\n".join(clauses))
 
     logging.info("SQL script parsed successfully.")
 
@@ -186,6 +198,7 @@ def executes(
     code: str,
     engine: sqlalchemy.engine.Engine,
     parameters: Optional[Dict[str, Any]] = None,
+    isolate_top_level_statements=True,
 ) -> None:
     """Execute a given sql string through a sqlalchemy.engine.Engine connection.
 
@@ -209,7 +222,7 @@ def executes(
         # connection is closed. Caveat: sqlalchemy engines can pool connections, so we still have to drop it preemtively.
         conn.execute(f"DROP TABLE IF EXISTS {_PRINTS_TABLE}")
         conn.execute(f"CREATE TABLE {_PRINTS_TABLE} (p NVARCHAR(4000))")
-        for batch in _split(parametrized_code):
+        for batch in _split(parametrized_code, isolate_top_level_statements):
             conn.execute(batch)
             _fetch_and_clear_prints(conn)
 
@@ -218,6 +231,7 @@ def execute(
     path: Union[str, Path],
     engine: sqlalchemy.engine.Engine,
     parameters: Optional[Dict[str, Any]] = None,
+    isolate_top_level_statements=True,
     encoding: str = "utf-8",
 ) -> None:
     """Execute a given sql script through a sqlalchemy.engine.Engine connection.
@@ -233,4 +247,4 @@ def execute(
     None
 
     """
-    executes(_code(path, encoding), engine, parameters)
+    executes(_code(path, encoding), engine, parameters, isolate_top_level_statements)
