@@ -83,6 +83,7 @@ SA_tsqlTranslator::~SA_tsqlTranslator() {
     Py_XDECREF(Drop_synonymContext_cls);
     Py_XDECREF(Drop_viewContext_cls);
     Py_XDECREF(Drop_schemaContext_cls);
+    Py_XDECREF(Drop_functionContext_cls);
     Py_XDECREF(Create_typeContext_cls);
     Py_XDECREF(Drop_typeContext_cls);
     Py_XDECREF(Rowset_function_limitedContext_cls);
@@ -743,6 +744,12 @@ antlrcpp::Any SA_tsqlTranslator::visitDrop_view(tsqlParser::Drop_viewContext *ct
 antlrcpp::Any SA_tsqlTranslator::visitDrop_schema(tsqlParser::Drop_schemaContext *ctx){
     if(!Drop_schemaContext_cls) Drop_schemaContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_schemaContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_schemaContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_tsqlTranslator::visitDrop_function(tsqlParser::Drop_functionContext *ctx){
+    if(!Drop_functionContext_cls) Drop_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_functionContext_cls);
     return py_ctx;
 }
 

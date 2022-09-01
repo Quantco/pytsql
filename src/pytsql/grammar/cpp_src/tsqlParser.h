@@ -140,52 +140,53 @@ public:
     RuleSql_option = 61, RuleTarget_recovery_time_option = 62, RuleTermination = 63, 
     RuleDrop_index = 64, RuleDrop_procedure = 65, RuleDrop_statistics = 66, 
     RuleDrop_table = 67, RuleDrop_database = 68, RuleDrop_synonym = 69, 
-    RuleDrop_view = 70, RuleDrop_schema = 71, RuleCreate_type = 72, RuleDrop_type = 73, 
-    RuleRowset_function_limited = 74, RuleOpenquery = 75, RuleOpendatasource = 76, 
-    RuleDeclare_statement = 77, RuleCursor_statement = 78, RuleExecute_statement = 79, 
-    RuleExecute_statement_arg = 80, RuleExecute_var_string = 81, RuleSecurity_statement = 82, 
-    RuleGrant_permission = 83, RuleSet_statement = 84, RuleTransaction_statement = 85, 
-    RuleGo_statement = 86, RuleUse_statement = 87, RuleExecute_clause = 88, 
-    RuleDeclare_local = 89, RuleTable_type_definition = 90, RuleColumn_def_table_constraints = 91, 
-    RuleColumn_def_table_constraint = 92, RuleColumn_definition = 93, RuleColumn_constraint = 94, 
-    RuleTable_constraint = 95, RuleIndex_options = 96, RuleIndex_option = 97, 
-    RuleDeclare_cursor = 98, RuleDeclare_set_cursor_common = 99, RuleFetch_cursor = 100, 
-    RuleSet_special = 101, RuleConstant_LOCAL_ID = 102, RuleExpression = 103, 
-    RuleXml_method_call = 104, RuleSimple_xml_method_name = 105, RuleConstant_expression = 106, 
-    RuleSubquery = 107, RuleWith_expression = 108, RuleCommon_table_expression = 109, 
-    RuleUpdate_elem = 110, RuleSearch_condition_list = 111, RuleSearch_condition = 112, 
-    RulePredicate = 113, RuleQuery_expression = 114, RuleUnion_op = 115, 
-    RuleCross_apply_expression = 116, RuleQuery_specification = 117, RuleGroup_by_grouping_sets = 118, 
-    RuleGrouping_set = 119, RuleTop_clause = 120, RuleTop_clause_dm = 121, 
-    RuleOrder_by_clause = 122, RuleFetch_expression = 123, RuleFor_clause = 124, 
-    RuleXml_common_directives = 125, RuleOrder_by_expression = 126, RuleGroup_by_item = 127, 
-    RuleOption_clause = 128, RuleOption = 129, RuleOptimize_for_arg = 130, 
-    RuleSelect_list = 131, RuleSelect_list_elem = 132, RuleTable_sources = 133, 
-    RuleTable_source = 134, RuleTable_source_item = 135, RuleTablesample_clause = 136, 
-    RuleSample_number = 137, RuleRepeat_seed = 138, RuleTable_alias = 139, 
-    RuleChange_table = 140, RuleJoin_type = 141, RuleTable_name_with_hint = 142, 
-    RuleRowset_function = 143, RuleBulk_option = 144, RuleDerived_table = 145, 
-    RuleFunction_call = 146, RuleSwitch_section = 147, RuleSwitch_search_condition_section = 148, 
-    RuleWith_table_hints = 149, RuleInsert_with_table_hints = 150, RuleTable_hint = 151, 
-    RuleIndex_value = 152, RuleColumn_alias_list = 153, RuleColumn_alias = 154, 
-    RuleA_star = 155, RuleTable_value_constructor = 156, RuleExpression_list = 157, 
-    RuleValue_list = 158, RuleNext_value_for = 159, RuleNext_value_for_function = 160, 
-    RuleRanking_windowed_function = 161, RuleAggregate_windowed_function = 162, 
-    RuleAll_distinct = 163, RuleOver_clause = 164, RuleRow_or_range_clause = 165, 
-    RuleWindow_frame_extent = 166, RuleWindow_frame_bound = 167, RuleWindow_frame_preceding = 168, 
-    RuleWindow_frame_following = 169, RuleCreate_database_option = 170, 
-    RuleDatabase_filestream_option = 171, RuleDatabase_file_spec = 172, 
-    RuleFile_group = 173, RuleFile_spec = 174, RuleFull_table_name = 175, 
-    RuleTable_name = 176, RuleSimple_name = 177, RuleFunc_proc_name = 178, 
-    RuleDdl_object = 179, RuleFull_column_name = 180, RuleColumn_name_list = 181, 
-    RuleCursor_name = 182, RuleOn_off = 183, RuleClustered = 184, RuleNull_notnull = 185, 
-    RuleScalar_function_name = 186, RuleDefault_value = 187, RuleConstant = 188, 
-    RuleSign = 189, RuleR_id = 190, RuleSimple_id = 191, RuleComparison_operator = 192, 
-    RuleAssignment_operator = 193, RuleFile_size = 194, RuleCreate_or_alter_procedure = 195, 
-    RuleCreate_or_alter_function = 196, RuleFunc_body_returns_select = 197, 
-    RuleFunc_body_returns_table = 198, RuleFunc_body_returns_scalar = 199, 
-    RuleProcedure_param = 200, RuleProcedure_option = 201, RuleFunction_option = 202, 
-    RulePercentile_cont = 203, RuleString_agg = 204, RuleData_type = 205
+    RuleDrop_view = 70, RuleDrop_schema = 71, RuleDrop_function = 72, RuleCreate_type = 73, 
+    RuleDrop_type = 74, RuleRowset_function_limited = 75, RuleOpenquery = 76, 
+    RuleOpendatasource = 77, RuleDeclare_statement = 78, RuleCursor_statement = 79, 
+    RuleExecute_statement = 80, RuleExecute_statement_arg = 81, RuleExecute_var_string = 82, 
+    RuleSecurity_statement = 83, RuleGrant_permission = 84, RuleSet_statement = 85, 
+    RuleTransaction_statement = 86, RuleGo_statement = 87, RuleUse_statement = 88, 
+    RuleExecute_clause = 89, RuleDeclare_local = 90, RuleTable_type_definition = 91, 
+    RuleColumn_def_table_constraints = 92, RuleColumn_def_table_constraint = 93, 
+    RuleColumn_definition = 94, RuleColumn_constraint = 95, RuleTable_constraint = 96, 
+    RuleIndex_options = 97, RuleIndex_option = 98, RuleDeclare_cursor = 99, 
+    RuleDeclare_set_cursor_common = 100, RuleFetch_cursor = 101, RuleSet_special = 102, 
+    RuleConstant_LOCAL_ID = 103, RuleExpression = 104, RuleXml_method_call = 105, 
+    RuleSimple_xml_method_name = 106, RuleConstant_expression = 107, RuleSubquery = 108, 
+    RuleWith_expression = 109, RuleCommon_table_expression = 110, RuleUpdate_elem = 111, 
+    RuleSearch_condition_list = 112, RuleSearch_condition = 113, RulePredicate = 114, 
+    RuleQuery_expression = 115, RuleUnion_op = 116, RuleCross_apply_expression = 117, 
+    RuleQuery_specification = 118, RuleGroup_by_grouping_sets = 119, RuleGrouping_set = 120, 
+    RuleTop_clause = 121, RuleTop_clause_dm = 122, RuleOrder_by_clause = 123, 
+    RuleFetch_expression = 124, RuleFor_clause = 125, RuleXml_common_directives = 126, 
+    RuleOrder_by_expression = 127, RuleGroup_by_item = 128, RuleOption_clause = 129, 
+    RuleOption = 130, RuleOptimize_for_arg = 131, RuleSelect_list = 132, 
+    RuleSelect_list_elem = 133, RuleTable_sources = 134, RuleTable_source = 135, 
+    RuleTable_source_item = 136, RuleTablesample_clause = 137, RuleSample_number = 138, 
+    RuleRepeat_seed = 139, RuleTable_alias = 140, RuleChange_table = 141, 
+    RuleJoin_type = 142, RuleTable_name_with_hint = 143, RuleRowset_function = 144, 
+    RuleBulk_option = 145, RuleDerived_table = 146, RuleFunction_call = 147, 
+    RuleSwitch_section = 148, RuleSwitch_search_condition_section = 149, 
+    RuleWith_table_hints = 150, RuleInsert_with_table_hints = 151, RuleTable_hint = 152, 
+    RuleIndex_value = 153, RuleColumn_alias_list = 154, RuleColumn_alias = 155, 
+    RuleA_star = 156, RuleTable_value_constructor = 157, RuleExpression_list = 158, 
+    RuleValue_list = 159, RuleNext_value_for = 160, RuleNext_value_for_function = 161, 
+    RuleRanking_windowed_function = 162, RuleAggregate_windowed_function = 163, 
+    RuleAll_distinct = 164, RuleOver_clause = 165, RuleRow_or_range_clause = 166, 
+    RuleWindow_frame_extent = 167, RuleWindow_frame_bound = 168, RuleWindow_frame_preceding = 169, 
+    RuleWindow_frame_following = 170, RuleCreate_database_option = 171, 
+    RuleDatabase_filestream_option = 172, RuleDatabase_file_spec = 173, 
+    RuleFile_group = 174, RuleFile_spec = 175, RuleFull_table_name = 176, 
+    RuleTable_name = 177, RuleSimple_name = 178, RuleFunc_proc_name = 179, 
+    RuleDdl_object = 180, RuleFull_column_name = 181, RuleColumn_name_list = 182, 
+    RuleCursor_name = 183, RuleOn_off = 184, RuleClustered = 185, RuleNull_notnull = 186, 
+    RuleScalar_function_name = 187, RuleDefault_value = 188, RuleConstant = 189, 
+    RuleSign = 190, RuleR_id = 191, RuleSimple_id = 192, RuleComparison_operator = 193, 
+    RuleAssignment_operator = 194, RuleFile_size = 195, RuleCreate_or_alter_procedure = 196, 
+    RuleCreate_or_alter_function = 197, RuleFunc_body_returns_select = 198, 
+    RuleFunc_body_returns_table = 199, RuleFunc_body_returns_scalar = 200, 
+    RuleProcedure_param = 201, RuleProcedure_option = 202, RuleFunction_option = 203, 
+    RulePercentile_cont = 204, RuleString_agg = 205, RuleData_type = 206
   };
 
   explicit tsqlParser(antlr4::TokenStream *input);
@@ -270,6 +271,7 @@ public:
   class Drop_synonymContext;
   class Drop_viewContext;
   class Drop_schemaContext;
+  class Drop_functionContext;
   class Create_typeContext;
   class Drop_typeContext;
   class Rowset_function_limitedContext;
@@ -511,6 +513,7 @@ public:
     Drop_viewContext *drop_view();
     Drop_databaseContext *drop_database();
     Drop_schemaContext *drop_schema();
+    Drop_functionContext *drop_function();
 
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -1762,10 +1765,10 @@ public:
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *DROP();
     antlr4::tree::TerminalNode *STATISTICS();
-    antlr4::tree::TerminalNode *SEMI();
     R_idContext *r_id();
     Table_nameContext *table_name();
     antlr4::tree::TerminalNode *DOT();
+    antlr4::tree::TerminalNode *SEMI();
 
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -1868,6 +1871,24 @@ public:
   };
 
   Drop_schemaContext* drop_schema();
+
+  class  Drop_functionContext : public antlr4::ParserRuleContext {
+  public:
+    Drop_functionContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    virtual size_t getRuleIndex() const override;
+    antlr4::tree::TerminalNode *DROP();
+    antlr4::tree::TerminalNode *FUNCTION();
+    Func_proc_nameContext *func_proc_name();
+    antlr4::tree::TerminalNode *IF();
+    antlr4::tree::TerminalNode *EXISTS();
+    antlr4::tree::TerminalNode *SEMI();
+
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+   
+  };
+
+  Drop_functionContext* drop_function();
 
   class  Create_typeContext : public antlr4::ParserRuleContext {
   public:
@@ -4851,6 +4872,7 @@ public:
     antlr4::tree::TerminalNode *EXPAND();
     antlr4::tree::TerminalNode *FAST();
     antlr4::tree::TerminalNode *FAST_FORWARD();
+    antlr4::tree::TerminalNode *FILLFACTOR();
     antlr4::tree::TerminalNode *FIRST();
     antlr4::tree::TerminalNode *FIRST_VALUE();
     antlr4::tree::TerminalNode *FOLLOWING();
