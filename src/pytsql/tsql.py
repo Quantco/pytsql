@@ -163,7 +163,7 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
     tree = parse(InputStream(data=code), "tsql_file", error_listener)
     visitor = _TSQLVisitor()
 
-    # Our current definition of a 'batch' in isolation mode is a single top-level SQL clause in isolation mode.
+    # Our current definition of a 'batch' in isolation mode is a single top-level SQL clause.
     # Note that this differs from the grammar definition of a batch, which is
     # a group of clauses between GO statements. The latter matches the definition of batches
     # in non-isolation mode.
