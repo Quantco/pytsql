@@ -88,6 +88,7 @@ ddl_clause
     | drop_view
     | drop_database
     | drop_schema
+    | drop_function
     ;
 
 cfl_statement
@@ -505,7 +506,7 @@ drop_procedure
 
 // https://msdn.microsoft.com/en-us/library/ms175075.aspx
 drop_statistics
-    : DROP STATISTICS (table_name '.')? name=r_id ';'
+    : DROP STATISTICS (table_name '.')? name=r_id ';'?
     ;
 
 // https://msdn.microsoft.com/en-us/library/ms173790.aspx
@@ -528,6 +529,10 @@ drop_view
 
 drop_schema
     : DROP SCHEMA (IF EXISTS)? simple_name ';'?
+    ;
+
+drop_function
+    : DROP FUNCTION (IF EXISTS)? func_proc_name ';'?
     ;
 
 create_type:
@@ -1399,6 +1404,7 @@ simple_id
     | EXPAND
     | FAST
     | FAST_FORWARD
+    | FILLFACTOR
     | FIRST
     | FIRST_VALUE
     | FOLLOWING
