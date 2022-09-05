@@ -79,3 +79,8 @@ def test_print_truncation(engine, caplog):
 
     assert ("a" * 2000) in caplog.text
     assert ("a" * 2001) not in caplog.text
+
+
+def test_multiple_prints(engine):
+    for _ in range(1000):
+        executes("SELECT 12", engine)
