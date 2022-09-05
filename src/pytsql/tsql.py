@@ -88,10 +88,10 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
 
         chunks = tree.accept(self)
 
-        # CREATE SCHEMA must be the only statement in a batch
-        if (
-            tree.ddl_clause() is not None
-            and tree.ddl_clause().create_schema() is not None
+        # CREATE SCHEMA/VIEW must be the only statement in a batch
+        if tree.ddl_clause() is not None and (
+            tree.ddl_clause().create_schema() is not None
+            or tree.ddl_clause().create_view() is not None
         ):
             return " ".join(chunks)
 
