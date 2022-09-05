@@ -82,5 +82,5 @@ def test_print_truncation(engine, caplog):
 
 
 def test_multiple_prints(engine):
-    for _ in range(1000):
+    for _ in range(50):
         executes("SELECT 12", engine)

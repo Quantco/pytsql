@@ -205,6 +205,9 @@ def executes(
     """
     parametrized_code = _parametrize(code, parameters) if parameters else code
     with engine.connect().execution_options(isolation_level="AUTOCOMMIT") as conn:
+        # Since the prints table is a temporary one, it will be local to the connection and it will be dropped once the
+        # connection is closed. Caveat: sqlalchemy engines can pool connections, so we still have to drop it preemtively.
+        conn.execute(f"DROP TABLE IF EXISTS {_PRINTS_TABLE}")
         conn.execute(f"CREATE TABLE {_PRINTS_TABLE} (p NVARCHAR(4000))")
         for batch in _split(parametrized_code):
             conn.execute(batch)
