@@ -303,6 +303,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitDrop_function(tsqlParser::Drop_functionContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitCreate_type(tsqlParser::Create_typeContext *ctx) override {
     return visitChildren(ctx);
   }

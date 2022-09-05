@@ -84,6 +84,7 @@ class SA_tsqlTranslator : public tsqlBaseVisitor {
     PyObject *Drop_synonymContext_cls = NULL;
     PyObject *Drop_viewContext_cls = NULL;
     PyObject *Drop_schemaContext_cls = NULL;
+    PyObject *Drop_functionContext_cls = NULL;
     PyObject *Create_typeContext_cls = NULL;
     PyObject *Drop_typeContext_cls = NULL;
     PyObject *Rowset_function_limitedContext_cls = NULL;
@@ -401,6 +402,8 @@ class SA_tsqlTranslator : public tsqlBaseVisitor {
     antlrcpp::Any visitDrop_view(tsqlParser::Drop_viewContext *ctx);
 
     antlrcpp::Any visitDrop_schema(tsqlParser::Drop_schemaContext *ctx);
+
+    antlrcpp::Any visitDrop_function(tsqlParser::Drop_functionContext *ctx);
 
     antlrcpp::Any visitCreate_type(tsqlParser::Create_typeContext *ctx);
 

@@ -163,6 +163,8 @@ public:
 
     virtual antlrcpp::Any visitDrop_schema(tsqlParser::Drop_schemaContext *context) = 0;
 
+    virtual antlrcpp::Any visitDrop_function(tsqlParser::Drop_functionContext *context) = 0;
+
     virtual antlrcpp::Any visitCreate_type(tsqlParser::Create_typeContext *context) = 0;
 
     virtual antlrcpp::Any visitDrop_type(tsqlParser::Drop_typeContext *context) = 0;
