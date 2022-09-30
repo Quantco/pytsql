@@ -445,8 +445,6 @@ public:
 
     virtual antlrcpp::Any visitFull_table_name(tsqlParser::Full_table_nameContext *context) = 0;
 
-    virtual antlrcpp::Any visitTable_name(tsqlParser::Table_nameContext *context) = 0;
-
     virtual antlrcpp::Any visitSimple_name(tsqlParser::Simple_nameContext *context) = 0;
 
     virtual antlrcpp::Any visitFunc_proc_name(tsqlParser::Func_proc_nameContext *context) = 0;
