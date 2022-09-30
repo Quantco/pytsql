@@ -224,7 +224,6 @@ SA_tsqlTranslator::~SA_tsqlTranslator() {
     Py_XDECREF(File_groupContext_cls);
     Py_XDECREF(File_specContext_cls);
     Py_XDECREF(Full_table_nameContext_cls);
-    Py_XDECREF(Table_nameContext_cls);
     Py_XDECREF(Simple_nameContext_cls);
     Py_XDECREF(Func_proc_nameContext_cls);
     Py_XDECREF(Ddl_objectContext_cls);
@@ -1801,17 +1800,6 @@ antlrcpp::Any SA_tsqlTranslator::visitFull_table_name(tsqlParser::Full_table_nam
     };
     if(!Full_table_nameContext_cls) Full_table_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Full_table_nameContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Full_table_nameContext_cls, labels, 4);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitTable_name(tsqlParser::Table_nameContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"database", static_cast<void*>(ctx->database)},
-        {"schema", static_cast<void*>(ctx->schema)},
-        {"table", static_cast<void*>(ctx->table)}
-    };
-    if(!Table_nameContext_cls) Table_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_nameContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_nameContext_cls, labels, 3);
     return py_ctx;
 }
 

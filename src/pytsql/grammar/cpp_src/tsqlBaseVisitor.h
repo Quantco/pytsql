@@ -867,10 +867,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitTable_name(tsqlParser::Table_nameContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitSimple_name(tsqlParser::Simple_nameContext *ctx) override {
     return visitChildren(ctx);
   }

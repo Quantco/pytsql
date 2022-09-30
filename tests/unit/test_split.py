@@ -294,7 +294,7 @@ def test_xml_methods():
     SELECT @myDoc.exist('XQuery')
     SELECT @myDoc.nodes('XQuery') AS T(C)
     """
-    _split(seed)
+    assert len(_split(seed)) == 5
 
 
 def test_non_xml_method():
@@ -304,3 +304,12 @@ def test_non_xml_method():
     """
     with pytest.raises(ValueError):
         _split(seed)
+
+
+def test_linked_server():
+    seed = """
+    SELECT *
+    INTO linked_server.db.schm.table1
+    FROM linked_server.db.schm.table2
+    """
+    assert len(_split(seed)) == 1

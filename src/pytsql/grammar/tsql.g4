@@ -254,7 +254,7 @@ where_clause_dml
 // https://msdn.microsoft.com/en-us/library/ms177564.aspx
 output_clause
     : OUTPUT output_dml_list_elem (',' output_dml_list_elem)*
-      (INTO (LOCAL_ID | table_name) ('(' column_name_list ')')? )?
+      (INTO ddl_object ('(' column_name_list ')')? )?
     ;
 
 output_dml_list_elem
@@ -262,7 +262,7 @@ output_dml_list_elem
     ;
 
 output_column_name
-    : (DELETED | INSERTED | table_name) '.' (STAR | r_id)
+    : (DELETED | INSERTED | full_table_name) '.' (STAR | r_id)
     | DOLLAR_ACTION
     ;
 
@@ -297,7 +297,7 @@ create_statistics
 
 // https://msdn.microsoft.com/en-us/library/ms174979.aspx
 create_table
-    : CREATE TABLE table_name '(' column_def_table_constraints ','? ')' (ON r_id | DEFAULT)? (TEXTIMAGE_ON r_id | DEFAULT)?';'?
+    : CREATE TABLE full_table_name '(' column_def_table_constraints ','? ')' (ON r_id | DEFAULT)? (TEXTIMAGE_ON r_id | DEFAULT)?';'?
     ;
 
 create_schema
@@ -305,7 +305,7 @@ create_schema
     ;
 
 create_synonym
-    : CREATE SYNONYM simple_name FOR table_name ';'?
+    : CREATE SYNONYM simple_name FOR full_table_name ';'?
     ;
 
 // https://msdn.microsoft.com/en-us/library/ms187956.aspx
@@ -321,10 +321,10 @@ view_attribute
 
 // https://msdn.microsoft.com/en-us/library/ms190273.aspx
 alter_table
-    : ALTER TABLE table_name (SET '(' LOCK_ESCALATION '=' (AUTO | TABLE | DISABLE) ')'
+    : ALTER TABLE full_table_name (SET '(' LOCK_ESCALATION '=' (AUTO | TABLE | DISABLE) ')'
                              | ADD column_def_table_constraint
                              | DROP CONSTRAINT constraint=r_id
-                             | WITH CHECK ADD CONSTRAINT constraint=r_id FOREIGN KEY '(' fk = column_name_list ')' REFERENCES table_name '(' pk = column_name_list')'
+                             | WITH CHECK ADD CONSTRAINT constraint=r_id FOREIGN KEY '(' fk = column_name_list ')' REFERENCES full_table_name '(' pk = column_name_list')'
                              | CHECK CONSTRAINT constraint=r_id
                              | ALTER COLUMN column_def_table_constraints
                              )
@@ -496,7 +496,7 @@ termination:
 
 // https://msdn.microsoft.com/en-us/library/ms176118.aspx
 drop_index
-    : DROP INDEX (IF EXISTS)? name=r_id (ON table_name)? ';'?
+    : DROP INDEX (IF EXISTS)? name=r_id (ON full_table_name)? ';'?
     ;
 
 // https://msdn.microsoft.com/en-us/library/ms174969.aspx
@@ -506,12 +506,12 @@ drop_procedure
 
 // https://msdn.microsoft.com/en-us/library/ms175075.aspx
 drop_statistics
-    : DROP STATISTICS (table_name '.')? name=r_id ';'?
+    : DROP STATISTICS (full_table_name '.')? name=r_id ';'?
     ;
 
 // https://msdn.microsoft.com/en-us/library/ms173790.aspx
 drop_table
-    : DROP TABLE (IF EXISTS)? table_name ';'?
+    : DROP TABLE (IF EXISTS)? full_table_name ';'?
     ;
 
 drop_database
@@ -601,7 +601,7 @@ security_statement
     // https://msdn.microsoft.com/en-us/library/ms188354.aspx
     : execute_clause ';'?
     // https://msdn.microsoft.com/en-us/library/ms187965.aspx
-    | GRANT (ALL PRIVILEGES? | grant_permission ('(' column_name_list ')')?) (ON on_id=table_name)? TO (to_principal=r_id) (WITH GRANT OPTION)? (AS as_principal=r_id)? ';'?
+    | GRANT (ALL PRIVILEGES? | grant_permission ('(' column_name_list ')')?) (ON on_id=full_table_name)? TO (to_principal=r_id) (WITH GRANT OPTION)? (AS as_principal=r_id)? ';'?
     // https://msdn.microsoft.com/en-us/library/ms178632.aspx
     | REVERT ('(' WITH COOKIE '=' LOCAL_ID ')')? ';'?
     ;
@@ -700,7 +700,7 @@ column_constraint
 table_constraint
     : (CONSTRAINT r_id)?
        ((PRIMARY KEY | UNIQUE) clustered? '(' r_id (ASC | DESC)? (',' r_id (ASC | DESC)? )* ')' index_options? (ON r_id)?
-       | FOREIGN KEY '(' fk = column_name_list ')' REFERENCES table_name '(' pk = column_name_list')'
+       | FOREIGN KEY '(' fk = column_name_list ')' REFERENCES full_table_name '(' pk = column_name_list')'
        | CHECK (NOT FOR REPLICATION)? '(' search_condition ')')
     ;
 
@@ -743,7 +743,7 @@ set_special
     | SET set_type=TRANSACTION ISOLATION LEVEL
       (READ UNCOMMITTED | READ COMMITTED | REPEATABLE READ | SNAPSHOT | SERIALIZABLE) ';'?
     // https://msdn.microsoft.com/en-us/library/ms188059.aspx
-    | SET set_type=IDENTITY_INSERT table_name on_off ';'?
+    | SET set_type=IDENTITY_INSERT full_table_name on_off ';'?
     | SET set_type=ANSI_NULLS on_off
     | SET set_type=QUOTED_IDENTIFIER on_off
     | SET set_type=ANSI_PADDING on_off
@@ -876,7 +876,7 @@ query_specification
     : SELECT pref=(ALL | DISTINCT)? top_clause?
       select_list
       // https://msdn.microsoft.com/en-us/library/ms188029.aspx
-      (INTO table_name)?
+      (INTO full_table_name)?
       (FROM table_sources)?
       (CROSS APPLY cross_apply_expression output_dml_list_elem?)?
       (WHERE where=search_condition)?
@@ -976,7 +976,7 @@ select_list
     ;
 
 select_list_elem
-    : (table_name '.')? (a_star | '$' (IDENTITY | ROWGUID))
+    : (full_table_name '.')? (a_star | '$' (IDENTITY | ROWGUID))
     | alias=column_alias '=' expression
     | expression (AS? alias=column_alias)?
     ;
@@ -1003,7 +1003,7 @@ table_source_item_joined
 */
 
 table_source_item
-    : table_name        tablesample_clause? table_alias? with_table_hints?     #table_source_item_name
+    : full_table_name        tablesample_clause? table_alias? with_table_hints?     #table_source_item_name
     | rowset_function                       table_alias?                       #table_source_item_simple
     | derived_table                        (table_alias column_alias_list?)?   #table_source_item_complex
     | change_table                          table_alias?                       #table_source_item_simple
@@ -1028,7 +1028,7 @@ table_alias
     ;
 
 change_table
-    : CHANGETABLE '(' CHANGES table_name ',' (NULL_ | DECIMAL | LOCAL_ID) ')'
+    : CHANGETABLE '(' CHANGES full_table_name ',' (NULL_ | DECIMAL | LOCAL_ID) ')'
     ;
 
 join_type
@@ -1037,7 +1037,7 @@ join_type
 
 // MC-NOTE: It's not clear if this rule is necessary in most places
 table_name_with_hint
-    : table_name with_table_hints?
+    : full_table_name with_table_hints?
     ;
 
 // https://msdn.microsoft.com/en-us/library/ms190312.aspx
@@ -1284,10 +1284,6 @@ full_table_name
       |                               schema=r_id   '.')? table=r_id
     ;
 
-table_name
-    : (database=r_id '.' (schema=r_id)? '.' | schema=r_id '.')? table=r_id
-    ;
-
 simple_name
     : (schema=r_id '.')? name=r_id
     ;
@@ -1302,7 +1298,7 @@ ddl_object
     ;
 
 full_column_name
-    : (table=table_name '.')? name=r_id
+    : (table=full_table_name '.')? name=r_id
     ;
 
 column_name_list

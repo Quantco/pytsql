@@ -225,7 +225,6 @@ class SA_tsqlTranslator : public tsqlBaseVisitor {
     PyObject *File_groupContext_cls = NULL;
     PyObject *File_specContext_cls = NULL;
     PyObject *Full_table_nameContext_cls = NULL;
-    PyObject *Table_nameContext_cls = NULL;
     PyObject *Simple_nameContext_cls = NULL;
     PyObject *Func_proc_nameContext_cls = NULL;
     PyObject *Ddl_objectContext_cls = NULL;
@@ -684,8 +683,6 @@ class SA_tsqlTranslator : public tsqlBaseVisitor {
     antlrcpp::Any visitFile_spec(tsqlParser::File_specContext *ctx);
 
     antlrcpp::Any visitFull_table_name(tsqlParser::Full_table_nameContext *ctx);
-
-    antlrcpp::Any visitTable_name(tsqlParser::Table_nameContext *ctx);
 
     antlrcpp::Any visitSimple_name(tsqlParser::Simple_nameContext *ctx);
 
