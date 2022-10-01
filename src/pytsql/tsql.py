@@ -210,6 +210,7 @@ def executes(
     code T-SQL string to be executed
     engine (sqlalchemy.engine.Engine): established mssql connection
     parameters An optional dictionary of parameters to substituted in the sql script
+    isolate_top_level_statements: whether to execute statements one by one or in whole batches
 
     Returns
     -------
@@ -241,6 +242,7 @@ def execute(
     path (Path or str): Path to the sql file to be executed
     engine (sqlalchemy.engine.Engine): established mssql connection
     encoding: file encoding of the sql script (default: utf-8)
+    isolate_top_level_statements: whether to execute statements one by one or in whole batches
 
     Returns
     -------
