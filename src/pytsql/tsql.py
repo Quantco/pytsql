@@ -90,6 +90,9 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
 
         chunks = tree.accept(self)
 
+        if tree.declare_statement() is not None:
+            self.dynamics.extend(chunks)
+
         # CREATE SCHEMA/VIEW must be the only statement in a batch
         is_create_schema_or_view = tree.ddl_clause() is not None and (
             tree.ddl_clause().create_schema() is not None
@@ -111,9 +114,6 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
             )
         else:
             result = super().visitChildren(node)
-
-        if isinstance(node, tsqlParser.Declare_statementContext):
-            self.dynamics.extend(result)
 
         return result
 

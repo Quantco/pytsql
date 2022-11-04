@@ -17,10 +17,7 @@ def test_declaration_in_control_flow():
     )
     assert_strings_equal_disregarding_whitespace(
         splits[1],
-        """
-        DECLARE @A INT = 5
-        SELECT * FROM x
-        """,
+        "SELECT * FROM x",
     )
 
 
@@ -68,4 +65,24 @@ def test_dynamics_no_isolation():
         DECLARE @A INT = 5
         SELECT @A
         """,
+    )
+
+
+def test_declaration_if_else():
+    seed = """
+    IF 1 = 1
+        DECLARE @A INT = 5
+    ELSE
+        DECLARE @A INT = 6
+    SELECT * FROM x
+    """
+    splits = _split(seed)
+    assert len(splits) == 2
+
+    assert_strings_equal_disregarding_whitespace(
+        splits[0], "IF 1 = 1 DECLARE @A INT = 5 ELSE DECLARE @A INT = 6"
+    )
+    assert_strings_equal_disregarding_whitespace(
+        splits[1],
+        "SELECT * FROM x",
     )
