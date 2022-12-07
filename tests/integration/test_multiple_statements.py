@@ -156,6 +156,32 @@ def test_multiple_uses(engine):
     assert "table4" in test_database_names
 
 
+def test_stored_procedure_declaration(engine):
+    statement = """
+    DROP DATABASE IF EXISTS stored_procedure_declaration
+    CREATE DATABASE stored_procedure_declaration
+    USE stored_procedure_declaration
+GO
+
+/****** Object:  Table [dbo].[table1]    Script Date: 2/23/2021 2:48:02 PM ******/
+CREATE PROCEDURE CREATEALLDATES
+    (
+        @StartDate AS DATE, @EndDate AS DATE
+    ) AS
+    DECLARE @Current AS DATE = DATEADD(DD, 0, @StartDate); DROP TABLE IF EXISTS ##alldates CREATE TABLE ##alldates (
+        dt DATE PRIMARY KEY
+    ) WHILE @Current <= @EndDate BEGIN
+    INSERT INTO ##alldates
+    VALUES (@Current);
+    SET @Current = DATEADD(DD, 1, @Current) -- add 1 to current day
+END
+GO
+IF OBJECT_ID ( N'dbo.get_db_sampling_factor' , N'FN' ) IS NOT NULL DROP FUNCTION get_db_sampling_factor ;
+GO
+"""
+    executes(statement, engine, None)
+
+
 def get_table(
     engine: Engine, table_name: str, schema: Optional[str] = None
 ) -> sa.Table:
