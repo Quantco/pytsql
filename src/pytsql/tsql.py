@@ -112,7 +112,7 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
         else:
             result = super().visitChildren(node)
 
-        if isinstance(node, tsqlParser.Declare_statementContext):
+        if isinstance(node, tsqlParser.Declare_statementContext) and tsqlParser.is_top_level_statement(node):
             self.dynamics.extend(result)
 
         return result

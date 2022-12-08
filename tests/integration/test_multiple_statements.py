@@ -182,6 +182,23 @@ GO
     executes(statement, engine, None)
 
 
+def test_top_level_declaration(engine):
+    statement = """
+    DROP DATABASE IF EXISTS top_level_declaration
+    CREATE DATABASE top_level_declaration
+    USE top_level_declaration
+GO
+
+DECLARE @Current AS DATE = '2022-01-01'
+GO
+SELECT @Current as a INTO dummy01
+GO
+SELECT @Current as b INTO dummy02
+GO
+"""
+    executes(statement, engine, None)
+
+
 def get_table(
     engine: Engine, table_name: str, schema: Optional[str] = None
 ) -> sa.Table:

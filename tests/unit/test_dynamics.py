@@ -7,7 +7,7 @@ def test_declaration_in_control_flow():
     seed = """
     IF 1 = 1
         DECLARE @A INT = 5
-    SELECT * FROM x
+    SELECT @A
     """
     splits = _split(seed)
     assert len(splits) == 2
@@ -15,12 +15,28 @@ def test_declaration_in_control_flow():
     assert_strings_equal_disregarding_whitespace(
         splits[0], "IF 1 = 1 DECLARE @A INT = 5"
     )
+    # unfortunately we can't be right here because otherwise we would need to get
+    # the output of the declaration
     assert_strings_equal_disregarding_whitespace(
         splits[1],
-        """
+        """SELECT @A""",
+    )
+
+
+def test_select_in_control_flow():
+    seed = """
+    IF 1 = 0
+    BEGIN
         DECLARE @A INT = 5
         SELECT * FROM x
-        """,
+    END
+    """
+    splits = _split(seed)
+    assert len(splits) == 1
+
+    # this is beyond the complexity we want to manage with isolate_top_level_statements=True
+    assert_strings_equal_disregarding_whitespace(
+        splits[0], "IF 1 = 0 BEGIN DECLARE @A INT = 5 SELECT * FROM x END"
     )
 
 
