@@ -535,8 +535,9 @@ drop_function
     : DROP FUNCTION (IF EXISTS)? func_proc_name ';'?
     ;
 
-create_type:
-    CREATE TYPE name = simple_name FROM data_type default_value
+create_type
+    : CREATE TYPE name = simple_name FROM data_type default_value
+    | CREATE TYPE name = simple_name AS TABLE '(' column_def_table_constraints ','? ')'
     ;
 
 drop_type:

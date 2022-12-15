@@ -325,3 +325,12 @@ def test_rowcount_no_isolation():
     """
     assert len(_split(seed)) == 4
     assert len(_split(seed, isolate_top_level_statements=False)) == 2
+
+
+def test_type_as_table():
+    seed = """
+    CREATE TYPE x AS TABLE (
+        id INT
+    )
+    """
+    assert len(_split(seed)) == 1
