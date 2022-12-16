@@ -1899,6 +1899,12 @@ public:
     Data_typeContext *data_type();
     Default_valueContext *default_value();
     Simple_nameContext *simple_name();
+    antlr4::tree::TerminalNode *AS();
+    antlr4::tree::TerminalNode *TABLE();
+    antlr4::tree::TerminalNode *LR_BRACKET();
+    Column_def_table_constraintsContext *column_def_table_constraints();
+    antlr4::tree::TerminalNode *RR_BRACKET();
+    antlr4::tree::TerminalNode *COMMA();
 
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
