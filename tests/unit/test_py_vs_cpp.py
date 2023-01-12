@@ -139,6 +139,6 @@ def test_compare_py_and_cpp__split(py_parse_mock, cpp_parse_mock, seed):
 
 
 def test__py_parse__warns():
-    tsql.USE_CPP_IMPLEMENTATION = False
-    with pytest.warns(match=r"Can not find C\+\+ version of the parser"):
-        _split("")
+    with mock.patch("pytsql.tsql.USE_CPP_IMPLEMENTATION", False):
+        with pytest.warns(match=r"Can not find C\+\+ version of the parser"):
+            _split("")
