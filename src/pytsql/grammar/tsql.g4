@@ -564,7 +564,7 @@ opendatasource
 
 // https://msdn.microsoft.com/en-us/library/ms188927.aspx
 declare_statement
-    : DECLARE LOCAL_ID AS? table_type_definition ';'?
+    : DECLARE LOCAL_ID AS? (table_type_definition | table_sources) ';'?
     | DECLARE declare_local (',' declare_local)* ';'?
     ;
 
