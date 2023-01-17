@@ -2,9 +2,11 @@
 
 set -exuo pipefail
 
+ANTLR4_JAR_FILEPATH=$1
+
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
-antlr4="java -jar /usr/local/lib/antlr4-4.9.2_1-complete.jar"
+antlr4="java -jar $ANTLR4_JAR_FILEPATH"
 
 # Generate C++ target with visitor
 $antlr4 -Dlanguage=Cpp -visitor -no-listener -o cpp_src tsql.g4
