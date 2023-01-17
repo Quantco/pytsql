@@ -1999,6 +1999,7 @@ public:
     antlr4::tree::TerminalNode *DECLARE();
     antlr4::tree::TerminalNode *LOCAL_ID();
     Table_type_definitionContext *table_type_definition();
+    Table_sourcesContext *table_sources();
     antlr4::tree::TerminalNode *AS();
     antlr4::tree::TerminalNode *SEMI();
     std::vector<Declare_localContext *> declare_local();
