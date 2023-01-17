@@ -1,4 +1,7 @@
 #!/bin/bash
+
+set -exuo pipefail
+
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 antlr4="java -jar /usr/local/lib/antlr4-4.9.2_1-complete.jar"
