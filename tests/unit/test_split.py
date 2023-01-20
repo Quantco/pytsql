@@ -334,3 +334,10 @@ def test_type_as_table():
     )
     """
     assert len(_split(seed)) == 1
+
+
+def test_declare_as_defined_table_type():
+    seed = """
+    DECLARE @test dbo.test_type
+    """
+    assert len(_split(seed)) == 1
