@@ -1,5 +1,5 @@
 
-// Generated from tsql.g4 by ANTLR 4.9.2
+// Generated from tsql.g4 by ANTLR 4.9.3
 
 
 #include "tsqlVisitor.h"
@@ -1931,7 +1931,7 @@ tsqlParser::If_blockContext* tsqlParser::if_block() {
     case 1: {
       enterOuterAlt(_localctx, 1);
       setState(524);
-      dynamic_cast<If_blockContext *>(_localctx)->if_expr = sql_clause();
+      antlrcpp::downCast<If_blockContext *>(_localctx)->if_expr = sql_clause();
       setState(527);
       _errHandler->sync(this);
 
@@ -1940,7 +1940,7 @@ tsqlParser::If_blockContext* tsqlParser::if_block() {
         setState(525);
         match(tsqlParser::ELSE);
         setState(526);
-        dynamic_cast<If_blockContext *>(_localctx)->else_expr = sql_clause();
+        antlrcpp::downCast<If_blockContext *>(_localctx)->else_expr = sql_clause();
         break;
       }
 
@@ -1966,7 +1966,7 @@ tsqlParser::If_blockContext* tsqlParser::if_block() {
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(532);
-      dynamic_cast<If_blockContext *>(_localctx)->if_block_expr = block_statement();
+      antlrcpp::downCast<If_blockContext *>(_localctx)->if_block_expr = block_statement();
       setState(535);
       _errHandler->sync(this);
 
@@ -1975,7 +1975,7 @@ tsqlParser::If_blockContext* tsqlParser::if_block() {
         setState(533);
         match(tsqlParser::ELSE);
         setState(534);
-        dynamic_cast<If_blockContext *>(_localctx)->else_block_expr = block_statement();
+        antlrcpp::downCast<If_blockContext *>(_localctx)->else_block_expr = block_statement();
         break;
       }
 
@@ -2174,12 +2174,12 @@ tsqlParser::Throw_statementContext* tsqlParser::throw_statement() {
 
     || _la == tsqlParser::DECIMAL) {
       setState(550);
-      dynamic_cast<Throw_statementContext *>(_localctx)->error_number = _input->LT(1);
+      antlrcpp::downCast<Throw_statementContext *>(_localctx)->error_number = _input->LT(1);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::LOCAL_ID
 
       || _la == tsqlParser::DECIMAL)) {
-        dynamic_cast<Throw_statementContext *>(_localctx)->error_number = _errHandler->recoverInline(this);
+        antlrcpp::downCast<Throw_statementContext *>(_localctx)->error_number = _errHandler->recoverInline(this);
       }
       else {
         _errHandler->reportMatch(this);
@@ -2188,12 +2188,12 @@ tsqlParser::Throw_statementContext* tsqlParser::throw_statement() {
       setState(551);
       match(tsqlParser::COMMA);
       setState(552);
-      dynamic_cast<Throw_statementContext *>(_localctx)->message = _input->LT(1);
+      antlrcpp::downCast<Throw_statementContext *>(_localctx)->message = _input->LT(1);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::LOCAL_ID
 
       || _la == tsqlParser::STRING)) {
-        dynamic_cast<Throw_statementContext *>(_localctx)->message = _errHandler->recoverInline(this);
+        antlrcpp::downCast<Throw_statementContext *>(_localctx)->message = _errHandler->recoverInline(this);
       }
       else {
         _errHandler->reportMatch(this);
@@ -2202,12 +2202,12 @@ tsqlParser::Throw_statementContext* tsqlParser::throw_statement() {
       setState(553);
       match(tsqlParser::COMMA);
       setState(554);
-      dynamic_cast<Throw_statementContext *>(_localctx)->state = _input->LT(1);
+      antlrcpp::downCast<Throw_statementContext *>(_localctx)->state = _input->LT(1);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::LOCAL_ID
 
       || _la == tsqlParser::DECIMAL)) {
-        dynamic_cast<Throw_statementContext *>(_localctx)->state = _errHandler->recoverInline(this);
+        antlrcpp::downCast<Throw_statementContext *>(_localctx)->state = _errHandler->recoverInline(this);
       }
       else {
         _errHandler->reportMatch(this);
@@ -2507,7 +2507,7 @@ tsqlParser::Try_catch_statementContext* tsqlParser::try_catch_statement() {
       | (1ULL << (tsqlParser::SQUARE_BRACKET_ID - 397))
       | (1ULL << (tsqlParser::ID - 397)))) != 0) || _la == tsqlParser::LR_BRACKET) {
       setState(565);
-      dynamic_cast<Try_catch_statementContext *>(_localctx)->try_clauses = sql_clauses();
+      antlrcpp::downCast<Try_catch_statementContext *>(_localctx)->try_clauses = sql_clauses();
     }
     setState(568);
     match(tsqlParser::END);
@@ -2709,7 +2709,7 @@ tsqlParser::Try_catch_statementContext* tsqlParser::try_catch_statement() {
       | (1ULL << (tsqlParser::SQUARE_BRACKET_ID - 397))
       | (1ULL << (tsqlParser::ID - 397)))) != 0) || _la == tsqlParser::LR_BRACKET) {
       setState(578);
-      dynamic_cast<Try_catch_statementContext *>(_localctx)->catch_clauses = sql_clauses();
+      antlrcpp::downCast<Try_catch_statementContext *>(_localctx)->catch_clauses = sql_clauses();
     }
     setState(581);
     match(tsqlParser::END);
@@ -3104,13 +3104,13 @@ tsqlParser::Raiseerror_statementContext* tsqlParser::raiseerror_statement() {
     setState(611);
     match(tsqlParser::LR_BRACKET);
     setState(612);
-    dynamic_cast<Raiseerror_statementContext *>(_localctx)->msg = _input->LT(1);
+    antlrcpp::downCast<Raiseerror_statementContext *>(_localctx)->msg = _input->LT(1);
     _la = _input->LA(1);
     if (!(((((_la - 448) & ~ 0x3fULL) == 0) &&
       ((1ULL << (_la - 448)) & ((1ULL << (tsqlParser::LOCAL_ID - 448))
       | (1ULL << (tsqlParser::DECIMAL - 448))
       | (1ULL << (tsqlParser::STRING - 448)))) != 0))) {
-      dynamic_cast<Raiseerror_statementContext *>(_localctx)->msg = _errHandler->recoverInline(this);
+      antlrcpp::downCast<Raiseerror_statementContext *>(_localctx)->msg = _errHandler->recoverInline(this);
     }
     else {
       _errHandler->reportMatch(this);
@@ -3119,11 +3119,11 @@ tsqlParser::Raiseerror_statementContext* tsqlParser::raiseerror_statement() {
     setState(613);
     match(tsqlParser::COMMA);
     setState(614);
-    dynamic_cast<Raiseerror_statementContext *>(_localctx)->severity = constant_LOCAL_ID();
+    antlrcpp::downCast<Raiseerror_statementContext *>(_localctx)->severity = constant_LOCAL_ID();
     setState(615);
     match(tsqlParser::COMMA);
     setState(616);
-    dynamic_cast<Raiseerror_statementContext *>(_localctx)->state = constant_LOCAL_ID();
+    antlrcpp::downCast<Raiseerror_statementContext *>(_localctx)->state = constant_LOCAL_ID();
     setState(621);
     _errHandler->sync(this);
     _la = _input->LA(1);
@@ -3564,7 +3564,7 @@ tsqlParser::Delete_statement_fromContext* tsqlParser::delete_statement_from() {
     case 4: {
       enterOuterAlt(_localctx, 4);
       setState(675);
-      dynamic_cast<Delete_statement_fromContext *>(_localctx)->table_var = match(tsqlParser::LOCAL_ID);
+      antlrcpp::downCast<Delete_statement_fromContext *>(_localctx)->table_var = match(tsqlParser::LOCAL_ID);
       break;
     }
 
@@ -4857,7 +4857,7 @@ tsqlParser::Where_clause_dmlContext* tsqlParser::where_clause_dml() {
 
         case 2: {
           setState(791);
-          dynamic_cast<Where_clause_dmlContext *>(_localctx)->cursor_var = match(tsqlParser::LOCAL_ID);
+          antlrcpp::downCast<Where_clause_dmlContext *>(_localctx)->cursor_var = match(tsqlParser::LOCAL_ID);
           break;
         }
 
@@ -5634,7 +5634,7 @@ tsqlParser::Create_databaseContext* tsqlParser::create_database() {
     match(tsqlParser::DATABASE);
 
     setState(840);
-    dynamic_cast<Create_databaseContext *>(_localctx)->database = r_id();
+    antlrcpp::downCast<Create_databaseContext *>(_localctx)->database = r_id();
     setState(844);
     _errHandler->sync(this);
 
@@ -5718,7 +5718,7 @@ tsqlParser::Create_databaseContext* tsqlParser::create_database() {
       setState(872);
       match(tsqlParser::COLLATE);
       setState(873);
-      dynamic_cast<Create_databaseContext *>(_localctx)->collation_name = r_id();
+      antlrcpp::downCast<Create_databaseContext *>(_localctx)->collation_name = r_id();
     }
     setState(885);
     _errHandler->sync(this);
@@ -5979,7 +5979,7 @@ tsqlParser::Create_indexContext* tsqlParser::create_index() {
       setState(914);
       match(tsqlParser::WHERE);
       setState(915);
-      dynamic_cast<Create_indexContext *>(_localctx)->where = search_condition(0);
+      antlrcpp::downCast<Create_indexContext *>(_localctx)->where = search_condition(0);
     }
     setState(919);
     _errHandler->sync(this);
@@ -7063,7 +7063,7 @@ tsqlParser::Alter_tableContext* tsqlParser::alter_table() {
         setState(1039);
         match(tsqlParser::CONSTRAINT);
         setState(1040);
-        dynamic_cast<Alter_tableContext *>(_localctx)->constraint = r_id();
+        antlrcpp::downCast<Alter_tableContext *>(_localctx)->constraint = r_id();
         break;
       }
 
@@ -7077,7 +7077,7 @@ tsqlParser::Alter_tableContext* tsqlParser::alter_table() {
         setState(1044);
         match(tsqlParser::CONSTRAINT);
         setState(1045);
-        dynamic_cast<Alter_tableContext *>(_localctx)->constraint = r_id();
+        antlrcpp::downCast<Alter_tableContext *>(_localctx)->constraint = r_id();
         setState(1046);
         match(tsqlParser::FOREIGN);
         setState(1047);
@@ -7085,7 +7085,7 @@ tsqlParser::Alter_tableContext* tsqlParser::alter_table() {
         setState(1048);
         match(tsqlParser::LR_BRACKET);
         setState(1049);
-        dynamic_cast<Alter_tableContext *>(_localctx)->fk = column_name_list();
+        antlrcpp::downCast<Alter_tableContext *>(_localctx)->fk = column_name_list();
         setState(1050);
         match(tsqlParser::RR_BRACKET);
         setState(1051);
@@ -7095,7 +7095,7 @@ tsqlParser::Alter_tableContext* tsqlParser::alter_table() {
         setState(1053);
         match(tsqlParser::LR_BRACKET);
         setState(1054);
-        dynamic_cast<Alter_tableContext *>(_localctx)->pk = column_name_list();
+        antlrcpp::downCast<Alter_tableContext *>(_localctx)->pk = column_name_list();
         setState(1055);
         match(tsqlParser::RR_BRACKET);
         break;
@@ -7107,7 +7107,7 @@ tsqlParser::Alter_tableContext* tsqlParser::alter_table() {
         setState(1058);
         match(tsqlParser::CONSTRAINT);
         setState(1059);
-        dynamic_cast<Alter_tableContext *>(_localctx)->constraint = r_id();
+        antlrcpp::downCast<Alter_tableContext *>(_localctx)->constraint = r_id();
         break;
       }
 
@@ -7383,7 +7383,7 @@ tsqlParser::Alter_databaseContext* tsqlParser::alter_database() {
       case tsqlParser::SQUARE_BRACKET_ID:
       case tsqlParser::ID: {
         setState(1070);
-        dynamic_cast<Alter_databaseContext *>(_localctx)->database = r_id();
+        antlrcpp::downCast<Alter_databaseContext *>(_localctx)->database = r_id();
         break;
       }
 
@@ -7407,7 +7407,7 @@ tsqlParser::Alter_databaseContext* tsqlParser::alter_database() {
         setState(1076);
         match(tsqlParser::EQUAL);
         setState(1077);
-        dynamic_cast<Alter_databaseContext *>(_localctx)->new_name = r_id();
+        antlrcpp::downCast<Alter_databaseContext *>(_localctx)->new_name = r_id();
         break;
       }
 
@@ -7415,7 +7415,7 @@ tsqlParser::Alter_databaseContext* tsqlParser::alter_database() {
         setState(1078);
         match(tsqlParser::COLLATE);
         setState(1079);
-        dynamic_cast<Alter_databaseContext *>(_localctx)->collation = r_id();
+        antlrcpp::downCast<Alter_databaseContext *>(_localctx)->collation = r_id();
         break;
       }
 
@@ -9745,12 +9745,12 @@ tsqlParser::Snapshot_optionContext* tsqlParser::snapshot_option() {
       case tsqlParser::ON: {
         enterOuterAlt(_localctx, 3);
         setState(1245);
-        dynamic_cast<Snapshot_optionContext *>(_localctx)->MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = _input->LT(1);
+        antlrcpp::downCast<Snapshot_optionContext *>(_localctx)->MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = _input->LT(1);
         _la = _input->LA(1);
         if (!(_la == tsqlParser::OFF
 
         || _la == tsqlParser::ON)) {
-          dynamic_cast<Snapshot_optionContext *>(_localctx)->MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = _errHandler->recoverInline(this);
+          antlrcpp::downCast<Snapshot_optionContext *>(_localctx)->MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = _errHandler->recoverInline(this);
         }
         else {
           _errHandler->reportMatch(this);
@@ -10107,7 +10107,7 @@ tsqlParser::TerminationContext* tsqlParser::termination() {
       setState(1277);
       match(tsqlParser::AFTER);
       setState(1278);
-      dynamic_cast<TerminationContext *>(_localctx)->seconds = match(tsqlParser::DECIMAL);
+      antlrcpp::downCast<TerminationContext *>(_localctx)->seconds = match(tsqlParser::DECIMAL);
       break;
     }
 
@@ -10221,7 +10221,7 @@ tsqlParser::Drop_indexContext* tsqlParser::drop_index() {
       match(tsqlParser::EXISTS);
     }
     setState(1290);
-    dynamic_cast<Drop_indexContext *>(_localctx)->name = r_id();
+    antlrcpp::downCast<Drop_indexContext *>(_localctx)->name = r_id();
     setState(1293);
     _errHandler->sync(this);
 
@@ -10429,7 +10429,7 @@ tsqlParser::Drop_statisticsContext* tsqlParser::drop_statistics() {
       break;
     }
     setState(1315);
-    dynamic_cast<Drop_statisticsContext *>(_localctx)->name = r_id();
+    antlrcpp::downCast<Drop_statisticsContext *>(_localctx)->name = r_id();
     setState(1317);
     _errHandler->sync(this);
 
@@ -10769,7 +10769,7 @@ tsqlParser::Drop_databaseContext* tsqlParser::drop_database() {
       case tsqlParser::SQUARE_BRACKET_ID:
       case tsqlParser::ID: {
         setState(1335);
-        dynamic_cast<Drop_databaseContext *>(_localctx)->database = r_id();
+        antlrcpp::downCast<Drop_databaseContext *>(_localctx)->database = r_id();
         break;
       }
 
@@ -11308,7 +11308,7 @@ tsqlParser::Create_typeContext* tsqlParser::create_type() {
       setState(1390);
       match(tsqlParser::TYPE);
       setState(1391);
-      dynamic_cast<Create_typeContext *>(_localctx)->name = simple_name();
+      antlrcpp::downCast<Create_typeContext *>(_localctx)->name = simple_name();
       setState(1392);
       match(tsqlParser::FROM);
       setState(1393);
@@ -11325,7 +11325,7 @@ tsqlParser::Create_typeContext* tsqlParser::create_type() {
       setState(1397);
       match(tsqlParser::TYPE);
       setState(1398);
-      dynamic_cast<Create_typeContext *>(_localctx)->name = simple_name();
+      antlrcpp::downCast<Create_typeContext *>(_localctx)->name = simple_name();
       setState(1399);
       match(tsqlParser::AS);
       setState(1400);
@@ -11429,7 +11429,7 @@ tsqlParser::Drop_typeContext* tsqlParser::drop_type() {
       match(tsqlParser::EXISTS);
     }
     setState(1416);
-    dynamic_cast<Drop_typeContext *>(_localctx)->name = simple_name();
+    antlrcpp::downCast<Drop_typeContext *>(_localctx)->name = simple_name();
    
   }
   catch (RecognitionException &e) {
@@ -11572,11 +11572,11 @@ tsqlParser::OpenqueryContext* tsqlParser::openquery() {
     setState(1423);
     match(tsqlParser::LR_BRACKET);
     setState(1424);
-    dynamic_cast<OpenqueryContext *>(_localctx)->linked_server = r_id();
+    antlrcpp::downCast<OpenqueryContext *>(_localctx)->linked_server = r_id();
     setState(1425);
     match(tsqlParser::COMMA);
     setState(1426);
-    dynamic_cast<OpenqueryContext *>(_localctx)->query = match(tsqlParser::STRING);
+    antlrcpp::downCast<OpenqueryContext *>(_localctx)->query = match(tsqlParser::STRING);
     setState(1427);
     match(tsqlParser::RR_BRACKET);
    
@@ -11668,11 +11668,11 @@ tsqlParser::OpendatasourceContext* tsqlParser::opendatasource() {
     setState(1430);
     match(tsqlParser::LR_BRACKET);
     setState(1431);
-    dynamic_cast<OpendatasourceContext *>(_localctx)->provider = match(tsqlParser::STRING);
+    antlrcpp::downCast<OpendatasourceContext *>(_localctx)->provider = match(tsqlParser::STRING);
     setState(1432);
     match(tsqlParser::COMMA);
     setState(1433);
-    dynamic_cast<OpendatasourceContext *>(_localctx)->init = match(tsqlParser::STRING);
+    antlrcpp::downCast<OpendatasourceContext *>(_localctx)->init = match(tsqlParser::STRING);
     setState(1434);
     match(tsqlParser::RR_BRACKET);
     setState(1435);
@@ -11822,7 +11822,7 @@ tsqlParser::OpendatasourceContext* tsqlParser::opendatasource() {
       | (1ULL << (tsqlParser::SQUARE_BRACKET_ID - 393))
       | (1ULL << (tsqlParser::ID - 393)))) != 0)) {
       setState(1436);
-      dynamic_cast<OpendatasourceContext *>(_localctx)->database = r_id();
+      antlrcpp::downCast<OpendatasourceContext *>(_localctx)->database = r_id();
     }
     setState(1439);
     match(tsqlParser::DOT);
@@ -11971,13 +11971,13 @@ tsqlParser::OpendatasourceContext* tsqlParser::opendatasource() {
       | (1ULL << (tsqlParser::SQUARE_BRACKET_ID - 393))
       | (1ULL << (tsqlParser::ID - 393)))) != 0)) {
       setState(1440);
-      dynamic_cast<OpendatasourceContext *>(_localctx)->scheme = r_id();
+      antlrcpp::downCast<OpendatasourceContext *>(_localctx)->scheme = r_id();
     }
     setState(1443);
     match(tsqlParser::DOT);
 
     setState(1444);
-    dynamic_cast<OpendatasourceContext *>(_localctx)->table = r_id();
+    antlrcpp::downCast<OpendatasourceContext *>(_localctx)->table = r_id();
    
   }
   catch (RecognitionException &e) {
@@ -12661,7 +12661,7 @@ tsqlParser::Execute_statementContext* tsqlParser::execute_statement() {
       _la = _input->LA(1);
       if (_la == tsqlParser::LOCAL_ID) {
         setState(1501);
-        dynamic_cast<Execute_statementContext *>(_localctx)->return_status = match(tsqlParser::LOCAL_ID);
+        antlrcpp::downCast<Execute_statementContext *>(_localctx)->return_status = match(tsqlParser::LOCAL_ID);
         setState(1502);
         match(tsqlParser::EQUAL);
       }
@@ -12863,7 +12863,7 @@ tsqlParser::Execute_statement_argContext* tsqlParser::execute_statement_arg() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 198, _ctx)) {
     case 1: {
       setState(1543);
-      dynamic_cast<Execute_statement_argContext *>(_localctx)->parameter = match(tsqlParser::LOCAL_ID);
+      antlrcpp::downCast<Execute_statement_argContext *>(_localctx)->parameter = match(tsqlParser::LOCAL_ID);
       setState(1544);
       match(tsqlParser::EQUAL);
       break;
@@ -13504,13 +13504,13 @@ tsqlParser::Security_statementContext* tsqlParser::security_statement() {
           setState(1578);
           match(tsqlParser::ON);
           setState(1579);
-          dynamic_cast<Security_statementContext *>(_localctx)->on_id = full_table_name();
+          antlrcpp::downCast<Security_statementContext *>(_localctx)->on_id = full_table_name();
         }
         setState(1582);
         match(tsqlParser::TO);
 
         setState(1583);
-        dynamic_cast<Security_statementContext *>(_localctx)->to_principal = r_id();
+        antlrcpp::downCast<Security_statementContext *>(_localctx)->to_principal = r_id();
         setState(1587);
         _errHandler->sync(this);
 
@@ -13536,7 +13536,7 @@ tsqlParser::Security_statementContext* tsqlParser::security_statement() {
           setState(1589);
           match(tsqlParser::AS);
           setState(1590);
-          dynamic_cast<Security_statementContext *>(_localctx)->as_principal = r_id();
+          antlrcpp::downCast<Security_statementContext *>(_localctx)->as_principal = r_id();
         }
         setState(1594);
         _errHandler->sync(this);
@@ -14387,7 +14387,7 @@ tsqlParser::Set_statementContext* tsqlParser::set_statement() {
         setState(1640);
         match(tsqlParser::DOT);
         setState(1641);
-        dynamic_cast<Set_statementContext *>(_localctx)->member_name = r_id();
+        antlrcpp::downCast<Set_statementContext *>(_localctx)->member_name = r_id();
       }
       setState(1644);
       match(tsqlParser::EQUAL);
@@ -15363,7 +15363,7 @@ tsqlParser::Go_statementContext* tsqlParser::go_statement() {
     _la = _input->LA(1);
     if (_la == tsqlParser::DECIMAL) {
       setState(1759);
-      dynamic_cast<Go_statementContext *>(_localctx)->count = match(tsqlParser::DECIMAL);
+      antlrcpp::downCast<Go_statementContext *>(_localctx)->count = match(tsqlParser::DECIMAL);
     }
    
   }
@@ -15423,7 +15423,7 @@ tsqlParser::Use_statementContext* tsqlParser::use_statement() {
     setState(1762);
     match(tsqlParser::USE);
     setState(1763);
-    dynamic_cast<Use_statementContext *>(_localctx)->database = r_id();
+    antlrcpp::downCast<Use_statementContext *>(_localctx)->database = r_id();
     setState(1765);
     _errHandler->sync(this);
 
@@ -15510,12 +15510,12 @@ tsqlParser::Execute_clauseContext* tsqlParser::execute_clause() {
     setState(1768);
     match(tsqlParser::AS);
     setState(1769);
-    dynamic_cast<Execute_clauseContext *>(_localctx)->clause = _input->LT(1);
+    antlrcpp::downCast<Execute_clauseContext *>(_localctx)->clause = _input->LT(1);
     _la = _input->LA(1);
     if (!(_la == tsqlParser::CALLER || _la == tsqlParser::OWNER
 
     || _la == tsqlParser::SELF || _la == tsqlParser::STRING)) {
-      dynamic_cast<Execute_clauseContext *>(_localctx)->clause = _errHandler->recoverInline(this);
+      antlrcpp::downCast<Execute_clauseContext *>(_localctx)->clause = _errHandler->recoverInline(this);
     }
     else {
       _errHandler->reportMatch(this);
@@ -16312,7 +16312,7 @@ tsqlParser::Column_definitionContext* tsqlParser::column_definition() {
         setState(1812);
         match(tsqlParser::CONSTRAINT);
         setState(1813);
-        dynamic_cast<Column_definitionContext *>(_localctx)->constraint = r_id();
+        antlrcpp::downCast<Column_definitionContext *>(_localctx)->constraint = r_id();
       }
       setState(1816);
       match(tsqlParser::DEFAULT);
@@ -16347,11 +16347,11 @@ tsqlParser::Column_definitionContext* tsqlParser::column_definition() {
         setState(1823);
         match(tsqlParser::LR_BRACKET);
         setState(1824);
-        dynamic_cast<Column_definitionContext *>(_localctx)->seed = match(tsqlParser::DECIMAL);
+        antlrcpp::downCast<Column_definitionContext *>(_localctx)->seed = match(tsqlParser::DECIMAL);
         setState(1825);
         match(tsqlParser::COMMA);
         setState(1826);
-        dynamic_cast<Column_definitionContext *>(_localctx)->increment = match(tsqlParser::DECIMAL);
+        antlrcpp::downCast<Column_definitionContext *>(_localctx)->increment = match(tsqlParser::DECIMAL);
         setState(1827);
         match(tsqlParser::RR_BRACKET);
         break;
@@ -16896,7 +16896,7 @@ tsqlParser::Table_constraintContext* tsqlParser::table_constraint() {
         setState(1913);
         match(tsqlParser::LR_BRACKET);
         setState(1914);
-        dynamic_cast<Table_constraintContext *>(_localctx)->fk = column_name_list();
+        antlrcpp::downCast<Table_constraintContext *>(_localctx)->fk = column_name_list();
         setState(1915);
         match(tsqlParser::RR_BRACKET);
         setState(1916);
@@ -16906,7 +16906,7 @@ tsqlParser::Table_constraintContext* tsqlParser::table_constraint() {
         setState(1918);
         match(tsqlParser::LR_BRACKET);
         setState(1919);
-        dynamic_cast<Table_constraintContext *>(_localctx)->pk = column_name_list();
+        antlrcpp::downCast<Table_constraintContext *>(_localctx)->pk = column_name_list();
         setState(1920);
         match(tsqlParser::RR_BRACKET);
         break;
@@ -18045,7 +18045,7 @@ tsqlParser::Set_specialContext* tsqlParser::set_special() {
       setState(2039);
       match(tsqlParser::SET);
       setState(2040);
-      dynamic_cast<Set_specialContext *>(_localctx)->key = r_id();
+      antlrcpp::downCast<Set_specialContext *>(_localctx)->key = r_id();
       setState(2044);
       _errHandler->sync(this);
       switch (_input->LA(1)) {
@@ -18189,7 +18189,7 @@ tsqlParser::Set_specialContext* tsqlParser::set_special() {
         case tsqlParser::SQUARE_BRACKET_ID:
         case tsqlParser::ID: {
           setState(2041);
-          dynamic_cast<Set_specialContext *>(_localctx)->value = r_id();
+          antlrcpp::downCast<Set_specialContext *>(_localctx)->value = r_id();
           break;
         }
 
@@ -18238,7 +18238,7 @@ tsqlParser::Set_specialContext* tsqlParser::set_special() {
       setState(2049);
       match(tsqlParser::SET);
       setState(2050);
-      dynamic_cast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::TRANSACTION);
+      antlrcpp::downCast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::TRANSACTION);
       setState(2051);
       match(tsqlParser::ISOLATION);
       setState(2052);
@@ -18306,7 +18306,7 @@ tsqlParser::Set_specialContext* tsqlParser::set_special() {
       setState(2066);
       match(tsqlParser::SET);
       setState(2067);
-      dynamic_cast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::IDENTITY_INSERT);
+      antlrcpp::downCast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::IDENTITY_INSERT);
       setState(2068);
       full_table_name();
       setState(2069);
@@ -18332,7 +18332,7 @@ tsqlParser::Set_specialContext* tsqlParser::set_special() {
       setState(2073);
       match(tsqlParser::SET);
       setState(2074);
-      dynamic_cast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::ANSI_NULLS);
+      antlrcpp::downCast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::ANSI_NULLS);
       setState(2075);
       on_off();
       break;
@@ -18343,7 +18343,7 @@ tsqlParser::Set_specialContext* tsqlParser::set_special() {
       setState(2076);
       match(tsqlParser::SET);
       setState(2077);
-      dynamic_cast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::QUOTED_IDENTIFIER);
+      antlrcpp::downCast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::QUOTED_IDENTIFIER);
       setState(2078);
       on_off();
       break;
@@ -18354,7 +18354,7 @@ tsqlParser::Set_specialContext* tsqlParser::set_special() {
       setState(2079);
       match(tsqlParser::SET);
       setState(2080);
-      dynamic_cast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::ANSI_PADDING);
+      antlrcpp::downCast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::ANSI_PADDING);
       setState(2081);
       on_off();
       break;
@@ -18365,7 +18365,7 @@ tsqlParser::Set_specialContext* tsqlParser::set_special() {
       setState(2082);
       match(tsqlParser::SET);
       setState(2083);
-      dynamic_cast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::STATISTICS);
+      antlrcpp::downCast<Set_specialContext *>(_localctx)->set_type = match(tsqlParser::STATISTICS);
       setState(2084);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::IO || _la == tsqlParser::TIME)) {
@@ -18911,7 +18911,7 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
       setState(2098);
       match(tsqlParser::CASE);
       setState(2099);
-      dynamic_cast<Case_expressionContext *>(_localctx)->caseExpr = expression(0);
+      antlrcpp::downCast<Case_expressionContext *>(_localctx)->caseExpr = expression(0);
       setState(2101); 
       _errHandler->sync(this);
       _la = _input->LA(1);
@@ -18930,7 +18930,7 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
         setState(2105);
         match(tsqlParser::ELSE);
         setState(2106);
-        dynamic_cast<Case_expressionContext *>(_localctx)->elseExpr = expression(0);
+        antlrcpp::downCast<Case_expressionContext *>(_localctx)->elseExpr = expression(0);
       }
       setState(2109);
       match(tsqlParser::END);
@@ -18961,7 +18961,7 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
         setState(2117);
         match(tsqlParser::ELSE);
         setState(2118);
-        dynamic_cast<Case_expressionContext *>(_localctx)->elseExpr = expression(0);
+        antlrcpp::downCast<Case_expressionContext *>(_localctx)->elseExpr = expression(0);
       }
       setState(2121);
       match(tsqlParser::END);
@@ -19008,7 +19008,7 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
       setState(2132);
-      dynamic_cast<Unary_operator_expressionContext *>(_localctx)->op = match(tsqlParser::BIT_NOT);
+      antlrcpp::downCast<Unary_operator_expressionContext *>(_localctx)->op = match(tsqlParser::BIT_NOT);
       setState(2133);
       expression(9);
       break;
@@ -19019,12 +19019,12 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
       setState(2134);
-      dynamic_cast<Unary_operator_expressionContext *>(_localctx)->op = _input->LT(1);
+      antlrcpp::downCast<Unary_operator_expressionContext *>(_localctx)->op = _input->LT(1);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::PLUS
 
       || _la == tsqlParser::MINUS)) {
-        dynamic_cast<Unary_operator_expressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
+        antlrcpp::downCast<Unary_operator_expressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
       }
       else {
         _errHandler->reportMatch(this);
@@ -19092,7 +19092,7 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
           setState(2144);
           match(tsqlParser::ZONE);
           setState(2145);
-          dynamic_cast<Conversion_expressionContext *>(_localctx)->right = expression(16);
+          antlrcpp::downCast<Conversion_expressionContext *>(_localctx)->right = expression(16);
           break;
         }
 
@@ -19105,20 +19105,20 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
 
           if (!(precpred(_ctx, 8))) throw FailedPredicateException(this, "precpred(_ctx, 8)");
           setState(2147);
-          dynamic_cast<Binary_operator_expressionContext *>(_localctx)->op = _input->LT(1);
+          antlrcpp::downCast<Binary_operator_expressionContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
           if (!(((((_la - 477) & ~ 0x3fULL) == 0) &&
             ((1ULL << (_la - 477)) & ((1ULL << (tsqlParser::STAR - 477))
             | (1ULL << (tsqlParser::DIVIDE - 477))
             | (1ULL << (tsqlParser::MODULE - 477)))) != 0))) {
-            dynamic_cast<Binary_operator_expressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
+            antlrcpp::downCast<Binary_operator_expressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
           else {
             _errHandler->reportMatch(this);
             consume();
           }
           setState(2148);
-          dynamic_cast<Binary_operator_expressionContext *>(_localctx)->right = expression(9);
+          antlrcpp::downCast<Binary_operator_expressionContext *>(_localctx)->right = expression(9);
           break;
         }
 
@@ -19131,7 +19131,7 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
 
           if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");
           setState(2150);
-          dynamic_cast<Binary_operator_expressionContext *>(_localctx)->op = _input->LT(1);
+          antlrcpp::downCast<Binary_operator_expressionContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
           if (!(((((_la - 480) & ~ 0x3fULL) == 0) &&
             ((1ULL << (_la - 480)) & ((1ULL << (tsqlParser::PLUS - 480))
@@ -19139,14 +19139,14 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
             | (1ULL << (tsqlParser::BIT_OR - 480))
             | (1ULL << (tsqlParser::BIT_AND - 480))
             | (1ULL << (tsqlParser::BIT_XOR - 480)))) != 0))) {
-            dynamic_cast<Binary_operator_expressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
+            antlrcpp::downCast<Binary_operator_expressionContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
           else {
             _errHandler->reportMatch(this);
             consume();
           }
           setState(2151);
-          dynamic_cast<Binary_operator_expressionContext *>(_localctx)->right = expression(7);
+          antlrcpp::downCast<Binary_operator_expressionContext *>(_localctx)->right = expression(7);
           break;
         }
 
@@ -19161,7 +19161,7 @@ tsqlParser::ExpressionContext* tsqlParser::expression(int precedence) {
           setState(2153);
           comparison_operator();
           setState(2154);
-          dynamic_cast<Binary_operator_expressionContext *>(_localctx)->right = expression(6);
+          antlrcpp::downCast<Binary_operator_expressionContext *>(_localctx)->right = expression(6);
           break;
         }
 
@@ -19711,11 +19711,11 @@ tsqlParser::Xml_method_callContext* tsqlParser::xml_method_call() {
         setState(2180);
         match(tsqlParser::AS);
         setState(2181);
-        dynamic_cast<Xml_method_callContext *>(_localctx)->table = r_id();
+        antlrcpp::downCast<Xml_method_callContext *>(_localctx)->table = r_id();
         setState(2182);
         match(tsqlParser::LR_BRACKET);
         setState(2183);
-        dynamic_cast<Xml_method_callContext *>(_localctx)->column = r_id();
+        antlrcpp::downCast<Xml_method_callContext *>(_localctx)->column = r_id();
         setState(2184);
         match(tsqlParser::RR_BRACKET);
         break;
@@ -20311,7 +20311,7 @@ tsqlParser::Common_table_expressionContext* tsqlParser::common_table_expression(
   try {
     enterOuterAlt(_localctx, 1);
     setState(2215);
-    dynamic_cast<Common_table_expressionContext *>(_localctx)->expression_name = r_id();
+    antlrcpp::downCast<Common_table_expressionContext *>(_localctx)->expression_name = r_id();
     setState(2220);
     _errHandler->sync(this);
 
@@ -20572,7 +20572,7 @@ tsqlParser::Update_elemContext* tsqlParser::update_elem() {
 
         case tsqlParser::LOCAL_ID: {
           setState(2228);
-          dynamic_cast<Update_elemContext *>(_localctx)->name = match(tsqlParser::LOCAL_ID);
+          antlrcpp::downCast<Update_elemContext *>(_localctx)->name = match(tsqlParser::LOCAL_ID);
           break;
         }
 
@@ -20612,11 +20612,11 @@ tsqlParser::Update_elemContext* tsqlParser::update_elem() {
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(2236);
-      dynamic_cast<Update_elemContext *>(_localctx)->udt_column_name = r_id();
+      antlrcpp::downCast<Update_elemContext *>(_localctx)->udt_column_name = r_id();
       setState(2237);
       match(tsqlParser::DOT);
       setState(2238);
-      dynamic_cast<Update_elemContext *>(_localctx)->method_name = r_id();
+      antlrcpp::downCast<Update_elemContext *>(_localctx)->method_name = r_id();
       setState(2239);
       match(tsqlParser::LR_BRACKET);
       setState(2240);
@@ -20843,9 +20843,9 @@ tsqlParser::Search_conditionContext* tsqlParser::search_condition(int precedence
 
           if (!(precpred(_ctx, 3))) throw FailedPredicateException(this, "precpred(_ctx, 3)");
           setState(2257);
-          dynamic_cast<Search_cond_andContext *>(_localctx)->op = match(tsqlParser::AND);
+          antlrcpp::downCast<Search_cond_andContext *>(_localctx)->op = match(tsqlParser::AND);
           setState(2258);
-          dynamic_cast<Search_cond_andContext *>(_localctx)->right = search_condition(4);
+          antlrcpp::downCast<Search_cond_andContext *>(_localctx)->right = search_condition(4);
           break;
         }
 
@@ -20858,9 +20858,9 @@ tsqlParser::Search_conditionContext* tsqlParser::search_condition(int precedence
 
           if (!(precpred(_ctx, 2))) throw FailedPredicateException(this, "precpred(_ctx, 2)");
           setState(2260);
-          dynamic_cast<Search_cond_orContext *>(_localctx)->op = match(tsqlParser::OR);
+          antlrcpp::downCast<Search_cond_orContext *>(_localctx)->op = match(tsqlParser::OR);
           setState(2261);
-          dynamic_cast<Search_cond_orContext *>(_localctx)->right = search_condition(3);
+          antlrcpp::downCast<Search_cond_orContext *>(_localctx)->right = search_condition(3);
           break;
         }
 
@@ -21164,55 +21164,55 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 333, _ctx)) {
     case 1: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Unary_operator_expression3Context>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Unary_operator_expression3Context>(_localctx);
       enterOuterAlt(_localctx, 1);
       setState(2267);
-      dynamic_cast<Unary_operator_expression3Context *>(_localctx)->op = match(tsqlParser::NOT);
+      antlrcpp::downCast<Unary_operator_expression3Context *>(_localctx)->op = match(tsqlParser::NOT);
       setState(2268);
-      dynamic_cast<Unary_operator_expression3Context *>(_localctx)->expr = predicate();
+      antlrcpp::downCast<Unary_operator_expression3Context *>(_localctx)->expr = predicate();
       break;
     }
 
     case 2: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Unary_operator_expression2Context>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Unary_operator_expression2Context>(_localctx);
       enterOuterAlt(_localctx, 2);
       setState(2269);
-      dynamic_cast<Unary_operator_expression2Context *>(_localctx)->op = match(tsqlParser::EXISTS);
+      antlrcpp::downCast<Unary_operator_expression2Context *>(_localctx)->op = match(tsqlParser::EXISTS);
       setState(2270);
       match(tsqlParser::LR_BRACKET);
       setState(2271);
-      dynamic_cast<Unary_operator_expression2Context *>(_localctx)->expr = subquery();
+      antlrcpp::downCast<Unary_operator_expression2Context *>(_localctx)->expr = subquery();
       setState(2272);
       match(tsqlParser::RR_BRACKET);
       break;
     }
 
     case 3: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Binary_operator_expression2Context>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Binary_operator_expression2Context>(_localctx);
       enterOuterAlt(_localctx, 3);
       setState(2274);
-      dynamic_cast<Binary_operator_expression2Context *>(_localctx)->left = expression(0);
+      antlrcpp::downCast<Binary_operator_expression2Context *>(_localctx)->left = expression(0);
       setState(2275);
-      dynamic_cast<Binary_operator_expression2Context *>(_localctx)->op = comparison_operator();
+      antlrcpp::downCast<Binary_operator_expression2Context *>(_localctx)->op = comparison_operator();
       setState(2276);
-      dynamic_cast<Binary_operator_expression2Context *>(_localctx)->right = expression(0);
+      antlrcpp::downCast<Binary_operator_expression2Context *>(_localctx)->right = expression(0);
       break;
     }
 
     case 4: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Sublink_expressionContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Sublink_expressionContext>(_localctx);
       enterOuterAlt(_localctx, 4);
       setState(2278);
-      dynamic_cast<Sublink_expressionContext *>(_localctx)->test_expr = expression(0);
+      antlrcpp::downCast<Sublink_expressionContext *>(_localctx)->test_expr = expression(0);
       setState(2279);
-      dynamic_cast<Sublink_expressionContext *>(_localctx)->op = comparison_operator();
+      antlrcpp::downCast<Sublink_expressionContext *>(_localctx)->op = comparison_operator();
       setState(2280);
-      dynamic_cast<Sublink_expressionContext *>(_localctx)->pref = _input->LT(1);
+      antlrcpp::downCast<Sublink_expressionContext *>(_localctx)->pref = _input->LT(1);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::ALL
 
       || _la == tsqlParser::ANY || _la == tsqlParser::SOME)) {
-        dynamic_cast<Sublink_expressionContext *>(_localctx)->pref = _errHandler->recoverInline(this);
+        antlrcpp::downCast<Sublink_expressionContext *>(_localctx)->pref = _errHandler->recoverInline(this);
       }
       else {
         _errHandler->reportMatch(this);
@@ -21228,10 +21228,10 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
     }
 
     case 5: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Binary_mod_expressionContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Binary_mod_expressionContext>(_localctx);
       enterOuterAlt(_localctx, 5);
       setState(2285);
-      dynamic_cast<Binary_mod_expressionContext *>(_localctx)->left = expression(0);
+      antlrcpp::downCast<Binary_mod_expressionContext *>(_localctx)->left = expression(0);
       setState(2287);
       _errHandler->sync(this);
 
@@ -21241,21 +21241,21 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
         match(tsqlParser::NOT);
       }
       setState(2289);
-      dynamic_cast<Binary_mod_expressionContext *>(_localctx)->op = match(tsqlParser::BETWEEN);
+      antlrcpp::downCast<Binary_mod_expressionContext *>(_localctx)->op = match(tsqlParser::BETWEEN);
       setState(2290);
-      dynamic_cast<Binary_mod_expressionContext *>(_localctx)->right_1 = expression(0);
+      antlrcpp::downCast<Binary_mod_expressionContext *>(_localctx)->right_1 = expression(0);
       setState(2291);
       match(tsqlParser::AND);
       setState(2292);
-      dynamic_cast<Binary_mod_expressionContext *>(_localctx)->right_2 = expression(0);
+      antlrcpp::downCast<Binary_mod_expressionContext *>(_localctx)->right_2 = expression(0);
       break;
     }
 
     case 6: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Binary_in_expressionContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Binary_in_expressionContext>(_localctx);
       enterOuterAlt(_localctx, 6);
       setState(2294);
-      dynamic_cast<Binary_in_expressionContext *>(_localctx)->left = expression(0);
+      antlrcpp::downCast<Binary_in_expressionContext *>(_localctx)->left = expression(0);
       setState(2296);
       _errHandler->sync(this);
 
@@ -21265,7 +21265,7 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
         match(tsqlParser::NOT);
       }
       setState(2298);
-      dynamic_cast<Binary_in_expressionContext *>(_localctx)->op = match(tsqlParser::IN);
+      antlrcpp::downCast<Binary_in_expressionContext *>(_localctx)->op = match(tsqlParser::IN);
       setState(2299);
       match(tsqlParser::LR_BRACKET);
       setState(2302);
@@ -21292,10 +21292,10 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
     }
 
     case 7: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Binary_mod_expressionContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Binary_mod_expressionContext>(_localctx);
       enterOuterAlt(_localctx, 7);
       setState(2306);
-      dynamic_cast<Binary_mod_expressionContext *>(_localctx)->left = expression(0);
+      antlrcpp::downCast<Binary_mod_expressionContext *>(_localctx)->left = expression(0);
       setState(2308);
       _errHandler->sync(this);
 
@@ -21305,9 +21305,9 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
         match(tsqlParser::NOT);
       }
       setState(2310);
-      dynamic_cast<Binary_mod_expressionContext *>(_localctx)->op = match(tsqlParser::LIKE);
+      antlrcpp::downCast<Binary_mod_expressionContext *>(_localctx)->op = match(tsqlParser::LIKE);
       setState(2311);
-      dynamic_cast<Binary_mod_expressionContext *>(_localctx)->right_1 = expression(0);
+      antlrcpp::downCast<Binary_mod_expressionContext *>(_localctx)->right_1 = expression(0);
       setState(2314);
       _errHandler->sync(this);
 
@@ -21316,7 +21316,7 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
         setState(2312);
         match(tsqlParser::ESCAPE);
         setState(2313);
-        dynamic_cast<Binary_mod_expressionContext *>(_localctx)->right_2 = expression(0);
+        antlrcpp::downCast<Binary_mod_expressionContext *>(_localctx)->right_2 = expression(0);
         break;
       }
 
@@ -21327,19 +21327,19 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
     }
 
     case 8: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Binary_operator_expression3Context>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Binary_operator_expression3Context>(_localctx);
       enterOuterAlt(_localctx, 8);
       setState(2316);
-      dynamic_cast<Binary_operator_expression3Context *>(_localctx)->left = expression(0);
+      antlrcpp::downCast<Binary_operator_expression3Context *>(_localctx)->left = expression(0);
       setState(2317);
-      dynamic_cast<Binary_operator_expression3Context *>(_localctx)->op = match(tsqlParser::IS);
+      antlrcpp::downCast<Binary_operator_expression3Context *>(_localctx)->op = match(tsqlParser::IS);
       setState(2318);
-      dynamic_cast<Binary_operator_expression3Context *>(_localctx)->right = null_notnull();
+      antlrcpp::downCast<Binary_operator_expression3Context *>(_localctx)->right = null_notnull();
       break;
     }
 
     case 9: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Bracket_search_expressionContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Bracket_search_expressionContext>(_localctx);
       enterOuterAlt(_localctx, 9);
       setState(2320);
       match(tsqlParser::LR_BRACKET);
@@ -21351,7 +21351,7 @@ tsqlParser::PredicateContext* tsqlParser::predicate() {
     }
 
     case 10: {
-      _localctx = dynamic_cast<PredicateContext *>(_tracker.createInstance<tsqlParser::Decimal_expressionContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Decimal_expressionContext>(_localctx);
       enterOuterAlt(_localctx, 10);
       setState(2324);
       match(tsqlParser::DECIMAL);
@@ -21520,9 +21520,9 @@ tsqlParser::Query_expressionContext* tsqlParser::query_expression(int precedence
 
         if (!(precpred(_ctx, 2))) throw FailedPredicateException(this, "precpred(_ctx, 2)");
         setState(2336);
-        dynamic_cast<Union_query_expressionContext *>(_localctx)->op = union_op();
+        antlrcpp::downCast<Union_query_expressionContext *>(_localctx)->op = union_op();
         setState(2337);
-        dynamic_cast<Union_query_expressionContext *>(_localctx)->right = query_expression(3); 
+        antlrcpp::downCast<Union_query_expressionContext *>(_localctx)->right = query_expression(3); 
       }
       setState(2343);
       _errHandler->sync(this);
@@ -21885,12 +21885,12 @@ tsqlParser::Query_specificationContext* tsqlParser::query_specification() {
 
     || _la == tsqlParser::DISTINCT) {
       setState(2362);
-      dynamic_cast<Query_specificationContext *>(_localctx)->pref = _input->LT(1);
+      antlrcpp::downCast<Query_specificationContext *>(_localctx)->pref = _input->LT(1);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::ALL
 
       || _la == tsqlParser::DISTINCT)) {
-        dynamic_cast<Query_specificationContext *>(_localctx)->pref = _errHandler->recoverInline(this);
+        antlrcpp::downCast<Query_specificationContext *>(_localctx)->pref = _errHandler->recoverInline(this);
       }
       else {
         _errHandler->reportMatch(this);
@@ -21975,7 +21975,7 @@ tsqlParser::Query_specificationContext* tsqlParser::query_specification() {
       setState(2385);
       match(tsqlParser::WHERE);
       setState(2386);
-      dynamic_cast<Query_specificationContext *>(_localctx)->where = search_condition(0);
+      antlrcpp::downCast<Query_specificationContext *>(_localctx)->where = search_condition(0);
       break;
     }
 
@@ -22056,7 +22056,7 @@ tsqlParser::Query_specificationContext* tsqlParser::query_specification() {
       setState(2408);
       match(tsqlParser::HAVING);
       setState(2409);
-      dynamic_cast<Query_specificationContext *>(_localctx)->having = search_condition(0);
+      antlrcpp::downCast<Query_specificationContext *>(_localctx)->having = search_condition(0);
       break;
     }
 
@@ -22568,7 +22568,7 @@ tsqlParser::Order_by_clauseContext* tsqlParser::order_by_clause() {
       setState(2469);
       match(tsqlParser::OFFSET);
       setState(2470);
-      dynamic_cast<Order_by_clauseContext *>(_localctx)->offset = expression(0);
+      antlrcpp::downCast<Order_by_clauseContext *>(_localctx)->offset = expression(0);
       setState(2471);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::ROW
@@ -23010,12 +23010,12 @@ tsqlParser::Order_by_expressionContext* tsqlParser::order_by_expression() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 365, _ctx)) {
     case 1: {
       setState(2512);
-      dynamic_cast<Order_by_expressionContext *>(_localctx)->direction = _input->LT(1);
+      antlrcpp::downCast<Order_by_expressionContext *>(_localctx)->direction = _input->LT(1);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::ASC
 
       || _la == tsqlParser::DESC)) {
-        dynamic_cast<Order_by_expressionContext *>(_localctx)->direction = _errHandler->recoverInline(this);
+        antlrcpp::downCast<Order_by_expressionContext *>(_localctx)->direction = _errHandler->recoverInline(this);
       }
       else {
         _errHandler->reportMatch(this);
@@ -23359,7 +23359,7 @@ tsqlParser::OptionContext* tsqlParser::option() {
       setState(2529);
       match(tsqlParser::FAST);
       setState(2530);
-      dynamic_cast<OptionContext *>(_localctx)->number_rows = match(tsqlParser::DECIMAL);
+      antlrcpp::downCast<OptionContext *>(_localctx)->number_rows = match(tsqlParser::DECIMAL);
       break;
     }
 
@@ -23463,7 +23463,7 @@ tsqlParser::OptionContext* tsqlParser::option() {
       setState(2546);
       match(tsqlParser::MAXDOP);
       setState(2547);
-      dynamic_cast<OptionContext *>(_localctx)->number_of_processors = match(tsqlParser::DECIMAL);
+      antlrcpp::downCast<OptionContext *>(_localctx)->number_of_processors = match(tsqlParser::DECIMAL);
       break;
     }
 
@@ -23472,7 +23472,7 @@ tsqlParser::OptionContext* tsqlParser::option() {
       setState(2548);
       match(tsqlParser::MAXRECURSION);
       setState(2549);
-      dynamic_cast<OptionContext *>(_localctx)->number_recursion = match(tsqlParser::DECIMAL);
+      antlrcpp::downCast<OptionContext *>(_localctx)->number_recursion = match(tsqlParser::DECIMAL);
       break;
     }
 
@@ -23987,7 +23987,7 @@ tsqlParser::Select_list_elemContext* tsqlParser::select_list_elem() {
     case 2: {
       enterOuterAlt(_localctx, 2);
       setState(2600);
-      dynamic_cast<Select_list_elemContext *>(_localctx)->alias = column_alias();
+      antlrcpp::downCast<Select_list_elemContext *>(_localctx)->alias = column_alias();
       setState(2601);
       match(tsqlParser::EQUAL);
       setState(2602);
@@ -24013,7 +24013,7 @@ tsqlParser::Select_list_elemContext* tsqlParser::select_list_elem() {
           match(tsqlParser::AS);
         }
         setState(2608);
-        dynamic_cast<Select_list_elemContext *>(_localctx)->alias = column_alias();
+        antlrcpp::downCast<Select_list_elemContext *>(_localctx)->alias = column_alias();
         break;
       }
 
@@ -24335,11 +24335,11 @@ tsqlParser::Table_sourceContext* tsqlParser::table_source(int precedence) {
 
           if (!(precpred(_ctx, 3))) throw FailedPredicateException(this, "precpred(_ctx, 3)");
           setState(2630);
-          dynamic_cast<Cross_joinContext *>(_localctx)->op = match(tsqlParser::CROSS);
+          antlrcpp::downCast<Cross_joinContext *>(_localctx)->op = match(tsqlParser::CROSS);
           setState(2631);
           match(tsqlParser::JOIN);
           setState(2632);
-          dynamic_cast<Cross_joinContext *>(_localctx)->right = table_source(4);
+          antlrcpp::downCast<Cross_joinContext *>(_localctx)->right = table_source(4);
           break;
         }
 
@@ -24352,10 +24352,10 @@ tsqlParser::Table_sourceContext* tsqlParser::table_source(int precedence) {
 
           if (!(precpred(_ctx, 2))) throw FailedPredicateException(this, "precpred(_ctx, 2)");
           setState(2634);
-          dynamic_cast<Apply_joinContext *>(_localctx)->op = _input->LT(1);
+          antlrcpp::downCast<Apply_joinContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
           if (!(_la == tsqlParser::CROSS || _la == tsqlParser::OUTER)) {
-            dynamic_cast<Apply_joinContext *>(_localctx)->op = _errHandler->recoverInline(this);
+            antlrcpp::downCast<Apply_joinContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
           else {
             _errHandler->reportMatch(this);
@@ -24364,7 +24364,7 @@ tsqlParser::Table_sourceContext* tsqlParser::table_source(int precedence) {
           setState(2635);
           match(tsqlParser::APPLY);
           setState(2636);
-          dynamic_cast<Apply_joinContext *>(_localctx)->right = table_source(3);
+          antlrcpp::downCast<Apply_joinContext *>(_localctx)->right = table_source(3);
           break;
         }
 
@@ -24381,7 +24381,7 @@ tsqlParser::Table_sourceContext* tsqlParser::table_source(int precedence) {
           setState(2639);
           match(tsqlParser::JOIN);
           setState(2640);
-          dynamic_cast<Standard_joinContext *>(_localctx)->right = table_source(0);
+          antlrcpp::downCast<Standard_joinContext *>(_localctx)->right = table_source(0);
           setState(2641);
           match(tsqlParser::ON);
           setState(2642);
@@ -24530,7 +24530,7 @@ tsqlParser::Table_source_itemContext* tsqlParser::table_source_item() {
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 391, _ctx)) {
     case 1: {
-      _localctx = dynamic_cast<Table_source_itemContext *>(_tracker.createInstance<tsqlParser::Table_source_item_nameContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Table_source_item_nameContext>(_localctx);
       enterOuterAlt(_localctx, 1);
       setState(2649);
       full_table_name();
@@ -24577,7 +24577,7 @@ tsqlParser::Table_source_itemContext* tsqlParser::table_source_item() {
     }
 
     case 2: {
-      _localctx = dynamic_cast<Table_source_itemContext *>(_tracker.createInstance<tsqlParser::Table_source_item_simpleContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Table_source_item_simpleContext>(_localctx);
       enterOuterAlt(_localctx, 2);
       setState(2659);
       rowset_function();
@@ -24598,7 +24598,7 @@ tsqlParser::Table_source_itemContext* tsqlParser::table_source_item() {
     }
 
     case 3: {
-      _localctx = dynamic_cast<Table_source_itemContext *>(_tracker.createInstance<tsqlParser::Table_source_item_complexContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Table_source_item_complexContext>(_localctx);
       enterOuterAlt(_localctx, 3);
       setState(2663);
       derived_table();
@@ -24632,7 +24632,7 @@ tsqlParser::Table_source_itemContext* tsqlParser::table_source_item() {
     }
 
     case 4: {
-      _localctx = dynamic_cast<Table_source_itemContext *>(_tracker.createInstance<tsqlParser::Table_source_item_simpleContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Table_source_item_simpleContext>(_localctx);
       enterOuterAlt(_localctx, 4);
       setState(2670);
       change_table();
@@ -24653,7 +24653,7 @@ tsqlParser::Table_source_itemContext* tsqlParser::table_source_item() {
     }
 
     case 5: {
-      _localctx = dynamic_cast<Table_source_itemContext *>(_tracker.createInstance<tsqlParser::Table_source_item_simpleContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Table_source_item_simpleContext>(_localctx);
       enterOuterAlt(_localctx, 5);
       setState(2674);
       function_call();
@@ -24674,7 +24674,7 @@ tsqlParser::Table_source_itemContext* tsqlParser::table_source_item() {
     }
 
     case 6: {
-      _localctx = dynamic_cast<Table_source_itemContext *>(_tracker.createInstance<tsqlParser::Table_source_item_simpleContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Table_source_item_simpleContext>(_localctx);
       enterOuterAlt(_localctx, 6);
       setState(2678);
       match(tsqlParser::LOCAL_ID);
@@ -24695,7 +24695,7 @@ tsqlParser::Table_source_itemContext* tsqlParser::table_source_item() {
     }
 
     case 7: {
-      _localctx = dynamic_cast<Table_source_itemContext *>(_tracker.createInstance<tsqlParser::Table_source_item_complexContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Table_source_item_complexContext>(_localctx);
       enterOuterAlt(_localctx, 7);
       setState(2682);
       match(tsqlParser::LOCAL_ID);
@@ -25261,12 +25261,12 @@ tsqlParser::Join_typeContext* tsqlParser::join_type() {
 
     || _la == tsqlParser::LOOP || _la == tsqlParser::REMOTE) {
       setState(2733);
-      dynamic_cast<Join_typeContext *>(_localctx)->join_hint = _input->LT(1);
+      antlrcpp::downCast<Join_typeContext *>(_localctx)->join_hint = _input->LT(1);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::MERGE || _la == tsqlParser::HASH
 
       || _la == tsqlParser::LOOP || _la == tsqlParser::REMOTE)) {
-        dynamic_cast<Join_typeContext *>(_localctx)->join_hint = _errHandler->recoverInline(this);
+        antlrcpp::downCast<Join_typeContext *>(_localctx)->join_hint = _errHandler->recoverInline(this);
       }
       else {
         _errHandler->reportMatch(this);
@@ -25436,15 +25436,15 @@ tsqlParser::Rowset_functionContext* tsqlParser::rowset_function() {
       setState(2741);
       match(tsqlParser::LR_BRACKET);
       setState(2742);
-      dynamic_cast<Rowset_functionContext *>(_localctx)->provider_name = match(tsqlParser::STRING);
+      antlrcpp::downCast<Rowset_functionContext *>(_localctx)->provider_name = match(tsqlParser::STRING);
       setState(2743);
       match(tsqlParser::COMMA);
       setState(2744);
-      dynamic_cast<Rowset_functionContext *>(_localctx)->connectionString = match(tsqlParser::STRING);
+      antlrcpp::downCast<Rowset_functionContext *>(_localctx)->connectionString = match(tsqlParser::STRING);
       setState(2745);
       match(tsqlParser::COMMA);
       setState(2746);
-      dynamic_cast<Rowset_functionContext *>(_localctx)->sql = match(tsqlParser::STRING);
+      antlrcpp::downCast<Rowset_functionContext *>(_localctx)->sql = match(tsqlParser::STRING);
       setState(2747);
       match(tsqlParser::RR_BRACKET);
       break;
@@ -25459,7 +25459,7 @@ tsqlParser::Rowset_functionContext* tsqlParser::rowset_function() {
       setState(2750);
       match(tsqlParser::BULK);
       setState(2751);
-      dynamic_cast<Rowset_functionContext *>(_localctx)->data_file = match(tsqlParser::STRING);
+      antlrcpp::downCast<Rowset_functionContext *>(_localctx)->data_file = match(tsqlParser::STRING);
       setState(2752);
       match(tsqlParser::COMMA);
       setState(2762);
@@ -25565,12 +25565,12 @@ tsqlParser::Bulk_optionContext* tsqlParser::bulk_option() {
     setState(2769);
     match(tsqlParser::EQUAL);
     setState(2770);
-    dynamic_cast<Bulk_optionContext *>(_localctx)->bulk_option_value = _input->LT(1);
+    antlrcpp::downCast<Bulk_optionContext *>(_localctx)->bulk_option_value = _input->LT(1);
     _la = _input->LA(1);
     if (!(_la == tsqlParser::DECIMAL
 
     || _la == tsqlParser::STRING)) {
-      dynamic_cast<Bulk_optionContext *>(_localctx)->bulk_option_value = _errHandler->recoverInline(this);
+      antlrcpp::downCast<Bulk_optionContext *>(_localctx)->bulk_option_value = _errHandler->recoverInline(this);
     }
     else {
       _errHandler->reportMatch(this);
@@ -26021,7 +26021,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 411, _ctx)) {
     case 1: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Rank_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Rank_callContext>(_localctx);
       enterOuterAlt(_localctx, 1);
       setState(2785);
       ranking_windowed_function();
@@ -26029,7 +26029,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 2: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Aggregate_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Aggregate_callContext>(_localctx);
       enterOuterAlt(_localctx, 2);
       setState(2786);
       aggregate_windowed_function();
@@ -26037,7 +26037,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 3: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 3);
       setState(2787);
       scalar_function_name();
@@ -26250,7 +26250,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 4: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Nvf_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Nvf_callContext>(_localctx);
       enterOuterAlt(_localctx, 4);
       setState(2794);
       next_value_for_function();
@@ -26258,7 +26258,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 5: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 5);
       setState(2795);
       match(tsqlParser::BINARY_CHECKSUM);
@@ -26272,7 +26272,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 6: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Cast_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Cast_callContext>(_localctx);
       enterOuterAlt(_localctx, 6);
       setState(2799);
       match(tsqlParser::CAST);
@@ -26283,14 +26283,14 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
       setState(2802);
       match(tsqlParser::AS);
       setState(2803);
-      dynamic_cast<Cast_callContext *>(_localctx)->alias = data_type();
+      antlrcpp::downCast<Cast_callContext *>(_localctx)->alias = data_type();
       setState(2804);
       match(tsqlParser::RR_BRACKET);
       break;
     }
 
     case 7: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 7);
       setState(2806);
       match(tsqlParser::CONVERT);
@@ -26310,7 +26310,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
         setState(2811);
         match(tsqlParser::COMMA);
         setState(2812);
-        dynamic_cast<Standard_callContext *>(_localctx)->style = expression(0);
+        antlrcpp::downCast<Standard_callContext *>(_localctx)->style = expression(0);
       }
       setState(2815);
       match(tsqlParser::RR_BRACKET);
@@ -26318,7 +26318,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 8: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Simple_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Simple_callContext>(_localctx);
       enterOuterAlt(_localctx, 8);
       setState(2817);
       match(tsqlParser::CHECKSUM);
@@ -26332,7 +26332,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 9: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 9);
       setState(2821);
       match(tsqlParser::COALESCE);
@@ -26346,7 +26346,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 10: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Simple_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Simple_callContext>(_localctx);
       enterOuterAlt(_localctx, 10);
       setState(2826);
       match(tsqlParser::CURRENT_TIMESTAMP);
@@ -26354,7 +26354,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 11: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Simple_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Simple_callContext>(_localctx);
       enterOuterAlt(_localctx, 11);
       setState(2827);
       match(tsqlParser::CURRENT_USER);
@@ -26362,7 +26362,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 12: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 12);
       setState(2828);
       match(tsqlParser::DATEADD);
@@ -26384,7 +26384,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 13: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 13);
       setState(2837);
       match(tsqlParser::DATEDIFF);
@@ -26406,7 +26406,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 14: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 14);
       setState(2846);
       match(tsqlParser::DATENAME);
@@ -26424,7 +26424,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 15: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 15);
       setState(2853);
       match(tsqlParser::DATEPART);
@@ -26442,7 +26442,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 16: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 16);
       setState(2860);
       match(tsqlParser::DATETIMEOFFSETFROMPARTS);
@@ -26492,7 +26492,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 17: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 17);
       setState(2883);
       match(tsqlParser::IDENTITY);
@@ -26508,7 +26508,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
         setState(2886);
         match(tsqlParser::COMMA);
         setState(2887);
-        dynamic_cast<Standard_callContext *>(_localctx)->seed = match(tsqlParser::DECIMAL);
+        antlrcpp::downCast<Standard_callContext *>(_localctx)->seed = match(tsqlParser::DECIMAL);
         break;
       }
 
@@ -26523,7 +26523,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
         setState(2890);
         match(tsqlParser::COMMA);
         setState(2891);
-        dynamic_cast<Standard_callContext *>(_localctx)->increment = match(tsqlParser::DECIMAL);
+        antlrcpp::downCast<Standard_callContext *>(_localctx)->increment = match(tsqlParser::DECIMAL);
       }
       setState(2894);
       match(tsqlParser::RR_BRACKET);
@@ -26531,7 +26531,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 18: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 18);
       setState(2896);
       match(tsqlParser::IIF);
@@ -26553,7 +26553,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 19: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Simple_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Simple_callContext>(_localctx);
       enterOuterAlt(_localctx, 19);
       setState(2905);
       match(tsqlParser::MIN_ACTIVE_ROWVERSION);
@@ -26561,7 +26561,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 20: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 20);
       setState(2906);
       match(tsqlParser::NULLIF);
@@ -26579,18 +26579,18 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 21: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Expression_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Expression_callContext>(_localctx);
       enterOuterAlt(_localctx, 21);
       setState(2913);
       match(tsqlParser::PARSE);
       setState(2914);
       match(tsqlParser::LR_BRACKET);
       setState(2915);
-      dynamic_cast<Expression_callContext *>(_localctx)->left = expression(0);
+      antlrcpp::downCast<Expression_callContext *>(_localctx)->left = expression(0);
       setState(2916);
       match(tsqlParser::AS);
       setState(2917);
-      dynamic_cast<Expression_callContext *>(_localctx)->alias = data_type();
+      antlrcpp::downCast<Expression_callContext *>(_localctx)->alias = data_type();
       setState(2920);
       _errHandler->sync(this);
 
@@ -26599,7 +26599,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
         setState(2918);
         match(tsqlParser::USING);
         setState(2919);
-        dynamic_cast<Expression_callContext *>(_localctx)->right = expression(0);
+        antlrcpp::downCast<Expression_callContext *>(_localctx)->right = expression(0);
       }
       setState(2922);
       match(tsqlParser::RR_BRACKET);
@@ -26607,7 +26607,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 22: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Simple_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Simple_callContext>(_localctx);
       enterOuterAlt(_localctx, 22);
       setState(2924);
       match(tsqlParser::SESSION_USER);
@@ -26615,7 +26615,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 23: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 23);
       setState(2925);
       match(tsqlParser::STRING_SPLIT);
@@ -26633,7 +26633,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 24: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Simple_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Simple_callContext>(_localctx);
       enterOuterAlt(_localctx, 24);
       setState(2932);
       match(tsqlParser::SYSTEM_USER);
@@ -26641,7 +26641,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 25: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Standard_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Standard_callContext>(_localctx);
       enterOuterAlt(_localctx, 25);
       setState(2933);
       match(tsqlParser::TRY_CONVERT);
@@ -26659,7 +26659,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
     }
 
     case 26: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Cast_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Cast_callContext>(_localctx);
       enterOuterAlt(_localctx, 26);
       setState(2940);
       match(tsqlParser::TRY_CAST);
@@ -26670,25 +26670,25 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
       setState(2943);
       match(tsqlParser::AS);
       setState(2944);
-      dynamic_cast<Cast_callContext *>(_localctx)->alias = data_type();
+      antlrcpp::downCast<Cast_callContext *>(_localctx)->alias = data_type();
       setState(2945);
       match(tsqlParser::RR_BRACKET);
       break;
     }
 
     case 27: {
-      _localctx = dynamic_cast<Function_callContext *>(_tracker.createInstance<tsqlParser::Expression_callContext>(_localctx));
+      _localctx = _tracker.createInstance<tsqlParser::Expression_callContext>(_localctx);
       enterOuterAlt(_localctx, 27);
       setState(2947);
       match(tsqlParser::TRY_PARSE);
       setState(2948);
       match(tsqlParser::LR_BRACKET);
       setState(2949);
-      dynamic_cast<Expression_callContext *>(_localctx)->left = expression(0);
+      antlrcpp::downCast<Expression_callContext *>(_localctx)->left = expression(0);
       setState(2950);
       match(tsqlParser::AS);
       setState(2951);
-      dynamic_cast<Expression_callContext *>(_localctx)->alias = data_type();
+      antlrcpp::downCast<Expression_callContext *>(_localctx)->alias = data_type();
       setState(2954);
       _errHandler->sync(this);
 
@@ -26697,7 +26697,7 @@ tsqlParser::Function_callContext* tsqlParser::function_call() {
         setState(2952);
         match(tsqlParser::USING);
         setState(2953);
-        dynamic_cast<Expression_callContext *>(_localctx)->right = expression(0);
+        antlrcpp::downCast<Expression_callContext *>(_localctx)->right = expression(0);
       }
       setState(2956);
       match(tsqlParser::RR_BRACKET);
@@ -26769,11 +26769,11 @@ tsqlParser::Switch_sectionContext* tsqlParser::switch_section() {
     setState(2960);
     match(tsqlParser::WHEN);
     setState(2961);
-    dynamic_cast<Switch_sectionContext *>(_localctx)->whenExpr = expression(0);
+    antlrcpp::downCast<Switch_sectionContext *>(_localctx)->whenExpr = expression(0);
     setState(2962);
     match(tsqlParser::THEN);
     setState(2963);
-    dynamic_cast<Switch_sectionContext *>(_localctx)->thenExpr = expression(0);
+    antlrcpp::downCast<Switch_sectionContext *>(_localctx)->thenExpr = expression(0);
    
   }
   catch (RecognitionException &e) {
@@ -26836,11 +26836,11 @@ tsqlParser::Switch_search_condition_sectionContext* tsqlParser::switch_search_co
     setState(2965);
     match(tsqlParser::WHEN);
     setState(2966);
-    dynamic_cast<Switch_search_condition_sectionContext *>(_localctx)->whenExpr = search_condition(0);
+    antlrcpp::downCast<Switch_search_condition_sectionContext *>(_localctx)->whenExpr = search_condition(0);
     setState(2967);
     match(tsqlParser::THEN);
     setState(2968);
-    dynamic_cast<Switch_search_condition_sectionContext *>(_localctx)->thenExpr = expression(0);
+    antlrcpp::downCast<Switch_search_condition_sectionContext *>(_localctx)->thenExpr = expression(0);
    
   }
   catch (RecognitionException &e) {
@@ -28147,7 +28147,7 @@ tsqlParser::Next_value_for_functionContext* tsqlParser::next_value_for_function(
     setState(3085);
     next_value_for();
     setState(3086);
-    dynamic_cast<Next_value_for_functionContext *>(_localctx)->args = func_proc_name();
+    antlrcpp::downCast<Next_value_for_functionContext *>(_localctx)->args = func_proc_name();
     setState(3087);
     over_clause();
    
@@ -28551,7 +28551,7 @@ tsqlParser::Aggregate_windowed_functionContext* tsqlParser::aggregate_windowed_f
         switch (_input->LA(1)) {
           case tsqlParser::STAR: {
             setState(3126);
-            dynamic_cast<Aggregate_windowed_functionContext *>(_localctx)->args = match(tsqlParser::STAR);
+            antlrcpp::downCast<Aggregate_windowed_functionContext *>(_localctx)->args = match(tsqlParser::STAR);
             break;
           }
 
@@ -30596,7 +30596,7 @@ tsqlParser::File_specContext* tsqlParser::file_spec() {
     setState(3286);
     match(tsqlParser::EQUAL);
     setState(3287);
-    dynamic_cast<File_specContext *>(_localctx)->r_file = match(tsqlParser::STRING);
+    antlrcpp::downCast<File_specContext *>(_localctx)->r_file = match(tsqlParser::STRING);
     setState(3289);
     _errHandler->sync(this);
 
@@ -30749,15 +30749,15 @@ tsqlParser::Full_table_nameContext* tsqlParser::full_table_name() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 462, _ctx)) {
     case 1: {
       setState(3320);
-      dynamic_cast<Full_table_nameContext *>(_localctx)->server = r_id();
+      antlrcpp::downCast<Full_table_nameContext *>(_localctx)->server = r_id();
       setState(3321);
       match(tsqlParser::DOT);
       setState(3322);
-      dynamic_cast<Full_table_nameContext *>(_localctx)->database = r_id();
+      antlrcpp::downCast<Full_table_nameContext *>(_localctx)->database = r_id();
       setState(3323);
       match(tsqlParser::DOT);
       setState(3324);
-      dynamic_cast<Full_table_nameContext *>(_localctx)->schema = r_id();
+      antlrcpp::downCast<Full_table_nameContext *>(_localctx)->schema = r_id();
       setState(3325);
       match(tsqlParser::DOT);
       break;
@@ -30765,7 +30765,7 @@ tsqlParser::Full_table_nameContext* tsqlParser::full_table_name() {
 
     case 2: {
       setState(3327);
-      dynamic_cast<Full_table_nameContext *>(_localctx)->database = r_id();
+      antlrcpp::downCast<Full_table_nameContext *>(_localctx)->database = r_id();
       setState(3328);
       match(tsqlParser::DOT);
       setState(3330);
@@ -30913,7 +30913,7 @@ tsqlParser::Full_table_nameContext* tsqlParser::full_table_name() {
         | (1ULL << (tsqlParser::SQUARE_BRACKET_ID - 393))
         | (1ULL << (tsqlParser::ID - 393)))) != 0)) {
         setState(3329);
-        dynamic_cast<Full_table_nameContext *>(_localctx)->schema = r_id();
+        antlrcpp::downCast<Full_table_nameContext *>(_localctx)->schema = r_id();
       }
       setState(3332);
       match(tsqlParser::DOT);
@@ -30922,7 +30922,7 @@ tsqlParser::Full_table_nameContext* tsqlParser::full_table_name() {
 
     case 3: {
       setState(3334);
-      dynamic_cast<Full_table_nameContext *>(_localctx)->schema = r_id();
+      antlrcpp::downCast<Full_table_nameContext *>(_localctx)->schema = r_id();
       setState(3335);
       match(tsqlParser::DOT);
       break;
@@ -30932,7 +30932,7 @@ tsqlParser::Full_table_nameContext* tsqlParser::full_table_name() {
       break;
     }
     setState(3339);
-    dynamic_cast<Full_table_nameContext *>(_localctx)->table = r_id();
+    antlrcpp::downCast<Full_table_nameContext *>(_localctx)->table = r_id();
    
   }
   catch (RecognitionException &e) {
@@ -30994,7 +30994,7 @@ tsqlParser::Simple_nameContext* tsqlParser::simple_name() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 463, _ctx)) {
     case 1: {
       setState(3341);
-      dynamic_cast<Simple_nameContext *>(_localctx)->schema = r_id();
+      antlrcpp::downCast<Simple_nameContext *>(_localctx)->schema = r_id();
       setState(3342);
       match(tsqlParser::DOT);
       break;
@@ -31004,7 +31004,7 @@ tsqlParser::Simple_nameContext* tsqlParser::simple_name() {
       break;
     }
     setState(3346);
-    dynamic_cast<Simple_nameContext *>(_localctx)->name = r_id();
+    antlrcpp::downCast<Simple_nameContext *>(_localctx)->name = r_id();
    
   }
   catch (RecognitionException &e) {
@@ -31071,7 +31071,7 @@ tsqlParser::Func_proc_nameContext* tsqlParser::func_proc_name() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 465, _ctx)) {
     case 1: {
       setState(3348);
-      dynamic_cast<Func_proc_nameContext *>(_localctx)->database = r_id();
+      antlrcpp::downCast<Func_proc_nameContext *>(_localctx)->database = r_id();
       setState(3349);
       match(tsqlParser::DOT);
       setState(3351);
@@ -31219,7 +31219,7 @@ tsqlParser::Func_proc_nameContext* tsqlParser::func_proc_name() {
         | (1ULL << (tsqlParser::SQUARE_BRACKET_ID - 393))
         | (1ULL << (tsqlParser::ID - 393)))) != 0)) {
         setState(3350);
-        dynamic_cast<Func_proc_nameContext *>(_localctx)->schema = r_id();
+        antlrcpp::downCast<Func_proc_nameContext *>(_localctx)->schema = r_id();
       }
       setState(3353);
       match(tsqlParser::DOT);
@@ -31228,7 +31228,7 @@ tsqlParser::Func_proc_nameContext* tsqlParser::func_proc_name() {
 
     case 2: {
       setState(3355);
-      dynamic_cast<Func_proc_nameContext *>(_localctx)->schema = r_id();
+      antlrcpp::downCast<Func_proc_nameContext *>(_localctx)->schema = r_id();
       setState(3356);
       match(tsqlParser::DOT);
       break;
@@ -31238,7 +31238,7 @@ tsqlParser::Func_proc_nameContext* tsqlParser::func_proc_name() {
       break;
     }
     setState(3360);
-    dynamic_cast<Func_proc_nameContext *>(_localctx)->procedure = r_id();
+    antlrcpp::downCast<Func_proc_nameContext *>(_localctx)->procedure = r_id();
    
   }
   catch (RecognitionException &e) {
@@ -31508,7 +31508,7 @@ tsqlParser::Full_column_nameContext* tsqlParser::full_column_name() {
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 467, _ctx)) {
     case 1: {
       setState(3366);
-      dynamic_cast<Full_column_nameContext *>(_localctx)->table = full_table_name();
+      antlrcpp::downCast<Full_column_nameContext *>(_localctx)->table = full_table_name();
       setState(3367);
       match(tsqlParser::DOT);
       break;
@@ -31518,7 +31518,7 @@ tsqlParser::Full_column_nameContext* tsqlParser::full_column_name() {
       break;
     }
     setState(3371);
-    dynamic_cast<Full_column_nameContext *>(_localctx)->name = r_id();
+    antlrcpp::downCast<Full_column_nameContext *>(_localctx)->name = r_id();
    
   }
   catch (RecognitionException &e) {
@@ -32592,7 +32592,7 @@ tsqlParser::ConstantContext* tsqlParser::constant() {
         sign();
       }
       setState(3431);
-      dynamic_cast<ConstantContext *>(_localctx)->dollar = match(tsqlParser::DOLLAR);
+      antlrcpp::downCast<ConstantContext *>(_localctx)->dollar = match(tsqlParser::DOLLAR);
       setState(3432);
       _la = _input->LA(1);
       if (!(_la == tsqlParser::DECIMAL
@@ -34112,12 +34112,12 @@ tsqlParser::Create_or_alter_procedureContext* tsqlParser::create_or_alter_proced
       throw NoViableAltException(this);
     }
     setState(3475);
-    dynamic_cast<Create_or_alter_procedureContext *>(_localctx)->proc = _input->LT(1);
+    antlrcpp::downCast<Create_or_alter_procedureContext *>(_localctx)->proc = _input->LT(1);
     _la = _input->LA(1);
     if (!(_la == tsqlParser::PROC
 
     || _la == tsqlParser::PROCEDURE)) {
-      dynamic_cast<Create_or_alter_procedureContext *>(_localctx)->proc = _errHandler->recoverInline(this);
+      antlrcpp::downCast<Create_or_alter_procedureContext *>(_localctx)->proc = _errHandler->recoverInline(this);
     }
     else {
       _errHandler->reportMatch(this);
@@ -34908,7 +34908,7 @@ tsqlParser::Func_body_returns_scalarContext* tsqlParser::func_body_returns_scala
     setState(3627);
     match(tsqlParser::RETURN);
     setState(3628);
-    dynamic_cast<Func_body_returns_scalarContext *>(_localctx)->ret = expression(0);
+    antlrcpp::downCast<Func_body_returns_scalarContext *>(_localctx)->ret = expression(0);
     setState(3630);
     _errHandler->sync(this);
 
@@ -35050,7 +35050,7 @@ tsqlParser::Procedure_paramContext* tsqlParser::procedure_param() {
       setState(3647);
       match(tsqlParser::EQUAL);
       setState(3648);
-      dynamic_cast<Procedure_paramContext *>(_localctx)->default_val = default_value();
+      antlrcpp::downCast<Procedure_paramContext *>(_localctx)->default_val = default_value();
     }
     setState(3652);
     _errHandler->sync(this);
@@ -35742,10 +35742,10 @@ tsqlParser::Data_typeContext* tsqlParser::data_type() {
 
 bool tsqlParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicateIndex) {
   switch (ruleIndex) {
-    case 104: return expressionSempred(dynamic_cast<ExpressionContext *>(context), predicateIndex);
-    case 113: return search_conditionSempred(dynamic_cast<Search_conditionContext *>(context), predicateIndex);
-    case 115: return query_expressionSempred(dynamic_cast<Query_expressionContext *>(context), predicateIndex);
-    case 135: return table_sourceSempred(dynamic_cast<Table_sourceContext *>(context), predicateIndex);
+    case 104: return expressionSempred(antlrcpp::downCast<ExpressionContext *>(context), predicateIndex);
+    case 113: return search_conditionSempred(antlrcpp::downCast<Search_conditionContext *>(context), predicateIndex);
+    case 115: return query_expressionSempred(antlrcpp::downCast<Query_expressionContext *>(context), predicateIndex);
+    case 135: return table_sourceSempred(antlrcpp::downCast<Table_sourceContext *>(context), predicateIndex);
 
   default:
     break;

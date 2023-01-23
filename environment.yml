@@ -14,5 +14,6 @@ dependencies:
   - sphinx_rtd_theme
   - sphinxcontrib-apidoc
   - sqlalchemy
-  - antlr-python-runtime==4.9.2
   - pyodbc
+  - speedy-antlr-tool==1.3.1
+  - antlr4-python3-runtime==4.9.3
