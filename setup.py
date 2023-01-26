@@ -41,9 +41,9 @@ def create_extension() -> setuptools.Extension:
 
     extra_compile_args = {
         "windows": ["/DANTLR4CPP_STATIC", "/Zc:__cplusplus"],
-        "linux": ["-std=c++17"],
-        "darwin": ["-std=c++17", "-mmacosx-version-min=10.14"],
-        "cygwin": ["-std=c++17"],
+        "linux": ["--std=c++17"],
+        "darwin": ["--std=c++17", "-mmacosx-version-min=10.14"],
+        "cygwin": ["--std=c++17"],
     }
 
     sources = glob.glob("src/pytsql/grammar/cpp_src/**/*.cpp", recursive=True)
