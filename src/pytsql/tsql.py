@@ -186,7 +186,7 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
 def _fetch_and_clear_prints(conn: Connection):
     prints = conn.execute(f"SELECT * FROM {_PRINTS_TABLE};")
     for row in prints.all():
-        logging.info(f"Captured PRINT statement: {row[0]}")
+        logging.info(f"SQL PRINT: {row[0]}")
     conn.execute(f"DELETE FROM {_PRINTS_TABLE};")
 
 
