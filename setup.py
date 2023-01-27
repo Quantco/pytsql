@@ -42,7 +42,7 @@ def create_extension() -> setuptools.Extension:
     extra_compile_args = {
         "windows": ["/DANTLR4CPP_STATIC", "/Zc:__cplusplus", "/std:c++17"],
         "linux": ["-std=c++17"],
-        "darwin": ["-std=c++17", "-mmacosx-version-min=10.14"],
+        "darwin": ["-std=c++17", "-D_LIBCPP_DISABLE_AVAILABILITY"],
         "cygwin": ["-std=c++17"],
     }
 
