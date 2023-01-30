@@ -13,4 +13,4 @@ except Exception:
 
 __all__ = ["execute", "executes"]
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("pytsql")
