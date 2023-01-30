@@ -14,3 +14,4 @@ def test_deactivation_of_logger(engine, caplog):
     assert len(caplog.records) == 0
 
     logger.disabled = False
+    logger.setLevel(logger.WARNING)
