@@ -12,3 +12,5 @@ def test_deactivation_of_logger(engine, caplog):
     executes(seed, engine)
 
     assert len(caplog.records) == 0
+
+    logger.disabled = False
