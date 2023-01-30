@@ -154,7 +154,7 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
             " and is preventing the use of the faster C++ parser."
         )
 
-    logging.info("Started SQL script parsing")
+    logging.debug("Started SQL script parsing")
 
     # The default error listener only prints to the console without raising exceptions.
     error_listener = _RaisingErrorListener()
@@ -182,7 +182,7 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
         else:
             batches.append("\n".join(clauses))
 
-    logging.info("SQL script parsed successfully.")
+    logging.debug("SQL script parsed successfully.")
 
     return batches
 

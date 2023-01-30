@@ -1,5 +1,7 @@
 """`Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI."""
 
+import logging
+
 import pkg_resources
 
 from .tsql import execute, executes
@@ -10,3 +12,5 @@ except Exception:
     __version__ = "unknown"
 
 __all__ = ["execute", "executes"]
+
+logger = logging.getLogger(__name__)
