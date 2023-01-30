@@ -13,7 +13,7 @@ dependencies:
   - sphinx
   - sphinx_rtd_theme
   - sphinxcontrib-apidoc
-  - sqlalchemy==1.4.*
+  - sqlalchemy<2.0
   - pyodbc
   - speedy-antlr-tool==1.3.1
   - antlr4-python3-runtime==4.9.3
