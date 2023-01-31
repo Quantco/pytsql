@@ -18,6 +18,8 @@ _EOF = "<EOF>"
 _GO = "GO"
 _PRINTS_TABLE = "#pytsql_prints"
 
+logger = logging.getLogger("pytsql")
+
 
 def _code(path: Union[str, Path], encoding: str) -> str:
     with Path(path).open(encoding=encoding) as fh:
@@ -142,7 +144,7 @@ class _RaisingErrorListener(SA_ErrorListener):
         error_message = f"Line {line}:{column} {msg}."
         if offendingSymbol is not None:
             error_message += f" Problem near token '{offendingSymbol.text}'."
-        logging.error(error_message)
+        logger.error(error_message)
         raise ValueError(f"Error parsing SQL script: {error_message}")
 
 
@@ -154,7 +156,7 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
             " and is preventing the use of the faster C++ parser."
         )
 
-    logging.info("Started SQL script parsing")
+    logger.debug("Started SQL script parsing")
 
     # The default error listener only prints to the console without raising exceptions.
     error_listener = _RaisingErrorListener()
@@ -182,7 +184,7 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
         else:
             batches.append("\n".join(clauses))
 
-    logging.info("SQL script parsed successfully.")
+    logger.debug("SQL script parsed successfully.")
 
     return batches
 
@@ -190,7 +192,7 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
 def _fetch_and_clear_prints(conn: Connection):
     prints = conn.execute(f"SELECT * FROM {_PRINTS_TABLE};")
     for row in prints.all():
-        logging.info(f"Captured PRINT statement: {row[0]}")
+        logger.info(f"SQL PRINT: {row[0]}")
     conn.execute(f"DELETE FROM {_PRINTS_TABLE};")
 
 

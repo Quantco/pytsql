@@ -2,6 +2,8 @@ import logging
 
 from pytsql import executes
 
+SQL_PRINT_LOG_TEXT = "SQL PRINT"
+
 
 def test_evaluations(engine, caplog):
     caplog.set_level(logging.INFO)
@@ -17,7 +19,7 @@ def test_evaluations(engine, caplog):
     assert "basic text" in caplog.text
     assert "20" in caplog.text
     assert "two plus two equals 4" in caplog.text
-    assert caplog.text.count("Captured PRINT") == 3
+    assert caplog.text.count(SQL_PRINT_LOG_TEXT) == 3
 
 
 def test_evaluation_in_cf(engine, caplog):
@@ -36,7 +38,7 @@ def test_evaluation_in_cf(engine, caplog):
     assert "text1" in caplog.text
     assert "text2" in caplog.text
     assert "text3" in caplog.text
-    assert caplog.text.count("Captured PRINT") == 3
+    assert caplog.text.count(SQL_PRINT_LOG_TEXT) == 3
 
 
 def test_evaluation_in_context(engine, caplog):
@@ -55,7 +57,7 @@ def test_evaluation_in_context(engine, caplog):
 
     for i in range(10):
         assert str(i) in caplog.text
-    assert caplog.text.count("Captured PRINT") == 10
+    assert caplog.text.count(SQL_PRINT_LOG_TEXT) == 10
 
 
 def test_print_unicode(engine, caplog):
