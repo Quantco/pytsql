@@ -2,6 +2,7 @@ from typing import Optional
 
 import pytest
 import sqlalchemy as sa
+from sqlalchemy import text
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import ProgrammingError
 
@@ -77,7 +78,7 @@ GO
     assert str(table.columns["id"].type) == "BIGINT"
 
     with engine.connect() as conn:
-        res = conn.execute("SELECT * FROM test_schema.test_table")
+        res = conn.execute(text("SELECT * FROM test_schema.test_table"))
         rows = res.all()
         assert len(rows) == 1
         assert len(rows[0]) == 1
