@@ -1,0 +1,27 @@
+Index: tests/unit/test_logging.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tests/unit/test_logging.py b/tests/unit/test_logging.py
+new file mode 100644
+--- /dev/null	(date 1675073769123)
++++ b/tests/unit/test_logging.py	(date 1675073769123)
+@@ -0,0 +1,14 @@
++from pytsql import logger
++import logging
++from pytsql import executes
++from pytsql.tsql import _split
++
++def test_deactivation_of_logger(caplog):
++    logger.disabled = True
++    seed = "PRINT 'test'"
++    #s(seed, engine)
++    
++    _split(seed)
++    
++    print(caplog)
++    assert False
+\ No newline at end of file
+diff --git a/tests/__init__.py b/tests/__init__.py
+new file mode 100644
