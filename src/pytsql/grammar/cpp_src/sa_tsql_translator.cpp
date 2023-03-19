@@ -6,59 +6,339 @@
 #include "sa_tsql_translator.h"
 
 
-SA_tsqlTranslator::SA_tsqlTranslator(speedy_antlr::Translator *translator) {
+SA_TSqlTranslator::SA_TSqlTranslator(speedy_antlr::Translator *translator) {
     this->translator = translator;
 }
 
-SA_tsqlTranslator::~SA_tsqlTranslator() {
+SA_TSqlTranslator::~SA_TSqlTranslator() {
     Py_XDECREF(Tsql_fileContext_cls);
     Py_XDECREF(BatchContext_cls);
+    Py_XDECREF(Batch_level_statementContext_cls);
     Py_XDECREF(Sql_clausesContext_cls);
-    Py_XDECREF(Sql_clauseContext_cls);
     Py_XDECREF(Dml_clauseContext_cls);
     Py_XDECREF(Ddl_clauseContext_cls);
+    Py_XDECREF(Backup_statementContext_cls);
     Py_XDECREF(Cfl_statementContext_cls);
-    Py_XDECREF(Cfl_clauseContext_cls);
     Py_XDECREF(Block_statementContext_cls);
     Py_XDECREF(Break_statementContext_cls);
     Py_XDECREF(Continue_statementContext_cls);
     Py_XDECREF(Goto_statementContext_cls);
-    Py_XDECREF(If_statementContext_cls);
-    Py_XDECREF(If_blockContext_cls);
     Py_XDECREF(Return_statementContext_cls);
+    Py_XDECREF(If_statementContext_cls);
     Py_XDECREF(Throw_statementContext_cls);
+    Py_XDECREF(Throw_error_numberContext_cls);
+    Py_XDECREF(Throw_messageContext_cls);
+    Py_XDECREF(Throw_stateContext_cls);
     Py_XDECREF(Try_catch_statementContext_cls);
     Py_XDECREF(Waitfor_statementContext_cls);
     Py_XDECREF(While_statementContext_cls);
     Py_XDECREF(Print_statementContext_cls);
     Py_XDECREF(Raiseerror_statementContext_cls);
+    Py_XDECREF(Empty_statementContext_cls);
     Py_XDECREF(Another_statementContext_cls);
+    Py_XDECREF(Alter_application_roleContext_cls);
+    Py_XDECREF(Alter_xml_schema_collectionContext_cls);
+    Py_XDECREF(Create_application_roleContext_cls);
+    Py_XDECREF(Drop_aggregateContext_cls);
+    Py_XDECREF(Drop_application_roleContext_cls);
+    Py_XDECREF(Alter_assemblyContext_cls);
+    Py_XDECREF(Alter_assembly_startContext_cls);
+    Py_XDECREF(Alter_assembly_clauseContext_cls);
+    Py_XDECREF(Alter_assembly_from_clauseContext_cls);
+    Py_XDECREF(Alter_assembly_from_clause_startContext_cls);
+    Py_XDECREF(Alter_assembly_drop_clauseContext_cls);
+    Py_XDECREF(Alter_assembly_drop_multiple_filesContext_cls);
+    Py_XDECREF(Alter_assembly_dropContext_cls);
+    Py_XDECREF(Alter_assembly_add_clauseContext_cls);
+    Py_XDECREF(Alter_asssembly_add_clause_startContext_cls);
+    Py_XDECREF(Alter_assembly_client_file_clauseContext_cls);
+    Py_XDECREF(Alter_assembly_file_nameContext_cls);
+    Py_XDECREF(Alter_assembly_file_bitsContext_cls);
+    Py_XDECREF(Alter_assembly_asContext_cls);
+    Py_XDECREF(Alter_assembly_with_clauseContext_cls);
+    Py_XDECREF(Alter_assembly_withContext_cls);
+    Py_XDECREF(Client_assembly_specifierContext_cls);
+    Py_XDECREF(Assembly_optionContext_cls);
+    Py_XDECREF(Network_file_shareContext_cls);
+    Py_XDECREF(Network_computerContext_cls);
+    Py_XDECREF(Network_file_startContext_cls);
+    Py_XDECREF(File_pathContext_cls);
+    Py_XDECREF(File_directory_path_separatorContext_cls);
+    Py_XDECREF(Local_fileContext_cls);
+    Py_XDECREF(Local_driveContext_cls);
+    Py_XDECREF(Multiple_local_filesContext_cls);
+    Py_XDECREF(Multiple_local_file_startContext_cls);
+    Py_XDECREF(Create_assemblyContext_cls);
+    Py_XDECREF(Drop_assemblyContext_cls);
+    Py_XDECREF(Alter_asymmetric_keyContext_cls);
+    Py_XDECREF(Alter_asymmetric_key_startContext_cls);
+    Py_XDECREF(Asymmetric_key_optionContext_cls);
+    Py_XDECREF(Asymmetric_key_option_startContext_cls);
+    Py_XDECREF(Asymmetric_key_password_change_optionContext_cls);
+    Py_XDECREF(Create_asymmetric_keyContext_cls);
+    Py_XDECREF(Drop_asymmetric_keyContext_cls);
+    Py_XDECREF(Alter_authorizationContext_cls);
+    Py_XDECREF(Authorization_granteeContext_cls);
+    Py_XDECREF(Entity_toContext_cls);
+    Py_XDECREF(Colon_colonContext_cls);
+    Py_XDECREF(Alter_authorization_startContext_cls);
+    Py_XDECREF(Alter_authorization_for_sql_databaseContext_cls);
+    Py_XDECREF(Alter_authorization_for_azure_dwContext_cls);
+    Py_XDECREF(Alter_authorization_for_parallel_dwContext_cls);
+    Py_XDECREF(Class_typeContext_cls);
+    Py_XDECREF(Class_type_for_sql_databaseContext_cls);
+    Py_XDECREF(Class_type_for_azure_dwContext_cls);
+    Py_XDECREF(Class_type_for_parallel_dwContext_cls);
+    Py_XDECREF(Class_type_for_grantContext_cls);
+    Py_XDECREF(Drop_availability_groupContext_cls);
+    Py_XDECREF(Alter_availability_groupContext_cls);
+    Py_XDECREF(Alter_availability_group_startContext_cls);
+    Py_XDECREF(Alter_availability_group_optionsContext_cls);
+    Py_XDECREF(Ip_v4_failoverContext_cls);
+    Py_XDECREF(Ip_v6_failoverContext_cls);
+    Py_XDECREF(Create_or_alter_broker_priorityContext_cls);
+    Py_XDECREF(Drop_broker_priorityContext_cls);
+    Py_XDECREF(Alter_certificateContext_cls);
+    Py_XDECREF(Alter_column_encryption_keyContext_cls);
+    Py_XDECREF(Create_column_encryption_keyContext_cls);
+    Py_XDECREF(Drop_certificateContext_cls);
+    Py_XDECREF(Drop_column_encryption_keyContext_cls);
+    Py_XDECREF(Drop_column_master_keyContext_cls);
+    Py_XDECREF(Drop_contractContext_cls);
+    Py_XDECREF(Drop_credentialContext_cls);
+    Py_XDECREF(Drop_cryptograhic_providerContext_cls);
+    Py_XDECREF(Drop_databaseContext_cls);
+    Py_XDECREF(Drop_database_audit_specificationContext_cls);
+    Py_XDECREF(Drop_database_encryption_keyContext_cls);
+    Py_XDECREF(Drop_database_scoped_credentialContext_cls);
+    Py_XDECREF(Drop_defaultContext_cls);
+    Py_XDECREF(Drop_endpointContext_cls);
+    Py_XDECREF(Drop_external_data_sourceContext_cls);
+    Py_XDECREF(Drop_external_file_formatContext_cls);
+    Py_XDECREF(Drop_external_libraryContext_cls);
+    Py_XDECREF(Drop_external_resource_poolContext_cls);
+    Py_XDECREF(Drop_external_tableContext_cls);
+    Py_XDECREF(Drop_event_notificationsContext_cls);
+    Py_XDECREF(Drop_event_sessionContext_cls);
+    Py_XDECREF(Drop_fulltext_catalogContext_cls);
+    Py_XDECREF(Drop_fulltext_indexContext_cls);
+    Py_XDECREF(Drop_fulltext_stoplistContext_cls);
+    Py_XDECREF(Drop_loginContext_cls);
+    Py_XDECREF(Drop_master_keyContext_cls);
+    Py_XDECREF(Drop_message_typeContext_cls);
+    Py_XDECREF(Drop_partition_functionContext_cls);
+    Py_XDECREF(Drop_partition_schemeContext_cls);
+    Py_XDECREF(Drop_queueContext_cls);
+    Py_XDECREF(Drop_remote_service_bindingContext_cls);
+    Py_XDECREF(Drop_resource_poolContext_cls);
+    Py_XDECREF(Drop_db_roleContext_cls);
+    Py_XDECREF(Drop_routeContext_cls);
+    Py_XDECREF(Drop_ruleContext_cls);
+    Py_XDECREF(Drop_schemaContext_cls);
+    Py_XDECREF(Drop_search_property_listContext_cls);
+    Py_XDECREF(Drop_security_policyContext_cls);
+    Py_XDECREF(Drop_sequenceContext_cls);
+    Py_XDECREF(Drop_server_auditContext_cls);
+    Py_XDECREF(Drop_server_audit_specificationContext_cls);
+    Py_XDECREF(Drop_server_roleContext_cls);
+    Py_XDECREF(Drop_serviceContext_cls);
+    Py_XDECREF(Drop_signatureContext_cls);
+    Py_XDECREF(Drop_statistics_name_azure_dw_and_pdwContext_cls);
+    Py_XDECREF(Drop_symmetric_keyContext_cls);
+    Py_XDECREF(Drop_synonymContext_cls);
+    Py_XDECREF(Drop_userContext_cls);
+    Py_XDECREF(Drop_workload_groupContext_cls);
+    Py_XDECREF(Drop_xml_schema_collectionContext_cls);
+    Py_XDECREF(Disable_triggerContext_cls);
+    Py_XDECREF(Enable_triggerContext_cls);
+    Py_XDECREF(Lock_tableContext_cls);
+    Py_XDECREF(Truncate_tableContext_cls);
+    Py_XDECREF(Create_column_master_keyContext_cls);
+    Py_XDECREF(Alter_credentialContext_cls);
+    Py_XDECREF(Create_credentialContext_cls);
+    Py_XDECREF(Alter_cryptographic_providerContext_cls);
+    Py_XDECREF(Create_cryptographic_providerContext_cls);
+    Py_XDECREF(Create_endpointContext_cls);
+    Py_XDECREF(Endpoint_encryption_alogorithm_clauseContext_cls);
+    Py_XDECREF(Endpoint_authentication_clauseContext_cls);
+    Py_XDECREF(Endpoint_listener_clauseContext_cls);
+    Py_XDECREF(Create_event_notificationContext_cls);
+    Py_XDECREF(Create_or_alter_event_sessionContext_cls);
+    Py_XDECREF(Event_session_predicate_expressionContext_cls);
+    Py_XDECREF(Event_session_predicate_factorContext_cls);
+    Py_XDECREF(Event_session_predicate_leafContext_cls);
+    Py_XDECREF(Alter_external_data_sourceContext_cls);
+    Py_XDECREF(Alter_external_libraryContext_cls);
+    Py_XDECREF(Create_external_libraryContext_cls);
+    Py_XDECREF(Alter_external_resource_poolContext_cls);
+    Py_XDECREF(Create_external_resource_poolContext_cls);
+    Py_XDECREF(Alter_fulltext_catalogContext_cls);
+    Py_XDECREF(Create_fulltext_catalogContext_cls);
+    Py_XDECREF(Alter_fulltext_stoplistContext_cls);
+    Py_XDECREF(Create_fulltext_stoplistContext_cls);
+    Py_XDECREF(Alter_login_sql_serverContext_cls);
+    Py_XDECREF(Create_login_sql_serverContext_cls);
+    Py_XDECREF(Alter_login_azure_sqlContext_cls);
+    Py_XDECREF(Create_login_azure_sqlContext_cls);
+    Py_XDECREF(Alter_login_azure_sql_dw_and_pdwContext_cls);
+    Py_XDECREF(Create_login_pdwContext_cls);
+    Py_XDECREF(Alter_master_key_sql_serverContext_cls);
+    Py_XDECREF(Create_master_key_sql_serverContext_cls);
+    Py_XDECREF(Alter_master_key_azure_sqlContext_cls);
+    Py_XDECREF(Create_master_key_azure_sqlContext_cls);
+    Py_XDECREF(Alter_message_typeContext_cls);
+    Py_XDECREF(Alter_partition_functionContext_cls);
+    Py_XDECREF(Alter_partition_schemeContext_cls);
+    Py_XDECREF(Alter_remote_service_bindingContext_cls);
+    Py_XDECREF(Create_remote_service_bindingContext_cls);
+    Py_XDECREF(Create_resource_poolContext_cls);
+    Py_XDECREF(Alter_resource_governorContext_cls);
+    Py_XDECREF(Alter_database_audit_specificationContext_cls);
+    Py_XDECREF(Audit_action_spec_groupContext_cls);
+    Py_XDECREF(Audit_action_specificationContext_cls);
+    Py_XDECREF(Action_specificationContext_cls);
+    Py_XDECREF(Audit_class_nameContext_cls);
+    Py_XDECREF(Audit_securableContext_cls);
+    Py_XDECREF(Alter_db_roleContext_cls);
+    Py_XDECREF(Create_database_audit_specificationContext_cls);
+    Py_XDECREF(Create_db_roleContext_cls);
+    Py_XDECREF(Create_routeContext_cls);
+    Py_XDECREF(Create_ruleContext_cls);
+    Py_XDECREF(Alter_schema_sqlContext_cls);
+    Py_XDECREF(Create_schemaContext_cls);
+    Py_XDECREF(Create_schema_azure_sql_dw_and_pdwContext_cls);
+    Py_XDECREF(Alter_schema_azure_sql_dw_and_pdwContext_cls);
+    Py_XDECREF(Create_search_property_listContext_cls);
+    Py_XDECREF(Create_security_policyContext_cls);
+    Py_XDECREF(Alter_sequenceContext_cls);
+    Py_XDECREF(Create_sequenceContext_cls);
+    Py_XDECREF(Alter_server_auditContext_cls);
+    Py_XDECREF(Create_server_auditContext_cls);
+    Py_XDECREF(Alter_server_audit_specificationContext_cls);
+    Py_XDECREF(Create_server_audit_specificationContext_cls);
+    Py_XDECREF(Alter_server_configurationContext_cls);
+    Py_XDECREF(Alter_server_roleContext_cls);
+    Py_XDECREF(Create_server_roleContext_cls);
+    Py_XDECREF(Alter_server_role_pdwContext_cls);
+    Py_XDECREF(Alter_serviceContext_cls);
+    Py_XDECREF(Opt_arg_clauseContext_cls);
+    Py_XDECREF(Create_serviceContext_cls);
+    Py_XDECREF(Alter_service_master_keyContext_cls);
+    Py_XDECREF(Alter_symmetric_keyContext_cls);
+    Py_XDECREF(Create_synonymContext_cls);
+    Py_XDECREF(Alter_userContext_cls);
+    Py_XDECREF(Create_userContext_cls);
+    Py_XDECREF(Create_user_azure_sql_dwContext_cls);
+    Py_XDECREF(Alter_user_azure_sqlContext_cls);
+    Py_XDECREF(Alter_workload_groupContext_cls);
+    Py_XDECREF(Create_workload_groupContext_cls);
+    Py_XDECREF(Create_xml_schema_collectionContext_cls);
+    Py_XDECREF(Create_partition_functionContext_cls);
+    Py_XDECREF(Create_partition_schemeContext_cls);
+    Py_XDECREF(Create_queueContext_cls);
+    Py_XDECREF(Queue_settingsContext_cls);
+    Py_XDECREF(Alter_queueContext_cls);
+    Py_XDECREF(Queue_actionContext_cls);
+    Py_XDECREF(Queue_rebuild_optionsContext_cls);
+    Py_XDECREF(Create_contractContext_cls);
+    Py_XDECREF(Conversation_statementContext_cls);
+    Py_XDECREF(Message_statementContext_cls);
+    Py_XDECREF(Merge_statementContext_cls);
+    Py_XDECREF(When_matchesContext_cls);
+    Py_XDECREF(Merge_matchedContext_cls);
+    Py_XDECREF(Merge_not_matchedContext_cls);
     Py_XDECREF(Delete_statementContext_cls);
     Py_XDECREF(Delete_statement_fromContext_cls);
     Py_XDECREF(Insert_statementContext_cls);
     Py_XDECREF(Insert_statement_valueContext_cls);
+    Py_XDECREF(Receive_statementContext_cls);
+    Py_XDECREF(Select_statement_standaloneContext_cls);
     Py_XDECREF(Select_statementContext_cls);
+    Py_XDECREF(TimeContext_cls);
     Py_XDECREF(Update_statementContext_cls);
-    Py_XDECREF(Where_clause_dmlContext_cls);
     Py_XDECREF(Output_clauseContext_cls);
     Py_XDECREF(Output_dml_list_elemContext_cls);
-    Py_XDECREF(Output_column_nameContext_cls);
     Py_XDECREF(Create_databaseContext_cls);
     Py_XDECREF(Create_indexContext_cls);
+    Py_XDECREF(Create_index_optionsContext_cls);
+    Py_XDECREF(Relational_index_optionContext_cls);
+    Py_XDECREF(Alter_indexContext_cls);
+    Py_XDECREF(Resumable_index_optionsContext_cls);
+    Py_XDECREF(Resumable_index_optionContext_cls);
+    Py_XDECREF(Reorganize_partitionContext_cls);
+    Py_XDECREF(Reorganize_optionsContext_cls);
+    Py_XDECREF(Reorganize_optionContext_cls);
+    Py_XDECREF(Set_index_optionsContext_cls);
+    Py_XDECREF(Set_index_optionContext_cls);
+    Py_XDECREF(Rebuild_partitionContext_cls);
+    Py_XDECREF(Rebuild_index_optionsContext_cls);
+    Py_XDECREF(Rebuild_index_optionContext_cls);
+    Py_XDECREF(Single_partition_rebuild_index_optionsContext_cls);
+    Py_XDECREF(Single_partition_rebuild_index_optionContext_cls);
+    Py_XDECREF(On_partitionsContext_cls);
+    Py_XDECREF(Create_columnstore_indexContext_cls);
+    Py_XDECREF(Create_columnstore_index_optionsContext_cls);
+    Py_XDECREF(Columnstore_index_optionContext_cls);
+    Py_XDECREF(Create_nonclustered_columnstore_indexContext_cls);
+    Py_XDECREF(Create_xml_indexContext_cls);
+    Py_XDECREF(Xml_index_optionsContext_cls);
+    Py_XDECREF(Xml_index_optionContext_cls);
+    Py_XDECREF(Create_or_alter_procedureContext_cls);
+    Py_XDECREF(As_external_nameContext_cls);
+    Py_XDECREF(Create_or_alter_triggerContext_cls);
+    Py_XDECREF(Create_or_alter_dml_triggerContext_cls);
+    Py_XDECREF(Dml_trigger_optionContext_cls);
+    Py_XDECREF(Dml_trigger_operationContext_cls);
+    Py_XDECREF(Create_or_alter_ddl_triggerContext_cls);
+    Py_XDECREF(Ddl_trigger_operationContext_cls);
+    Py_XDECREF(Create_or_alter_functionContext_cls);
+    Py_XDECREF(Func_body_returns_selectContext_cls);
+    Py_XDECREF(Func_body_returns_tableContext_cls);
+    Py_XDECREF(Func_body_returns_scalarContext_cls);
+    Py_XDECREF(Procedure_param_default_valueContext_cls);
+    Py_XDECREF(Procedure_paramContext_cls);
+    Py_XDECREF(Procedure_optionContext_cls);
+    Py_XDECREF(Function_optionContext_cls);
     Py_XDECREF(Create_statisticsContext_cls);
+    Py_XDECREF(Update_statisticsContext_cls);
+    Py_XDECREF(Update_statistics_optionsContext_cls);
+    Py_XDECREF(Update_statistics_optionContext_cls);
     Py_XDECREF(Create_tableContext_cls);
-    Py_XDECREF(Create_schemaContext_cls);
-    Py_XDECREF(Create_synonymContext_cls);
+    Py_XDECREF(Table_indicesContext_cls);
+    Py_XDECREF(Table_optionsContext_cls);
+    Py_XDECREF(Table_optionContext_cls);
+    Py_XDECREF(Create_table_index_optionsContext_cls);
+    Py_XDECREF(Create_table_index_optionContext_cls);
     Py_XDECREF(Create_viewContext_cls);
     Py_XDECREF(View_attributeContext_cls);
     Py_XDECREF(Alter_tableContext_cls);
+    Py_XDECREF(Switch_partitionContext_cls);
+    Py_XDECREF(Low_priority_lock_waitContext_cls);
     Py_XDECREF(Alter_databaseContext_cls);
+    Py_XDECREF(Add_or_modify_filesContext_cls);
+    Py_XDECREF(FilespecContext_cls);
+    Py_XDECREF(Add_or_modify_filegroupsContext_cls);
+    Py_XDECREF(Filegroup_updatability_optionContext_cls);
     Py_XDECREF(Database_optionspecContext_cls);
     Py_XDECREF(Auto_optionContext_cls);
     Py_XDECREF(Change_tracking_optionContext_cls);
     Py_XDECREF(Change_tracking_option_listContext_cls);
     Py_XDECREF(Containment_optionContext_cls);
     Py_XDECREF(Cursor_optionContext_cls);
+    Py_XDECREF(Alter_endpointContext_cls);
+    Py_XDECREF(Database_mirroring_optionContext_cls);
+    Py_XDECREF(Mirroring_set_optionContext_cls);
+    Py_XDECREF(Mirroring_partnerContext_cls);
+    Py_XDECREF(Mirroring_witnessContext_cls);
+    Py_XDECREF(Witness_partner_equalContext_cls);
+    Py_XDECREF(Partner_optionContext_cls);
+    Py_XDECREF(Witness_optionContext_cls);
+    Py_XDECREF(Witness_serverContext_cls);
+    Py_XDECREF(Partner_serverContext_cls);
+    Py_XDECREF(Mirroring_host_port_seperatorContext_cls);
+    Py_XDECREF(Partner_server_tcp_prefixContext_cls);
+    Py_XDECREF(Port_numberContext_cls);
+    Py_XDECREF(HostContext_cls);
     Py_XDECREF(Date_correlation_optimization_optionContext_cls);
     Py_XDECREF(Db_encryption_optionContext_cls);
     Py_XDECREF(Db_state_optionContext_cls);
@@ -76,142 +356,425 @@ SA_tsqlTranslator::~SA_tsqlTranslator() {
     Py_XDECREF(Target_recovery_time_optionContext_cls);
     Py_XDECREF(TerminationContext_cls);
     Py_XDECREF(Drop_indexContext_cls);
+    Py_XDECREF(Drop_relational_or_xml_or_spatial_indexContext_cls);
+    Py_XDECREF(Drop_backward_compatible_indexContext_cls);
     Py_XDECREF(Drop_procedureContext_cls);
+    Py_XDECREF(Drop_triggerContext_cls);
+    Py_XDECREF(Drop_dml_triggerContext_cls);
+    Py_XDECREF(Drop_ddl_triggerContext_cls);
+    Py_XDECREF(Drop_functionContext_cls);
     Py_XDECREF(Drop_statisticsContext_cls);
     Py_XDECREF(Drop_tableContext_cls);
-    Py_XDECREF(Drop_databaseContext_cls);
-    Py_XDECREF(Drop_synonymContext_cls);
     Py_XDECREF(Drop_viewContext_cls);
-    Py_XDECREF(Drop_schemaContext_cls);
-    Py_XDECREF(Drop_functionContext_cls);
     Py_XDECREF(Create_typeContext_cls);
     Py_XDECREF(Drop_typeContext_cls);
     Py_XDECREF(Rowset_function_limitedContext_cls);
     Py_XDECREF(OpenqueryContext_cls);
     Py_XDECREF(OpendatasourceContext_cls);
     Py_XDECREF(Declare_statementContext_cls);
+    Py_XDECREF(Xml_declarationContext_cls);
     Py_XDECREF(Cursor_statementContext_cls);
+    Py_XDECREF(Backup_databaseContext_cls);
+    Py_XDECREF(Backup_logContext_cls);
+    Py_XDECREF(Backup_certificateContext_cls);
+    Py_XDECREF(Backup_master_keyContext_cls);
+    Py_XDECREF(Backup_service_master_keyContext_cls);
+    Py_XDECREF(Kill_statementContext_cls);
+    Py_XDECREF(Kill_processContext_cls);
+    Py_XDECREF(Kill_query_notificationContext_cls);
+    Py_XDECREF(Kill_stats_jobContext_cls);
     Py_XDECREF(Execute_statementContext_cls);
+    Py_XDECREF(Execute_body_batchContext_cls);
+    Py_XDECREF(Execute_bodyContext_cls);
     Py_XDECREF(Execute_statement_argContext_cls);
+    Py_XDECREF(Execute_statement_arg_namedContext_cls);
+    Py_XDECREF(Execute_statement_arg_unnamedContext_cls);
+    Py_XDECREF(Execute_parameterContext_cls);
     Py_XDECREF(Execute_var_stringContext_cls);
     Py_XDECREF(Security_statementContext_cls);
+    Py_XDECREF(Principal_idContext_cls);
+    Py_XDECREF(Create_certificateContext_cls);
+    Py_XDECREF(Existing_keysContext_cls);
+    Py_XDECREF(Private_key_optionsContext_cls);
+    Py_XDECREF(Generate_new_keysContext_cls);
+    Py_XDECREF(Date_optionsContext_cls);
+    Py_XDECREF(Open_keyContext_cls);
+    Py_XDECREF(Close_keyContext_cls);
+    Py_XDECREF(Create_keyContext_cls);
+    Py_XDECREF(Key_optionsContext_cls);
+    Py_XDECREF(AlgorithmContext_cls);
+    Py_XDECREF(Encryption_mechanismContext_cls);
+    Py_XDECREF(Decryption_mechanismContext_cls);
     Py_XDECREF(Grant_permissionContext_cls);
     Py_XDECREF(Set_statementContext_cls);
     Py_XDECREF(Transaction_statementContext_cls);
     Py_XDECREF(Go_statementContext_cls);
     Py_XDECREF(Use_statementContext_cls);
+    Py_XDECREF(Setuser_statementContext_cls);
+    Py_XDECREF(Reconfigure_statementContext_cls);
+    Py_XDECREF(Shutdown_statementContext_cls);
+    Py_XDECREF(Checkpoint_statementContext_cls);
+    Py_XDECREF(Dbcc_checkalloc_optionContext_cls);
+    Py_XDECREF(Dbcc_checkallocContext_cls);
+    Py_XDECREF(Dbcc_checkcatalogContext_cls);
+    Py_XDECREF(Dbcc_checkconstraints_optionContext_cls);
+    Py_XDECREF(Dbcc_checkconstraintsContext_cls);
+    Py_XDECREF(Dbcc_checkdb_table_optionContext_cls);
+    Py_XDECREF(Dbcc_checkdbContext_cls);
+    Py_XDECREF(Dbcc_checkfilegroup_optionContext_cls);
+    Py_XDECREF(Dbcc_checkfilegroupContext_cls);
+    Py_XDECREF(Dbcc_checktableContext_cls);
+    Py_XDECREF(Dbcc_cleantableContext_cls);
+    Py_XDECREF(Dbcc_clonedatabase_optionContext_cls);
+    Py_XDECREF(Dbcc_clonedatabaseContext_cls);
+    Py_XDECREF(Dbcc_pdw_showspaceusedContext_cls);
+    Py_XDECREF(Dbcc_proccacheContext_cls);
+    Py_XDECREF(Dbcc_showcontig_optionContext_cls);
+    Py_XDECREF(Dbcc_showcontigContext_cls);
+    Py_XDECREF(Dbcc_shrinklogContext_cls);
+    Py_XDECREF(Dbcc_dbreindexContext_cls);
+    Py_XDECREF(Dbcc_dll_freeContext_cls);
+    Py_XDECREF(Dbcc_dropcleanbuffersContext_cls);
+    Py_XDECREF(Dbcc_clauseContext_cls);
     Py_XDECREF(Execute_clauseContext_cls);
     Py_XDECREF(Declare_localContext_cls);
     Py_XDECREF(Table_type_definitionContext_cls);
+    Py_XDECREF(Table_type_indicesContext_cls);
+    Py_XDECREF(Xml_type_definitionContext_cls);
+    Py_XDECREF(Xml_schema_collectionContext_cls);
     Py_XDECREF(Column_def_table_constraintsContext_cls);
     Py_XDECREF(Column_def_table_constraintContext_cls);
     Py_XDECREF(Column_definitionContext_cls);
+    Py_XDECREF(Column_definition_elementContext_cls);
+    Py_XDECREF(Column_modifierContext_cls);
+    Py_XDECREF(Materialized_column_definitionContext_cls);
     Py_XDECREF(Column_constraintContext_cls);
+    Py_XDECREF(Column_indexContext_cls);
+    Py_XDECREF(On_partition_or_filegroupContext_cls);
     Py_XDECREF(Table_constraintContext_cls);
-    Py_XDECREF(Index_optionsContext_cls);
-    Py_XDECREF(Index_optionContext_cls);
+    Py_XDECREF(Connection_nodeContext_cls);
+    Py_XDECREF(Primary_key_optionsContext_cls);
+    Py_XDECREF(Foreign_key_optionsContext_cls);
+    Py_XDECREF(Check_constraintContext_cls);
+    Py_XDECREF(On_deleteContext_cls);
+    Py_XDECREF(On_updateContext_cls);
+    Py_XDECREF(Alter_table_index_optionsContext_cls);
+    Py_XDECREF(Alter_table_index_optionContext_cls);
     Py_XDECREF(Declare_cursorContext_cls);
     Py_XDECREF(Declare_set_cursor_commonContext_cls);
+    Py_XDECREF(Declare_set_cursor_common_partialContext_cls);
     Py_XDECREF(Fetch_cursorContext_cls);
     Py_XDECREF(Set_specialContext_cls);
+    Py_XDECREF(Special_listContext_cls);
     Py_XDECREF(Constant_LOCAL_IDContext_cls);
-    Py_XDECREF(Binary_operator_expressionContext_cls);
-    Py_XDECREF(Unary_operator_expressionContext_cls);
-    Py_XDECREF(Function_call_expressionContext_cls);
-    Py_XDECREF(Conversion_expressionContext_cls);
-    Py_XDECREF(Case_expressionContext_cls);
-    Py_XDECREF(Column_ref_expressionContext_cls);
-    Py_XDECREF(String_agg_expressionContext_cls);
-    Py_XDECREF(Percentile_cont_expressionContext_cls);
+    Py_XDECREF(ExpressionContext_cls);
+    Py_XDECREF(ParameterContext_cls);
+    Py_XDECREF(Time_zoneContext_cls);
     Py_XDECREF(Primitive_expressionContext_cls);
+    Py_XDECREF(Case_expressionContext_cls);
+    Py_XDECREF(Unary_operator_expressionContext_cls);
     Py_XDECREF(Bracket_expressionContext_cls);
-    Py_XDECREF(Subquery_expressionContext_cls);
-    Py_XDECREF(Over_clause_expressionContext_cls);
-    Py_XDECREF(Xml_method_expressionContext_cls);
-    Py_XDECREF(Xml_method_callContext_cls);
-    Py_XDECREF(Simple_xml_method_nameContext_cls);
-    Py_XDECREF(Constant_expressionContext_cls);
     Py_XDECREF(SubqueryContext_cls);
     Py_XDECREF(With_expressionContext_cls);
     Py_XDECREF(Common_table_expressionContext_cls);
     Py_XDECREF(Update_elemContext_cls);
-    Py_XDECREF(Search_condition_listContext_cls);
-    Py_XDECREF(Search_cond_orContext_cls);
-    Py_XDECREF(Search_cond_predContext_cls);
-    Py_XDECREF(Search_cond_andContext_cls);
-    Py_XDECREF(Binary_in_expressionContext_cls);
-    Py_XDECREF(Unary_operator_expression2Context_cls);
-    Py_XDECREF(Binary_mod_expressionContext_cls);
-    Py_XDECREF(Unary_operator_expression3Context_cls);
-    Py_XDECREF(Bracket_search_expressionContext_cls);
-    Py_XDECREF(Sublink_expressionContext_cls);
-    Py_XDECREF(Binary_operator_expression3Context_cls);
-    Py_XDECREF(Binary_operator_expression2Context_cls);
-    Py_XDECREF(Decimal_expressionContext_cls);
-    Py_XDECREF(Bracket_query_expressionContext_cls);
-    Py_XDECREF(Query_specification_expressionContext_cls);
-    Py_XDECREF(Union_query_expressionContext_cls);
-    Py_XDECREF(Union_opContext_cls);
-    Py_XDECREF(Cross_apply_expressionContext_cls);
+    Py_XDECREF(Update_elem_mergeContext_cls);
+    Py_XDECREF(Search_conditionContext_cls);
+    Py_XDECREF(PredicateContext_cls);
+    Py_XDECREF(Query_expressionContext_cls);
+    Py_XDECREF(Sql_unionContext_cls);
     Py_XDECREF(Query_specificationContext_cls);
-    Py_XDECREF(Group_by_grouping_setsContext_cls);
-    Py_XDECREF(Grouping_setContext_cls);
     Py_XDECREF(Top_clauseContext_cls);
-    Py_XDECREF(Top_clause_dmContext_cls);
+    Py_XDECREF(Top_percentContext_cls);
+    Py_XDECREF(Top_countContext_cls);
     Py_XDECREF(Order_by_clauseContext_cls);
-    Py_XDECREF(Fetch_expressionContext_cls);
+    Py_XDECREF(Select_order_by_clauseContext_cls);
     Py_XDECREF(For_clauseContext_cls);
     Py_XDECREF(Xml_common_directivesContext_cls);
     Py_XDECREF(Order_by_expressionContext_cls);
+    Py_XDECREF(Grouping_sets_itemContext_cls);
     Py_XDECREF(Group_by_itemContext_cls);
     Py_XDECREF(Option_clauseContext_cls);
     Py_XDECREF(OptionContext_cls);
     Py_XDECREF(Optimize_for_argContext_cls);
     Py_XDECREF(Select_listContext_cls);
+    Py_XDECREF(Udt_method_argumentsContext_cls);
+    Py_XDECREF(AsteriskContext_cls);
+    Py_XDECREF(Udt_elemContext_cls);
+    Py_XDECREF(Expression_elemContext_cls);
     Py_XDECREF(Select_list_elemContext_cls);
     Py_XDECREF(Table_sourcesContext_cls);
-    Py_XDECREF(Cross_joinContext_cls);
-    Py_XDECREF(Table_source_item_joinContext_cls);
-    Py_XDECREF(Standard_joinContext_cls);
-    Py_XDECREF(Apply_joinContext_cls);
-    Py_XDECREF(Bracket_table_sourceContext_cls);
-    Py_XDECREF(Table_source_item_simpleContext_cls);
-    Py_XDECREF(Table_source_item_complexContext_cls);
-    Py_XDECREF(Table_source_item_nameContext_cls);
-    Py_XDECREF(Tablesample_clauseContext_cls);
-    Py_XDECREF(Sample_numberContext_cls);
-    Py_XDECREF(Repeat_seedContext_cls);
-    Py_XDECREF(Table_aliasContext_cls);
+    Py_XDECREF(Non_ansi_joinContext_cls);
+    Py_XDECREF(Table_sourceContext_cls);
+    Py_XDECREF(Table_source_itemContext_cls);
+    Py_XDECREF(Open_xmlContext_cls);
+    Py_XDECREF(Open_jsonContext_cls);
+    Py_XDECREF(Json_declarationContext_cls);
+    Py_XDECREF(Json_column_declarationContext_cls);
+    Py_XDECREF(Schema_declarationContext_cls);
+    Py_XDECREF(Column_declarationContext_cls);
     Py_XDECREF(Change_tableContext_cls);
-    Py_XDECREF(Join_typeContext_cls);
-    Py_XDECREF(Table_name_with_hintContext_cls);
+    Py_XDECREF(Change_table_changesContext_cls);
+    Py_XDECREF(Change_table_versionContext_cls);
+    Py_XDECREF(Join_partContext_cls);
+    Py_XDECREF(Join_onContext_cls);
+    Py_XDECREF(Cross_joinContext_cls);
+    Py_XDECREF(Apply_Context_cls);
+    Py_XDECREF(PivotContext_cls);
+    Py_XDECREF(UnpivotContext_cls);
+    Py_XDECREF(Pivot_clauseContext_cls);
+    Py_XDECREF(Unpivot_clauseContext_cls);
+    Py_XDECREF(Full_column_name_listContext_cls);
     Py_XDECREF(Rowset_functionContext_cls);
     Py_XDECREF(Bulk_optionContext_cls);
     Py_XDECREF(Derived_tableContext_cls);
-    Py_XDECREF(Standard_callContext_cls);
-    Py_XDECREF(Aggregate_callContext_cls);
-    Py_XDECREF(Nvf_callContext_cls);
-    Py_XDECREF(Rank_callContext_cls);
-    Py_XDECREF(Expression_callContext_cls);
-    Py_XDECREF(Simple_callContext_cls);
-    Py_XDECREF(Cast_callContext_cls);
+    Py_XDECREF(RANKING_WINDOWED_FUNCContext_cls);
+    Py_XDECREF(BUILT_IN_FUNCContext_cls);
+    Py_XDECREF(FREE_TEXTContext_cls);
+    Py_XDECREF(ANALYTIC_WINDOWED_FUNCContext_cls);
+    Py_XDECREF(SCALAR_FUNCTIONContext_cls);
+    Py_XDECREF(PARTITION_FUNCContext_cls);
+    Py_XDECREF(AGGREGATE_WINDOWED_FUNCContext_cls);
+    Py_XDECREF(HIERARCHYID_METHODContext_cls);
+    Py_XDECREF(Partition_functionContext_cls);
+    Py_XDECREF(Freetext_functionContext_cls);
+    Py_XDECREF(Freetext_predicateContext_cls);
+    Py_XDECREF(Json_key_valueContext_cls);
+    Py_XDECREF(Json_null_clauseContext_cls);
+    Py_XDECREF(COL_NAMEContext_cls);
+    Py_XDECREF(CHECKSUMContext_cls);
+    Py_XDECREF(DECOMPRESSContext_cls);
+    Py_XDECREF(CURRENT_TIMEZONE_IDContext_cls);
+    Py_XDECREF(MONTHContext_cls);
+    Py_XDECREF(RANDContext_cls);
+    Py_XDECREF(FORMATContext_cls);
+    Py_XDECREF(TRIMContext_cls);
+    Py_XDECREF(LEASTContext_cls);
+    Py_XDECREF(APP_NAMEContext_cls);
+    Py_XDECREF(USER_IDContext_cls);
+    Py_XDECREF(FILE_NAMEContext_cls);
+    Py_XDECREF(SESSION_CONTEXTContext_cls);
+    Py_XDECREF(STRContext_cls);
+    Py_XDECREF(CONVERTContext_cls);
+    Py_XDECREF(XML_DATA_TYPE_FUNCContext_cls);
+    Py_XDECREF(LOG10Context_cls);
+    Py_XDECREF(FLOORContext_cls);
+    Py_XDECREF(YEARContext_cls);
+    Py_XDECREF(PARSEContext_cls);
+    Py_XDECREF(ORIGINAL_LOGINContext_cls);
+    Py_XDECREF(MATH_SIGNContext_cls);
+    Py_XDECREF(TIMEFROMPARTSContext_cls);
+    Py_XDECREF(LEFTContext_cls);
+    Py_XDECREF(GET_FILESTREAM_TRANSACTION_CONTEXTContext_cls);
+    Py_XDECREF(FILEPROPERTYContext_cls);
+    Py_XDECREF(IDENT_SEEDContext_cls);
+    Py_XDECREF(IDENTITYContext_cls);
+    Py_XDECREF(CURRENT_TRANSACTION_IDContext_cls);
+    Py_XDECREF(LTRIMContext_cls);
+    Py_XDECREF(ROWCOUNT_BIGContext_cls);
+    Py_XDECREF(CERTENCODEDContext_cls);
+    Py_XDECREF(JSON_VALUEContext_cls);
+    Py_XDECREF(SYSDATETIMEContext_cls);
+    Py_XDECREF(CERTPRIVATEKEYContext_cls);
+    Py_XDECREF(SPACEContext_cls);
+    Py_XDECREF(UPPERContext_cls);
+    Py_XDECREF(ABSContext_cls);
+    Py_XDECREF(ISJSONContext_cls);
+    Py_XDECREF(HAS_PERMS_BY_NAMEContext_cls);
+    Py_XDECREF(SUSER_IDContext_cls);
+    Py_XDECREF(SCOPE_IDENTITYContext_cls);
+    Py_XDECREF(JSON_QUERYContext_cls);
+    Py_XDECREF(INDEX_COLContext_cls);
+    Py_XDECREF(DATABASE_PRINCIPAL_IDContext_cls);
+    Py_XDECREF(PATINDEXContext_cls);
+    Py_XDECREF(FULLTEXTSERVICEPROPERTYContext_cls);
+    Py_XDECREF(SMALLDATETIMEFROMPARTSContext_cls);
+    Py_XDECREF(IDENT_CURRENTContext_cls);
+    Py_XDECREF(SESSIONPROPERTYContext_cls);
+    Py_XDECREF(FETCH_STATUSContext_cls);
+    Py_XDECREF(POWERContext_cls);
+    Py_XDECREF(REPLICATEContext_cls);
+    Py_XDECREF(USER_NAMEContext_cls);
+    Py_XDECREF(OBJECT_DEFINITIONContext_cls);
+    Py_XDECREF(IS_SRVROLEMEMBERContext_cls);
+    Py_XDECREF(NEWSEQUENTIALIDContext_cls);
+    Py_XDECREF(OBJECT_NAMEContext_cls);
+    Py_XDECREF(JSON_PATH_EXISTSContext_cls);
+    Py_XDECREF(PWDCOMPAREContext_cls);
+    Py_XDECREF(SCHEMA_IDContext_cls);
+    Py_XDECREF(OBJECT_SCHEMA_NAMEContext_cls);
+    Py_XDECREF(SUSER_SNAMEContext_cls);
+    Py_XDECREF(DB_NAMEContext_cls);
+    Py_XDECREF(SUSER_SIDContext_cls);
+    Py_XDECREF(ASCIIContext_cls);
+    Py_XDECREF(FILE_IDEXContext_cls);
+    Py_XDECREF(ERROR_SEVERITYContext_cls);
+    Py_XDECREF(REVERSEContext_cls);
+    Py_XDECREF(ISDATEContext_cls);
+    Py_XDECREF(REPLACEContext_cls);
+    Py_XDECREF(CURSOR_STATUSContext_cls);
+    Py_XDECREF(MIN_ACTIVE_ROWVERSIONContext_cls);
+    Py_XDECREF(HAS_DBACCESSContext_cls);
+    Py_XDECREF(NEXT_VALUE_FORContext_cls);
+    Py_XDECREF(FILEGROUP_IDContext_cls);
+    Py_XDECREF(LOWERContext_cls);
+    Py_XDECREF(DATENAMEContext_cls);
+    Py_XDECREF(CEILINGContext_cls);
+    Py_XDECREF(APPLOCK_TESTContext_cls);
+    Py_XDECREF(SINContext_cls);
+    Py_XDECREF(TYPE_NAMEContext_cls);
+    Py_XDECREF(SYSUTCDATETIMEContext_cls);
+    Py_XDECREF(DATEADDContext_cls);
+    Py_XDECREF(DATETIMEFROMPARTSContext_cls);
+    Py_XDECREF(ERROR_MESSAGEContext_cls);
+    Py_XDECREF(FILEGROUPPROPERTYContext_cls);
+    Py_XDECREF(EOMONTHContext_cls);
+    Py_XDECREF(IDENT_INCRContext_cls);
+    Py_XDECREF(ASINContext_cls);
+    Py_XDECREF(NCHARContext_cls);
+    Py_XDECREF(DIFFERENCEContext_cls);
+    Py_XDECREF(CHARINDEXContext_cls);
+    Py_XDECREF(TODATETIMEOFFSETContext_cls);
+    Py_XDECREF(RADIANSContext_cls);
+    Py_XDECREF(CURRENT_TIMEZONEContext_cls);
+    Py_XDECREF(COL_LENGTHContext_cls);
+    Py_XDECREF(DATEFROMPARTSContext_cls);
+    Py_XDECREF(NEWIDContext_cls);
+    Py_XDECREF(DATETRUNCContext_cls);
+    Py_XDECREF(ISNULLContext_cls);
+    Py_XDECREF(JSON_MODIFYContext_cls);
+    Py_XDECREF(CURRENT_REQUEST_IDContext_cls);
+    Py_XDECREF(IS_MEMBERContext_cls);
+    Py_XDECREF(SERVERPROPERTYContext_cls);
+    Py_XDECREF(SQRTContext_cls);
+    Py_XDECREF(ATN2Context_cls);
+    Py_XDECREF(UNICODEContext_cls);
+    Py_XDECREF(NULLIFContext_cls);
+    Py_XDECREF(SESSION_USERContext_cls);
+    Py_XDECREF(CASTContext_cls);
+    Py_XDECREF(DATETIME2FROMPARTSContext_cls);
+    Py_XDECREF(SQUAREContext_cls);
+    Py_XDECREF(LOGContext_cls);
+    Py_XDECREF(IIFContext_cls);
+    Py_XDECREF(DATEPARTContext_cls);
+    Py_XDECREF(CONTEXT_INFOContext_cls);
+    Py_XDECREF(DATEDIFFContext_cls);
+    Py_XDECREF(OBJECTPROPERTYContext_cls);
+    Py_XDECREF(CHARContext_cls);
+    Py_XDECREF(STRING_ESCAPEContext_cls);
+    Py_XDECREF(GETANSINULLContext_cls);
+    Py_XDECREF(SYSTEM_USERContext_cls);
+    Py_XDECREF(OBJECT_IDContext_cls);
+    Py_XDECREF(ERROR_PROCEDUREContext_cls);
+    Py_XDECREF(QUOTENAMEContext_cls);
+    Py_XDECREF(RIGHTContext_cls);
+    Py_XDECREF(HOST_IDContext_cls);
+    Py_XDECREF(DATETIMEOFFSETFROMPARTSContext_cls);
+    Py_XDECREF(COSContext_cls);
+    Py_XDECREF(COTContext_cls);
+    Py_XDECREF(FILE_IDContext_cls);
+    Py_XDECREF(ASSEMBLYPROPERTYContext_cls);
+    Py_XDECREF(STUFFContext_cls);
+    Py_XDECREF(IS_ROLEMEMBERContext_cls);
+    Py_XDECREF(SQL_VARIANT_PROPERTYContext_cls);
+    Py_XDECREF(GREATESTContext_cls);
+    Py_XDECREF(GETUTCDATEContext_cls);
+    Py_XDECREF(LOGINPROPERTYContext_cls);
+    Py_XDECREF(CONCAT_WSContext_cls);
+    Py_XDECREF(ERROR_STATEContext_cls);
+    Py_XDECREF(DAYContext_cls);
+    Py_XDECREF(PARSENAMEContext_cls);
+    Py_XDECREF(TANContext_cls);
+    Py_XDECREF(CURRENT_USERContext_cls);
+    Py_XDECREF(PERMISSIONSContext_cls);
+    Py_XDECREF(SYSDATETIMEOFFSETContext_cls);
+    Py_XDECREF(INDEXPROPERTYContext_cls);
+    Py_XDECREF(OBJECTPROPERTYEXContext_cls);
+    Py_XDECREF(SUBSTRINGContext_cls);
+    Py_XDECREF(BINARY_CHECKSUMContext_cls);
+    Py_XDECREF(INDEXKEY_PROPERTYContext_cls);
+    Py_XDECREF(PWDENCRYPTContext_cls);
+    Py_XDECREF(COMPRESSContext_cls);
+    Py_XDECREF(COALESCEContext_cls);
+    Py_XDECREF(STATS_DATEContext_cls);
+    Py_XDECREF(ISNUMERICContext_cls);
+    Py_XDECREF(ACOSContext_cls);
+    Py_XDECREF(FILEGROUP_NAMEContext_cls);
+    Py_XDECREF(COLUMNPROPERTYContext_cls);
+    Py_XDECREF(DB_IDContext_cls);
+    Py_XDECREF(SOUNDEXContext_cls);
+    Py_XDECREF(CURSOR_ROWSContext_cls);
+    Py_XDECREF(FULLTEXTCATALOGPROPERTYContext_cls);
+    Py_XDECREF(TYPEPROPERTYContext_cls);
+    Py_XDECREF(SCHEMA_NAMEContext_cls);
+    Py_XDECREF(TYPE_IDContext_cls);
+    Py_XDECREF(TRY_CASTContext_cls);
+    Py_XDECREF(APPLOCK_MODEContext_cls);
+    Py_XDECREF(CURRENT_DATEContext_cls);
+    Py_XDECREF(GETDATEContext_cls);
+    Py_XDECREF(CERT_IDContext_cls);
+    Py_XDECREF(ATANContext_cls);
+    Py_XDECREF(CONNECTIONPROPERTYContext_cls);
+    Py_XDECREF(ERROR_NUMBERContext_cls);
+    Py_XDECREF(ERROR_LINEContext_cls);
+    Py_XDECREF(CURRENT_TIMESTAMPContext_cls);
+    Py_XDECREF(CONCATContext_cls);
+    Py_XDECREF(JSON_ARRAYContext_cls);
+    Py_XDECREF(ROUNDContext_cls);
+    Py_XDECREF(DATALENGTHContext_cls);
+    Py_XDECREF(HOST_NAMEContext_cls);
+    Py_XDECREF(DATABASEPROPERTYEXContext_cls);
+    Py_XDECREF(ORIGINAL_DB_NAMEContext_cls);
+    Py_XDECREF(FILEPROPERTYEXContext_cls);
+    Py_XDECREF(RTRIMContext_cls);
+    Py_XDECREF(JSON_OBJECTContext_cls);
+    Py_XDECREF(XACT_STATEContext_cls);
+    Py_XDECREF(FORMATMESSAGEContext_cls);
+    Py_XDECREF(DATEDIFF_BIGContext_cls);
+    Py_XDECREF(USERContext_cls);
+    Py_XDECREF(DEGREESContext_cls);
+    Py_XDECREF(LENContext_cls);
+    Py_XDECREF(TRANSLATEContext_cls);
+    Py_XDECREF(SWITCHOFFSETContext_cls);
+    Py_XDECREF(PIContext_cls);
+    Py_XDECREF(DATE_BUCKETContext_cls);
+    Py_XDECREF(EXPContext_cls);
+    Py_XDECREF(STRINGAGGContext_cls);
+    Py_XDECREF(Xml_data_type_methodsContext_cls);
+    Py_XDECREF(Dateparts_9Context_cls);
+    Py_XDECREF(Dateparts_12Context_cls);
+    Py_XDECREF(Dateparts_15Context_cls);
+    Py_XDECREF(Dateparts_datetruncContext_cls);
+    Py_XDECREF(Value_methodContext_cls);
+    Py_XDECREF(Value_callContext_cls);
+    Py_XDECREF(Query_methodContext_cls);
+    Py_XDECREF(Query_callContext_cls);
+    Py_XDECREF(Exist_methodContext_cls);
+    Py_XDECREF(Exist_callContext_cls);
+    Py_XDECREF(Modify_methodContext_cls);
+    Py_XDECREF(Modify_callContext_cls);
+    Py_XDECREF(Hierarchyid_callContext_cls);
+    Py_XDECREF(Hierarchyid_static_methodContext_cls);
+    Py_XDECREF(Nodes_methodContext_cls);
     Py_XDECREF(Switch_sectionContext_cls);
     Py_XDECREF(Switch_search_condition_sectionContext_cls);
+    Py_XDECREF(As_column_aliasContext_cls);
+    Py_XDECREF(As_table_aliasContext_cls);
+    Py_XDECREF(Table_aliasContext_cls);
     Py_XDECREF(With_table_hintsContext_cls);
-    Py_XDECREF(Insert_with_table_hintsContext_cls);
+    Py_XDECREF(Deprecated_table_hintContext_cls);
+    Py_XDECREF(Sybase_legacy_hintsContext_cls);
+    Py_XDECREF(Sybase_legacy_hintContext_cls);
     Py_XDECREF(Table_hintContext_cls);
     Py_XDECREF(Index_valueContext_cls);
     Py_XDECREF(Column_alias_listContext_cls);
     Py_XDECREF(Column_aliasContext_cls);
-    Py_XDECREF(A_starContext_cls);
     Py_XDECREF(Table_value_constructorContext_cls);
-    Py_XDECREF(Expression_listContext_cls);
-    Py_XDECREF(Value_listContext_cls);
-    Py_XDECREF(Next_value_forContext_cls);
-    Py_XDECREF(Next_value_for_functionContext_cls);
+    Py_XDECREF(Expression_list_Context_cls);
     Py_XDECREF(Ranking_windowed_functionContext_cls);
     Py_XDECREF(Aggregate_windowed_functionContext_cls);
-    Py_XDECREF(All_distinctContext_cls);
+    Py_XDECREF(Analytic_windowed_functionContext_cls);
+    Py_XDECREF(All_distinct_expressionContext_cls);
     Py_XDECREF(Over_clauseContext_cls);
     Py_XDECREF(Row_or_range_clauseContext_cls);
     Py_XDECREF(Window_frame_extentContext_cls);
@@ -223,147 +786,157 @@ SA_tsqlTranslator::~SA_tsqlTranslator() {
     Py_XDECREF(Database_file_specContext_cls);
     Py_XDECREF(File_groupContext_cls);
     Py_XDECREF(File_specContext_cls);
+    Py_XDECREF(Entity_nameContext_cls);
+    Py_XDECREF(Entity_name_for_azure_dwContext_cls);
+    Py_XDECREF(Entity_name_for_parallel_dwContext_cls);
     Py_XDECREF(Full_table_nameContext_cls);
+    Py_XDECREF(Table_nameContext_cls);
     Py_XDECREF(Simple_nameContext_cls);
-    Py_XDECREF(Func_proc_nameContext_cls);
+    Py_XDECREF(Func_proc_name_schemaContext_cls);
+    Py_XDECREF(Func_proc_name_database_schemaContext_cls);
+    Py_XDECREF(Func_proc_name_server_database_schemaContext_cls);
     Py_XDECREF(Ddl_objectContext_cls);
     Py_XDECREF(Full_column_nameContext_cls);
+    Py_XDECREF(Column_name_list_with_orderContext_cls);
+    Py_XDECREF(Insert_column_name_listContext_cls);
+    Py_XDECREF(Insert_column_idContext_cls);
     Py_XDECREF(Column_name_listContext_cls);
     Py_XDECREF(Cursor_nameContext_cls);
     Py_XDECREF(On_offContext_cls);
     Py_XDECREF(ClusteredContext_cls);
     Py_XDECREF(Null_notnullContext_cls);
     Py_XDECREF(Scalar_function_nameContext_cls);
-    Py_XDECREF(Default_valueContext_cls);
+    Py_XDECREF(Begin_conversation_timerContext_cls);
+    Py_XDECREF(Begin_conversation_dialogContext_cls);
+    Py_XDECREF(Contract_nameContext_cls);
+    Py_XDECREF(Service_nameContext_cls);
+    Py_XDECREF(End_conversationContext_cls);
+    Py_XDECREF(Waitfor_conversationContext_cls);
+    Py_XDECREF(Get_conversationContext_cls);
+    Py_XDECREF(Queue_idContext_cls);
+    Py_XDECREF(Send_conversationContext_cls);
+    Py_XDECREF(Data_typeContext_cls);
     Py_XDECREF(ConstantContext_cls);
-    Py_XDECREF(SignContext_cls);
-    Py_XDECREF(R_idContext_cls);
+    Py_XDECREF(Primitive_constantContext_cls);
+    Py_XDECREF(KeywordContext_cls);
+    Py_XDECREF(Id_Context_cls);
     Py_XDECREF(Simple_idContext_cls);
+    Py_XDECREF(Id_or_stringContext_cls);
     Py_XDECREF(Comparison_operatorContext_cls);
     Py_XDECREF(Assignment_operatorContext_cls);
     Py_XDECREF(File_sizeContext_cls);
-    Py_XDECREF(Create_or_alter_procedureContext_cls);
-    Py_XDECREF(Create_or_alter_functionContext_cls);
-    Py_XDECREF(Func_body_returns_selectContext_cls);
-    Py_XDECREF(Func_body_returns_tableContext_cls);
-    Py_XDECREF(Func_body_returns_scalarContext_cls);
-    Py_XDECREF(Procedure_paramContext_cls);
-    Py_XDECREF(Procedure_optionContext_cls);
-    Py_XDECREF(Function_optionContext_cls);
-    Py_XDECREF(Percentile_contContext_cls);
-    Py_XDECREF(String_aggContext_cls);
-    Py_XDECREF(Data_typeContext_cls);
 }
 
 
-antlrcpp::Any SA_tsqlTranslator::visitTsql_file(tsqlParser::Tsql_fileContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTsql_file(TSqlParser::Tsql_fileContext *ctx){
     if(!Tsql_fileContext_cls) Tsql_fileContext_cls = PyObject_GetAttrString(translator->parser_cls, "Tsql_fileContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Tsql_fileContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitBatch(tsqlParser::BatchContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBatch(TSqlParser::BatchContext *ctx){
     if(!BatchContext_cls) BatchContext_cls = PyObject_GetAttrString(translator->parser_cls, "BatchContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, BatchContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSql_clauses(tsqlParser::Sql_clausesContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBatch_level_statement(TSqlParser::Batch_level_statementContext *ctx){
+    if(!Batch_level_statementContext_cls) Batch_level_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Batch_level_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Batch_level_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSql_clauses(TSqlParser::Sql_clausesContext *ctx){
     if(!Sql_clausesContext_cls) Sql_clausesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Sql_clausesContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Sql_clausesContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSql_clause(tsqlParser::Sql_clauseContext *ctx){
-    if(!Sql_clauseContext_cls) Sql_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Sql_clauseContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Sql_clauseContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitDml_clause(tsqlParser::Dml_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDml_clause(TSqlParser::Dml_clauseContext *ctx){
     if(!Dml_clauseContext_cls) Dml_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dml_clauseContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Dml_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDdl_clause(tsqlParser::Ddl_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDdl_clause(TSqlParser::Ddl_clauseContext *ctx){
     if(!Ddl_clauseContext_cls) Ddl_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Ddl_clauseContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Ddl_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCfl_statement(tsqlParser::Cfl_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBackup_statement(TSqlParser::Backup_statementContext *ctx){
+    if(!Backup_statementContext_cls) Backup_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Backup_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Backup_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCfl_statement(TSqlParser::Cfl_statementContext *ctx){
     if(!Cfl_statementContext_cls) Cfl_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cfl_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Cfl_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCfl_clause(tsqlParser::Cfl_clauseContext *ctx){
-    if(!Cfl_clauseContext_cls) Cfl_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cfl_clauseContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Cfl_clauseContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitBlock_statement(tsqlParser::Block_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBlock_statement(TSqlParser::Block_statementContext *ctx){
     if(!Block_statementContext_cls) Block_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Block_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Block_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitBreak_statement(tsqlParser::Break_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBreak_statement(TSqlParser::Break_statementContext *ctx){
     if(!Break_statementContext_cls) Break_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Break_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Break_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitContinue_statement(tsqlParser::Continue_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitContinue_statement(TSqlParser::Continue_statementContext *ctx){
     if(!Continue_statementContext_cls) Continue_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Continue_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Continue_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitGoto_statement(tsqlParser::Goto_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitGoto_statement(TSqlParser::Goto_statementContext *ctx){
     if(!Goto_statementContext_cls) Goto_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Goto_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Goto_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitIf_statement(tsqlParser::If_statementContext *ctx){
-    if(!If_statementContext_cls) If_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "If_statementContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, If_statementContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitIf_block(tsqlParser::If_blockContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"if_expr", static_cast<void*>(ctx->if_expr)},
-        {"else_expr", static_cast<void*>(ctx->else_expr)},
-        {"if_block_expr", static_cast<void*>(ctx->if_block_expr)},
-        {"else_block_expr", static_cast<void*>(ctx->else_block_expr)}
-    };
-    if(!If_blockContext_cls) If_blockContext_cls = PyObject_GetAttrString(translator->parser_cls, "If_blockContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, If_blockContext_cls, labels, 4);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitReturn_statement(tsqlParser::Return_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitReturn_statement(TSqlParser::Return_statementContext *ctx){
     if(!Return_statementContext_cls) Return_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Return_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Return_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitThrow_statement(tsqlParser::Throw_statementContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"error_number", static_cast<void*>(ctx->error_number)},
-        {"message", static_cast<void*>(ctx->message)},
-        {"state", static_cast<void*>(ctx->state)}
-    };
-    if(!Throw_statementContext_cls) Throw_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Throw_statementContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Throw_statementContext_cls, labels, 3);
+antlrcpp::Any SA_TSqlTranslator::visitIf_statement(TSqlParser::If_statementContext *ctx){
+    if(!If_statementContext_cls) If_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "If_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, If_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTry_catch_statement(tsqlParser::Try_catch_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitThrow_statement(TSqlParser::Throw_statementContext *ctx){
+    if(!Throw_statementContext_cls) Throw_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Throw_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Throw_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitThrow_error_number(TSqlParser::Throw_error_numberContext *ctx){
+    if(!Throw_error_numberContext_cls) Throw_error_numberContext_cls = PyObject_GetAttrString(translator->parser_cls, "Throw_error_numberContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Throw_error_numberContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitThrow_message(TSqlParser::Throw_messageContext *ctx){
+    if(!Throw_messageContext_cls) Throw_messageContext_cls = PyObject_GetAttrString(translator->parser_cls, "Throw_messageContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Throw_messageContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitThrow_state(TSqlParser::Throw_stateContext *ctx){
+    if(!Throw_stateContext_cls) Throw_stateContext_cls = PyObject_GetAttrString(translator->parser_cls, "Throw_stateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Throw_stateContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTry_catch_statement(TSqlParser::Try_catch_statementContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"try_clauses", static_cast<void*>(ctx->try_clauses)},
         {"catch_clauses", static_cast<void*>(ctx->catch_clauses)}
@@ -373,48 +946,2020 @@ antlrcpp::Any SA_tsqlTranslator::visitTry_catch_statement(tsqlParser::Try_catch_
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWaitfor_statement(tsqlParser::Waitfor_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitWaitfor_statement(TSqlParser::Waitfor_statementContext *ctx){
     if(!Waitfor_statementContext_cls) Waitfor_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Waitfor_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Waitfor_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWhile_statement(tsqlParser::While_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitWhile_statement(TSqlParser::While_statementContext *ctx){
     if(!While_statementContext_cls) While_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "While_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, While_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitPrint_statement(tsqlParser::Print_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitPrint_statement(TSqlParser::Print_statementContext *ctx){
     if(!Print_statementContext_cls) Print_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Print_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Print_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitRaiseerror_statement(tsqlParser::Raiseerror_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitRaiseerror_statement(TSqlParser::Raiseerror_statementContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"msg", static_cast<void*>(ctx->msg)},
         {"severity", static_cast<void*>(ctx->severity)},
-        {"state", static_cast<void*>(ctx->state)}
+        {"state", static_cast<void*>(ctx->state)},
+        {"formatstring", static_cast<void*>(ctx->formatstring)},
+        {"argument", static_cast<void*>(ctx->argument)}
     };
     if(!Raiseerror_statementContext_cls) Raiseerror_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Raiseerror_statementContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Raiseerror_statementContext_cls, labels, 3);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Raiseerror_statementContext_cls, labels, 5);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitAnother_statement(tsqlParser::Another_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitEmpty_statement(TSqlParser::Empty_statementContext *ctx){
+    if(!Empty_statementContext_cls) Empty_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Empty_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Empty_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAnother_statement(TSqlParser::Another_statementContext *ctx){
     if(!Another_statementContext_cls) Another_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Another_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Another_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDelete_statement(tsqlParser::Delete_statementContext *ctx){
-    if(!Delete_statementContext_cls) Delete_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Delete_statementContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Delete_statementContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitAlter_application_role(TSqlParser::Alter_application_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"appliction_role", static_cast<void*>(ctx->appliction_role)},
+        {"new_application_role_name", static_cast<void*>(ctx->new_application_role_name)},
+        {"application_role_password", static_cast<void*>(ctx->application_role_password)},
+        {"app_role_default_schema", static_cast<void*>(ctx->app_role_default_schema)}
+    };
+    if(!Alter_application_roleContext_cls) Alter_application_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_application_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_application_roleContext_cls, labels, 4);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDelete_statement_from(tsqlParser::Delete_statement_fromContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAlter_xml_schema_collection(TSqlParser::Alter_xml_schema_collectionContext *ctx){
+    if(!Alter_xml_schema_collectionContext_cls) Alter_xml_schema_collectionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_xml_schema_collectionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_xml_schema_collectionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_application_role(TSqlParser::Create_application_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"appliction_role", static_cast<void*>(ctx->appliction_role)},
+        {"application_role_password", static_cast<void*>(ctx->application_role_password)},
+        {"app_role_default_schema", static_cast<void*>(ctx->app_role_default_schema)}
+    };
+    if(!Create_application_roleContext_cls) Create_application_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_application_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_application_roleContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_aggregate(TSqlParser::Drop_aggregateContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"aggregate_name", static_cast<void*>(ctx->aggregate_name)}
+    };
+    if(!Drop_aggregateContext_cls) Drop_aggregateContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_aggregateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_aggregateContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_application_role(TSqlParser::Drop_application_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"rolename", static_cast<void*>(ctx->rolename)}
+    };
+    if(!Drop_application_roleContext_cls) Drop_application_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_application_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_application_roleContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly(TSqlParser::Alter_assemblyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"assembly_name", static_cast<void*>(ctx->assembly_name)}
+    };
+    if(!Alter_assemblyContext_cls) Alter_assemblyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assemblyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assemblyContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_start(TSqlParser::Alter_assembly_startContext *ctx){
+    if(!Alter_assembly_startContext_cls) Alter_assembly_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_startContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_clause(TSqlParser::Alter_assembly_clauseContext *ctx){
+    if(!Alter_assembly_clauseContext_cls) Alter_assembly_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_from_clause(TSqlParser::Alter_assembly_from_clauseContext *ctx){
+    if(!Alter_assembly_from_clauseContext_cls) Alter_assembly_from_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_from_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_from_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_from_clause_start(TSqlParser::Alter_assembly_from_clause_startContext *ctx){
+    if(!Alter_assembly_from_clause_startContext_cls) Alter_assembly_from_clause_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_from_clause_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_from_clause_startContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_drop_clause(TSqlParser::Alter_assembly_drop_clauseContext *ctx){
+    if(!Alter_assembly_drop_clauseContext_cls) Alter_assembly_drop_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_drop_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_drop_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_drop_multiple_files(TSqlParser::Alter_assembly_drop_multiple_filesContext *ctx){
+    if(!Alter_assembly_drop_multiple_filesContext_cls) Alter_assembly_drop_multiple_filesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_drop_multiple_filesContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_drop_multiple_filesContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_drop(TSqlParser::Alter_assembly_dropContext *ctx){
+    if(!Alter_assembly_dropContext_cls) Alter_assembly_dropContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_dropContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_dropContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_add_clause(TSqlParser::Alter_assembly_add_clauseContext *ctx){
+    if(!Alter_assembly_add_clauseContext_cls) Alter_assembly_add_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_add_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_add_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_asssembly_add_clause_start(TSqlParser::Alter_asssembly_add_clause_startContext *ctx){
+    if(!Alter_asssembly_add_clause_startContext_cls) Alter_asssembly_add_clause_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_asssembly_add_clause_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_asssembly_add_clause_startContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_client_file_clause(TSqlParser::Alter_assembly_client_file_clauseContext *ctx){
+    if(!Alter_assembly_client_file_clauseContext_cls) Alter_assembly_client_file_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_client_file_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_client_file_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_file_name(TSqlParser::Alter_assembly_file_nameContext *ctx){
+    if(!Alter_assembly_file_nameContext_cls) Alter_assembly_file_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_file_nameContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_file_nameContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_file_bits(TSqlParser::Alter_assembly_file_bitsContext *ctx){
+    if(!Alter_assembly_file_bitsContext_cls) Alter_assembly_file_bitsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_file_bitsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_file_bitsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_as(TSqlParser::Alter_assembly_asContext *ctx){
+    if(!Alter_assembly_asContext_cls) Alter_assembly_asContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_asContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_asContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_with_clause(TSqlParser::Alter_assembly_with_clauseContext *ctx){
+    if(!Alter_assembly_with_clauseContext_cls) Alter_assembly_with_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_with_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_with_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_assembly_with(TSqlParser::Alter_assembly_withContext *ctx){
+    if(!Alter_assembly_withContext_cls) Alter_assembly_withContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_assembly_withContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_assembly_withContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitClient_assembly_specifier(TSqlParser::Client_assembly_specifierContext *ctx){
+    if(!Client_assembly_specifierContext_cls) Client_assembly_specifierContext_cls = PyObject_GetAttrString(translator->parser_cls, "Client_assembly_specifierContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Client_assembly_specifierContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAssembly_option(TSqlParser::Assembly_optionContext *ctx){
+    if(!Assembly_optionContext_cls) Assembly_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Assembly_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Assembly_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNetwork_file_share(TSqlParser::Network_file_shareContext *ctx){
+    if(!Network_file_shareContext_cls) Network_file_shareContext_cls = PyObject_GetAttrString(translator->parser_cls, "Network_file_shareContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Network_file_shareContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNetwork_computer(TSqlParser::Network_computerContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"computer_name", static_cast<void*>(ctx->computer_name)}
+    };
+    if(!Network_computerContext_cls) Network_computerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Network_computerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Network_computerContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNetwork_file_start(TSqlParser::Network_file_startContext *ctx){
+    if(!Network_file_startContext_cls) Network_file_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Network_file_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Network_file_startContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFile_path(TSqlParser::File_pathContext *ctx){
+    if(!File_pathContext_cls) File_pathContext_cls = PyObject_GetAttrString(translator->parser_cls, "File_pathContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, File_pathContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFile_directory_path_separator(TSqlParser::File_directory_path_separatorContext *ctx){
+    if(!File_directory_path_separatorContext_cls) File_directory_path_separatorContext_cls = PyObject_GetAttrString(translator->parser_cls, "File_directory_path_separatorContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, File_directory_path_separatorContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLocal_file(TSqlParser::Local_fileContext *ctx){
+    if(!Local_fileContext_cls) Local_fileContext_cls = PyObject_GetAttrString(translator->parser_cls, "Local_fileContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Local_fileContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLocal_drive(TSqlParser::Local_driveContext *ctx){
+    if(!Local_driveContext_cls) Local_driveContext_cls = PyObject_GetAttrString(translator->parser_cls, "Local_driveContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Local_driveContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMultiple_local_files(TSqlParser::Multiple_local_filesContext *ctx){
+    if(!Multiple_local_filesContext_cls) Multiple_local_filesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Multiple_local_filesContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Multiple_local_filesContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMultiple_local_file_start(TSqlParser::Multiple_local_file_startContext *ctx){
+    if(!Multiple_local_file_startContext_cls) Multiple_local_file_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Multiple_local_file_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Multiple_local_file_startContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_assembly(TSqlParser::Create_assemblyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"assembly_name", static_cast<void*>(ctx->assembly_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)}
+    };
+    if(!Create_assemblyContext_cls) Create_assemblyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_assemblyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_assemblyContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_assembly(TSqlParser::Drop_assemblyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"assembly_name", static_cast<void*>(ctx->assembly_name)}
+    };
+    if(!Drop_assemblyContext_cls) Drop_assemblyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_assemblyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_assemblyContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_asymmetric_key(TSqlParser::Alter_asymmetric_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"Asym_Key_Name", static_cast<void*>(ctx->Asym_Key_Name)}
+    };
+    if(!Alter_asymmetric_keyContext_cls) Alter_asymmetric_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_asymmetric_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_asymmetric_keyContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_asymmetric_key_start(TSqlParser::Alter_asymmetric_key_startContext *ctx){
+    if(!Alter_asymmetric_key_startContext_cls) Alter_asymmetric_key_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_asymmetric_key_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_asymmetric_key_startContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAsymmetric_key_option(TSqlParser::Asymmetric_key_optionContext *ctx){
+    if(!Asymmetric_key_optionContext_cls) Asymmetric_key_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Asymmetric_key_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Asymmetric_key_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAsymmetric_key_option_start(TSqlParser::Asymmetric_key_option_startContext *ctx){
+    if(!Asymmetric_key_option_startContext_cls) Asymmetric_key_option_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Asymmetric_key_option_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Asymmetric_key_option_startContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAsymmetric_key_password_change_option(TSqlParser::Asymmetric_key_password_change_optionContext *ctx){
+    if(!Asymmetric_key_password_change_optionContext_cls) Asymmetric_key_password_change_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Asymmetric_key_password_change_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Asymmetric_key_password_change_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_asymmetric_key(TSqlParser::Create_asymmetric_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"Asym_Key_Nam", static_cast<void*>(ctx->Asym_Key_Nam)},
+        {"database_principal_name", static_cast<void*>(ctx->database_principal_name)},
+        {"Assembly_Name", static_cast<void*>(ctx->Assembly_Name)},
+        {"Provider_Name", static_cast<void*>(ctx->Provider_Name)},
+        {"provider_key_name", static_cast<void*>(ctx->provider_key_name)},
+        {"asymmetric_key_password", static_cast<void*>(ctx->asymmetric_key_password)}
+    };
+    if(!Create_asymmetric_keyContext_cls) Create_asymmetric_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_asymmetric_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_asymmetric_keyContext_cls, labels, 6);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_asymmetric_key(TSqlParser::Drop_asymmetric_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key_name", static_cast<void*>(ctx->key_name)}
+    };
+    if(!Drop_asymmetric_keyContext_cls) Drop_asymmetric_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_asymmetric_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_asymmetric_keyContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_authorization(TSqlParser::Alter_authorizationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"entity", static_cast<void*>(ctx->entity)}
+    };
+    if(!Alter_authorizationContext_cls) Alter_authorizationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_authorizationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_authorizationContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAuthorization_grantee(TSqlParser::Authorization_granteeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"principal_name", static_cast<void*>(ctx->principal_name)}
+    };
+    if(!Authorization_granteeContext_cls) Authorization_granteeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Authorization_granteeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Authorization_granteeContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEntity_to(TSqlParser::Entity_toContext *ctx){
+    if(!Entity_toContext_cls) Entity_toContext_cls = PyObject_GetAttrString(translator->parser_cls, "Entity_toContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Entity_toContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitColon_colon(TSqlParser::Colon_colonContext *ctx){
+    if(!Colon_colonContext_cls) Colon_colonContext_cls = PyObject_GetAttrString(translator->parser_cls, "Colon_colonContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Colon_colonContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_authorization_start(TSqlParser::Alter_authorization_startContext *ctx){
+    if(!Alter_authorization_startContext_cls) Alter_authorization_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_authorization_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_authorization_startContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_authorization_for_sql_database(TSqlParser::Alter_authorization_for_sql_databaseContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"entity", static_cast<void*>(ctx->entity)}
+    };
+    if(!Alter_authorization_for_sql_databaseContext_cls) Alter_authorization_for_sql_databaseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_authorization_for_sql_databaseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_authorization_for_sql_databaseContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_authorization_for_azure_dw(TSqlParser::Alter_authorization_for_azure_dwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"entity", static_cast<void*>(ctx->entity)}
+    };
+    if(!Alter_authorization_for_azure_dwContext_cls) Alter_authorization_for_azure_dwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_authorization_for_azure_dwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_authorization_for_azure_dwContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_authorization_for_parallel_dw(TSqlParser::Alter_authorization_for_parallel_dwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"entity", static_cast<void*>(ctx->entity)}
+    };
+    if(!Alter_authorization_for_parallel_dwContext_cls) Alter_authorization_for_parallel_dwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_authorization_for_parallel_dwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_authorization_for_parallel_dwContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitClass_type(TSqlParser::Class_typeContext *ctx){
+    if(!Class_typeContext_cls) Class_typeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Class_typeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Class_typeContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitClass_type_for_sql_database(TSqlParser::Class_type_for_sql_databaseContext *ctx){
+    if(!Class_type_for_sql_databaseContext_cls) Class_type_for_sql_databaseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Class_type_for_sql_databaseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Class_type_for_sql_databaseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitClass_type_for_azure_dw(TSqlParser::Class_type_for_azure_dwContext *ctx){
+    if(!Class_type_for_azure_dwContext_cls) Class_type_for_azure_dwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Class_type_for_azure_dwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Class_type_for_azure_dwContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitClass_type_for_parallel_dw(TSqlParser::Class_type_for_parallel_dwContext *ctx){
+    if(!Class_type_for_parallel_dwContext_cls) Class_type_for_parallel_dwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Class_type_for_parallel_dwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Class_type_for_parallel_dwContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitClass_type_for_grant(TSqlParser::Class_type_for_grantContext *ctx){
+    if(!Class_type_for_grantContext_cls) Class_type_for_grantContext_cls = PyObject_GetAttrString(translator->parser_cls, "Class_type_for_grantContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Class_type_for_grantContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_availability_group(TSqlParser::Drop_availability_groupContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"group_name", static_cast<void*>(ctx->group_name)}
+    };
+    if(!Drop_availability_groupContext_cls) Drop_availability_groupContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_availability_groupContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_availability_groupContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_availability_group(TSqlParser::Alter_availability_groupContext *ctx){
+    if(!Alter_availability_groupContext_cls) Alter_availability_groupContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_availability_groupContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_availability_groupContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_availability_group_start(TSqlParser::Alter_availability_group_startContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"group_name", static_cast<void*>(ctx->group_name)}
+    };
+    if(!Alter_availability_group_startContext_cls) Alter_availability_group_startContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_availability_group_startContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_availability_group_startContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_availability_group_options(TSqlParser::Alter_availability_group_optionsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"milliseconds", static_cast<void*>(ctx->milliseconds)},
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"server_instance", static_cast<void*>(ctx->server_instance)},
+        {"session_timeout", static_cast<void*>(ctx->session_timeout)},
+        {"ag_name", static_cast<void*>(ctx->ag_name)},
+        {"ag_name_modified", static_cast<void*>(ctx->ag_name_modified)},
+        {"listener_name", static_cast<void*>(ctx->listener_name)}
+    };
+    if(!Alter_availability_group_optionsContext_cls) Alter_availability_group_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_availability_group_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_availability_group_optionsContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIp_v4_failover(TSqlParser::Ip_v4_failoverContext *ctx){
+    if(!Ip_v4_failoverContext_cls) Ip_v4_failoverContext_cls = PyObject_GetAttrString(translator->parser_cls, "Ip_v4_failoverContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Ip_v4_failoverContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIp_v6_failover(TSqlParser::Ip_v6_failoverContext *ctx){
+    if(!Ip_v6_failoverContext_cls) Ip_v6_failoverContext_cls = PyObject_GetAttrString(translator->parser_cls, "Ip_v6_failoverContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Ip_v6_failoverContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_or_alter_broker_priority(TSqlParser::Create_or_alter_broker_priorityContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"ConversationPriorityName", static_cast<void*>(ctx->ConversationPriorityName)},
+        {"RemoteServiceName", static_cast<void*>(ctx->RemoteServiceName)},
+        {"PriorityValue", static_cast<void*>(ctx->PriorityValue)}
+    };
+    if(!Create_or_alter_broker_priorityContext_cls) Create_or_alter_broker_priorityContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_broker_priorityContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_broker_priorityContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_broker_priority(TSqlParser::Drop_broker_priorityContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"ConversationPriorityName", static_cast<void*>(ctx->ConversationPriorityName)}
+    };
+    if(!Drop_broker_priorityContext_cls) Drop_broker_priorityContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_broker_priorityContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_broker_priorityContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_certificate(TSqlParser::Alter_certificateContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"certificate_name", static_cast<void*>(ctx->certificate_name)}
+    };
+    if(!Alter_certificateContext_cls) Alter_certificateContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_certificateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_certificateContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_column_encryption_key(TSqlParser::Alter_column_encryption_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"column_encryption_key", static_cast<void*>(ctx->column_encryption_key)},
+        {"column_master_key_name", static_cast<void*>(ctx->column_master_key_name)},
+        {"algorithm_name", static_cast<void*>(ctx->algorithm_name)}
+    };
+    if(!Alter_column_encryption_keyContext_cls) Alter_column_encryption_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_column_encryption_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_column_encryption_keyContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_column_encryption_key(TSqlParser::Create_column_encryption_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"column_encryption_key", static_cast<void*>(ctx->column_encryption_key)},
+        {"column_master_key_name", static_cast<void*>(ctx->column_master_key_name)},
+        {"algorithm_name", static_cast<void*>(ctx->algorithm_name)},
+        {"encrypted_value", static_cast<void*>(ctx->encrypted_value)}
+    };
+    if(!Create_column_encryption_keyContext_cls) Create_column_encryption_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_column_encryption_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_column_encryption_keyContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_certificate(TSqlParser::Drop_certificateContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"certificate_name", static_cast<void*>(ctx->certificate_name)}
+    };
+    if(!Drop_certificateContext_cls) Drop_certificateContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_certificateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_certificateContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_column_encryption_key(TSqlParser::Drop_column_encryption_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key_name", static_cast<void*>(ctx->key_name)}
+    };
+    if(!Drop_column_encryption_keyContext_cls) Drop_column_encryption_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_column_encryption_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_column_encryption_keyContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_column_master_key(TSqlParser::Drop_column_master_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key_name", static_cast<void*>(ctx->key_name)}
+    };
+    if(!Drop_column_master_keyContext_cls) Drop_column_master_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_column_master_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_column_master_keyContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_contract(TSqlParser::Drop_contractContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"dropped_contract_name", static_cast<void*>(ctx->dropped_contract_name)}
+    };
+    if(!Drop_contractContext_cls) Drop_contractContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_contractContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_contractContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_credential(TSqlParser::Drop_credentialContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"credential_name", static_cast<void*>(ctx->credential_name)}
+    };
+    if(!Drop_credentialContext_cls) Drop_credentialContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_credentialContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_credentialContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_cryptograhic_provider(TSqlParser::Drop_cryptograhic_providerContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"provider_name", static_cast<void*>(ctx->provider_name)}
+    };
+    if(!Drop_cryptograhic_providerContext_cls) Drop_cryptograhic_providerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_cryptograhic_providerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_cryptograhic_providerContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_database(TSqlParser::Drop_databaseContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_name_or_database_snapshot_name", static_cast<void*>(ctx->database_name_or_database_snapshot_name)}
+    };
+    if(!Drop_databaseContext_cls) Drop_databaseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_databaseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_databaseContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_database_audit_specification(TSqlParser::Drop_database_audit_specificationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_specification_name", static_cast<void*>(ctx->audit_specification_name)}
+    };
+    if(!Drop_database_audit_specificationContext_cls) Drop_database_audit_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_database_audit_specificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_database_audit_specificationContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_database_encryption_key(TSqlParser::Drop_database_encryption_keyContext *ctx){
+    if(!Drop_database_encryption_keyContext_cls) Drop_database_encryption_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_database_encryption_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_database_encryption_keyContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_database_scoped_credential(TSqlParser::Drop_database_scoped_credentialContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"credential_name", static_cast<void*>(ctx->credential_name)}
+    };
+    if(!Drop_database_scoped_credentialContext_cls) Drop_database_scoped_credentialContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_database_scoped_credentialContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_database_scoped_credentialContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_default(TSqlParser::Drop_defaultContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"default_name", static_cast<void*>(ctx->default_name)}
+    };
+    if(!Drop_defaultContext_cls) Drop_defaultContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_defaultContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_defaultContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_endpoint(TSqlParser::Drop_endpointContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"endPointName", static_cast<void*>(ctx->endPointName)}
+    };
+    if(!Drop_endpointContext_cls) Drop_endpointContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_endpointContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_endpointContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_external_data_source(TSqlParser::Drop_external_data_sourceContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"external_data_source_name", static_cast<void*>(ctx->external_data_source_name)}
+    };
+    if(!Drop_external_data_sourceContext_cls) Drop_external_data_sourceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_external_data_sourceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_external_data_sourceContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_external_file_format(TSqlParser::Drop_external_file_formatContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"external_file_format_name", static_cast<void*>(ctx->external_file_format_name)}
+    };
+    if(!Drop_external_file_formatContext_cls) Drop_external_file_formatContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_external_file_formatContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_external_file_formatContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_external_library(TSqlParser::Drop_external_libraryContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"library_name", static_cast<void*>(ctx->library_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)}
+    };
+    if(!Drop_external_libraryContext_cls) Drop_external_libraryContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_external_libraryContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_external_libraryContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_external_resource_pool(TSqlParser::Drop_external_resource_poolContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"pool_name", static_cast<void*>(ctx->pool_name)}
+    };
+    if(!Drop_external_resource_poolContext_cls) Drop_external_resource_poolContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_external_resource_poolContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_external_resource_poolContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_external_table(TSqlParser::Drop_external_tableContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"table", static_cast<void*>(ctx->table)}
+    };
+    if(!Drop_external_tableContext_cls) Drop_external_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_external_tableContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_external_tableContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_event_notifications(TSqlParser::Drop_event_notificationsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"notification_name", static_cast<void*>(ctx->notification_name)},
+        {"queue_name", static_cast<void*>(ctx->queue_name)}
+    };
+    if(!Drop_event_notificationsContext_cls) Drop_event_notificationsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_event_notificationsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_event_notificationsContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_event_session(TSqlParser::Drop_event_sessionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"event_session_name", static_cast<void*>(ctx->event_session_name)}
+    };
+    if(!Drop_event_sessionContext_cls) Drop_event_sessionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_event_sessionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_event_sessionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_fulltext_catalog(TSqlParser::Drop_fulltext_catalogContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"catalog_name", static_cast<void*>(ctx->catalog_name)}
+    };
+    if(!Drop_fulltext_catalogContext_cls) Drop_fulltext_catalogContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_fulltext_catalogContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_fulltext_catalogContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_fulltext_index(TSqlParser::Drop_fulltext_indexContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema", static_cast<void*>(ctx->schema)},
+        {"table", static_cast<void*>(ctx->table)}
+    };
+    if(!Drop_fulltext_indexContext_cls) Drop_fulltext_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_fulltext_indexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_fulltext_indexContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_fulltext_stoplist(TSqlParser::Drop_fulltext_stoplistContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"stoplist_name", static_cast<void*>(ctx->stoplist_name)}
+    };
+    if(!Drop_fulltext_stoplistContext_cls) Drop_fulltext_stoplistContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_fulltext_stoplistContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_fulltext_stoplistContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_login(TSqlParser::Drop_loginContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login_name", static_cast<void*>(ctx->login_name)}
+    };
+    if(!Drop_loginContext_cls) Drop_loginContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_loginContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_loginContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_master_key(TSqlParser::Drop_master_keyContext *ctx){
+    if(!Drop_master_keyContext_cls) Drop_master_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_master_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_master_keyContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_message_type(TSqlParser::Drop_message_typeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"message_type_name", static_cast<void*>(ctx->message_type_name)}
+    };
+    if(!Drop_message_typeContext_cls) Drop_message_typeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_message_typeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_message_typeContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_partition_function(TSqlParser::Drop_partition_functionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"partition_function_name", static_cast<void*>(ctx->partition_function_name)}
+    };
+    if(!Drop_partition_functionContext_cls) Drop_partition_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_partition_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_partition_functionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_partition_scheme(TSqlParser::Drop_partition_schemeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"partition_scheme_name", static_cast<void*>(ctx->partition_scheme_name)}
+    };
+    if(!Drop_partition_schemeContext_cls) Drop_partition_schemeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_partition_schemeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_partition_schemeContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_queue(TSqlParser::Drop_queueContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"queue_name", static_cast<void*>(ctx->queue_name)}
+    };
+    if(!Drop_queueContext_cls) Drop_queueContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_queueContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_queueContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_remote_service_binding(TSqlParser::Drop_remote_service_bindingContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"binding_name", static_cast<void*>(ctx->binding_name)}
+    };
+    if(!Drop_remote_service_bindingContext_cls) Drop_remote_service_bindingContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_remote_service_bindingContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_remote_service_bindingContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_resource_pool(TSqlParser::Drop_resource_poolContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"pool_name", static_cast<void*>(ctx->pool_name)}
+    };
+    if(!Drop_resource_poolContext_cls) Drop_resource_poolContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_resource_poolContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_resource_poolContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_db_role(TSqlParser::Drop_db_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"role_name", static_cast<void*>(ctx->role_name)}
+    };
+    if(!Drop_db_roleContext_cls) Drop_db_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_db_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_db_roleContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_route(TSqlParser::Drop_routeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"route_name", static_cast<void*>(ctx->route_name)}
+    };
+    if(!Drop_routeContext_cls) Drop_routeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_routeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_routeContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_rule(TSqlParser::Drop_ruleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"rule_name", static_cast<void*>(ctx->rule_name)}
+    };
+    if(!Drop_ruleContext_cls) Drop_ruleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_ruleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_ruleContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_schema(TSqlParser::Drop_schemaContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)}
+    };
+    if(!Drop_schemaContext_cls) Drop_schemaContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_schemaContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_schemaContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_search_property_list(TSqlParser::Drop_search_property_listContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"property_list_name", static_cast<void*>(ctx->property_list_name)}
+    };
+    if(!Drop_search_property_listContext_cls) Drop_search_property_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_search_property_listContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_search_property_listContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_security_policy(TSqlParser::Drop_security_policyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"security_policy_name", static_cast<void*>(ctx->security_policy_name)}
+    };
+    if(!Drop_security_policyContext_cls) Drop_security_policyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_security_policyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_security_policyContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_sequence(TSqlParser::Drop_sequenceContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"sequence_name", static_cast<void*>(ctx->sequence_name)}
+    };
+    if(!Drop_sequenceContext_cls) Drop_sequenceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_sequenceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_sequenceContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_server_audit(TSqlParser::Drop_server_auditContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_name", static_cast<void*>(ctx->audit_name)}
+    };
+    if(!Drop_server_auditContext_cls) Drop_server_auditContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_server_auditContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_server_auditContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_server_audit_specification(TSqlParser::Drop_server_audit_specificationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_specification_name", static_cast<void*>(ctx->audit_specification_name)}
+    };
+    if(!Drop_server_audit_specificationContext_cls) Drop_server_audit_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_server_audit_specificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_server_audit_specificationContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_server_role(TSqlParser::Drop_server_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"role_name", static_cast<void*>(ctx->role_name)}
+    };
+    if(!Drop_server_roleContext_cls) Drop_server_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_server_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_server_roleContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_service(TSqlParser::Drop_serviceContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"dropped_service_name", static_cast<void*>(ctx->dropped_service_name)}
+    };
+    if(!Drop_serviceContext_cls) Drop_serviceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_serviceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_serviceContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_signature(TSqlParser::Drop_signatureContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"module_name", static_cast<void*>(ctx->module_name)},
+        {"cert_name", static_cast<void*>(ctx->cert_name)},
+        {"Asym_key_name", static_cast<void*>(ctx->Asym_key_name)}
+    };
+    if(!Drop_signatureContext_cls) Drop_signatureContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_signatureContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_signatureContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_statistics_name_azure_dw_and_pdw(TSqlParser::Drop_statistics_name_azure_dw_and_pdwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"object_name", static_cast<void*>(ctx->object_name)},
+        {"statistics_name", static_cast<void*>(ctx->statistics_name)}
+    };
+    if(!Drop_statistics_name_azure_dw_and_pdwContext_cls) Drop_statistics_name_azure_dw_and_pdwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_statistics_name_azure_dw_and_pdwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_statistics_name_azure_dw_and_pdwContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_symmetric_key(TSqlParser::Drop_symmetric_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"symmetric_key_name", static_cast<void*>(ctx->symmetric_key_name)}
+    };
+    if(!Drop_symmetric_keyContext_cls) Drop_symmetric_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_symmetric_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_symmetric_keyContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_synonym(TSqlParser::Drop_synonymContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema", static_cast<void*>(ctx->schema)},
+        {"synonym_name", static_cast<void*>(ctx->synonym_name)}
+    };
+    if(!Drop_synonymContext_cls) Drop_synonymContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_synonymContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_synonymContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_user(TSqlParser::Drop_userContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"user_name", static_cast<void*>(ctx->user_name)}
+    };
+    if(!Drop_userContext_cls) Drop_userContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_userContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_userContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_workload_group(TSqlParser::Drop_workload_groupContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"group_name", static_cast<void*>(ctx->group_name)}
+    };
+    if(!Drop_workload_groupContext_cls) Drop_workload_groupContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_workload_groupContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_workload_groupContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_xml_schema_collection(TSqlParser::Drop_xml_schema_collectionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"relational_schema", static_cast<void*>(ctx->relational_schema)},
+        {"sql_identifier", static_cast<void*>(ctx->sql_identifier)}
+    };
+    if(!Drop_xml_schema_collectionContext_cls) Drop_xml_schema_collectionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_xml_schema_collectionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_xml_schema_collectionContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDisable_trigger(TSqlParser::Disable_triggerContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"trigger_name", static_cast<void*>(ctx->trigger_name)},
+        {"schema_id", static_cast<void*>(ctx->schema_id)},
+        {"object_name", static_cast<void*>(ctx->object_name)}
+    };
+    if(!Disable_triggerContext_cls) Disable_triggerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Disable_triggerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Disable_triggerContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEnable_trigger(TSqlParser::Enable_triggerContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"trigger_name", static_cast<void*>(ctx->trigger_name)},
+        {"schema_id", static_cast<void*>(ctx->schema_id)},
+        {"object_name", static_cast<void*>(ctx->object_name)}
+    };
+    if(!Enable_triggerContext_cls) Enable_triggerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Enable_triggerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Enable_triggerContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLock_table(TSqlParser::Lock_tableContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"seconds", static_cast<void*>(ctx->seconds)}
+    };
+    if(!Lock_tableContext_cls) Lock_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Lock_tableContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Lock_tableContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTruncate_table(TSqlParser::Truncate_tableContext *ctx){
+    if(!Truncate_tableContext_cls) Truncate_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Truncate_tableContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Truncate_tableContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_column_master_key(TSqlParser::Create_column_master_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key_name", static_cast<void*>(ctx->key_name)},
+        {"key_store_provider_name", static_cast<void*>(ctx->key_store_provider_name)},
+        {"key_path", static_cast<void*>(ctx->key_path)}
+    };
+    if(!Create_column_master_keyContext_cls) Create_column_master_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_column_master_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_column_master_keyContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_credential(TSqlParser::Alter_credentialContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"credential_name", static_cast<void*>(ctx->credential_name)},
+        {"identity_name", static_cast<void*>(ctx->identity_name)},
+        {"secret", static_cast<void*>(ctx->secret)}
+    };
+    if(!Alter_credentialContext_cls) Alter_credentialContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_credentialContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_credentialContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_credential(TSqlParser::Create_credentialContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"credential_name", static_cast<void*>(ctx->credential_name)},
+        {"identity_name", static_cast<void*>(ctx->identity_name)},
+        {"secret", static_cast<void*>(ctx->secret)},
+        {"cryptographic_provider_name", static_cast<void*>(ctx->cryptographic_provider_name)}
+    };
+    if(!Create_credentialContext_cls) Create_credentialContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_credentialContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_credentialContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_cryptographic_provider(TSqlParser::Alter_cryptographic_providerContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"provider_name", static_cast<void*>(ctx->provider_name)},
+        {"crypto_provider_ddl_file", static_cast<void*>(ctx->crypto_provider_ddl_file)}
+    };
+    if(!Alter_cryptographic_providerContext_cls) Alter_cryptographic_providerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_cryptographic_providerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_cryptographic_providerContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_cryptographic_provider(TSqlParser::Create_cryptographic_providerContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"provider_name", static_cast<void*>(ctx->provider_name)},
+        {"path_of_DLL", static_cast<void*>(ctx->path_of_DLL)}
+    };
+    if(!Create_cryptographic_providerContext_cls) Create_cryptographic_providerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_cryptographic_providerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_cryptographic_providerContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_endpoint(TSqlParser::Create_endpointContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"endpointname", static_cast<void*>(ctx->endpointname)},
+        {"login", static_cast<void*>(ctx->login)},
+        {"state", static_cast<void*>(ctx->state)}
+    };
+    if(!Create_endpointContext_cls) Create_endpointContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_endpointContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_endpointContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEndpoint_encryption_alogorithm_clause(TSqlParser::Endpoint_encryption_alogorithm_clauseContext *ctx){
+    if(!Endpoint_encryption_alogorithm_clauseContext_cls) Endpoint_encryption_alogorithm_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Endpoint_encryption_alogorithm_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Endpoint_encryption_alogorithm_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEndpoint_authentication_clause(TSqlParser::Endpoint_authentication_clauseContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"cert_name", static_cast<void*>(ctx->cert_name)}
+    };
+    if(!Endpoint_authentication_clauseContext_cls) Endpoint_authentication_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Endpoint_authentication_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Endpoint_authentication_clauseContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEndpoint_listener_clause(TSqlParser::Endpoint_listener_clauseContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"port", static_cast<void*>(ctx->port)},
+        {"ipv4", static_cast<void*>(ctx->ipv4)},
+        {"ipv6", static_cast<void*>(ctx->ipv6)}
+    };
+    if(!Endpoint_listener_clauseContext_cls) Endpoint_listener_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Endpoint_listener_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Endpoint_listener_clauseContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_event_notification(TSqlParser::Create_event_notificationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"event_notification_name", static_cast<void*>(ctx->event_notification_name)},
+        {"queue_name", static_cast<void*>(ctx->queue_name)},
+        {"event_type_or_group", static_cast<void*>(ctx->event_type_or_group)},
+        {"broker_service", static_cast<void*>(ctx->broker_service)},
+        {"broker_service_specifier_or_current_database", static_cast<void*>(ctx->broker_service_specifier_or_current_database)}
+    };
+    if(!Create_event_notificationContext_cls) Create_event_notificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_event_notificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_event_notificationContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_or_alter_event_session(TSqlParser::Create_or_alter_event_sessionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"event_session_name", static_cast<void*>(ctx->event_session_name)},
+        {"event_module_guid", static_cast<void*>(ctx->event_module_guid)},
+        {"event_package_name", static_cast<void*>(ctx->event_package_name)},
+        {"event_name", static_cast<void*>(ctx->event_name)},
+        {"event_customizable_attributue", static_cast<void*>(ctx->event_customizable_attributue)},
+        {"action_name", static_cast<void*>(ctx->action_name)},
+        {"target_name", static_cast<void*>(ctx->target_name)},
+        {"target_parameter_name", static_cast<void*>(ctx->target_parameter_name)},
+        {"max_memory", static_cast<void*>(ctx->max_memory)},
+        {"max_dispatch_latency_seconds", static_cast<void*>(ctx->max_dispatch_latency_seconds)},
+        {"max_event_size", static_cast<void*>(ctx->max_event_size)}
+    };
+    if(!Create_or_alter_event_sessionContext_cls) Create_or_alter_event_sessionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_event_sessionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_event_sessionContext_cls, labels, 11);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEvent_session_predicate_expression(TSqlParser::Event_session_predicate_expressionContext *ctx){
+    if(!Event_session_predicate_expressionContext_cls) Event_session_predicate_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Event_session_predicate_expressionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Event_session_predicate_expressionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEvent_session_predicate_factor(TSqlParser::Event_session_predicate_factorContext *ctx){
+    if(!Event_session_predicate_factorContext_cls) Event_session_predicate_factorContext_cls = PyObject_GetAttrString(translator->parser_cls, "Event_session_predicate_factorContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Event_session_predicate_factorContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEvent_session_predicate_leaf(TSqlParser::Event_session_predicate_leafContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"event_field_name", static_cast<void*>(ctx->event_field_name)},
+        {"event_module_guid", static_cast<void*>(ctx->event_module_guid)},
+        {"event_package_name", static_cast<void*>(ctx->event_package_name)},
+        {"predicate_source_name", static_cast<void*>(ctx->predicate_source_name)},
+        {"predicate_compare_name", static_cast<void*>(ctx->predicate_compare_name)}
+    };
+    if(!Event_session_predicate_leafContext_cls) Event_session_predicate_leafContext_cls = PyObject_GetAttrString(translator->parser_cls, "Event_session_predicate_leafContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Event_session_predicate_leafContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_external_data_source(TSqlParser::Alter_external_data_sourceContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"data_source_name", static_cast<void*>(ctx->data_source_name)},
+        {"location", static_cast<void*>(ctx->location)},
+        {"resource_manager_location", static_cast<void*>(ctx->resource_manager_location)},
+        {"credential_name", static_cast<void*>(ctx->credential_name)}
+    };
+    if(!Alter_external_data_sourceContext_cls) Alter_external_data_sourceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_external_data_sourceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_external_data_sourceContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_external_library(TSqlParser::Alter_external_libraryContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"library_name", static_cast<void*>(ctx->library_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"client_library", static_cast<void*>(ctx->client_library)},
+        {"external_data_source_name", static_cast<void*>(ctx->external_data_source_name)}
+    };
+    if(!Alter_external_libraryContext_cls) Alter_external_libraryContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_external_libraryContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_external_libraryContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_external_library(TSqlParser::Create_external_libraryContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"library_name", static_cast<void*>(ctx->library_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"client_library", static_cast<void*>(ctx->client_library)},
+        {"external_data_source_name", static_cast<void*>(ctx->external_data_source_name)}
+    };
+    if(!Create_external_libraryContext_cls) Create_external_libraryContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_external_libraryContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_external_libraryContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_external_resource_pool(TSqlParser::Alter_external_resource_poolContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"pool_name", static_cast<void*>(ctx->pool_name)},
+        {"max_cpu_percent", static_cast<void*>(ctx->max_cpu_percent)},
+        {"max_memory_percent", static_cast<void*>(ctx->max_memory_percent)},
+        {"max_processes", static_cast<void*>(ctx->max_processes)}
+    };
+    if(!Alter_external_resource_poolContext_cls) Alter_external_resource_poolContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_external_resource_poolContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_external_resource_poolContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_external_resource_pool(TSqlParser::Create_external_resource_poolContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"pool_name", static_cast<void*>(ctx->pool_name)},
+        {"max_cpu_percent", static_cast<void*>(ctx->max_cpu_percent)},
+        {"max_memory_percent", static_cast<void*>(ctx->max_memory_percent)},
+        {"max_processes", static_cast<void*>(ctx->max_processes)}
+    };
+    if(!Create_external_resource_poolContext_cls) Create_external_resource_poolContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_external_resource_poolContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_external_resource_poolContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_fulltext_catalog(TSqlParser::Alter_fulltext_catalogContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"catalog_name", static_cast<void*>(ctx->catalog_name)}
+    };
+    if(!Alter_fulltext_catalogContext_cls) Alter_fulltext_catalogContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_fulltext_catalogContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_fulltext_catalogContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_fulltext_catalog(TSqlParser::Create_fulltext_catalogContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"catalog_name", static_cast<void*>(ctx->catalog_name)},
+        {"filegroup", static_cast<void*>(ctx->filegroup)},
+        {"rootpath", static_cast<void*>(ctx->rootpath)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)}
+    };
+    if(!Create_fulltext_catalogContext_cls) Create_fulltext_catalogContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_fulltext_catalogContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_fulltext_catalogContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_fulltext_stoplist(TSqlParser::Alter_fulltext_stoplistContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"stoplist_name", static_cast<void*>(ctx->stoplist_name)},
+        {"stopword", static_cast<void*>(ctx->stopword)}
+    };
+    if(!Alter_fulltext_stoplistContext_cls) Alter_fulltext_stoplistContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_fulltext_stoplistContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_fulltext_stoplistContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_fulltext_stoplist(TSqlParser::Create_fulltext_stoplistContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"stoplist_name", static_cast<void*>(ctx->stoplist_name)},
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"source_stoplist_name", static_cast<void*>(ctx->source_stoplist_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)}
+    };
+    if(!Create_fulltext_stoplistContext_cls) Create_fulltext_stoplistContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_fulltext_stoplistContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_fulltext_stoplistContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_login_sql_server(TSqlParser::Alter_login_sql_serverContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login_name", static_cast<void*>(ctx->login_name)},
+        {"password", static_cast<void*>(ctx->password)},
+        {"password_hash", static_cast<void*>(ctx->password_hash)},
+        {"old_password", static_cast<void*>(ctx->old_password)},
+        {"default_database", static_cast<void*>(ctx->default_database)},
+        {"default_laguage", static_cast<void*>(ctx->default_laguage)},
+        {"credential_name", static_cast<void*>(ctx->credential_name)}
+    };
+    if(!Alter_login_sql_serverContext_cls) Alter_login_sql_serverContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_login_sql_serverContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_login_sql_serverContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_login_sql_server(TSqlParser::Create_login_sql_serverContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login_name", static_cast<void*>(ctx->login_name)},
+        {"password", static_cast<void*>(ctx->password)},
+        {"password_hash", static_cast<void*>(ctx->password_hash)},
+        {"sid", static_cast<void*>(ctx->sid)},
+        {"default_database", static_cast<void*>(ctx->default_database)},
+        {"default_laguage", static_cast<void*>(ctx->default_laguage)},
+        {"credential_name", static_cast<void*>(ctx->credential_name)},
+        {"default_language", static_cast<void*>(ctx->default_language)},
+        {"certname", static_cast<void*>(ctx->certname)},
+        {"asym_key_name", static_cast<void*>(ctx->asym_key_name)}
+    };
+    if(!Create_login_sql_serverContext_cls) Create_login_sql_serverContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_login_sql_serverContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_login_sql_serverContext_cls, labels, 10);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_login_azure_sql(TSqlParser::Alter_login_azure_sqlContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login_name", static_cast<void*>(ctx->login_name)},
+        {"password", static_cast<void*>(ctx->password)},
+        {"old_password", static_cast<void*>(ctx->old_password)}
+    };
+    if(!Alter_login_azure_sqlContext_cls) Alter_login_azure_sqlContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_login_azure_sqlContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_login_azure_sqlContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_login_azure_sql(TSqlParser::Create_login_azure_sqlContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login_name", static_cast<void*>(ctx->login_name)},
+        {"sid", static_cast<void*>(ctx->sid)}
+    };
+    if(!Create_login_azure_sqlContext_cls) Create_login_azure_sqlContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_login_azure_sqlContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_login_azure_sqlContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_login_azure_sql_dw_and_pdw(TSqlParser::Alter_login_azure_sql_dw_and_pdwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login_name", static_cast<void*>(ctx->login_name)},
+        {"password", static_cast<void*>(ctx->password)},
+        {"old_password", static_cast<void*>(ctx->old_password)}
+    };
+    if(!Alter_login_azure_sql_dw_and_pdwContext_cls) Alter_login_azure_sql_dw_and_pdwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_login_azure_sql_dw_and_pdwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_login_azure_sql_dw_and_pdwContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_login_pdw(TSqlParser::Create_login_pdwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"loginName", static_cast<void*>(ctx->loginName)},
+        {"password", static_cast<void*>(ctx->password)}
+    };
+    if(!Create_login_pdwContext_cls) Create_login_pdwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_login_pdwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_login_pdwContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_master_key_sql_server(TSqlParser::Alter_master_key_sql_serverContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"password", static_cast<void*>(ctx->password)},
+        {"encryption_password", static_cast<void*>(ctx->encryption_password)}
+    };
+    if(!Alter_master_key_sql_serverContext_cls) Alter_master_key_sql_serverContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_master_key_sql_serverContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_master_key_sql_serverContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_master_key_sql_server(TSqlParser::Create_master_key_sql_serverContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"password", static_cast<void*>(ctx->password)}
+    };
+    if(!Create_master_key_sql_serverContext_cls) Create_master_key_sql_serverContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_master_key_sql_serverContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_master_key_sql_serverContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_master_key_azure_sql(TSqlParser::Alter_master_key_azure_sqlContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"password", static_cast<void*>(ctx->password)},
+        {"encryption_password", static_cast<void*>(ctx->encryption_password)}
+    };
+    if(!Alter_master_key_azure_sqlContext_cls) Alter_master_key_azure_sqlContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_master_key_azure_sqlContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_master_key_azure_sqlContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_master_key_azure_sql(TSqlParser::Create_master_key_azure_sqlContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"password", static_cast<void*>(ctx->password)}
+    };
+    if(!Create_master_key_azure_sqlContext_cls) Create_master_key_azure_sqlContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_master_key_azure_sqlContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_master_key_azure_sqlContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_message_type(TSqlParser::Alter_message_typeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"message_type_name", static_cast<void*>(ctx->message_type_name)},
+        {"schema_collection_name", static_cast<void*>(ctx->schema_collection_name)}
+    };
+    if(!Alter_message_typeContext_cls) Alter_message_typeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_message_typeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_message_typeContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_partition_function(TSqlParser::Alter_partition_functionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"partition_function_name", static_cast<void*>(ctx->partition_function_name)}
+    };
+    if(!Alter_partition_functionContext_cls) Alter_partition_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_partition_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_partition_functionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_partition_scheme(TSqlParser::Alter_partition_schemeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"partition_scheme_name", static_cast<void*>(ctx->partition_scheme_name)},
+        {"file_group_name", static_cast<void*>(ctx->file_group_name)}
+    };
+    if(!Alter_partition_schemeContext_cls) Alter_partition_schemeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_partition_schemeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_partition_schemeContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_remote_service_binding(TSqlParser::Alter_remote_service_bindingContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"binding_name", static_cast<void*>(ctx->binding_name)},
+        {"user_name", static_cast<void*>(ctx->user_name)}
+    };
+    if(!Alter_remote_service_bindingContext_cls) Alter_remote_service_bindingContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_remote_service_bindingContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_remote_service_bindingContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_remote_service_binding(TSqlParser::Create_remote_service_bindingContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"binding_name", static_cast<void*>(ctx->binding_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"remote_service_name", static_cast<void*>(ctx->remote_service_name)},
+        {"user_name", static_cast<void*>(ctx->user_name)}
+    };
+    if(!Create_remote_service_bindingContext_cls) Create_remote_service_bindingContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_remote_service_bindingContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_remote_service_bindingContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_resource_pool(TSqlParser::Create_resource_poolContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"pool_name", static_cast<void*>(ctx->pool_name)}
+    };
+    if(!Create_resource_poolContext_cls) Create_resource_poolContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_resource_poolContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_resource_poolContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_resource_governor(TSqlParser::Alter_resource_governorContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"function_name", static_cast<void*>(ctx->function_name)},
+        {"max_outstanding_io_per_volume", static_cast<void*>(ctx->max_outstanding_io_per_volume)}
+    };
+    if(!Alter_resource_governorContext_cls) Alter_resource_governorContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_resource_governorContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_resource_governorContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_database_audit_specification(TSqlParser::Alter_database_audit_specificationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_specification_name", static_cast<void*>(ctx->audit_specification_name)},
+        {"audit_name", static_cast<void*>(ctx->audit_name)}
+    };
+    if(!Alter_database_audit_specificationContext_cls) Alter_database_audit_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_database_audit_specificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_database_audit_specificationContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAudit_action_spec_group(TSqlParser::Audit_action_spec_groupContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_action_group_name", static_cast<void*>(ctx->audit_action_group_name)}
+    };
+    if(!Audit_action_spec_groupContext_cls) Audit_action_spec_groupContext_cls = PyObject_GetAttrString(translator->parser_cls, "Audit_action_spec_groupContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Audit_action_spec_groupContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAudit_action_specification(TSqlParser::Audit_action_specificationContext *ctx){
+    if(!Audit_action_specificationContext_cls) Audit_action_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Audit_action_specificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Audit_action_specificationContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAction_specification(TSqlParser::Action_specificationContext *ctx){
+    if(!Action_specificationContext_cls) Action_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Action_specificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Action_specificationContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAudit_class_name(TSqlParser::Audit_class_nameContext *ctx){
+    if(!Audit_class_nameContext_cls) Audit_class_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Audit_class_nameContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Audit_class_nameContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAudit_securable(TSqlParser::Audit_securableContext *ctx){
+    if(!Audit_securableContext_cls) Audit_securableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Audit_securableContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Audit_securableContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_db_role(TSqlParser::Alter_db_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"role_name", static_cast<void*>(ctx->role_name)},
+        {"database_principal", static_cast<void*>(ctx->database_principal)},
+        {"new_role_name", static_cast<void*>(ctx->new_role_name)}
+    };
+    if(!Alter_db_roleContext_cls) Alter_db_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_db_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_db_roleContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_database_audit_specification(TSqlParser::Create_database_audit_specificationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_specification_name", static_cast<void*>(ctx->audit_specification_name)},
+        {"audit_name", static_cast<void*>(ctx->audit_name)}
+    };
+    if(!Create_database_audit_specificationContext_cls) Create_database_audit_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_database_audit_specificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_database_audit_specificationContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_db_role(TSqlParser::Create_db_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"role_name", static_cast<void*>(ctx->role_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)}
+    };
+    if(!Create_db_roleContext_cls) Create_db_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_db_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_db_roleContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_route(TSqlParser::Create_routeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"route_name", static_cast<void*>(ctx->route_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"route_service_name", static_cast<void*>(ctx->route_service_name)},
+        {"broker_instance_identifier", static_cast<void*>(ctx->broker_instance_identifier)}
+    };
+    if(!Create_routeContext_cls) Create_routeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_routeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_routeContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_rule(TSqlParser::Create_ruleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"rule_name", static_cast<void*>(ctx->rule_name)}
+    };
+    if(!Create_ruleContext_cls) Create_ruleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_ruleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_ruleContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_schema_sql(TSqlParser::Alter_schema_sqlContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)}
+    };
+    if(!Alter_schema_sqlContext_cls) Alter_schema_sqlContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_schema_sqlContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_schema_sqlContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_schema(TSqlParser::Create_schemaContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"object_name", static_cast<void*>(ctx->object_name)}
+    };
+    if(!Create_schemaContext_cls) Create_schemaContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_schemaContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_schemaContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_schema_azure_sql_dw_and_pdw(TSqlParser::Create_schema_azure_sql_dw_and_pdwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)}
+    };
+    if(!Create_schema_azure_sql_dw_and_pdwContext_cls) Create_schema_azure_sql_dw_and_pdwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_schema_azure_sql_dw_and_pdwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_schema_azure_sql_dw_and_pdwContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_schema_azure_sql_dw_and_pdw(TSqlParser::Alter_schema_azure_sql_dw_and_pdwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)}
+    };
+    if(!Alter_schema_azure_sql_dw_and_pdwContext_cls) Alter_schema_azure_sql_dw_and_pdwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_schema_azure_sql_dw_and_pdwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_schema_azure_sql_dw_and_pdwContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_search_property_list(TSqlParser::Create_search_property_listContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"new_list_name", static_cast<void*>(ctx->new_list_name)},
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"source_list_name", static_cast<void*>(ctx->source_list_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)}
+    };
+    if(!Create_search_property_listContext_cls) Create_search_property_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_search_property_listContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_search_property_listContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_security_policy(TSqlParser::Create_security_policyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"security_policy_name", static_cast<void*>(ctx->security_policy_name)},
+        {"tvf_schema_name", static_cast<void*>(ctx->tvf_schema_name)},
+        {"security_predicate_function_name", static_cast<void*>(ctx->security_predicate_function_name)},
+        {"column_name_or_arguments", static_cast<void*>(ctx->column_name_or_arguments)},
+        {"table_schema_name", static_cast<void*>(ctx->table_schema_name)},
+        {"name", static_cast<void*>(ctx->name)}
+    };
+    if(!Create_security_policyContext_cls) Create_security_policyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_security_policyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_security_policyContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_sequence(TSqlParser::Alter_sequenceContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"sequence_name", static_cast<void*>(ctx->sequence_name)},
+        {"sequnce_increment", static_cast<void*>(ctx->sequnce_increment)}
+    };
+    if(!Alter_sequenceContext_cls) Alter_sequenceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_sequenceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_sequenceContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_sequence(TSqlParser::Create_sequenceContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"sequence_name", static_cast<void*>(ctx->sequence_name)}
+    };
+    if(!Create_sequenceContext_cls) Create_sequenceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_sequenceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_sequenceContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_server_audit(TSqlParser::Alter_server_auditContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_name", static_cast<void*>(ctx->audit_name)},
+        {"filepath", static_cast<void*>(ctx->filepath)},
+        {"max_rollover_files", static_cast<void*>(ctx->max_rollover_files)},
+        {"max_files", static_cast<void*>(ctx->max_files)},
+        {"queue_delay", static_cast<void*>(ctx->queue_delay)},
+        {"event_field_name", static_cast<void*>(ctx->event_field_name)},
+        {"new_audit_name", static_cast<void*>(ctx->new_audit_name)}
+    };
+    if(!Alter_server_auditContext_cls) Alter_server_auditContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_server_auditContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_server_auditContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_server_audit(TSqlParser::Create_server_auditContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_name", static_cast<void*>(ctx->audit_name)},
+        {"filepath", static_cast<void*>(ctx->filepath)},
+        {"max_rollover_files", static_cast<void*>(ctx->max_rollover_files)},
+        {"max_files", static_cast<void*>(ctx->max_files)},
+        {"queue_delay", static_cast<void*>(ctx->queue_delay)},
+        {"audit_guid", static_cast<void*>(ctx->audit_guid)},
+        {"event_field_name", static_cast<void*>(ctx->event_field_name)},
+        {"new_audit_name", static_cast<void*>(ctx->new_audit_name)}
+    };
+    if(!Create_server_auditContext_cls) Create_server_auditContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_server_auditContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_server_auditContext_cls, labels, 8);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_server_audit_specification(TSqlParser::Alter_server_audit_specificationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_specification_name", static_cast<void*>(ctx->audit_specification_name)},
+        {"audit_name", static_cast<void*>(ctx->audit_name)},
+        {"audit_action_group_name", static_cast<void*>(ctx->audit_action_group_name)}
+    };
+    if(!Alter_server_audit_specificationContext_cls) Alter_server_audit_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_server_audit_specificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_server_audit_specificationContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_server_audit_specification(TSqlParser::Create_server_audit_specificationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"audit_specification_name", static_cast<void*>(ctx->audit_specification_name)},
+        {"audit_name", static_cast<void*>(ctx->audit_name)},
+        {"audit_action_group_name", static_cast<void*>(ctx->audit_action_group_name)}
+    };
+    if(!Create_server_audit_specificationContext_cls) Create_server_audit_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_server_audit_specificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_server_audit_specificationContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_server_configuration(TSqlParser::Alter_server_configurationContext *ctx){
+    if(!Alter_server_configurationContext_cls) Alter_server_configurationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_server_configurationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_server_configurationContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_server_role(TSqlParser::Alter_server_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"server_role_name", static_cast<void*>(ctx->server_role_name)},
+        {"server_principal", static_cast<void*>(ctx->server_principal)},
+        {"new_server_role_name", static_cast<void*>(ctx->new_server_role_name)}
+    };
+    if(!Alter_server_roleContext_cls) Alter_server_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_server_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_server_roleContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_server_role(TSqlParser::Create_server_roleContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"server_role", static_cast<void*>(ctx->server_role)},
+        {"server_principal", static_cast<void*>(ctx->server_principal)}
+    };
+    if(!Create_server_roleContext_cls) Create_server_roleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_server_roleContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_server_roleContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_server_role_pdw(TSqlParser::Alter_server_role_pdwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"server_role_name", static_cast<void*>(ctx->server_role_name)},
+        {"login", static_cast<void*>(ctx->login)}
+    };
+    if(!Alter_server_role_pdwContext_cls) Alter_server_role_pdwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_server_role_pdwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_server_role_pdwContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_service(TSqlParser::Alter_serviceContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"modified_service_name", static_cast<void*>(ctx->modified_service_name)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"queue_name", static_cast<void*>(ctx->queue_name)}
+    };
+    if(!Alter_serviceContext_cls) Alter_serviceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_serviceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_serviceContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOpt_arg_clause(TSqlParser::Opt_arg_clauseContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"modified_contract_name", static_cast<void*>(ctx->modified_contract_name)}
+    };
+    if(!Opt_arg_clauseContext_cls) Opt_arg_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Opt_arg_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Opt_arg_clauseContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_service(TSqlParser::Create_serviceContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"create_service_name", static_cast<void*>(ctx->create_service_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"queue_name", static_cast<void*>(ctx->queue_name)}
+    };
+    if(!Create_serviceContext_cls) Create_serviceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_serviceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_serviceContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_service_master_key(TSqlParser::Alter_service_master_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"acold_account_name", static_cast<void*>(ctx->acold_account_name)},
+        {"old_password", static_cast<void*>(ctx->old_password)},
+        {"new_account_name", static_cast<void*>(ctx->new_account_name)},
+        {"new_password", static_cast<void*>(ctx->new_password)}
+    };
+    if(!Alter_service_master_keyContext_cls) Alter_service_master_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_service_master_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_service_master_keyContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_symmetric_key(TSqlParser::Alter_symmetric_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key_name", static_cast<void*>(ctx->key_name)},
+        {"certificate_name", static_cast<void*>(ctx->certificate_name)},
+        {"password", static_cast<void*>(ctx->password)},
+        {"symmetric_key_name", static_cast<void*>(ctx->symmetric_key_name)},
+        {"Asym_key_name", static_cast<void*>(ctx->Asym_key_name)}
+    };
+    if(!Alter_symmetric_keyContext_cls) Alter_symmetric_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_symmetric_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_symmetric_keyContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_synonym(TSqlParser::Create_synonymContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name_1", static_cast<void*>(ctx->schema_name_1)},
+        {"synonym_name", static_cast<void*>(ctx->synonym_name)},
+        {"server_name", static_cast<void*>(ctx->server_name)},
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"schema_name_2", static_cast<void*>(ctx->schema_name_2)},
+        {"object_name", static_cast<void*>(ctx->object_name)},
+        {"database_or_schema2", static_cast<void*>(ctx->database_or_schema2)},
+        {"schema_id_2_or_object_name", static_cast<void*>(ctx->schema_id_2_or_object_name)}
+    };
+    if(!Create_synonymContext_cls) Create_synonymContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_synonymContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_synonymContext_cls, labels, 8);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_user(TSqlParser::Alter_userContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"username", static_cast<void*>(ctx->username)},
+        {"newusername", static_cast<void*>(ctx->newusername)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"loginame", static_cast<void*>(ctx->loginame)},
+        {"lcid", static_cast<void*>(ctx->lcid)},
+        {"language_name_or_alias", static_cast<void*>(ctx->language_name_or_alias)}
+    };
+    if(!Alter_userContext_cls) Alter_userContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_userContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_userContext_cls, labels, 6);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_user(TSqlParser::Create_userContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"user_name", static_cast<void*>(ctx->user_name)},
+        {"login_name", static_cast<void*>(ctx->login_name)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"windows_principal", static_cast<void*>(ctx->windows_principal)},
+        {"language_name_or_alias", static_cast<void*>(ctx->language_name_or_alias)},
+        {"password", static_cast<void*>(ctx->password)},
+        {"Azure_Active_Directory_principal", static_cast<void*>(ctx->Azure_Active_Directory_principal)},
+        {"cert_name", static_cast<void*>(ctx->cert_name)},
+        {"asym_key_name", static_cast<void*>(ctx->asym_key_name)}
+    };
+    if(!Create_userContext_cls) Create_userContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_userContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_userContext_cls, labels, 9);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_user_azure_sql_dw(TSqlParser::Create_user_azure_sql_dwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"user_name", static_cast<void*>(ctx->user_name)},
+        {"login_name", static_cast<void*>(ctx->login_name)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"Azure_Active_Directory_principal", static_cast<void*>(ctx->Azure_Active_Directory_principal)}
+    };
+    if(!Create_user_azure_sql_dwContext_cls) Create_user_azure_sql_dwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_user_azure_sql_dwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_user_azure_sql_dwContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_user_azure_sql(TSqlParser::Alter_user_azure_sqlContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"username", static_cast<void*>(ctx->username)},
+        {"newusername", static_cast<void*>(ctx->newusername)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"loginame", static_cast<void*>(ctx->loginame)}
+    };
+    if(!Alter_user_azure_sqlContext_cls) Alter_user_azure_sqlContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_user_azure_sqlContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_user_azure_sqlContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_workload_group(TSqlParser::Alter_workload_groupContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"workload_group_group_name", static_cast<void*>(ctx->workload_group_group_name)},
+        {"request_max_memory_grant", static_cast<void*>(ctx->request_max_memory_grant)},
+        {"request_max_cpu_time_sec", static_cast<void*>(ctx->request_max_cpu_time_sec)},
+        {"request_memory_grant_timeout_sec", static_cast<void*>(ctx->request_memory_grant_timeout_sec)},
+        {"max_dop", static_cast<void*>(ctx->max_dop)},
+        {"group_max_requests", static_cast<void*>(ctx->group_max_requests)},
+        {"workload_group_pool_name", static_cast<void*>(ctx->workload_group_pool_name)}
+    };
+    if(!Alter_workload_groupContext_cls) Alter_workload_groupContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_workload_groupContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_workload_groupContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_workload_group(TSqlParser::Create_workload_groupContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"workload_group_group_name", static_cast<void*>(ctx->workload_group_group_name)},
+        {"request_max_memory_grant", static_cast<void*>(ctx->request_max_memory_grant)},
+        {"request_max_cpu_time_sec", static_cast<void*>(ctx->request_max_cpu_time_sec)},
+        {"request_memory_grant_timeout_sec", static_cast<void*>(ctx->request_memory_grant_timeout_sec)},
+        {"max_dop", static_cast<void*>(ctx->max_dop)},
+        {"group_max_requests", static_cast<void*>(ctx->group_max_requests)},
+        {"workload_group_pool_name", static_cast<void*>(ctx->workload_group_pool_name)},
+        {"external_pool_name", static_cast<void*>(ctx->external_pool_name)}
+    };
+    if(!Create_workload_groupContext_cls) Create_workload_groupContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_workload_groupContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_workload_groupContext_cls, labels, 8);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_xml_schema_collection(TSqlParser::Create_xml_schema_collectionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"relational_schema", static_cast<void*>(ctx->relational_schema)},
+        {"sql_identifier", static_cast<void*>(ctx->sql_identifier)}
+    };
+    if(!Create_xml_schema_collectionContext_cls) Create_xml_schema_collectionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_xml_schema_collectionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_xml_schema_collectionContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_partition_function(TSqlParser::Create_partition_functionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"partition_function_name", static_cast<void*>(ctx->partition_function_name)},
+        {"input_parameter_type", static_cast<void*>(ctx->input_parameter_type)},
+        {"boundary_values", static_cast<void*>(ctx->boundary_values)}
+    };
+    if(!Create_partition_functionContext_cls) Create_partition_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_partition_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_partition_functionContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_partition_scheme(TSqlParser::Create_partition_schemeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"partition_scheme_name", static_cast<void*>(ctx->partition_scheme_name)},
+        {"partition_function_name", static_cast<void*>(ctx->partition_function_name)}
+    };
+    if(!Create_partition_schemeContext_cls) Create_partition_schemeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_partition_schemeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_partition_schemeContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_queue(TSqlParser::Create_queueContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"queue_name", static_cast<void*>(ctx->queue_name)},
+        {"filegroup", static_cast<void*>(ctx->filegroup)}
+    };
+    if(!Create_queueContext_cls) Create_queueContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_queueContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_queueContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitQueue_settings(TSqlParser::Queue_settingsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_readers", static_cast<void*>(ctx->max_readers)},
+        {"user_name", static_cast<void*>(ctx->user_name)}
+    };
+    if(!Queue_settingsContext_cls) Queue_settingsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Queue_settingsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Queue_settingsContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_queue(TSqlParser::Alter_queueContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"queue_name", static_cast<void*>(ctx->queue_name)}
+    };
+    if(!Alter_queueContext_cls) Alter_queueContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_queueContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_queueContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitQueue_action(TSqlParser::Queue_actionContext *ctx){
+    if(!Queue_actionContext_cls) Queue_actionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Queue_actionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Queue_actionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitQueue_rebuild_options(TSqlParser::Queue_rebuild_optionsContext *ctx){
+    if(!Queue_rebuild_optionsContext_cls) Queue_rebuild_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Queue_rebuild_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Queue_rebuild_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_contract(TSqlParser::Create_contractContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"message_type_name", static_cast<void*>(ctx->message_type_name)}
+    };
+    if(!Create_contractContext_cls) Create_contractContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_contractContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_contractContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitConversation_statement(TSqlParser::Conversation_statementContext *ctx){
+    if(!Conversation_statementContext_cls) Conversation_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Conversation_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Conversation_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMessage_statement(TSqlParser::Message_statementContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"message_type_name", static_cast<void*>(ctx->message_type_name)},
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"schema_collection_name", static_cast<void*>(ctx->schema_collection_name)}
+    };
+    if(!Message_statementContext_cls) Message_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Message_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Message_statementContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMerge_statement(TSqlParser::Merge_statementContext *ctx){
+    if(!Merge_statementContext_cls) Merge_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Merge_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Merge_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitWhen_matches(TSqlParser::When_matchesContext *ctx){
+    if(!When_matchesContext_cls) When_matchesContext_cls = PyObject_GetAttrString(translator->parser_cls, "When_matchesContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, When_matchesContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMerge_matched(TSqlParser::Merge_matchedContext *ctx){
+    if(!Merge_matchedContext_cls) Merge_matchedContext_cls = PyObject_GetAttrString(translator->parser_cls, "Merge_matchedContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Merge_matchedContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMerge_not_matched(TSqlParser::Merge_not_matchedContext *ctx){
+    if(!Merge_not_matchedContext_cls) Merge_not_matchedContext_cls = PyObject_GetAttrString(translator->parser_cls, "Merge_not_matchedContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Merge_not_matchedContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDelete_statement(TSqlParser::Delete_statementContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"cursor_var", static_cast<void*>(ctx->cursor_var)}
+    };
+    if(!Delete_statementContext_cls) Delete_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Delete_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Delete_statementContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDelete_statement_from(TSqlParser::Delete_statement_fromContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"table_var", static_cast<void*>(ctx->table_var)}
     };
@@ -423,58 +2968,68 @@ antlrcpp::Any SA_tsqlTranslator::visitDelete_statement_from(tsqlParser::Delete_s
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitInsert_statement(tsqlParser::Insert_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitInsert_statement(TSqlParser::Insert_statementContext *ctx){
     if(!Insert_statementContext_cls) Insert_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Insert_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Insert_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitInsert_statement_value(tsqlParser::Insert_statement_valueContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitInsert_statement_value(TSqlParser::Insert_statement_valueContext *ctx){
     if(!Insert_statement_valueContext_cls) Insert_statement_valueContext_cls = PyObject_GetAttrString(translator->parser_cls, "Insert_statement_valueContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Insert_statement_valueContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSelect_statement(tsqlParser::Select_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitReceive_statement(TSqlParser::Receive_statementContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"table_variable", static_cast<void*>(ctx->table_variable)},
+        {"where", static_cast<void*>(ctx->where)}
+    };
+    if(!Receive_statementContext_cls) Receive_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Receive_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Receive_statementContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSelect_statement_standalone(TSqlParser::Select_statement_standaloneContext *ctx){
+    if(!Select_statement_standaloneContext_cls) Select_statement_standaloneContext_cls = PyObject_GetAttrString(translator->parser_cls, "Select_statement_standaloneContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Select_statement_standaloneContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSelect_statement(TSqlParser::Select_statementContext *ctx){
     if(!Select_statementContext_cls) Select_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Select_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Select_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitUpdate_statement(tsqlParser::Update_statementContext *ctx){
-    if(!Update_statementContext_cls) Update_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Update_statementContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Update_statementContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitTime(TSqlParser::TimeContext *ctx){
+    if(!TimeContext_cls) TimeContext_cls = PyObject_GetAttrString(translator->parser_cls, "TimeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TimeContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWhere_clause_dml(tsqlParser::Where_clause_dmlContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitUpdate_statement(TSqlParser::Update_statementContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"cursor_var", static_cast<void*>(ctx->cursor_var)}
     };
-    if(!Where_clause_dmlContext_cls) Where_clause_dmlContext_cls = PyObject_GetAttrString(translator->parser_cls, "Where_clause_dmlContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Where_clause_dmlContext_cls, labels, 1);
+    if(!Update_statementContext_cls) Update_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Update_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Update_statementContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOutput_clause(tsqlParser::Output_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOutput_clause(TSqlParser::Output_clauseContext *ctx){
     if(!Output_clauseContext_cls) Output_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Output_clauseContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Output_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOutput_dml_list_elem(tsqlParser::Output_dml_list_elemContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOutput_dml_list_elem(TSqlParser::Output_dml_list_elemContext *ctx){
     if(!Output_dml_list_elemContext_cls) Output_dml_list_elemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Output_dml_list_elemContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Output_dml_list_elemContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOutput_column_name(tsqlParser::Output_column_nameContext *ctx){
-    if(!Output_column_nameContext_cls) Output_column_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Output_column_nameContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Output_column_nameContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitCreate_database(tsqlParser::Create_databaseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCreate_database(TSqlParser::Create_databaseContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"database", static_cast<void*>(ctx->database)},
         {"collation_name", static_cast<void*>(ctx->collation_name)}
@@ -484,7 +3039,7 @@ antlrcpp::Any SA_tsqlTranslator::visitCreate_database(tsqlParser::Create_databas
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCreate_index(tsqlParser::Create_indexContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCreate_index(TSqlParser::Create_indexContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"where", static_cast<void*>(ctx->where)}
     };
@@ -493,43 +3048,362 @@ antlrcpp::Any SA_tsqlTranslator::visitCreate_index(tsqlParser::Create_indexConte
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCreate_statistics(tsqlParser::Create_statisticsContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCreate_index_options(TSqlParser::Create_index_optionsContext *ctx){
+    if(!Create_index_optionsContext_cls) Create_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRelational_index_option(TSqlParser::Relational_index_optionContext *ctx){
+    if(!Relational_index_optionContext_cls) Relational_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Relational_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Relational_index_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_index(TSqlParser::Alter_indexContext *ctx){
+    if(!Alter_indexContext_cls) Alter_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_indexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_indexContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitResumable_index_options(TSqlParser::Resumable_index_optionsContext *ctx){
+    if(!Resumable_index_optionsContext_cls) Resumable_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Resumable_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Resumable_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitResumable_index_option(TSqlParser::Resumable_index_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_degree_of_parallelism", static_cast<void*>(ctx->max_degree_of_parallelism)},
+        {"max_duration", static_cast<void*>(ctx->max_duration)}
+    };
+    if(!Resumable_index_optionContext_cls) Resumable_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Resumable_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Resumable_index_optionContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitReorganize_partition(TSqlParser::Reorganize_partitionContext *ctx){
+    if(!Reorganize_partitionContext_cls) Reorganize_partitionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Reorganize_partitionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Reorganize_partitionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitReorganize_options(TSqlParser::Reorganize_optionsContext *ctx){
+    if(!Reorganize_optionsContext_cls) Reorganize_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Reorganize_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Reorganize_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitReorganize_option(TSqlParser::Reorganize_optionContext *ctx){
+    if(!Reorganize_optionContext_cls) Reorganize_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Reorganize_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Reorganize_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSet_index_options(TSqlParser::Set_index_optionsContext *ctx){
+    if(!Set_index_optionsContext_cls) Set_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Set_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Set_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSet_index_option(TSqlParser::Set_index_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"delay", static_cast<void*>(ctx->delay)}
+    };
+    if(!Set_index_optionContext_cls) Set_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Set_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Set_index_optionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRebuild_partition(TSqlParser::Rebuild_partitionContext *ctx){
+    if(!Rebuild_partitionContext_cls) Rebuild_partitionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Rebuild_partitionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Rebuild_partitionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRebuild_index_options(TSqlParser::Rebuild_index_optionsContext *ctx){
+    if(!Rebuild_index_optionsContext_cls) Rebuild_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Rebuild_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Rebuild_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRebuild_index_option(TSqlParser::Rebuild_index_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"times", static_cast<void*>(ctx->times)},
+        {"max_degree_of_parallelism", static_cast<void*>(ctx->max_degree_of_parallelism)}
+    };
+    if(!Rebuild_index_optionContext_cls) Rebuild_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Rebuild_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Rebuild_index_optionContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSingle_partition_rebuild_index_options(TSqlParser::Single_partition_rebuild_index_optionsContext *ctx){
+    if(!Single_partition_rebuild_index_optionsContext_cls) Single_partition_rebuild_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Single_partition_rebuild_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Single_partition_rebuild_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSingle_partition_rebuild_index_option(TSqlParser::Single_partition_rebuild_index_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_degree_of_parallelism", static_cast<void*>(ctx->max_degree_of_parallelism)}
+    };
+    if(!Single_partition_rebuild_index_optionContext_cls) Single_partition_rebuild_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Single_partition_rebuild_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Single_partition_rebuild_index_optionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOn_partitions(TSqlParser::On_partitionsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"partition_number", static_cast<void*>(ctx->partition_number)},
+        {"to_partition_number", static_cast<void*>(ctx->to_partition_number)}
+    };
+    if(!On_partitionsContext_cls) On_partitionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "On_partitionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, On_partitionsContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_columnstore_index(TSqlParser::Create_columnstore_indexContext *ctx){
+    if(!Create_columnstore_indexContext_cls) Create_columnstore_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_columnstore_indexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_columnstore_indexContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_columnstore_index_options(TSqlParser::Create_columnstore_index_optionsContext *ctx){
+    if(!Create_columnstore_index_optionsContext_cls) Create_columnstore_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_columnstore_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_columnstore_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitColumnstore_index_option(TSqlParser::Columnstore_index_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_degree_of_parallelism", static_cast<void*>(ctx->max_degree_of_parallelism)},
+        {"delay", static_cast<void*>(ctx->delay)}
+    };
+    if(!Columnstore_index_optionContext_cls) Columnstore_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Columnstore_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Columnstore_index_optionContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_nonclustered_columnstore_index(TSqlParser::Create_nonclustered_columnstore_indexContext *ctx){
+    if(!Create_nonclustered_columnstore_indexContext_cls) Create_nonclustered_columnstore_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_nonclustered_columnstore_indexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_nonclustered_columnstore_indexContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_xml_index(TSqlParser::Create_xml_indexContext *ctx){
+    if(!Create_xml_indexContext_cls) Create_xml_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_xml_indexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_xml_indexContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitXml_index_options(TSqlParser::Xml_index_optionsContext *ctx){
+    if(!Xml_index_optionsContext_cls) Xml_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitXml_index_option(TSqlParser::Xml_index_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_degree_of_parallelism", static_cast<void*>(ctx->max_degree_of_parallelism)}
+    };
+    if(!Xml_index_optionContext_cls) Xml_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_index_optionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_or_alter_procedure(TSqlParser::Create_or_alter_procedureContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"proc", static_cast<void*>(ctx->proc)},
+        {"procName", static_cast<void*>(ctx->procName)}
+    };
+    if(!Create_or_alter_procedureContext_cls) Create_or_alter_procedureContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_procedureContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_procedureContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAs_external_name(TSqlParser::As_external_nameContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"assembly_name", static_cast<void*>(ctx->assembly_name)},
+        {"class_name", static_cast<void*>(ctx->class_name)},
+        {"method_name", static_cast<void*>(ctx->method_name)}
+    };
+    if(!As_external_nameContext_cls) As_external_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "As_external_nameContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, As_external_nameContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_or_alter_trigger(TSqlParser::Create_or_alter_triggerContext *ctx){
+    if(!Create_or_alter_triggerContext_cls) Create_or_alter_triggerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_triggerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_triggerContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_or_alter_dml_trigger(TSqlParser::Create_or_alter_dml_triggerContext *ctx){
+    if(!Create_or_alter_dml_triggerContext_cls) Create_or_alter_dml_triggerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_dml_triggerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_dml_triggerContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDml_trigger_option(TSqlParser::Dml_trigger_optionContext *ctx){
+    if(!Dml_trigger_optionContext_cls) Dml_trigger_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dml_trigger_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dml_trigger_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDml_trigger_operation(TSqlParser::Dml_trigger_operationContext *ctx){
+    if(!Dml_trigger_operationContext_cls) Dml_trigger_operationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dml_trigger_operationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dml_trigger_operationContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_or_alter_ddl_trigger(TSqlParser::Create_or_alter_ddl_triggerContext *ctx){
+    if(!Create_or_alter_ddl_triggerContext_cls) Create_or_alter_ddl_triggerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_ddl_triggerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_ddl_triggerContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDdl_trigger_operation(TSqlParser::Ddl_trigger_operationContext *ctx){
+    if(!Ddl_trigger_operationContext_cls) Ddl_trigger_operationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Ddl_trigger_operationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Ddl_trigger_operationContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_or_alter_function(TSqlParser::Create_or_alter_functionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"funcName", static_cast<void*>(ctx->funcName)}
+    };
+    if(!Create_or_alter_functionContext_cls) Create_or_alter_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_functionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFunc_body_returns_select(TSqlParser::Func_body_returns_selectContext *ctx){
+    if(!Func_body_returns_selectContext_cls) Func_body_returns_selectContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_body_returns_selectContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_body_returns_selectContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFunc_body_returns_table(TSqlParser::Func_body_returns_tableContext *ctx){
+    if(!Func_body_returns_tableContext_cls) Func_body_returns_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_body_returns_tableContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_body_returns_tableContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFunc_body_returns_scalar(TSqlParser::Func_body_returns_scalarContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"ret", static_cast<void*>(ctx->ret)}
+    };
+    if(!Func_body_returns_scalarContext_cls) Func_body_returns_scalarContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_body_returns_scalarContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_body_returns_scalarContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitProcedure_param_default_value(TSqlParser::Procedure_param_default_valueContext *ctx){
+    if(!Procedure_param_default_valueContext_cls) Procedure_param_default_valueContext_cls = PyObject_GetAttrString(translator->parser_cls, "Procedure_param_default_valueContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Procedure_param_default_valueContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitProcedure_param(TSqlParser::Procedure_paramContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"type_schema", static_cast<void*>(ctx->type_schema)},
+        {"default_val", static_cast<void*>(ctx->default_val)}
+    };
+    if(!Procedure_paramContext_cls) Procedure_paramContext_cls = PyObject_GetAttrString(translator->parser_cls, "Procedure_paramContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Procedure_paramContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitProcedure_option(TSqlParser::Procedure_optionContext *ctx){
+    if(!Procedure_optionContext_cls) Procedure_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Procedure_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Procedure_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFunction_option(TSqlParser::Function_optionContext *ctx){
+    if(!Function_optionContext_cls) Function_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Function_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Function_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_statistics(TSqlParser::Create_statisticsContext *ctx){
     if(!Create_statisticsContext_cls) Create_statisticsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_statisticsContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_statisticsContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCreate_table(tsqlParser::Create_tableContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitUpdate_statistics(TSqlParser::Update_statisticsContext *ctx){
+    if(!Update_statisticsContext_cls) Update_statisticsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Update_statisticsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Update_statisticsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUpdate_statistics_options(TSqlParser::Update_statistics_optionsContext *ctx){
+    if(!Update_statistics_optionsContext_cls) Update_statistics_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Update_statistics_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Update_statistics_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUpdate_statistics_option(TSqlParser::Update_statistics_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"number", static_cast<void*>(ctx->number)},
+        {"stats_stream_", static_cast<void*>(ctx->stats_stream_)},
+        {"max_dregree_of_parallelism", static_cast<void*>(ctx->max_dregree_of_parallelism)}
+    };
+    if(!Update_statistics_optionContext_cls) Update_statistics_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Update_statistics_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Update_statistics_optionContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_table(TSqlParser::Create_tableContext *ctx){
     if(!Create_tableContext_cls) Create_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_tableContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_tableContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCreate_schema(tsqlParser::Create_schemaContext *ctx){
-    if(!Create_schemaContext_cls) Create_schemaContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_schemaContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_schemaContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitTable_indices(TSqlParser::Table_indicesContext *ctx){
+    if(!Table_indicesContext_cls) Table_indicesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_indicesContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_indicesContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCreate_synonym(tsqlParser::Create_synonymContext *ctx){
-    if(!Create_synonymContext_cls) Create_synonymContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_synonymContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_synonymContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitTable_options(TSqlParser::Table_optionsContext *ctx){
+    if(!Table_optionsContext_cls) Table_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_optionsContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCreate_view(tsqlParser::Create_viewContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTable_option(TSqlParser::Table_optionContext *ctx){
+    if(!Table_optionContext_cls) Table_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_table_index_options(TSqlParser::Create_table_index_optionsContext *ctx){
+    if(!Create_table_index_optionsContext_cls) Create_table_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_table_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_table_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_table_index_option(TSqlParser::Create_table_index_optionContext *ctx){
+    if(!Create_table_index_optionContext_cls) Create_table_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_table_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_table_index_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_view(TSqlParser::Create_viewContext *ctx){
     if(!Create_viewContext_cls) Create_viewContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_viewContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_viewContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitView_attribute(tsqlParser::View_attributeContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitView_attribute(TSqlParser::View_attributeContext *ctx){
     if(!View_attributeContext_cls) View_attributeContext_cls = PyObject_GetAttrString(translator->parser_cls, "View_attributeContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, View_attributeContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitAlter_table(tsqlParser::Alter_tableContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAlter_table(TSqlParser::Alter_tableContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"constraint", static_cast<void*>(ctx->constraint)},
         {"fk", static_cast<void*>(ctx->fk)},
@@ -540,7 +3414,28 @@ antlrcpp::Any SA_tsqlTranslator::visitAlter_table(tsqlParser::Alter_tableContext
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitAlter_database(tsqlParser::Alter_databaseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSwitch_partition(TSqlParser::Switch_partitionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"source_partition_number_expression", static_cast<void*>(ctx->source_partition_number_expression)},
+        {"target_table", static_cast<void*>(ctx->target_table)},
+        {"target_partition_number_expression", static_cast<void*>(ctx->target_partition_number_expression)}
+    };
+    if(!Switch_partitionContext_cls) Switch_partitionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Switch_partitionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Switch_partitionContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLow_priority_lock_wait(TSqlParser::Low_priority_lock_waitContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_duration", static_cast<void*>(ctx->max_duration)},
+        {"abort_after_wait", static_cast<void*>(ctx->abort_after_wait)}
+    };
+    if(!Low_priority_lock_waitContext_cls) Low_priority_lock_waitContext_cls = PyObject_GetAttrString(translator->parser_cls, "Low_priority_lock_waitContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Low_priority_lock_waitContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_database(TSqlParser::Alter_databaseContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"database", static_cast<void*>(ctx->database)},
         {"new_name", static_cast<void*>(ctx->new_name)},
@@ -551,115 +3446,251 @@ antlrcpp::Any SA_tsqlTranslator::visitAlter_database(tsqlParser::Alter_databaseC
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDatabase_optionspec(tsqlParser::Database_optionspecContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAdd_or_modify_files(TSqlParser::Add_or_modify_filesContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"filegroup_name", static_cast<void*>(ctx->filegroup_name)},
+        {"logical_file_name", static_cast<void*>(ctx->logical_file_name)}
+    };
+    if(!Add_or_modify_filesContext_cls) Add_or_modify_filesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Add_or_modify_filesContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Add_or_modify_filesContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFilespec(TSqlParser::FilespecContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"new_name", static_cast<void*>(ctx->new_name)},
+        {"file_name", static_cast<void*>(ctx->file_name)},
+        {"size", static_cast<void*>(ctx->size)},
+        {"max_size", static_cast<void*>(ctx->max_size)},
+        {"growth_increment", static_cast<void*>(ctx->growth_increment)}
+    };
+    if(!FilespecContext_cls) FilespecContext_cls = PyObject_GetAttrString(translator->parser_cls, "FilespecContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FilespecContext_cls, labels, 6);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAdd_or_modify_filegroups(TSqlParser::Add_or_modify_filegroupsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"filegroup_name", static_cast<void*>(ctx->filegroup_name)},
+        {"filegrou_name", static_cast<void*>(ctx->filegrou_name)},
+        {"new_filegroup_name", static_cast<void*>(ctx->new_filegroup_name)}
+    };
+    if(!Add_or_modify_filegroupsContext_cls) Add_or_modify_filegroupsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Add_or_modify_filegroupsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Add_or_modify_filegroupsContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFilegroup_updatability_option(TSqlParser::Filegroup_updatability_optionContext *ctx){
+    if(!Filegroup_updatability_optionContext_cls) Filegroup_updatability_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Filegroup_updatability_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Filegroup_updatability_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDatabase_optionspec(TSqlParser::Database_optionspecContext *ctx){
     if(!Database_optionspecContext_cls) Database_optionspecContext_cls = PyObject_GetAttrString(translator->parser_cls, "Database_optionspecContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Database_optionspecContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitAuto_option(tsqlParser::Auto_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAuto_option(TSqlParser::Auto_optionContext *ctx){
     if(!Auto_optionContext_cls) Auto_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Auto_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Auto_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitChange_tracking_option(tsqlParser::Change_tracking_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitChange_tracking_option(TSqlParser::Change_tracking_optionContext *ctx){
     if(!Change_tracking_optionContext_cls) Change_tracking_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Change_tracking_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Change_tracking_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitChange_tracking_option_list(tsqlParser::Change_tracking_option_listContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitChange_tracking_option_list(TSqlParser::Change_tracking_option_listContext *ctx){
     if(!Change_tracking_option_listContext_cls) Change_tracking_option_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Change_tracking_option_listContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Change_tracking_option_listContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitContainment_option(tsqlParser::Containment_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitContainment_option(TSqlParser::Containment_optionContext *ctx){
     if(!Containment_optionContext_cls) Containment_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Containment_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Containment_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCursor_option(tsqlParser::Cursor_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCursor_option(TSqlParser::Cursor_optionContext *ctx){
     if(!Cursor_optionContext_cls) Cursor_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cursor_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Cursor_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDate_correlation_optimization_option(tsqlParser::Date_correlation_optimization_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAlter_endpoint(TSqlParser::Alter_endpointContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"endpointname", static_cast<void*>(ctx->endpointname)},
+        {"login", static_cast<void*>(ctx->login)},
+        {"state", static_cast<void*>(ctx->state)}
+    };
+    if(!Alter_endpointContext_cls) Alter_endpointContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_endpointContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_endpointContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDatabase_mirroring_option(TSqlParser::Database_mirroring_optionContext *ctx){
+    if(!Database_mirroring_optionContext_cls) Database_mirroring_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Database_mirroring_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Database_mirroring_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMirroring_set_option(TSqlParser::Mirroring_set_optionContext *ctx){
+    if(!Mirroring_set_optionContext_cls) Mirroring_set_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Mirroring_set_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Mirroring_set_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMirroring_partner(TSqlParser::Mirroring_partnerContext *ctx){
+    if(!Mirroring_partnerContext_cls) Mirroring_partnerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Mirroring_partnerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Mirroring_partnerContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMirroring_witness(TSqlParser::Mirroring_witnessContext *ctx){
+    if(!Mirroring_witnessContext_cls) Mirroring_witnessContext_cls = PyObject_GetAttrString(translator->parser_cls, "Mirroring_witnessContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Mirroring_witnessContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitWitness_partner_equal(TSqlParser::Witness_partner_equalContext *ctx){
+    if(!Witness_partner_equalContext_cls) Witness_partner_equalContext_cls = PyObject_GetAttrString(translator->parser_cls, "Witness_partner_equalContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Witness_partner_equalContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPartner_option(TSqlParser::Partner_optionContext *ctx){
+    if(!Partner_optionContext_cls) Partner_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Partner_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Partner_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitWitness_option(TSqlParser::Witness_optionContext *ctx){
+    if(!Witness_optionContext_cls) Witness_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Witness_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Witness_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitWitness_server(TSqlParser::Witness_serverContext *ctx){
+    if(!Witness_serverContext_cls) Witness_serverContext_cls = PyObject_GetAttrString(translator->parser_cls, "Witness_serverContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Witness_serverContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPartner_server(TSqlParser::Partner_serverContext *ctx){
+    if(!Partner_serverContext_cls) Partner_serverContext_cls = PyObject_GetAttrString(translator->parser_cls, "Partner_serverContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Partner_serverContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMirroring_host_port_seperator(TSqlParser::Mirroring_host_port_seperatorContext *ctx){
+    if(!Mirroring_host_port_seperatorContext_cls) Mirroring_host_port_seperatorContext_cls = PyObject_GetAttrString(translator->parser_cls, "Mirroring_host_port_seperatorContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Mirroring_host_port_seperatorContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPartner_server_tcp_prefix(TSqlParser::Partner_server_tcp_prefixContext *ctx){
+    if(!Partner_server_tcp_prefixContext_cls) Partner_server_tcp_prefixContext_cls = PyObject_GetAttrString(translator->parser_cls, "Partner_server_tcp_prefixContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Partner_server_tcp_prefixContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPort_number(TSqlParser::Port_numberContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"port", static_cast<void*>(ctx->port)}
+    };
+    if(!Port_numberContext_cls) Port_numberContext_cls = PyObject_GetAttrString(translator->parser_cls, "Port_numberContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Port_numberContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitHost(TSqlParser::HostContext *ctx){
+    if(!HostContext_cls) HostContext_cls = PyObject_GetAttrString(translator->parser_cls, "HostContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, HostContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDate_correlation_optimization_option(TSqlParser::Date_correlation_optimization_optionContext *ctx){
     if(!Date_correlation_optimization_optionContext_cls) Date_correlation_optimization_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Date_correlation_optimization_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Date_correlation_optimization_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDb_encryption_option(tsqlParser::Db_encryption_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDb_encryption_option(TSqlParser::Db_encryption_optionContext *ctx){
     if(!Db_encryption_optionContext_cls) Db_encryption_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Db_encryption_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Db_encryption_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDb_state_option(tsqlParser::Db_state_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDb_state_option(TSqlParser::Db_state_optionContext *ctx){
     if(!Db_state_optionContext_cls) Db_state_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Db_state_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Db_state_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDb_update_option(tsqlParser::Db_update_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDb_update_option(TSqlParser::Db_update_optionContext *ctx){
     if(!Db_update_optionContext_cls) Db_update_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Db_update_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Db_update_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDb_user_access_option(tsqlParser::Db_user_access_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDb_user_access_option(TSqlParser::Db_user_access_optionContext *ctx){
     if(!Db_user_access_optionContext_cls) Db_user_access_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Db_user_access_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Db_user_access_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDelayed_durability_option(tsqlParser::Delayed_durability_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDelayed_durability_option(TSqlParser::Delayed_durability_optionContext *ctx){
     if(!Delayed_durability_optionContext_cls) Delayed_durability_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Delayed_durability_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Delayed_durability_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitExternal_access_option(tsqlParser::External_access_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitExternal_access_option(TSqlParser::External_access_optionContext *ctx){
     if(!External_access_optionContext_cls) External_access_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "External_access_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, External_access_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitHadr_options(tsqlParser::Hadr_optionsContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitHadr_options(TSqlParser::Hadr_optionsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"availability_group_name", static_cast<void*>(ctx->availability_group_name)}
+    };
     if(!Hadr_optionsContext_cls) Hadr_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Hadr_optionsContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Hadr_optionsContext_cls);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Hadr_optionsContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitMixed_page_allocation_option(tsqlParser::Mixed_page_allocation_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitMixed_page_allocation_option(TSqlParser::Mixed_page_allocation_optionContext *ctx){
     if(!Mixed_page_allocation_optionContext_cls) Mixed_page_allocation_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Mixed_page_allocation_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Mixed_page_allocation_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitParameterization_option(tsqlParser::Parameterization_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitParameterization_option(TSqlParser::Parameterization_optionContext *ctx){
     if(!Parameterization_optionContext_cls) Parameterization_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Parameterization_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Parameterization_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitRecovery_option(tsqlParser::Recovery_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitRecovery_option(TSqlParser::Recovery_optionContext *ctx){
     if(!Recovery_optionContext_cls) Recovery_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Recovery_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Recovery_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitService_broker_option(tsqlParser::Service_broker_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitService_broker_option(TSqlParser::Service_broker_optionContext *ctx){
     if(!Service_broker_optionContext_cls) Service_broker_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Service_broker_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Service_broker_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSnapshot_option(tsqlParser::Snapshot_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSnapshot_option(TSqlParser::Snapshot_optionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT", static_cast<void*>(ctx->MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT)}
     };
@@ -668,19 +3699,19 @@ antlrcpp::Any SA_tsqlTranslator::visitSnapshot_option(tsqlParser::Snapshot_optio
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSql_option(tsqlParser::Sql_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSql_option(TSqlParser::Sql_optionContext *ctx){
     if(!Sql_optionContext_cls) Sql_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Sql_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Sql_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTarget_recovery_time_option(tsqlParser::Target_recovery_time_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTarget_recovery_time_option(TSqlParser::Target_recovery_time_optionContext *ctx){
     if(!Target_recovery_time_optionContext_cls) Target_recovery_time_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Target_recovery_time_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Target_recovery_time_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTermination(tsqlParser::TerminationContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTermination(TSqlParser::TerminationContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"seconds", static_cast<void*>(ctx->seconds)}
     };
@@ -689,22 +3720,66 @@ antlrcpp::Any SA_tsqlTranslator::visitTermination(tsqlParser::TerminationContext
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDrop_index(tsqlParser::Drop_indexContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"name", static_cast<void*>(ctx->name)}
-    };
+antlrcpp::Any SA_TSqlTranslator::visitDrop_index(TSqlParser::Drop_indexContext *ctx){
     if(!Drop_indexContext_cls) Drop_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_indexContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_indexContext_cls, labels, 1);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_indexContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDrop_procedure(tsqlParser::Drop_procedureContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDrop_relational_or_xml_or_spatial_index(TSqlParser::Drop_relational_or_xml_or_spatial_indexContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"index_name", static_cast<void*>(ctx->index_name)}
+    };
+    if(!Drop_relational_or_xml_or_spatial_indexContext_cls) Drop_relational_or_xml_or_spatial_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_relational_or_xml_or_spatial_indexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_relational_or_xml_or_spatial_indexContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_backward_compatible_index(TSqlParser::Drop_backward_compatible_indexContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"owner_name", static_cast<void*>(ctx->owner_name)},
+        {"table_or_view_name", static_cast<void*>(ctx->table_or_view_name)},
+        {"index_name", static_cast<void*>(ctx->index_name)}
+    };
+    if(!Drop_backward_compatible_indexContext_cls) Drop_backward_compatible_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_backward_compatible_indexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_backward_compatible_indexContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_procedure(TSqlParser::Drop_procedureContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"proc", static_cast<void*>(ctx->proc)}
+    };
     if(!Drop_procedureContext_cls) Drop_procedureContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_procedureContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_procedureContext_cls);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_procedureContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDrop_statistics(tsqlParser::Drop_statisticsContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDrop_trigger(TSqlParser::Drop_triggerContext *ctx){
+    if(!Drop_triggerContext_cls) Drop_triggerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_triggerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_triggerContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_dml_trigger(TSqlParser::Drop_dml_triggerContext *ctx){
+    if(!Drop_dml_triggerContext_cls) Drop_dml_triggerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_dml_triggerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_dml_triggerContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_ddl_trigger(TSqlParser::Drop_ddl_triggerContext *ctx){
+    if(!Drop_ddl_triggerContext_cls) Drop_ddl_triggerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_ddl_triggerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_ddl_triggerContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_function(TSqlParser::Drop_functionContext *ctx){
+    if(!Drop_functionContext_cls) Drop_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_functionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDrop_statistics(TSqlParser::Drop_statisticsContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"name", static_cast<void*>(ctx->name)}
     };
@@ -713,46 +3788,19 @@ antlrcpp::Any SA_tsqlTranslator::visitDrop_statistics(tsqlParser::Drop_statistic
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDrop_table(tsqlParser::Drop_tableContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDrop_table(TSqlParser::Drop_tableContext *ctx){
     if(!Drop_tableContext_cls) Drop_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_tableContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_tableContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDrop_database(tsqlParser::Drop_databaseContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"database", static_cast<void*>(ctx->database)}
-    };
-    if(!Drop_databaseContext_cls) Drop_databaseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_databaseContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_databaseContext_cls, labels, 1);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitDrop_synonym(tsqlParser::Drop_synonymContext *ctx){
-    if(!Drop_synonymContext_cls) Drop_synonymContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_synonymContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_synonymContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitDrop_view(tsqlParser::Drop_viewContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDrop_view(TSqlParser::Drop_viewContext *ctx){
     if(!Drop_viewContext_cls) Drop_viewContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_viewContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_viewContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDrop_schema(tsqlParser::Drop_schemaContext *ctx){
-    if(!Drop_schemaContext_cls) Drop_schemaContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_schemaContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_schemaContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitDrop_function(tsqlParser::Drop_functionContext *ctx){
-    if(!Drop_functionContext_cls) Drop_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Drop_functionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Drop_functionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitCreate_type(tsqlParser::Create_typeContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCreate_type(TSqlParser::Create_typeContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"name", static_cast<void*>(ctx->name)}
     };
@@ -761,7 +3809,7 @@ antlrcpp::Any SA_tsqlTranslator::visitCreate_type(tsqlParser::Create_typeContext
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDrop_type(tsqlParser::Drop_typeContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDrop_type(TSqlParser::Drop_typeContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"name", static_cast<void*>(ctx->name)}
     };
@@ -770,13 +3818,13 @@ antlrcpp::Any SA_tsqlTranslator::visitDrop_type(tsqlParser::Drop_typeContext *ct
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitRowset_function_limited(tsqlParser::Rowset_function_limitedContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitRowset_function_limited(TSqlParser::Rowset_function_limitedContext *ctx){
     if(!Rowset_function_limitedContext_cls) Rowset_function_limitedContext_cls = PyObject_GetAttrString(translator->parser_cls, "Rowset_function_limitedContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Rowset_function_limitedContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOpenquery(tsqlParser::OpenqueryContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOpenquery(TSqlParser::OpenqueryContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"linked_server", static_cast<void*>(ctx->linked_server)},
         {"query", static_cast<void*>(ctx->query)}
@@ -786,7 +3834,7 @@ antlrcpp::Any SA_tsqlTranslator::visitOpenquery(tsqlParser::OpenqueryContext *ct
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOpendatasource(tsqlParser::OpendatasourceContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOpendatasource(TSqlParser::OpendatasourceContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"provider", static_cast<void*>(ctx->provider)},
         {"init", static_cast<void*>(ctx->init)},
@@ -799,60 +3847,321 @@ antlrcpp::Any SA_tsqlTranslator::visitOpendatasource(tsqlParser::OpendatasourceC
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDeclare_statement(tsqlParser::Declare_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDeclare_statement(TSqlParser::Declare_statementContext *ctx){
     if(!Declare_statementContext_cls) Declare_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Declare_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Declare_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCursor_statement(tsqlParser::Cursor_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitXml_declaration(TSqlParser::Xml_declarationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"xml_namespace_uri", static_cast<void*>(ctx->xml_namespace_uri)}
+    };
+    if(!Xml_declarationContext_cls) Xml_declarationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_declarationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_declarationContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCursor_statement(TSqlParser::Cursor_statementContext *ctx){
     if(!Cursor_statementContext_cls) Cursor_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cursor_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Cursor_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitExecute_statement(tsqlParser::Execute_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBackup_database(TSqlParser::Backup_databaseContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"return_status", static_cast<void*>(ctx->return_status)}
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"file_or_filegroup", static_cast<void*>(ctx->file_or_filegroup)},
+        {"logical_device_name", static_cast<void*>(ctx->logical_device_name)},
+        {"backup_set_name", static_cast<void*>(ctx->backup_set_name)},
+        {"medianame", static_cast<void*>(ctx->medianame)},
+        {"stats_percent", static_cast<void*>(ctx->stats_percent)},
+        {"encryptor_name", static_cast<void*>(ctx->encryptor_name)}
     };
+    if(!Backup_databaseContext_cls) Backup_databaseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Backup_databaseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Backup_databaseContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitBackup_log(TSqlParser::Backup_logContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"logical_device_name", static_cast<void*>(ctx->logical_device_name)},
+        {"backup_set_name", static_cast<void*>(ctx->backup_set_name)},
+        {"medianame", static_cast<void*>(ctx->medianame)},
+        {"stats_percent", static_cast<void*>(ctx->stats_percent)},
+        {"undo_file_name", static_cast<void*>(ctx->undo_file_name)},
+        {"encryptor_name", static_cast<void*>(ctx->encryptor_name)}
+    };
+    if(!Backup_logContext_cls) Backup_logContext_cls = PyObject_GetAttrString(translator->parser_cls, "Backup_logContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Backup_logContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitBackup_certificate(TSqlParser::Backup_certificateContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"certname", static_cast<void*>(ctx->certname)},
+        {"cert_file", static_cast<void*>(ctx->cert_file)},
+        {"private_key_file", static_cast<void*>(ctx->private_key_file)},
+        {"encryption_password", static_cast<void*>(ctx->encryption_password)},
+        {"decryption_pasword", static_cast<void*>(ctx->decryption_pasword)}
+    };
+    if(!Backup_certificateContext_cls) Backup_certificateContext_cls = PyObject_GetAttrString(translator->parser_cls, "Backup_certificateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Backup_certificateContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitBackup_master_key(TSqlParser::Backup_master_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"master_key_backup_file", static_cast<void*>(ctx->master_key_backup_file)},
+        {"encryption_password", static_cast<void*>(ctx->encryption_password)}
+    };
+    if(!Backup_master_keyContext_cls) Backup_master_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Backup_master_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Backup_master_keyContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitBackup_service_master_key(TSqlParser::Backup_service_master_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"service_master_key_backup_file", static_cast<void*>(ctx->service_master_key_backup_file)},
+        {"encryption_password", static_cast<void*>(ctx->encryption_password)}
+    };
+    if(!Backup_service_master_keyContext_cls) Backup_service_master_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Backup_service_master_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Backup_service_master_keyContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitKill_statement(TSqlParser::Kill_statementContext *ctx){
+    if(!Kill_statementContext_cls) Kill_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Kill_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Kill_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitKill_process(TSqlParser::Kill_processContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"session_id", static_cast<void*>(ctx->session_id)}
+    };
+    if(!Kill_processContext_cls) Kill_processContext_cls = PyObject_GetAttrString(translator->parser_cls, "Kill_processContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Kill_processContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitKill_query_notification(TSqlParser::Kill_query_notificationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"subscription_id", static_cast<void*>(ctx->subscription_id)}
+    };
+    if(!Kill_query_notificationContext_cls) Kill_query_notificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Kill_query_notificationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Kill_query_notificationContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitKill_stats_job(TSqlParser::Kill_stats_jobContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"job_id", static_cast<void*>(ctx->job_id)}
+    };
+    if(!Kill_stats_jobContext_cls) Kill_stats_jobContext_cls = PyObject_GetAttrString(translator->parser_cls, "Kill_stats_jobContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Kill_stats_jobContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExecute_statement(TSqlParser::Execute_statementContext *ctx){
     if(!Execute_statementContext_cls) Execute_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_statementContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_statementContext_cls, labels, 1);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitExecute_statement_arg(tsqlParser::Execute_statement_argContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitExecute_body_batch(TSqlParser::Execute_body_batchContext *ctx){
+    if(!Execute_body_batchContext_cls) Execute_body_batchContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_body_batchContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_body_batchContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExecute_body(TSqlParser::Execute_bodyContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"parameter", static_cast<void*>(ctx->parameter)}
+        {"return_status", static_cast<void*>(ctx->return_status)},
+        {"linkedServer", static_cast<void*>(ctx->linkedServer)}
     };
-    if(!Execute_statement_argContext_cls) Execute_statement_argContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_statement_argContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_statement_argContext_cls, labels, 1);
+    if(!Execute_bodyContext_cls) Execute_bodyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_bodyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_bodyContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitExecute_var_string(tsqlParser::Execute_var_stringContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitExecute_statement_arg(TSqlParser::Execute_statement_argContext *ctx){
+    if(!Execute_statement_argContext_cls) Execute_statement_argContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_statement_argContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_statement_argContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExecute_statement_arg_named(TSqlParser::Execute_statement_arg_namedContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"value", static_cast<void*>(ctx->value)}
+    };
+    if(!Execute_statement_arg_namedContext_cls) Execute_statement_arg_namedContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_statement_arg_namedContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_statement_arg_namedContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExecute_statement_arg_unnamed(TSqlParser::Execute_statement_arg_unnamedContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"value", static_cast<void*>(ctx->value)}
+    };
+    if(!Execute_statement_arg_unnamedContext_cls) Execute_statement_arg_unnamedContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_statement_arg_unnamedContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_statement_arg_unnamedContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExecute_parameter(TSqlParser::Execute_parameterContext *ctx){
+    if(!Execute_parameterContext_cls) Execute_parameterContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_parameterContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_parameterContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExecute_var_string(TSqlParser::Execute_var_stringContext *ctx){
     if(!Execute_var_stringContext_cls) Execute_var_stringContext_cls = PyObject_GetAttrString(translator->parser_cls, "Execute_var_stringContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Execute_var_stringContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSecurity_statement(tsqlParser::Security_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSecurity_statement(TSqlParser::Security_statementContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"on_id", static_cast<void*>(ctx->on_id)},
-        {"to_principal", static_cast<void*>(ctx->to_principal)},
         {"as_principal", static_cast<void*>(ctx->as_principal)}
     };
     if(!Security_statementContext_cls) Security_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Security_statementContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Security_statementContext_cls, labels, 3);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Security_statementContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitGrant_permission(tsqlParser::Grant_permissionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitPrincipal_id(TSqlParser::Principal_idContext *ctx){
+    if(!Principal_idContext_cls) Principal_idContext_cls = PyObject_GetAttrString(translator->parser_cls, "Principal_idContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Principal_idContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_certificate(TSqlParser::Create_certificateContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"certificate_name", static_cast<void*>(ctx->certificate_name)},
+        {"user_name", static_cast<void*>(ctx->user_name)}
+    };
+    if(!Create_certificateContext_cls) Create_certificateContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_certificateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_certificateContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExisting_keys(TSqlParser::Existing_keysContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"assembly_name", static_cast<void*>(ctx->assembly_name)},
+        {"path_to_file", static_cast<void*>(ctx->path_to_file)}
+    };
+    if(!Existing_keysContext_cls) Existing_keysContext_cls = PyObject_GetAttrString(translator->parser_cls, "Existing_keysContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Existing_keysContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPrivate_key_options(TSqlParser::Private_key_optionsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"path", static_cast<void*>(ctx->path)},
+        {"password", static_cast<void*>(ctx->password)}
+    };
+    if(!Private_key_optionsContext_cls) Private_key_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Private_key_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Private_key_optionsContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGenerate_new_keys(TSqlParser::Generate_new_keysContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"password", static_cast<void*>(ctx->password)},
+        {"certificate_subject_name", static_cast<void*>(ctx->certificate_subject_name)}
+    };
+    if(!Generate_new_keysContext_cls) Generate_new_keysContext_cls = PyObject_GetAttrString(translator->parser_cls, "Generate_new_keysContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Generate_new_keysContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDate_options(TSqlParser::Date_optionsContext *ctx){
+    if(!Date_optionsContext_cls) Date_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Date_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Date_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOpen_key(TSqlParser::Open_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key_name", static_cast<void*>(ctx->key_name)},
+        {"password", static_cast<void*>(ctx->password)}
+    };
+    if(!Open_keyContext_cls) Open_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Open_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Open_keyContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitClose_key(TSqlParser::Close_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key_name", static_cast<void*>(ctx->key_name)}
+    };
+    if(!Close_keyContext_cls) Close_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Close_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Close_keyContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCreate_key(TSqlParser::Create_keyContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"password", static_cast<void*>(ctx->password)},
+        {"key_name", static_cast<void*>(ctx->key_name)},
+        {"user_name", static_cast<void*>(ctx->user_name)},
+        {"provider_name", static_cast<void*>(ctx->provider_name)}
+    };
+    if(!Create_keyContext_cls) Create_keyContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_keyContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_keyContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitKey_options(TSqlParser::Key_optionsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"pass_phrase", static_cast<void*>(ctx->pass_phrase)},
+        {"identity_phrase", static_cast<void*>(ctx->identity_phrase)},
+        {"key_name_in_provider", static_cast<void*>(ctx->key_name_in_provider)}
+    };
+    if(!Key_optionsContext_cls) Key_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Key_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Key_optionsContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlgorithm(TSqlParser::AlgorithmContext *ctx){
+    if(!AlgorithmContext_cls) AlgorithmContext_cls = PyObject_GetAttrString(translator->parser_cls, "AlgorithmContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, AlgorithmContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEncryption_mechanism(TSqlParser::Encryption_mechanismContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"certificate_name", static_cast<void*>(ctx->certificate_name)},
+        {"asym_key_name", static_cast<void*>(ctx->asym_key_name)},
+        {"decrypting_Key_name", static_cast<void*>(ctx->decrypting_Key_name)}
+    };
+    if(!Encryption_mechanismContext_cls) Encryption_mechanismContext_cls = PyObject_GetAttrString(translator->parser_cls, "Encryption_mechanismContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Encryption_mechanismContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDecryption_mechanism(TSqlParser::Decryption_mechanismContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"certificate_name", static_cast<void*>(ctx->certificate_name)},
+        {"asym_key_name", static_cast<void*>(ctx->asym_key_name)},
+        {"decrypting_Key_name", static_cast<void*>(ctx->decrypting_Key_name)}
+    };
+    if(!Decryption_mechanismContext_cls) Decryption_mechanismContext_cls = PyObject_GetAttrString(translator->parser_cls, "Decryption_mechanismContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Decryption_mechanismContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGrant_permission(TSqlParser::Grant_permissionContext *ctx){
     if(!Grant_permissionContext_cls) Grant_permissionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Grant_permissionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Grant_permissionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSet_statement(tsqlParser::Set_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSet_statement(TSqlParser::Set_statementContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"member_name", static_cast<void*>(ctx->member_name)}
     };
@@ -861,13 +4170,13 @@ antlrcpp::Any SA_tsqlTranslator::visitSet_statement(tsqlParser::Set_statementCon
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTransaction_statement(tsqlParser::Transaction_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTransaction_statement(TSqlParser::Transaction_statementContext *ctx){
     if(!Transaction_statementContext_cls) Transaction_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Transaction_statementContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Transaction_statementContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitGo_statement(tsqlParser::Go_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitGo_statement(TSqlParser::Go_statementContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"count", static_cast<void*>(ctx->count)}
     };
@@ -876,7 +4185,7 @@ antlrcpp::Any SA_tsqlTranslator::visitGo_statement(tsqlParser::Go_statementConte
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitUse_statement(tsqlParser::Use_statementContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitUse_statement(TSqlParser::Use_statementContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"database", static_cast<void*>(ctx->database)}
     };
@@ -885,7 +4194,261 @@ antlrcpp::Any SA_tsqlTranslator::visitUse_statement(tsqlParser::Use_statementCon
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitExecute_clause(tsqlParser::Execute_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSetuser_statement(TSqlParser::Setuser_statementContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"user", static_cast<void*>(ctx->user)}
+    };
+    if(!Setuser_statementContext_cls) Setuser_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Setuser_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Setuser_statementContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitReconfigure_statement(TSqlParser::Reconfigure_statementContext *ctx){
+    if(!Reconfigure_statementContext_cls) Reconfigure_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Reconfigure_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Reconfigure_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitShutdown_statement(TSqlParser::Shutdown_statementContext *ctx){
+    if(!Shutdown_statementContext_cls) Shutdown_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Shutdown_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Shutdown_statementContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCheckpoint_statement(TSqlParser::Checkpoint_statementContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"checkPointDuration", static_cast<void*>(ctx->checkPointDuration)}
+    };
+    if(!Checkpoint_statementContext_cls) Checkpoint_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Checkpoint_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Checkpoint_statementContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkalloc_option(TSqlParser::Dbcc_checkalloc_optionContext *ctx){
+    if(!Dbcc_checkalloc_optionContext_cls) Dbcc_checkalloc_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkalloc_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkalloc_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkalloc(TSqlParser::Dbcc_checkallocContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"database", static_cast<void*>(ctx->database)},
+        {"databaseid", static_cast<void*>(ctx->databaseid)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_checkallocContext_cls) Dbcc_checkallocContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkallocContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkallocContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkcatalog(TSqlParser::Dbcc_checkcatalogContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"database", static_cast<void*>(ctx->database)},
+        {"databasename", static_cast<void*>(ctx->databasename)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_checkcatalogContext_cls) Dbcc_checkcatalogContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkcatalogContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkcatalogContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkconstraints_option(TSqlParser::Dbcc_checkconstraints_optionContext *ctx){
+    if(!Dbcc_checkconstraints_optionContext_cls) Dbcc_checkconstraints_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkconstraints_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkconstraints_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkconstraints(TSqlParser::Dbcc_checkconstraintsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"table_or_constraint", static_cast<void*>(ctx->table_or_constraint)},
+        {"table_or_constraint_name", static_cast<void*>(ctx->table_or_constraint_name)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_checkconstraintsContext_cls) Dbcc_checkconstraintsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkconstraintsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkconstraintsContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkdb_table_option(TSqlParser::Dbcc_checkdb_table_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_dregree_of_parallelism", static_cast<void*>(ctx->max_dregree_of_parallelism)}
+    };
+    if(!Dbcc_checkdb_table_optionContext_cls) Dbcc_checkdb_table_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkdb_table_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkdb_table_optionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkdb(TSqlParser::Dbcc_checkdbContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"database", static_cast<void*>(ctx->database)},
+        {"databasename", static_cast<void*>(ctx->databasename)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_checkdbContext_cls) Dbcc_checkdbContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkdbContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkdbContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkfilegroup_option(TSqlParser::Dbcc_checkfilegroup_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_dregree_of_parallelism", static_cast<void*>(ctx->max_dregree_of_parallelism)}
+    };
+    if(!Dbcc_checkfilegroup_optionContext_cls) Dbcc_checkfilegroup_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkfilegroup_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkfilegroup_optionContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checkfilegroup(TSqlParser::Dbcc_checkfilegroupContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"filegroup_id", static_cast<void*>(ctx->filegroup_id)},
+        {"filegroup_name", static_cast<void*>(ctx->filegroup_name)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_checkfilegroupContext_cls) Dbcc_checkfilegroupContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checkfilegroupContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checkfilegroupContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_checktable(TSqlParser::Dbcc_checktableContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"table_or_view_name", static_cast<void*>(ctx->table_or_view_name)},
+        {"index_id", static_cast<void*>(ctx->index_id)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_checktableContext_cls) Dbcc_checktableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_checktableContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_checktableContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_cleantable(TSqlParser::Dbcc_cleantableContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"database", static_cast<void*>(ctx->database)},
+        {"databasename", static_cast<void*>(ctx->databasename)},
+        {"table_or_view", static_cast<void*>(ctx->table_or_view)},
+        {"table_or_view_name", static_cast<void*>(ctx->table_or_view_name)},
+        {"batch_size", static_cast<void*>(ctx->batch_size)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_cleantableContext_cls) Dbcc_cleantableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_cleantableContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_cleantableContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_clonedatabase_option(TSqlParser::Dbcc_clonedatabase_optionContext *ctx){
+    if(!Dbcc_clonedatabase_optionContext_cls) Dbcc_clonedatabase_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_clonedatabase_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_clonedatabase_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_clonedatabase(TSqlParser::Dbcc_clonedatabaseContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"source_database", static_cast<void*>(ctx->source_database)},
+        {"target_database", static_cast<void*>(ctx->target_database)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_clonedatabaseContext_cls) Dbcc_clonedatabaseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_clonedatabaseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_clonedatabaseContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_pdw_showspaceused(TSqlParser::Dbcc_pdw_showspaceusedContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"tablename", static_cast<void*>(ctx->tablename)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_pdw_showspaceusedContext_cls) Dbcc_pdw_showspaceusedContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_pdw_showspaceusedContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_pdw_showspaceusedContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_proccache(TSqlParser::Dbcc_proccacheContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_proccacheContext_cls) Dbcc_proccacheContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_proccacheContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_proccacheContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_showcontig_option(TSqlParser::Dbcc_showcontig_optionContext *ctx){
+    if(!Dbcc_showcontig_optionContext_cls) Dbcc_showcontig_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_showcontig_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_showcontig_optionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_showcontig(TSqlParser::Dbcc_showcontigContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"table_or_view", static_cast<void*>(ctx->table_or_view)},
+        {"index", static_cast<void*>(ctx->index)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_showcontigContext_cls) Dbcc_showcontigContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_showcontigContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_showcontigContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_shrinklog(TSqlParser::Dbcc_shrinklogContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_shrinklogContext_cls) Dbcc_shrinklogContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_shrinklogContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_shrinklogContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_dbreindex(TSqlParser::Dbcc_dbreindexContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"table", static_cast<void*>(ctx->table)},
+        {"index_name", static_cast<void*>(ctx->index_name)},
+        {"fillfactor", static_cast<void*>(ctx->fillfactor)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_dbreindexContext_cls) Dbcc_dbreindexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_dbreindexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_dbreindexContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_dll_free(TSqlParser::Dbcc_dll_freeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"dllname", static_cast<void*>(ctx->dllname)},
+        {"name", static_cast<void*>(ctx->name)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_dll_freeContext_cls) Dbcc_dll_freeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_dll_freeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_dll_freeContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_dropcleanbuffers(TSqlParser::Dbcc_dropcleanbuffersContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"dbcc_option", static_cast<void*>(ctx->dbcc_option)}
+    };
+    if(!Dbcc_dropcleanbuffersContext_cls) Dbcc_dropcleanbuffersContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_dropcleanbuffersContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_dropcleanbuffersContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDbcc_clause(TSqlParser::Dbcc_clauseContext *ctx){
+    if(!Dbcc_clauseContext_cls) Dbcc_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dbcc_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dbcc_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExecute_clause(TSqlParser::Execute_clauseContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"clause", static_cast<void*>(ctx->clause)}
     };
@@ -894,141 +4457,253 @@ antlrcpp::Any SA_tsqlTranslator::visitExecute_clause(tsqlParser::Execute_clauseC
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDeclare_local(tsqlParser::Declare_localContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDeclare_local(TSqlParser::Declare_localContext *ctx){
     if(!Declare_localContext_cls) Declare_localContext_cls = PyObject_GetAttrString(translator->parser_cls, "Declare_localContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Declare_localContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTable_type_definition(tsqlParser::Table_type_definitionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTable_type_definition(TSqlParser::Table_type_definitionContext *ctx){
     if(!Table_type_definitionContext_cls) Table_type_definitionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_type_definitionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_type_definitionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitColumn_def_table_constraints(tsqlParser::Column_def_table_constraintsContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTable_type_indices(TSqlParser::Table_type_indicesContext *ctx){
+    if(!Table_type_indicesContext_cls) Table_type_indicesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_type_indicesContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_type_indicesContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitXml_type_definition(TSqlParser::Xml_type_definitionContext *ctx){
+    if(!Xml_type_definitionContext_cls) Xml_type_definitionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_type_definitionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_type_definitionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitXml_schema_collection(TSqlParser::Xml_schema_collectionContext *ctx){
+    if(!Xml_schema_collectionContext_cls) Xml_schema_collectionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_schema_collectionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_schema_collectionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitColumn_def_table_constraints(TSqlParser::Column_def_table_constraintsContext *ctx){
     if(!Column_def_table_constraintsContext_cls) Column_def_table_constraintsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_def_table_constraintsContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_def_table_constraintsContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitColumn_def_table_constraint(tsqlParser::Column_def_table_constraintContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitColumn_def_table_constraint(TSqlParser::Column_def_table_constraintContext *ctx){
     if(!Column_def_table_constraintContext_cls) Column_def_table_constraintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_def_table_constraintContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_def_table_constraintContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitColumn_definition(tsqlParser::Column_definitionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitColumn_definition(TSqlParser::Column_definitionContext *ctx){
+    if(!Column_definitionContext_cls) Column_definitionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_definitionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_definitionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitColumn_definition_element(TSqlParser::Column_definition_elementContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"collation_name", static_cast<void*>(ctx->collation_name)},
+        {"mask_function", static_cast<void*>(ctx->mask_function)},
+        {"constraint", static_cast<void*>(ctx->constraint)},
+        {"constant_expr", static_cast<void*>(ctx->constant_expr)},
+        {"seed", static_cast<void*>(ctx->seed)},
+        {"increment", static_cast<void*>(ctx->increment)},
+        {"key_name", static_cast<void*>(ctx->key_name)},
+        {"algo", static_cast<void*>(ctx->algo)}
+    };
+    if(!Column_definition_elementContext_cls) Column_definition_elementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_definition_elementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_definition_elementContext_cls, labels, 8);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitColumn_modifier(TSqlParser::Column_modifierContext *ctx){
+    if(!Column_modifierContext_cls) Column_modifierContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_modifierContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_modifierContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMaterialized_column_definition(TSqlParser::Materialized_column_definitionContext *ctx){
+    if(!Materialized_column_definitionContext_cls) Materialized_column_definitionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Materialized_column_definitionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Materialized_column_definitionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitColumn_constraint(TSqlParser::Column_constraintContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"constraint", static_cast<void*>(ctx->constraint)}
+    };
+    if(!Column_constraintContext_cls) Column_constraintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_constraintContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_constraintContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitColumn_index(TSqlParser::Column_indexContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"index_name", static_cast<void*>(ctx->index_name)},
+        {"filestream_filegroup_or_partition_schema_name", static_cast<void*>(ctx->filestream_filegroup_or_partition_schema_name)}
+    };
+    if(!Column_indexContext_cls) Column_indexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_indexContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_indexContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOn_partition_or_filegroup(TSqlParser::On_partition_or_filegroupContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"partition_scheme_name", static_cast<void*>(ctx->partition_scheme_name)},
+        {"partition_column_name", static_cast<void*>(ctx->partition_column_name)},
+        {"filegroup", static_cast<void*>(ctx->filegroup)}
+    };
+    if(!On_partition_or_filegroupContext_cls) On_partition_or_filegroupContext_cls = PyObject_GetAttrString(translator->parser_cls, "On_partition_or_filegroupContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, On_partition_or_filegroupContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTable_constraint(TSqlParser::Table_constraintContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"constraint", static_cast<void*>(ctx->constraint)},
-        {"seed", static_cast<void*>(ctx->seed)},
-        {"increment", static_cast<void*>(ctx->increment)}
-    };
-    if(!Column_definitionContext_cls) Column_definitionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_definitionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_definitionContext_cls, labels, 3);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitColumn_constraint(tsqlParser::Column_constraintContext *ctx){
-    if(!Column_constraintContext_cls) Column_constraintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_constraintContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_constraintContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitTable_constraint(tsqlParser::Table_constraintContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
         {"fk", static_cast<void*>(ctx->fk)},
-        {"pk", static_cast<void*>(ctx->pk)}
+        {"constant_expr", static_cast<void*>(ctx->constant_expr)},
+        {"column", static_cast<void*>(ctx->column)}
     };
     if(!Table_constraintContext_cls) Table_constraintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_constraintContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_constraintContext_cls, labels, 2);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_constraintContext_cls, labels, 4);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitIndex_options(tsqlParser::Index_optionsContext *ctx){
-    if(!Index_optionsContext_cls) Index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Index_optionsContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Index_optionsContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitConnection_node(TSqlParser::Connection_nodeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"from_node_table", static_cast<void*>(ctx->from_node_table)},
+        {"to_node_table", static_cast<void*>(ctx->to_node_table)}
+    };
+    if(!Connection_nodeContext_cls) Connection_nodeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Connection_nodeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Connection_nodeContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitIndex_option(tsqlParser::Index_optionContext *ctx){
-    if(!Index_optionContext_cls) Index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Index_optionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Index_optionContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitPrimary_key_options(TSqlParser::Primary_key_optionsContext *ctx){
+    if(!Primary_key_optionsContext_cls) Primary_key_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Primary_key_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Primary_key_optionsContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDeclare_cursor(tsqlParser::Declare_cursorContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitForeign_key_options(TSqlParser::Foreign_key_optionsContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"pk", static_cast<void*>(ctx->pk)}
+    };
+    if(!Foreign_key_optionsContext_cls) Foreign_key_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Foreign_key_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Foreign_key_optionsContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCheck_constraint(TSqlParser::Check_constraintContext *ctx){
+    if(!Check_constraintContext_cls) Check_constraintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Check_constraintContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Check_constraintContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOn_delete(TSqlParser::On_deleteContext *ctx){
+    if(!On_deleteContext_cls) On_deleteContext_cls = PyObject_GetAttrString(translator->parser_cls, "On_deleteContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, On_deleteContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOn_update(TSqlParser::On_updateContext *ctx){
+    if(!On_updateContext_cls) On_updateContext_cls = PyObject_GetAttrString(translator->parser_cls, "On_updateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, On_updateContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_table_index_options(TSqlParser::Alter_table_index_optionsContext *ctx){
+    if(!Alter_table_index_optionsContext_cls) Alter_table_index_optionsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_table_index_optionsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_table_index_optionsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAlter_table_index_option(TSqlParser::Alter_table_index_optionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"max_degree_of_parallelism", static_cast<void*>(ctx->max_degree_of_parallelism)},
+        {"times", static_cast<void*>(ctx->times)}
+    };
+    if(!Alter_table_index_optionContext_cls) Alter_table_index_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Alter_table_index_optionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Alter_table_index_optionContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDeclare_cursor(TSqlParser::Declare_cursorContext *ctx){
     if(!Declare_cursorContext_cls) Declare_cursorContext_cls = PyObject_GetAttrString(translator->parser_cls, "Declare_cursorContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Declare_cursorContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDeclare_set_cursor_common(tsqlParser::Declare_set_cursor_commonContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDeclare_set_cursor_common(TSqlParser::Declare_set_cursor_commonContext *ctx){
     if(!Declare_set_cursor_commonContext_cls) Declare_set_cursor_commonContext_cls = PyObject_GetAttrString(translator->parser_cls, "Declare_set_cursor_commonContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Declare_set_cursor_commonContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFetch_cursor(tsqlParser::Fetch_cursorContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDeclare_set_cursor_common_partial(TSqlParser::Declare_set_cursor_common_partialContext *ctx){
+    if(!Declare_set_cursor_common_partialContext_cls) Declare_set_cursor_common_partialContext_cls = PyObject_GetAttrString(translator->parser_cls, "Declare_set_cursor_common_partialContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Declare_set_cursor_common_partialContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFetch_cursor(TSqlParser::Fetch_cursorContext *ctx){
     if(!Fetch_cursorContext_cls) Fetch_cursorContext_cls = PyObject_GetAttrString(translator->parser_cls, "Fetch_cursorContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Fetch_cursorContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSet_special(tsqlParser::Set_specialContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"key", static_cast<void*>(ctx->key)},
-        {"value", static_cast<void*>(ctx->value)},
-        {"set_type", static_cast<void*>(ctx->set_type)}
-    };
+antlrcpp::Any SA_TSqlTranslator::visitSet_special(TSqlParser::Set_specialContext *ctx){
     if(!Set_specialContext_cls) Set_specialContext_cls = PyObject_GetAttrString(translator->parser_cls, "Set_specialContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Set_specialContext_cls, labels, 3);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Set_specialContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitConstant_LOCAL_ID(tsqlParser::Constant_LOCAL_IDContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSpecial_list(TSqlParser::Special_listContext *ctx){
+    if(!Special_listContext_cls) Special_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Special_listContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Special_listContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitConstant_LOCAL_ID(TSqlParser::Constant_LOCAL_IDContext *ctx){
     if(!Constant_LOCAL_IDContext_cls) Constant_LOCAL_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "Constant_LOCAL_IDContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Constant_LOCAL_IDContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitBinary_operator_expression(tsqlParser::Binary_operator_expressionContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right", static_cast<void*>(ctx->right)}
-    };
-    if(!Binary_operator_expressionContext_cls) Binary_operator_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Binary_operator_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Binary_operator_expressionContext_cls, labels, 3);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitUnary_operator_expression(tsqlParser::Unary_operator_expressionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitExpression(TSqlParser::ExpressionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"op", static_cast<void*>(ctx->op)}
     };
-    if(!Unary_operator_expressionContext_cls) Unary_operator_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Unary_operator_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Unary_operator_expressionContext_cls, labels, 1);
+    if(!ExpressionContext_cls) ExpressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "ExpressionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ExpressionContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFunction_call_expression(tsqlParser::Function_call_expressionContext *ctx){
-    if(!Function_call_expressionContext_cls) Function_call_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Function_call_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Function_call_expressionContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitParameter(TSqlParser::ParameterContext *ctx){
+    if(!ParameterContext_cls) ParameterContext_cls = PyObject_GetAttrString(translator->parser_cls, "ParameterContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ParameterContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitConversion_expression(tsqlParser::Conversion_expressionContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"right", static_cast<void*>(ctx->right)}
-    };
-    if(!Conversion_expressionContext_cls) Conversion_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Conversion_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Conversion_expressionContext_cls, labels, 2);
+antlrcpp::Any SA_TSqlTranslator::visitTime_zone(TSqlParser::Time_zoneContext *ctx){
+    if(!Time_zoneContext_cls) Time_zoneContext_cls = PyObject_GetAttrString(translator->parser_cls, "Time_zoneContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Time_zoneContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCase_expression(tsqlParser::Case_expressionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitPrimitive_expression(TSqlParser::Primitive_expressionContext *ctx){
+    if(!Primitive_expressionContext_cls) Primitive_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Primitive_expressionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Primitive_expressionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCase_expression(TSqlParser::Case_expressionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"caseExpr", static_cast<void*>(ctx->caseExpr)},
         {"elseExpr", static_cast<void*>(ctx->elseExpr)}
@@ -1038,348 +4713,195 @@ antlrcpp::Any SA_tsqlTranslator::visitCase_expression(tsqlParser::Case_expressio
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitColumn_ref_expression(tsqlParser::Column_ref_expressionContext *ctx){
-    if(!Column_ref_expressionContext_cls) Column_ref_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_ref_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_ref_expressionContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitUnary_operator_expression(TSqlParser::Unary_operator_expressionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"op", static_cast<void*>(ctx->op)}
+    };
+    if(!Unary_operator_expressionContext_cls) Unary_operator_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Unary_operator_expressionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Unary_operator_expressionContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitString_agg_expression(tsqlParser::String_agg_expressionContext *ctx){
-    if(!String_agg_expressionContext_cls) String_agg_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "String_agg_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, String_agg_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitPercentile_cont_expression(tsqlParser::Percentile_cont_expressionContext *ctx){
-    if(!Percentile_cont_expressionContext_cls) Percentile_cont_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Percentile_cont_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Percentile_cont_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitPrimitive_expression(tsqlParser::Primitive_expressionContext *ctx){
-    if(!Primitive_expressionContext_cls) Primitive_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Primitive_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Primitive_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitBracket_expression(tsqlParser::Bracket_expressionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBracket_expression(TSqlParser::Bracket_expressionContext *ctx){
     if(!Bracket_expressionContext_cls) Bracket_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Bracket_expressionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Bracket_expressionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSubquery_expression(tsqlParser::Subquery_expressionContext *ctx){
-    if(!Subquery_expressionContext_cls) Subquery_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Subquery_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Subquery_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitOver_clause_expression(tsqlParser::Over_clause_expressionContext *ctx){
-    if(!Over_clause_expressionContext_cls) Over_clause_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Over_clause_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Over_clause_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitXml_method_expression(tsqlParser::Xml_method_expressionContext *ctx){
-    if(!Xml_method_expressionContext_cls) Xml_method_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_method_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_method_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitXml_method_call(tsqlParser::Xml_method_callContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"table", static_cast<void*>(ctx->table)},
-        {"column", static_cast<void*>(ctx->column)}
-    };
-    if(!Xml_method_callContext_cls) Xml_method_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_method_callContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_method_callContext_cls, labels, 2);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitSimple_xml_method_name(tsqlParser::Simple_xml_method_nameContext *ctx){
-    if(!Simple_xml_method_nameContext_cls) Simple_xml_method_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Simple_xml_method_nameContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Simple_xml_method_nameContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitConstant_expression(tsqlParser::Constant_expressionContext *ctx){
-    if(!Constant_expressionContext_cls) Constant_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Constant_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Constant_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitSubquery(tsqlParser::SubqueryContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSubquery(TSqlParser::SubqueryContext *ctx){
     if(!SubqueryContext_cls) SubqueryContext_cls = PyObject_GetAttrString(translator->parser_cls, "SubqueryContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, SubqueryContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWith_expression(tsqlParser::With_expressionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitWith_expression(TSqlParser::With_expressionContext *ctx){
     if(!With_expressionContext_cls) With_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "With_expressionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, With_expressionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCommon_table_expression(tsqlParser::Common_table_expressionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCommon_table_expression(TSqlParser::Common_table_expressionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"expression_name", static_cast<void*>(ctx->expression_name)}
+        {"expression_name", static_cast<void*>(ctx->expression_name)},
+        {"columns", static_cast<void*>(ctx->columns)},
+        {"cte_query", static_cast<void*>(ctx->cte_query)}
     };
     if(!Common_table_expressionContext_cls) Common_table_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Common_table_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Common_table_expressionContext_cls, labels, 1);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Common_table_expressionContext_cls, labels, 3);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitUpdate_elem(tsqlParser::Update_elemContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitUpdate_elem(TSqlParser::Update_elemContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"name", static_cast<void*>(ctx->name)},
         {"udt_column_name", static_cast<void*>(ctx->udt_column_name)},
         {"method_name", static_cast<void*>(ctx->method_name)}
     };
     if(!Update_elemContext_cls) Update_elemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Update_elemContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Update_elemContext_cls, labels, 3);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Update_elemContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSearch_condition_list(tsqlParser::Search_condition_listContext *ctx){
-    if(!Search_condition_listContext_cls) Search_condition_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Search_condition_listContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Search_condition_listContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitSearch_cond_or(tsqlParser::Search_cond_orContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitUpdate_elem_merge(TSqlParser::Update_elem_mergeContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right", static_cast<void*>(ctx->right)}
+        {"udt_column_name", static_cast<void*>(ctx->udt_column_name)},
+        {"method_name", static_cast<void*>(ctx->method_name)}
     };
-    if(!Search_cond_orContext_cls) Search_cond_orContext_cls = PyObject_GetAttrString(translator->parser_cls, "Search_cond_orContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Search_cond_orContext_cls, labels, 3);
+    if(!Update_elem_mergeContext_cls) Update_elem_mergeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Update_elem_mergeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Update_elem_mergeContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSearch_cond_pred(tsqlParser::Search_cond_predContext *ctx){
-    if(!Search_cond_predContext_cls) Search_cond_predContext_cls = PyObject_GetAttrString(translator->parser_cls, "Search_cond_predContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Search_cond_predContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitSearch_condition(TSqlParser::Search_conditionContext *ctx){
+    if(!Search_conditionContext_cls) Search_conditionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Search_conditionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Search_conditionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSearch_cond_and(tsqlParser::Search_cond_andContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitPredicate(TSqlParser::PredicateContext *ctx){
+    if(!PredicateContext_cls) PredicateContext_cls = PyObject_GetAttrString(translator->parser_cls, "PredicateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PredicateContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitQuery_expression(TSqlParser::Query_expressionContext *ctx){
+    if(!Query_expressionContext_cls) Query_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Query_expressionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Query_expressionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSql_union(TSqlParser::Sql_unionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right", static_cast<void*>(ctx->right)}
-    };
-    if(!Search_cond_andContext_cls) Search_cond_andContext_cls = PyObject_GetAttrString(translator->parser_cls, "Search_cond_andContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Search_cond_andContext_cls, labels, 3);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitBinary_in_expression(tsqlParser::Binary_in_expressionContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
+        {"spec", static_cast<void*>(ctx->spec)},
         {"op", static_cast<void*>(ctx->op)}
     };
-    if(!Binary_in_expressionContext_cls) Binary_in_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Binary_in_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Binary_in_expressionContext_cls, labels, 2);
+    if(!Sql_unionContext_cls) Sql_unionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Sql_unionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Sql_unionContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitUnary_operator_expression2(tsqlParser::Unary_operator_expression2Context *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitQuery_specification(TSqlParser::Query_specificationContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"op", static_cast<void*>(ctx->op)},
-        {"expr", static_cast<void*>(ctx->expr)}
-    };
-    if(!Unary_operator_expression2Context_cls) Unary_operator_expression2Context_cls = PyObject_GetAttrString(translator->parser_cls, "Unary_operator_expression2Context");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Unary_operator_expression2Context_cls, labels, 2);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitBinary_mod_expression(tsqlParser::Binary_mod_expressionContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right_1", static_cast<void*>(ctx->right_1)},
-        {"right_2", static_cast<void*>(ctx->right_2)}
-    };
-    if(!Binary_mod_expressionContext_cls) Binary_mod_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Binary_mod_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Binary_mod_expressionContext_cls, labels, 4);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitUnary_operator_expression3(tsqlParser::Unary_operator_expression3Context *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"op", static_cast<void*>(ctx->op)},
-        {"expr", static_cast<void*>(ctx->expr)}
-    };
-    if(!Unary_operator_expression3Context_cls) Unary_operator_expression3Context_cls = PyObject_GetAttrString(translator->parser_cls, "Unary_operator_expression3Context");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Unary_operator_expression3Context_cls, labels, 2);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitBracket_search_expression(tsqlParser::Bracket_search_expressionContext *ctx){
-    if(!Bracket_search_expressionContext_cls) Bracket_search_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Bracket_search_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Bracket_search_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitSublink_expression(tsqlParser::Sublink_expressionContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"test_expr", static_cast<void*>(ctx->test_expr)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"pref", static_cast<void*>(ctx->pref)}
-    };
-    if(!Sublink_expressionContext_cls) Sublink_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Sublink_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Sublink_expressionContext_cls, labels, 3);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitBinary_operator_expression3(tsqlParser::Binary_operator_expression3Context *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right", static_cast<void*>(ctx->right)}
-    };
-    if(!Binary_operator_expression3Context_cls) Binary_operator_expression3Context_cls = PyObject_GetAttrString(translator->parser_cls, "Binary_operator_expression3Context");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Binary_operator_expression3Context_cls, labels, 3);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitBinary_operator_expression2(tsqlParser::Binary_operator_expression2Context *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right", static_cast<void*>(ctx->right)}
-    };
-    if(!Binary_operator_expression2Context_cls) Binary_operator_expression2Context_cls = PyObject_GetAttrString(translator->parser_cls, "Binary_operator_expression2Context");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Binary_operator_expression2Context_cls, labels, 3);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitDecimal_expression(tsqlParser::Decimal_expressionContext *ctx){
-    if(!Decimal_expressionContext_cls) Decimal_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Decimal_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Decimal_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitBracket_query_expression(tsqlParser::Bracket_query_expressionContext *ctx){
-    if(!Bracket_query_expressionContext_cls) Bracket_query_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Bracket_query_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Bracket_query_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitQuery_specification_expression(tsqlParser::Query_specification_expressionContext *ctx){
-    if(!Query_specification_expressionContext_cls) Query_specification_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Query_specification_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Query_specification_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitUnion_query_expression(tsqlParser::Union_query_expressionContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right", static_cast<void*>(ctx->right)}
-    };
-    if(!Union_query_expressionContext_cls) Union_query_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Union_query_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Union_query_expressionContext_cls, labels, 3);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitUnion_op(tsqlParser::Union_opContext *ctx){
-    if(!Union_opContext_cls) Union_opContext_cls = PyObject_GetAttrString(translator->parser_cls, "Union_opContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Union_opContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitCross_apply_expression(tsqlParser::Cross_apply_expressionContext *ctx){
-    if(!Cross_apply_expressionContext_cls) Cross_apply_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cross_apply_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Cross_apply_expressionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitQuery_specification(tsqlParser::Query_specificationContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"pref", static_cast<void*>(ctx->pref)},
+        {"allOrDistinct", static_cast<void*>(ctx->allOrDistinct)},
+        {"top", static_cast<void*>(ctx->top)},
+        {"columns", static_cast<void*>(ctx->columns)},
+        {"into", static_cast<void*>(ctx->into)},
+        {"from_label", static_cast<void*>(ctx->from_label)},
         {"where", static_cast<void*>(ctx->where)},
+        {"groupByAll", static_cast<void*>(ctx->groupByAll)},
         {"having", static_cast<void*>(ctx->having)}
     };
     if(!Query_specificationContext_cls) Query_specificationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Query_specificationContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Query_specificationContext_cls, labels, 3);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Query_specificationContext_cls, labels, 8);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitGroup_by_grouping_sets(tsqlParser::Group_by_grouping_setsContext *ctx){
-    if(!Group_by_grouping_setsContext_cls) Group_by_grouping_setsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Group_by_grouping_setsContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Group_by_grouping_setsContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitGrouping_set(tsqlParser::Grouping_setContext *ctx){
-    if(!Grouping_setContext_cls) Grouping_setContext_cls = PyObject_GetAttrString(translator->parser_cls, "Grouping_setContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Grouping_setContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitTop_clause(tsqlParser::Top_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTop_clause(TSqlParser::Top_clauseContext *ctx){
     if(!Top_clauseContext_cls) Top_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Top_clauseContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Top_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTop_clause_dm(tsqlParser::Top_clause_dmContext *ctx){
-    if(!Top_clause_dmContext_cls) Top_clause_dmContext_cls = PyObject_GetAttrString(translator->parser_cls, "Top_clause_dmContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Top_clause_dmContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitOrder_by_clause(tsqlParser::Order_by_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTop_percent(TSqlParser::Top_percentContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"offset", static_cast<void*>(ctx->offset)}
+        {"percent_constant", static_cast<void*>(ctx->percent_constant)},
+        {"topper_expression", static_cast<void*>(ctx->topper_expression)}
     };
+    if(!Top_percentContext_cls) Top_percentContext_cls = PyObject_GetAttrString(translator->parser_cls, "Top_percentContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Top_percentContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTop_count(TSqlParser::Top_countContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"count_constant", static_cast<void*>(ctx->count_constant)},
+        {"topcount_expression", static_cast<void*>(ctx->topcount_expression)}
+    };
+    if(!Top_countContext_cls) Top_countContext_cls = PyObject_GetAttrString(translator->parser_cls, "Top_countContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Top_countContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOrder_by_clause(TSqlParser::Order_by_clauseContext *ctx){
     if(!Order_by_clauseContext_cls) Order_by_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Order_by_clauseContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Order_by_clauseContext_cls, labels, 1);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Order_by_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFetch_expression(tsqlParser::Fetch_expressionContext *ctx){
-    if(!Fetch_expressionContext_cls) Fetch_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Fetch_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Fetch_expressionContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitSelect_order_by_clause(TSqlParser::Select_order_by_clauseContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"offset_exp", static_cast<void*>(ctx->offset_exp)},
+        {"offset_rows", static_cast<void*>(ctx->offset_rows)},
+        {"fetch_offset", static_cast<void*>(ctx->fetch_offset)},
+        {"fetch_exp", static_cast<void*>(ctx->fetch_exp)},
+        {"fetch_rows", static_cast<void*>(ctx->fetch_rows)}
+    };
+    if(!Select_order_by_clauseContext_cls) Select_order_by_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Select_order_by_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Select_order_by_clauseContext_cls, labels, 5);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFor_clause(tsqlParser::For_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitFor_clause(TSqlParser::For_clauseContext *ctx){
     if(!For_clauseContext_cls) For_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "For_clauseContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, For_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitXml_common_directives(tsqlParser::Xml_common_directivesContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitXml_common_directives(TSqlParser::Xml_common_directivesContext *ctx){
     if(!Xml_common_directivesContext_cls) Xml_common_directivesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_common_directivesContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_common_directivesContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOrder_by_expression(tsqlParser::Order_by_expressionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOrder_by_expression(TSqlParser::Order_by_expressionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"direction", static_cast<void*>(ctx->direction)}
+        {"order_by", static_cast<void*>(ctx->order_by)},
+        {"ascending", static_cast<void*>(ctx->ascending)},
+        {"descending", static_cast<void*>(ctx->descending)}
     };
     if(!Order_by_expressionContext_cls) Order_by_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Order_by_expressionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Order_by_expressionContext_cls, labels, 1);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Order_by_expressionContext_cls, labels, 3);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitGroup_by_item(tsqlParser::Group_by_itemContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitGrouping_sets_item(TSqlParser::Grouping_sets_itemContext *ctx){
+    if(!Grouping_sets_itemContext_cls) Grouping_sets_itemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Grouping_sets_itemContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Grouping_sets_itemContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGroup_by_item(TSqlParser::Group_by_itemContext *ctx){
     if(!Group_by_itemContext_cls) Group_by_itemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Group_by_itemContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Group_by_itemContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOption_clause(tsqlParser::Option_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOption_clause(TSqlParser::Option_clauseContext *ctx){
     if(!Option_clauseContext_cls) Option_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Option_clauseContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Option_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOption(tsqlParser::OptionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOption(TSqlParser::OptionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"number_rows", static_cast<void*>(ctx->number_rows)},
         {"number_of_processors", static_cast<void*>(ctx->number_of_processors)},
@@ -1390,141 +4912,222 @@ antlrcpp::Any SA_tsqlTranslator::visitOption(tsqlParser::OptionContext *ctx){
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOptimize_for_arg(tsqlParser::Optimize_for_argContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOptimize_for_arg(TSqlParser::Optimize_for_argContext *ctx){
     if(!Optimize_for_argContext_cls) Optimize_for_argContext_cls = PyObject_GetAttrString(translator->parser_cls, "Optimize_for_argContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Optimize_for_argContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSelect_list(tsqlParser::Select_listContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSelect_list(TSqlParser::Select_listContext *ctx){
     if(!Select_listContext_cls) Select_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Select_listContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Select_listContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSelect_list_elem(tsqlParser::Select_list_elemContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"alias", static_cast<void*>(ctx->alias)}
-    };
-    if(!Select_list_elemContext_cls) Select_list_elemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Select_list_elemContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Select_list_elemContext_cls, labels, 1);
+antlrcpp::Any SA_TSqlTranslator::visitUdt_method_arguments(TSqlParser::Udt_method_argumentsContext *ctx){
+    if(!Udt_method_argumentsContext_cls) Udt_method_argumentsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Udt_method_argumentsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Udt_method_argumentsContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTable_sources(tsqlParser::Table_sourcesContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAsterisk(TSqlParser::AsteriskContext *ctx){
+    if(!AsteriskContext_cls) AsteriskContext_cls = PyObject_GetAttrString(translator->parser_cls, "AsteriskContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, AsteriskContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUdt_elem(TSqlParser::Udt_elemContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"udt_column_name", static_cast<void*>(ctx->udt_column_name)},
+        {"non_static_attr", static_cast<void*>(ctx->non_static_attr)},
+        {"static_attr", static_cast<void*>(ctx->static_attr)}
+    };
+    if(!Udt_elemContext_cls) Udt_elemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Udt_elemContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Udt_elemContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExpression_elem(TSqlParser::Expression_elemContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"leftAlias", static_cast<void*>(ctx->leftAlias)},
+        {"eq", static_cast<void*>(ctx->eq)},
+        {"leftAssignment", static_cast<void*>(ctx->leftAssignment)},
+        {"expressionAs", static_cast<void*>(ctx->expressionAs)}
+    };
+    if(!Expression_elemContext_cls) Expression_elemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Expression_elemContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Expression_elemContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSelect_list_elem(TSqlParser::Select_list_elemContext *ctx){
+    if(!Select_list_elemContext_cls) Select_list_elemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Select_list_elemContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Select_list_elemContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTable_sources(TSqlParser::Table_sourcesContext *ctx){
     if(!Table_sourcesContext_cls) Table_sourcesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_sourcesContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_sourcesContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCross_join(tsqlParser::Cross_joinContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitNon_ansi_join(TSqlParser::Non_ansi_joinContext *ctx){
+    if(!Non_ansi_joinContext_cls) Non_ansi_joinContext_cls = PyObject_GetAttrString(translator->parser_cls, "Non_ansi_joinContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Non_ansi_joinContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTable_source(TSqlParser::Table_sourceContext *ctx){
+    if(!Table_sourceContext_cls) Table_sourceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_sourceContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_sourceContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTable_source_item(TSqlParser::Table_source_itemContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right", static_cast<void*>(ctx->right)}
+        {"loc_id", static_cast<void*>(ctx->loc_id)},
+        {"loc_id_call", static_cast<void*>(ctx->loc_id_call)},
+        {"loc_fcall", static_cast<void*>(ctx->loc_fcall)},
+        {"oldstyle_fcall", static_cast<void*>(ctx->oldstyle_fcall)}
     };
-    if(!Cross_joinContext_cls) Cross_joinContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cross_joinContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Cross_joinContext_cls, labels, 3);
+    if(!Table_source_itemContext_cls) Table_source_itemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_source_itemContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_source_itemContext_cls, labels, 4);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTable_source_item_join(tsqlParser::Table_source_item_joinContext *ctx){
-    if(!Table_source_item_joinContext_cls) Table_source_item_joinContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_source_item_joinContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_source_item_joinContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitOpen_xml(TSqlParser::Open_xmlContext *ctx){
+    if(!Open_xmlContext_cls) Open_xmlContext_cls = PyObject_GetAttrString(translator->parser_cls, "Open_xmlContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Open_xmlContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitStandard_join(tsqlParser::Standard_joinContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"right", static_cast<void*>(ctx->right)}
-    };
-    if(!Standard_joinContext_cls) Standard_joinContext_cls = PyObject_GetAttrString(translator->parser_cls, "Standard_joinContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Standard_joinContext_cls, labels, 2);
+antlrcpp::Any SA_TSqlTranslator::visitOpen_json(TSqlParser::Open_jsonContext *ctx){
+    if(!Open_jsonContext_cls) Open_jsonContext_cls = PyObject_GetAttrString(translator->parser_cls, "Open_jsonContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Open_jsonContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitApply_join(tsqlParser::Apply_joinContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"left", static_cast<void*>(ctx->left)},
-        {"op", static_cast<void*>(ctx->op)},
-        {"right", static_cast<void*>(ctx->right)}
-    };
-    if(!Apply_joinContext_cls) Apply_joinContext_cls = PyObject_GetAttrString(translator->parser_cls, "Apply_joinContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Apply_joinContext_cls, labels, 3);
+antlrcpp::Any SA_TSqlTranslator::visitJson_declaration(TSqlParser::Json_declarationContext *ctx){
+    if(!Json_declarationContext_cls) Json_declarationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Json_declarationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Json_declarationContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitBracket_table_source(tsqlParser::Bracket_table_sourceContext *ctx){
-    if(!Bracket_table_sourceContext_cls) Bracket_table_sourceContext_cls = PyObject_GetAttrString(translator->parser_cls, "Bracket_table_sourceContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Bracket_table_sourceContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitJson_column_declaration(TSqlParser::Json_column_declarationContext *ctx){
+    if(!Json_column_declarationContext_cls) Json_column_declarationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Json_column_declarationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Json_column_declarationContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTable_source_item_simple(tsqlParser::Table_source_item_simpleContext *ctx){
-    if(!Table_source_item_simpleContext_cls) Table_source_item_simpleContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_source_item_simpleContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_source_item_simpleContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitSchema_declaration(TSqlParser::Schema_declarationContext *ctx){
+    if(!Schema_declarationContext_cls) Schema_declarationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Schema_declarationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Schema_declarationContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTable_source_item_complex(tsqlParser::Table_source_item_complexContext *ctx){
-    if(!Table_source_item_complexContext_cls) Table_source_item_complexContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_source_item_complexContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_source_item_complexContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitColumn_declaration(TSqlParser::Column_declarationContext *ctx){
+    if(!Column_declarationContext_cls) Column_declarationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_declarationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_declarationContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTable_source_item_name(tsqlParser::Table_source_item_nameContext *ctx){
-    if(!Table_source_item_nameContext_cls) Table_source_item_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_source_item_nameContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_source_item_nameContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitTablesample_clause(tsqlParser::Tablesample_clauseContext *ctx){
-    if(!Tablesample_clauseContext_cls) Tablesample_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Tablesample_clauseContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Tablesample_clauseContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitSample_number(tsqlParser::Sample_numberContext *ctx){
-    if(!Sample_numberContext_cls) Sample_numberContext_cls = PyObject_GetAttrString(translator->parser_cls, "Sample_numberContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Sample_numberContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitRepeat_seed(tsqlParser::Repeat_seedContext *ctx){
-    if(!Repeat_seedContext_cls) Repeat_seedContext_cls = PyObject_GetAttrString(translator->parser_cls, "Repeat_seedContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Repeat_seedContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitTable_alias(tsqlParser::Table_aliasContext *ctx){
-    if(!Table_aliasContext_cls) Table_aliasContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_aliasContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_aliasContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitChange_table(tsqlParser::Change_tableContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitChange_table(TSqlParser::Change_tableContext *ctx){
     if(!Change_tableContext_cls) Change_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Change_tableContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Change_tableContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitJoin_type(tsqlParser::Join_typeContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitChange_table_changes(TSqlParser::Change_table_changesContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"join_hint", static_cast<void*>(ctx->join_hint)}
+        {"changetable", static_cast<void*>(ctx->changetable)},
+        {"changesid", static_cast<void*>(ctx->changesid)}
     };
-    if(!Join_typeContext_cls) Join_typeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Join_typeContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Join_typeContext_cls, labels, 1);
+    if(!Change_table_changesContext_cls) Change_table_changesContext_cls = PyObject_GetAttrString(translator->parser_cls, "Change_table_changesContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Change_table_changesContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTable_name_with_hint(tsqlParser::Table_name_with_hintContext *ctx){
-    if(!Table_name_with_hintContext_cls) Table_name_with_hintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_name_with_hintContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_name_with_hintContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitChange_table_version(TSqlParser::Change_table_versionContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"versiontable", static_cast<void*>(ctx->versiontable)},
+        {"pk_columns", static_cast<void*>(ctx->pk_columns)},
+        {"pk_values", static_cast<void*>(ctx->pk_values)}
+    };
+    if(!Change_table_versionContext_cls) Change_table_versionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Change_table_versionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Change_table_versionContext_cls, labels, 3);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitRowset_function(tsqlParser::Rowset_functionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitJoin_part(TSqlParser::Join_partContext *ctx){
+    if(!Join_partContext_cls) Join_partContext_cls = PyObject_GetAttrString(translator->parser_cls, "Join_partContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Join_partContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitJoin_on(TSqlParser::Join_onContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"inner", static_cast<void*>(ctx->inner)},
+        {"join_type", static_cast<void*>(ctx->join_type)},
+        {"outer", static_cast<void*>(ctx->outer)},
+        {"join_hint", static_cast<void*>(ctx->join_hint)},
+        {"source", static_cast<void*>(ctx->source)},
+        {"cond", static_cast<void*>(ctx->cond)}
+    };
+    if(!Join_onContext_cls) Join_onContext_cls = PyObject_GetAttrString(translator->parser_cls, "Join_onContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Join_onContext_cls, labels, 6);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCross_join(TSqlParser::Cross_joinContext *ctx){
+    if(!Cross_joinContext_cls) Cross_joinContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cross_joinContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Cross_joinContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitApply_(TSqlParser::Apply_Context *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"apply_style", static_cast<void*>(ctx->apply_style)},
+        {"source", static_cast<void*>(ctx->source)}
+    };
+    if(!Apply_Context_cls) Apply_Context_cls = PyObject_GetAttrString(translator->parser_cls, "Apply_Context");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Apply_Context_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPivot(TSqlParser::PivotContext *ctx){
+    if(!PivotContext_cls) PivotContext_cls = PyObject_GetAttrString(translator->parser_cls, "PivotContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PivotContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUnpivot(TSqlParser::UnpivotContext *ctx){
+    if(!UnpivotContext_cls) UnpivotContext_cls = PyObject_GetAttrString(translator->parser_cls, "UnpivotContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, UnpivotContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPivot_clause(TSqlParser::Pivot_clauseContext *ctx){
+    if(!Pivot_clauseContext_cls) Pivot_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Pivot_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Pivot_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUnpivot_clause(TSqlParser::Unpivot_clauseContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"unpivot_exp", static_cast<void*>(ctx->unpivot_exp)}
+    };
+    if(!Unpivot_clauseContext_cls) Unpivot_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Unpivot_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Unpivot_clauseContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFull_column_name_list(TSqlParser::Full_column_name_listContext *ctx){
+    if(!Full_column_name_listContext_cls) Full_column_name_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Full_column_name_listContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Full_column_name_listContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRowset_function(TSqlParser::Rowset_functionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"provider_name", static_cast<void*>(ctx->provider_name)},
         {"connectionString", static_cast<void*>(ctx->connectionString)},
@@ -1536,7 +5139,7 @@ antlrcpp::Any SA_tsqlTranslator::visitRowset_function(tsqlParser::Rowset_functio
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitBulk_option(tsqlParser::Bulk_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBulk_option(TSqlParser::Bulk_optionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"bulk_option_value", static_cast<void*>(ctx->bulk_option_value)}
     };
@@ -1545,265 +5148,2281 @@ antlrcpp::Any SA_tsqlTranslator::visitBulk_option(tsqlParser::Bulk_optionContext
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDerived_table(tsqlParser::Derived_tableContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDerived_table(TSqlParser::Derived_tableContext *ctx){
     if(!Derived_tableContext_cls) Derived_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Derived_tableContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Derived_tableContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitStandard_call(tsqlParser::Standard_callContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitRANKING_WINDOWED_FUNC(TSqlParser::RANKING_WINDOWED_FUNCContext *ctx){
+    if(!RANKING_WINDOWED_FUNCContext_cls) RANKING_WINDOWED_FUNCContext_cls = PyObject_GetAttrString(translator->parser_cls, "RANKING_WINDOWED_FUNCContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, RANKING_WINDOWED_FUNCContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitBUILT_IN_FUNC(TSqlParser::BUILT_IN_FUNCContext *ctx){
+    if(!BUILT_IN_FUNCContext_cls) BUILT_IN_FUNCContext_cls = PyObject_GetAttrString(translator->parser_cls, "BUILT_IN_FUNCContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, BUILT_IN_FUNCContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFREE_TEXT(TSqlParser::FREE_TEXTContext *ctx){
+    if(!FREE_TEXTContext_cls) FREE_TEXTContext_cls = PyObject_GetAttrString(translator->parser_cls, "FREE_TEXTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FREE_TEXTContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitANALYTIC_WINDOWED_FUNC(TSqlParser::ANALYTIC_WINDOWED_FUNCContext *ctx){
+    if(!ANALYTIC_WINDOWED_FUNCContext_cls) ANALYTIC_WINDOWED_FUNCContext_cls = PyObject_GetAttrString(translator->parser_cls, "ANALYTIC_WINDOWED_FUNCContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ANALYTIC_WINDOWED_FUNCContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSCALAR_FUNCTION(TSqlParser::SCALAR_FUNCTIONContext *ctx){
+    if(!SCALAR_FUNCTIONContext_cls) SCALAR_FUNCTIONContext_cls = PyObject_GetAttrString(translator->parser_cls, "SCALAR_FUNCTIONContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SCALAR_FUNCTIONContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPARTITION_FUNC(TSqlParser::PARTITION_FUNCContext *ctx){
+    if(!PARTITION_FUNCContext_cls) PARTITION_FUNCContext_cls = PyObject_GetAttrString(translator->parser_cls, "PARTITION_FUNCContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PARTITION_FUNCContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAGGREGATE_WINDOWED_FUNC(TSqlParser::AGGREGATE_WINDOWED_FUNCContext *ctx){
+    if(!AGGREGATE_WINDOWED_FUNCContext_cls) AGGREGATE_WINDOWED_FUNCContext_cls = PyObject_GetAttrString(translator->parser_cls, "AGGREGATE_WINDOWED_FUNCContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, AGGREGATE_WINDOWED_FUNCContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitHIERARCHYID_METHOD(TSqlParser::HIERARCHYID_METHODContext *ctx){
+    if(!HIERARCHYID_METHODContext_cls) HIERARCHYID_METHODContext_cls = PyObject_GetAttrString(translator->parser_cls, "HIERARCHYID_METHODContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, HIERARCHYID_METHODContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPartition_function(TSqlParser::Partition_functionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"style", static_cast<void*>(ctx->style)},
+        {"database", static_cast<void*>(ctx->database)},
+        {"func_name", static_cast<void*>(ctx->func_name)}
+    };
+    if(!Partition_functionContext_cls) Partition_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Partition_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Partition_functionContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFreetext_function(TSqlParser::Freetext_functionContext *ctx){
+    if(!Freetext_functionContext_cls) Freetext_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Freetext_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Freetext_functionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFreetext_predicate(TSqlParser::Freetext_predicateContext *ctx){
+    if(!Freetext_predicateContext_cls) Freetext_predicateContext_cls = PyObject_GetAttrString(translator->parser_cls, "Freetext_predicateContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Freetext_predicateContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitJson_key_value(TSqlParser::Json_key_valueContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"json_key_name", static_cast<void*>(ctx->json_key_name)},
+        {"value_expression", static_cast<void*>(ctx->value_expression)}
+    };
+    if(!Json_key_valueContext_cls) Json_key_valueContext_cls = PyObject_GetAttrString(translator->parser_cls, "Json_key_valueContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Json_key_valueContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitJson_null_clause(TSqlParser::Json_null_clauseContext *ctx){
+    if(!Json_null_clauseContext_cls) Json_null_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Json_null_clauseContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Json_null_clauseContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCOL_NAME(TSqlParser::COL_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"table_id", static_cast<void*>(ctx->table_id)},
+        {"column_id", static_cast<void*>(ctx->column_id)}
+    };
+    if(!COL_NAMEContext_cls) COL_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "COL_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, COL_NAMEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCHECKSUM(TSqlParser::CHECKSUMContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"star", static_cast<void*>(ctx->star)}
+    };
+    if(!CHECKSUMContext_cls) CHECKSUMContext_cls = PyObject_GetAttrString(translator->parser_cls, "CHECKSUMContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CHECKSUMContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDECOMPRESS(TSqlParser::DECOMPRESSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"expr", static_cast<void*>(ctx->expr)}
+    };
+    if(!DECOMPRESSContext_cls) DECOMPRESSContext_cls = PyObject_GetAttrString(translator->parser_cls, "DECOMPRESSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DECOMPRESSContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCURRENT_TIMEZONE_ID(TSqlParser::CURRENT_TIMEZONE_IDContext *ctx){
+    if(!CURRENT_TIMEZONE_IDContext_cls) CURRENT_TIMEZONE_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURRENT_TIMEZONE_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURRENT_TIMEZONE_IDContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMONTH(TSqlParser::MONTHContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"date", static_cast<void*>(ctx->date)}
+    };
+    if(!MONTHContext_cls) MONTHContext_cls = PyObject_GetAttrString(translator->parser_cls, "MONTHContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, MONTHContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRAND(TSqlParser::RANDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"seed", static_cast<void*>(ctx->seed)}
+    };
+    if(!RANDContext_cls) RANDContext_cls = PyObject_GetAttrString(translator->parser_cls, "RANDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, RANDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFORMAT(TSqlParser::FORMATContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"value", static_cast<void*>(ctx->value)},
+        {"format_label", static_cast<void*>(ctx->format_label)},
+        {"culture", static_cast<void*>(ctx->culture)}
+    };
+    if(!FORMATContext_cls) FORMATContext_cls = PyObject_GetAttrString(translator->parser_cls, "FORMATContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FORMATContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTRIM(TSqlParser::TRIMContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"characters", static_cast<void*>(ctx->characters)},
+        {"string_", static_cast<void*>(ctx->string_)}
+    };
+    if(!TRIMContext_cls) TRIMContext_cls = PyObject_GetAttrString(translator->parser_cls, "TRIMContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TRIMContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLEAST(TSqlParser::LEASTContext *ctx){
+    if(!LEASTContext_cls) LEASTContext_cls = PyObject_GetAttrString(translator->parser_cls, "LEASTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, LEASTContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAPP_NAME(TSqlParser::APP_NAMEContext *ctx){
+    if(!APP_NAMEContext_cls) APP_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "APP_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, APP_NAMEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUSER_ID(TSqlParser::USER_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"user", static_cast<void*>(ctx->user)}
+    };
+    if(!USER_IDContext_cls) USER_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "USER_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, USER_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFILE_NAME(TSqlParser::FILE_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"file_id", static_cast<void*>(ctx->file_id)}
+    };
+    if(!FILE_NAMEContext_cls) FILE_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "FILE_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FILE_NAMEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSESSION_CONTEXT(TSqlParser::SESSION_CONTEXTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key", static_cast<void*>(ctx->key)}
+    };
+    if(!SESSION_CONTEXTContext_cls) SESSION_CONTEXTContext_cls = PyObject_GetAttrString(translator->parser_cls, "SESSION_CONTEXTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SESSION_CONTEXTContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSTR(TSqlParser::STRContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)},
+        {"length_expression", static_cast<void*>(ctx->length_expression)},
+        {"decimal", static_cast<void*>(ctx->decimal)}
+    };
+    if(!STRContext_cls) STRContext_cls = PyObject_GetAttrString(translator->parser_cls, "STRContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, STRContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCONVERT(TSqlParser::CONVERTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"convert_data_type", static_cast<void*>(ctx->convert_data_type)},
+        {"convert_expression", static_cast<void*>(ctx->convert_expression)},
+        {"style", static_cast<void*>(ctx->style)}
+    };
+    if(!CONVERTContext_cls) CONVERTContext_cls = PyObject_GetAttrString(translator->parser_cls, "CONVERTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CONVERTContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitXML_DATA_TYPE_FUNC(TSqlParser::XML_DATA_TYPE_FUNCContext *ctx){
+    if(!XML_DATA_TYPE_FUNCContext_cls) XML_DATA_TYPE_FUNCContext_cls = PyObject_GetAttrString(translator->parser_cls, "XML_DATA_TYPE_FUNCContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, XML_DATA_TYPE_FUNCContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLOG10(TSqlParser::LOG10Context *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!LOG10Context_cls) LOG10Context_cls = PyObject_GetAttrString(translator->parser_cls, "LOG10Context");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, LOG10Context_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFLOOR(TSqlParser::FLOORContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"numeric_expression", static_cast<void*>(ctx->numeric_expression)}
+    };
+    if(!FLOORContext_cls) FLOORContext_cls = PyObject_GetAttrString(translator->parser_cls, "FLOORContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FLOORContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitYEAR(TSqlParser::YEARContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"date", static_cast<void*>(ctx->date)}
+    };
+    if(!YEARContext_cls) YEARContext_cls = PyObject_GetAttrString(translator->parser_cls, "YEARContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, YEARContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPARSE(TSqlParser::PARSEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"str_label", static_cast<void*>(ctx->str_label)},
+        {"culture", static_cast<void*>(ctx->culture)}
+    };
+    if(!PARSEContext_cls) PARSEContext_cls = PyObject_GetAttrString(translator->parser_cls, "PARSEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PARSEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitORIGINAL_LOGIN(TSqlParser::ORIGINAL_LOGINContext *ctx){
+    if(!ORIGINAL_LOGINContext_cls) ORIGINAL_LOGINContext_cls = PyObject_GetAttrString(translator->parser_cls, "ORIGINAL_LOGINContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ORIGINAL_LOGINContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMATH_SIGN(TSqlParser::MATH_SIGNContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"numeric_expression", static_cast<void*>(ctx->numeric_expression)}
+    };
+    if(!MATH_SIGNContext_cls) MATH_SIGNContext_cls = PyObject_GetAttrString(translator->parser_cls, "MATH_SIGNContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, MATH_SIGNContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTIMEFROMPARTS(TSqlParser::TIMEFROMPARTSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"hour", static_cast<void*>(ctx->hour)},
+        {"minute", static_cast<void*>(ctx->minute)},
+        {"seconds", static_cast<void*>(ctx->seconds)},
+        {"fractions", static_cast<void*>(ctx->fractions)},
+        {"precision", static_cast<void*>(ctx->precision)}
+    };
+    if(!TIMEFROMPARTSContext_cls) TIMEFROMPARTSContext_cls = PyObject_GetAttrString(translator->parser_cls, "TIMEFROMPARTSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TIMEFROMPARTSContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLEFT(TSqlParser::LEFTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression", static_cast<void*>(ctx->character_expression)},
+        {"integer_expression", static_cast<void*>(ctx->integer_expression)}
+    };
+    if(!LEFTContext_cls) LEFTContext_cls = PyObject_GetAttrString(translator->parser_cls, "LEFTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, LEFTContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGET_FILESTREAM_TRANSACTION_CONTEXT(TSqlParser::GET_FILESTREAM_TRANSACTION_CONTEXTContext *ctx){
+    if(!GET_FILESTREAM_TRANSACTION_CONTEXTContext_cls) GET_FILESTREAM_TRANSACTION_CONTEXTContext_cls = PyObject_GetAttrString(translator->parser_cls, "GET_FILESTREAM_TRANSACTION_CONTEXTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, GET_FILESTREAM_TRANSACTION_CONTEXTContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFILEPROPERTY(TSqlParser::FILEPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"file_name", static_cast<void*>(ctx->file_name)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!FILEPROPERTYContext_cls) FILEPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "FILEPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FILEPROPERTYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIDENT_SEED(TSqlParser::IDENT_SEEDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"table_or_view", static_cast<void*>(ctx->table_or_view)}
+    };
+    if(!IDENT_SEEDContext_cls) IDENT_SEEDContext_cls = PyObject_GetAttrString(translator->parser_cls, "IDENT_SEEDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, IDENT_SEEDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIDENTITY(TSqlParser::IDENTITYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datatype", static_cast<void*>(ctx->datatype)},
         {"seed", static_cast<void*>(ctx->seed)},
         {"increment", static_cast<void*>(ctx->increment)}
     };
-    if(!Standard_callContext_cls) Standard_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Standard_callContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Standard_callContext_cls, labels, 3);
+    if(!IDENTITYContext_cls) IDENTITYContext_cls = PyObject_GetAttrString(translator->parser_cls, "IDENTITYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, IDENTITYContext_cls, labels, 3);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitAggregate_call(tsqlParser::Aggregate_callContext *ctx){
-    if(!Aggregate_callContext_cls) Aggregate_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Aggregate_callContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Aggregate_callContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitCURRENT_TRANSACTION_ID(TSqlParser::CURRENT_TRANSACTION_IDContext *ctx){
+    if(!CURRENT_TRANSACTION_IDContext_cls) CURRENT_TRANSACTION_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURRENT_TRANSACTION_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURRENT_TRANSACTION_IDContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitNvf_call(tsqlParser::Nvf_callContext *ctx){
-    if(!Nvf_callContext_cls) Nvf_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Nvf_callContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Nvf_callContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitLTRIM(TSqlParser::LTRIMContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression", static_cast<void*>(ctx->character_expression)}
+    };
+    if(!LTRIMContext_cls) LTRIMContext_cls = PyObject_GetAttrString(translator->parser_cls, "LTRIMContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, LTRIMContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitRank_call(tsqlParser::Rank_callContext *ctx){
-    if(!Rank_callContext_cls) Rank_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Rank_callContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Rank_callContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitROWCOUNT_BIG(TSqlParser::ROWCOUNT_BIGContext *ctx){
+    if(!ROWCOUNT_BIGContext_cls) ROWCOUNT_BIGContext_cls = PyObject_GetAttrString(translator->parser_cls, "ROWCOUNT_BIGContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ROWCOUNT_BIGContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitExpression_call(tsqlParser::Expression_callContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCERTENCODED(TSqlParser::CERTENCODEDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"certid", static_cast<void*>(ctx->certid)}
+    };
+    if(!CERTENCODEDContext_cls) CERTENCODEDContext_cls = PyObject_GetAttrString(translator->parser_cls, "CERTENCODEDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CERTENCODEDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitJSON_VALUE(TSqlParser::JSON_VALUEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"expr", static_cast<void*>(ctx->expr)},
+        {"path", static_cast<void*>(ctx->path)}
+    };
+    if(!JSON_VALUEContext_cls) JSON_VALUEContext_cls = PyObject_GetAttrString(translator->parser_cls, "JSON_VALUEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, JSON_VALUEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSYSDATETIME(TSqlParser::SYSDATETIMEContext *ctx){
+    if(!SYSDATETIMEContext_cls) SYSDATETIMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "SYSDATETIMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SYSDATETIMEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCERTPRIVATEKEY(TSqlParser::CERTPRIVATEKEYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"certid", static_cast<void*>(ctx->certid)},
+        {"encryption_password", static_cast<void*>(ctx->encryption_password)},
+        {"decryption_pasword", static_cast<void*>(ctx->decryption_pasword)}
+    };
+    if(!CERTPRIVATEKEYContext_cls) CERTPRIVATEKEYContext_cls = PyObject_GetAttrString(translator->parser_cls, "CERTPRIVATEKEYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CERTPRIVATEKEYContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSPACE(TSqlParser::SPACEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"integer_expression", static_cast<void*>(ctx->integer_expression)}
+    };
+    if(!SPACEContext_cls) SPACEContext_cls = PyObject_GetAttrString(translator->parser_cls, "SPACEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SPACEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUPPER(TSqlParser::UPPERContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression", static_cast<void*>(ctx->character_expression)}
+    };
+    if(!UPPERContext_cls) UPPERContext_cls = PyObject_GetAttrString(translator->parser_cls, "UPPERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, UPPERContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitABS(TSqlParser::ABSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"numeric_expression", static_cast<void*>(ctx->numeric_expression)}
+    };
+    if(!ABSContext_cls) ABSContext_cls = PyObject_GetAttrString(translator->parser_cls, "ABSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ABSContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitISJSON(TSqlParser::ISJSONContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"json_expr", static_cast<void*>(ctx->json_expr)},
+        {"json_type_constraint", static_cast<void*>(ctx->json_type_constraint)}
+    };
+    if(!ISJSONContext_cls) ISJSONContext_cls = PyObject_GetAttrString(translator->parser_cls, "ISJSONContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ISJSONContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitHAS_PERMS_BY_NAME(TSqlParser::HAS_PERMS_BY_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"securable", static_cast<void*>(ctx->securable)},
+        {"securable_class", static_cast<void*>(ctx->securable_class)},
+        {"permission", static_cast<void*>(ctx->permission)},
+        {"sub_securable", static_cast<void*>(ctx->sub_securable)},
+        {"sub_securable_class", static_cast<void*>(ctx->sub_securable_class)}
+    };
+    if(!HAS_PERMS_BY_NAMEContext_cls) HAS_PERMS_BY_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "HAS_PERMS_BY_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, HAS_PERMS_BY_NAMEContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSUSER_ID(TSqlParser::SUSER_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login", static_cast<void*>(ctx->login)}
+    };
+    if(!SUSER_IDContext_cls) SUSER_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "SUSER_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SUSER_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSCOPE_IDENTITY(TSqlParser::SCOPE_IDENTITYContext *ctx){
+    if(!SCOPE_IDENTITYContext_cls) SCOPE_IDENTITYContext_cls = PyObject_GetAttrString(translator->parser_cls, "SCOPE_IDENTITYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SCOPE_IDENTITYContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitJSON_QUERY(TSqlParser::JSON_QUERYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"expr", static_cast<void*>(ctx->expr)},
+        {"path", static_cast<void*>(ctx->path)}
+    };
+    if(!JSON_QUERYContext_cls) JSON_QUERYContext_cls = PyObject_GetAttrString(translator->parser_cls, "JSON_QUERYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, JSON_QUERYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitINDEX_COL(TSqlParser::INDEX_COLContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"table_or_view_name", static_cast<void*>(ctx->table_or_view_name)},
+        {"index_id", static_cast<void*>(ctx->index_id)},
+        {"key_id", static_cast<void*>(ctx->key_id)}
+    };
+    if(!INDEX_COLContext_cls) INDEX_COLContext_cls = PyObject_GetAttrString(translator->parser_cls, "INDEX_COLContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, INDEX_COLContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATABASE_PRINCIPAL_ID(TSqlParser::DATABASE_PRINCIPAL_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"principal_name", static_cast<void*>(ctx->principal_name)}
+    };
+    if(!DATABASE_PRINCIPAL_IDContext_cls) DATABASE_PRINCIPAL_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATABASE_PRINCIPAL_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATABASE_PRINCIPAL_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPATINDEX(TSqlParser::PATINDEXContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"pattern", static_cast<void*>(ctx->pattern)},
+        {"string_expression", static_cast<void*>(ctx->string_expression)}
+    };
+    if(!PATINDEXContext_cls) PATINDEXContext_cls = PyObject_GetAttrString(translator->parser_cls, "PATINDEXContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PATINDEXContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFULLTEXTSERVICEPROPERTY(TSqlParser::FULLTEXTSERVICEPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!FULLTEXTSERVICEPROPERTYContext_cls) FULLTEXTSERVICEPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "FULLTEXTSERVICEPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FULLTEXTSERVICEPROPERTYContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSMALLDATETIMEFROMPARTS(TSqlParser::SMALLDATETIMEFROMPARTSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"year", static_cast<void*>(ctx->year)},
+        {"month", static_cast<void*>(ctx->month)},
+        {"day", static_cast<void*>(ctx->day)},
+        {"hour", static_cast<void*>(ctx->hour)},
+        {"minute", static_cast<void*>(ctx->minute)}
+    };
+    if(!SMALLDATETIMEFROMPARTSContext_cls) SMALLDATETIMEFROMPARTSContext_cls = PyObject_GetAttrString(translator->parser_cls, "SMALLDATETIMEFROMPARTSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SMALLDATETIMEFROMPARTSContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIDENT_CURRENT(TSqlParser::IDENT_CURRENTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"table_or_view", static_cast<void*>(ctx->table_or_view)}
+    };
+    if(!IDENT_CURRENTContext_cls) IDENT_CURRENTContext_cls = PyObject_GetAttrString(translator->parser_cls, "IDENT_CURRENTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, IDENT_CURRENTContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSESSIONPROPERTY(TSqlParser::SESSIONPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"option_name", static_cast<void*>(ctx->option_name)}
+    };
+    if(!SESSIONPROPERTYContext_cls) SESSIONPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "SESSIONPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SESSIONPROPERTYContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFETCH_STATUS(TSqlParser::FETCH_STATUSContext *ctx){
+    if(!FETCH_STATUSContext_cls) FETCH_STATUSContext_cls = PyObject_GetAttrString(translator->parser_cls, "FETCH_STATUSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FETCH_STATUSContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPOWER(TSqlParser::POWERContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)},
+        {"y", static_cast<void*>(ctx->y)}
+    };
+    if(!POWERContext_cls) POWERContext_cls = PyObject_GetAttrString(translator->parser_cls, "POWERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, POWERContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitREPLICATE(TSqlParser::REPLICATEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"string_expression", static_cast<void*>(ctx->string_expression)},
+        {"integer_expression", static_cast<void*>(ctx->integer_expression)}
+    };
+    if(!REPLICATEContext_cls) REPLICATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "REPLICATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, REPLICATEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUSER_NAME(TSqlParser::USER_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"id_label", static_cast<void*>(ctx->id_label)}
+    };
+    if(!USER_NAMEContext_cls) USER_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "USER_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, USER_NAMEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOBJECT_DEFINITION(TSqlParser::OBJECT_DEFINITIONContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_id", static_cast<void*>(ctx->object_id)}
+    };
+    if(!OBJECT_DEFINITIONContext_cls) OBJECT_DEFINITIONContext_cls = PyObject_GetAttrString(translator->parser_cls, "OBJECT_DEFINITIONContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, OBJECT_DEFINITIONContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIS_SRVROLEMEMBER(TSqlParser::IS_SRVROLEMEMBERContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"role", static_cast<void*>(ctx->role)},
+        {"login", static_cast<void*>(ctx->login)}
+    };
+    if(!IS_SRVROLEMEMBERContext_cls) IS_SRVROLEMEMBERContext_cls = PyObject_GetAttrString(translator->parser_cls, "IS_SRVROLEMEMBERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, IS_SRVROLEMEMBERContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNEWSEQUENTIALID(TSqlParser::NEWSEQUENTIALIDContext *ctx){
+    if(!NEWSEQUENTIALIDContext_cls) NEWSEQUENTIALIDContext_cls = PyObject_GetAttrString(translator->parser_cls, "NEWSEQUENTIALIDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, NEWSEQUENTIALIDContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOBJECT_NAME(TSqlParser::OBJECT_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_id", static_cast<void*>(ctx->object_id)},
+        {"database_id", static_cast<void*>(ctx->database_id)}
+    };
+    if(!OBJECT_NAMEContext_cls) OBJECT_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "OBJECT_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, OBJECT_NAMEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitJSON_PATH_EXISTS(TSqlParser::JSON_PATH_EXISTSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"value_expression", static_cast<void*>(ctx->value_expression)},
+        {"sql_json_path", static_cast<void*>(ctx->sql_json_path)}
+    };
+    if(!JSON_PATH_EXISTSContext_cls) JSON_PATH_EXISTSContext_cls = PyObject_GetAttrString(translator->parser_cls, "JSON_PATH_EXISTSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, JSON_PATH_EXISTSContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPWDCOMPARE(TSqlParser::PWDCOMPAREContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"clear_text_password", static_cast<void*>(ctx->clear_text_password)},
+        {"password_hash", static_cast<void*>(ctx->password_hash)},
+        {"version", static_cast<void*>(ctx->version)}
+    };
+    if(!PWDCOMPAREContext_cls) PWDCOMPAREContext_cls = PyObject_GetAttrString(translator->parser_cls, "PWDCOMPAREContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PWDCOMPAREContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSCHEMA_ID(TSqlParser::SCHEMA_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_name", static_cast<void*>(ctx->schema_name)}
+    };
+    if(!SCHEMA_IDContext_cls) SCHEMA_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "SCHEMA_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SCHEMA_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOBJECT_SCHEMA_NAME(TSqlParser::OBJECT_SCHEMA_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_id", static_cast<void*>(ctx->object_id)},
+        {"database_id", static_cast<void*>(ctx->database_id)}
+    };
+    if(!OBJECT_SCHEMA_NAMEContext_cls) OBJECT_SCHEMA_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "OBJECT_SCHEMA_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, OBJECT_SCHEMA_NAMEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSUSER_SNAME(TSqlParser::SUSER_SNAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"server_user_sid", static_cast<void*>(ctx->server_user_sid)}
+    };
+    if(!SUSER_SNAMEContext_cls) SUSER_SNAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "SUSER_SNAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SUSER_SNAMEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDB_NAME(TSqlParser::DB_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_id", static_cast<void*>(ctx->database_id)}
+    };
+    if(!DB_NAMEContext_cls) DB_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "DB_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DB_NAMEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSUSER_SID(TSqlParser::SUSER_SIDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login", static_cast<void*>(ctx->login)},
+        {"param2", static_cast<void*>(ctx->param2)}
+    };
+    if(!SUSER_SIDContext_cls) SUSER_SIDContext_cls = PyObject_GetAttrString(translator->parser_cls, "SUSER_SIDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SUSER_SIDContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitASCII(TSqlParser::ASCIIContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression", static_cast<void*>(ctx->character_expression)}
+    };
+    if(!ASCIIContext_cls) ASCIIContext_cls = PyObject_GetAttrString(translator->parser_cls, "ASCIIContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ASCIIContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFILE_IDEX(TSqlParser::FILE_IDEXContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"file_name", static_cast<void*>(ctx->file_name)}
+    };
+    if(!FILE_IDEXContext_cls) FILE_IDEXContext_cls = PyObject_GetAttrString(translator->parser_cls, "FILE_IDEXContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FILE_IDEXContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitERROR_SEVERITY(TSqlParser::ERROR_SEVERITYContext *ctx){
+    if(!ERROR_SEVERITYContext_cls) ERROR_SEVERITYContext_cls = PyObject_GetAttrString(translator->parser_cls, "ERROR_SEVERITYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ERROR_SEVERITYContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitREVERSE(TSqlParser::REVERSEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"string_expression", static_cast<void*>(ctx->string_expression)}
+    };
+    if(!REVERSEContext_cls) REVERSEContext_cls = PyObject_GetAttrString(translator->parser_cls, "REVERSEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, REVERSEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitISDATE(TSqlParser::ISDATEContext *ctx){
+    if(!ISDATEContext_cls) ISDATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "ISDATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ISDATEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitREPLACE(TSqlParser::REPLACEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"input_label", static_cast<void*>(ctx->input_label)},
+        {"replacing", static_cast<void*>(ctx->replacing)},
+        {"with_label", static_cast<void*>(ctx->with_label)}
+    };
+    if(!REPLACEContext_cls) REPLACEContext_cls = PyObject_GetAttrString(translator->parser_cls, "REPLACEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, REPLACEContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCURSOR_STATUS(TSqlParser::CURSOR_STATUSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"scope", static_cast<void*>(ctx->scope)},
+        {"cursor", static_cast<void*>(ctx->cursor)}
+    };
+    if(!CURSOR_STATUSContext_cls) CURSOR_STATUSContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURSOR_STATUSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURSOR_STATUSContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitMIN_ACTIVE_ROWVERSION(TSqlParser::MIN_ACTIVE_ROWVERSIONContext *ctx){
+    if(!MIN_ACTIVE_ROWVERSIONContext_cls) MIN_ACTIVE_ROWVERSIONContext_cls = PyObject_GetAttrString(translator->parser_cls, "MIN_ACTIVE_ROWVERSIONContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, MIN_ACTIVE_ROWVERSIONContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitHAS_DBACCESS(TSqlParser::HAS_DBACCESSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_name", static_cast<void*>(ctx->database_name)}
+    };
+    if(!HAS_DBACCESSContext_cls) HAS_DBACCESSContext_cls = PyObject_GetAttrString(translator->parser_cls, "HAS_DBACCESSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, HAS_DBACCESSContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNEXT_VALUE_FOR(TSqlParser::NEXT_VALUE_FORContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"sequence_name", static_cast<void*>(ctx->sequence_name)}
+    };
+    if(!NEXT_VALUE_FORContext_cls) NEXT_VALUE_FORContext_cls = PyObject_GetAttrString(translator->parser_cls, "NEXT_VALUE_FORContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, NEXT_VALUE_FORContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFILEGROUP_ID(TSqlParser::FILEGROUP_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"filegroup_name", static_cast<void*>(ctx->filegroup_name)}
+    };
+    if(!FILEGROUP_IDContext_cls) FILEGROUP_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "FILEGROUP_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FILEGROUP_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLOWER(TSqlParser::LOWERContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression", static_cast<void*>(ctx->character_expression)}
+    };
+    if(!LOWERContext_cls) LOWERContext_cls = PyObject_GetAttrString(translator->parser_cls, "LOWERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, LOWERContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATENAME(TSqlParser::DATENAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datepart", static_cast<void*>(ctx->datepart)},
+        {"date", static_cast<void*>(ctx->date)}
+    };
+    if(!DATENAMEContext_cls) DATENAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATENAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATENAMEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCEILING(TSqlParser::CEILINGContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"numeric_expression", static_cast<void*>(ctx->numeric_expression)}
+    };
+    if(!CEILINGContext_cls) CEILINGContext_cls = PyObject_GetAttrString(translator->parser_cls, "CEILINGContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CEILINGContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAPPLOCK_TEST(TSqlParser::APPLOCK_TESTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_principal", static_cast<void*>(ctx->database_principal)},
+        {"resource_name", static_cast<void*>(ctx->resource_name)},
+        {"lock_mode", static_cast<void*>(ctx->lock_mode)},
+        {"lock_owner", static_cast<void*>(ctx->lock_owner)}
+    };
+    if(!APPLOCK_TESTContext_cls) APPLOCK_TESTContext_cls = PyObject_GetAttrString(translator->parser_cls, "APPLOCK_TESTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, APPLOCK_TESTContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSIN(TSqlParser::SINContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!SINContext_cls) SINContext_cls = PyObject_GetAttrString(translator->parser_cls, "SINContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SINContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTYPE_NAME(TSqlParser::TYPE_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"type_id", static_cast<void*>(ctx->type_id)}
+    };
+    if(!TYPE_NAMEContext_cls) TYPE_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "TYPE_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TYPE_NAMEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSYSUTCDATETIME(TSqlParser::SYSUTCDATETIMEContext *ctx){
+    if(!SYSUTCDATETIMEContext_cls) SYSUTCDATETIMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "SYSUTCDATETIMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SYSUTCDATETIMEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATEADD(TSqlParser::DATEADDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datepart", static_cast<void*>(ctx->datepart)},
+        {"number", static_cast<void*>(ctx->number)},
+        {"date", static_cast<void*>(ctx->date)}
+    };
+    if(!DATEADDContext_cls) DATEADDContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATEADDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATEADDContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATETIMEFROMPARTS(TSqlParser::DATETIMEFROMPARTSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"year", static_cast<void*>(ctx->year)},
+        {"month", static_cast<void*>(ctx->month)},
+        {"day", static_cast<void*>(ctx->day)},
+        {"hour", static_cast<void*>(ctx->hour)},
+        {"minute", static_cast<void*>(ctx->minute)},
+        {"seconds", static_cast<void*>(ctx->seconds)},
+        {"milliseconds", static_cast<void*>(ctx->milliseconds)}
+    };
+    if(!DATETIMEFROMPARTSContext_cls) DATETIMEFROMPARTSContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATETIMEFROMPARTSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATETIMEFROMPARTSContext_cls, labels, 7);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitERROR_MESSAGE(TSqlParser::ERROR_MESSAGEContext *ctx){
+    if(!ERROR_MESSAGEContext_cls) ERROR_MESSAGEContext_cls = PyObject_GetAttrString(translator->parser_cls, "ERROR_MESSAGEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ERROR_MESSAGEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFILEGROUPPROPERTY(TSqlParser::FILEGROUPPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"filegroup_name", static_cast<void*>(ctx->filegroup_name)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!FILEGROUPPROPERTYContext_cls) FILEGROUPPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "FILEGROUPPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FILEGROUPPROPERTYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEOMONTH(TSqlParser::EOMONTHContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"start_date", static_cast<void*>(ctx->start_date)},
+        {"month_to_add", static_cast<void*>(ctx->month_to_add)}
+    };
+    if(!EOMONTHContext_cls) EOMONTHContext_cls = PyObject_GetAttrString(translator->parser_cls, "EOMONTHContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, EOMONTHContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIDENT_INCR(TSqlParser::IDENT_INCRContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"table_or_view", static_cast<void*>(ctx->table_or_view)}
+    };
+    if(!IDENT_INCRContext_cls) IDENT_INCRContext_cls = PyObject_GetAttrString(translator->parser_cls, "IDENT_INCRContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, IDENT_INCRContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitASIN(TSqlParser::ASINContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!ASINContext_cls) ASINContext_cls = PyObject_GetAttrString(translator->parser_cls, "ASINContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ASINContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNCHAR(TSqlParser::NCHARContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"integer_expression", static_cast<void*>(ctx->integer_expression)}
+    };
+    if(!NCHARContext_cls) NCHARContext_cls = PyObject_GetAttrString(translator->parser_cls, "NCHARContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, NCHARContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDIFFERENCE(TSqlParser::DIFFERENCEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression_1", static_cast<void*>(ctx->character_expression_1)},
+        {"character_expression_2", static_cast<void*>(ctx->character_expression_2)}
+    };
+    if(!DIFFERENCEContext_cls) DIFFERENCEContext_cls = PyObject_GetAttrString(translator->parser_cls, "DIFFERENCEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DIFFERENCEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCHARINDEX(TSqlParser::CHARINDEXContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"expressionToFind", static_cast<void*>(ctx->expressionToFind)},
+        {"expressionToSearch", static_cast<void*>(ctx->expressionToSearch)},
+        {"start_location", static_cast<void*>(ctx->start_location)}
+    };
+    if(!CHARINDEXContext_cls) CHARINDEXContext_cls = PyObject_GetAttrString(translator->parser_cls, "CHARINDEXContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CHARINDEXContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTODATETIMEOFFSET(TSqlParser::TODATETIMEOFFSETContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datetime_expression", static_cast<void*>(ctx->datetime_expression)},
+        {"timezoneoffset_expression", static_cast<void*>(ctx->timezoneoffset_expression)}
+    };
+    if(!TODATETIMEOFFSETContext_cls) TODATETIMEOFFSETContext_cls = PyObject_GetAttrString(translator->parser_cls, "TODATETIMEOFFSETContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TODATETIMEOFFSETContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRADIANS(TSqlParser::RADIANSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"numeric_expression", static_cast<void*>(ctx->numeric_expression)}
+    };
+    if(!RADIANSContext_cls) RADIANSContext_cls = PyObject_GetAttrString(translator->parser_cls, "RADIANSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, RADIANSContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCURRENT_TIMEZONE(TSqlParser::CURRENT_TIMEZONEContext *ctx){
+    if(!CURRENT_TIMEZONEContext_cls) CURRENT_TIMEZONEContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURRENT_TIMEZONEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURRENT_TIMEZONEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCOL_LENGTH(TSqlParser::COL_LENGTHContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"table", static_cast<void*>(ctx->table)},
+        {"column", static_cast<void*>(ctx->column)}
+    };
+    if(!COL_LENGTHContext_cls) COL_LENGTHContext_cls = PyObject_GetAttrString(translator->parser_cls, "COL_LENGTHContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, COL_LENGTHContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATEFROMPARTS(TSqlParser::DATEFROMPARTSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"year", static_cast<void*>(ctx->year)},
+        {"month", static_cast<void*>(ctx->month)},
+        {"day", static_cast<void*>(ctx->day)}
+    };
+    if(!DATEFROMPARTSContext_cls) DATEFROMPARTSContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATEFROMPARTSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATEFROMPARTSContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNEWID(TSqlParser::NEWIDContext *ctx){
+    if(!NEWIDContext_cls) NEWIDContext_cls = PyObject_GetAttrString(translator->parser_cls, "NEWIDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, NEWIDContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATETRUNC(TSqlParser::DATETRUNCContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datepart", static_cast<void*>(ctx->datepart)},
+        {"date", static_cast<void*>(ctx->date)}
+    };
+    if(!DATETRUNCContext_cls) DATETRUNCContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATETRUNCContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATETRUNCContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitISNULL(TSqlParser::ISNULLContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"left", static_cast<void*>(ctx->left)},
-        {"alias", static_cast<void*>(ctx->alias)},
         {"right", static_cast<void*>(ctx->right)}
     };
-    if(!Expression_callContext_cls) Expression_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Expression_callContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Expression_callContext_cls, labels, 3);
+    if(!ISNULLContext_cls) ISNULLContext_cls = PyObject_GetAttrString(translator->parser_cls, "ISNULLContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ISNULLContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSimple_call(tsqlParser::Simple_callContext *ctx){
-    if(!Simple_callContext_cls) Simple_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Simple_callContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Simple_callContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitCast_call(tsqlParser::Cast_callContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitJSON_MODIFY(TSqlParser::JSON_MODIFYContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"alias", static_cast<void*>(ctx->alias)}
+        {"expr", static_cast<void*>(ctx->expr)},
+        {"path", static_cast<void*>(ctx->path)},
+        {"new_value", static_cast<void*>(ctx->new_value)}
     };
-    if(!Cast_callContext_cls) Cast_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cast_callContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Cast_callContext_cls, labels, 1);
+    if(!JSON_MODIFYContext_cls) JSON_MODIFYContext_cls = PyObject_GetAttrString(translator->parser_cls, "JSON_MODIFYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, JSON_MODIFYContext_cls, labels, 3);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSwitch_section(tsqlParser::Switch_sectionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCURRENT_REQUEST_ID(TSqlParser::CURRENT_REQUEST_IDContext *ctx){
+    if(!CURRENT_REQUEST_IDContext_cls) CURRENT_REQUEST_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURRENT_REQUEST_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURRENT_REQUEST_IDContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIS_MEMBER(TSqlParser::IS_MEMBERContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"whenExpr", static_cast<void*>(ctx->whenExpr)},
-        {"thenExpr", static_cast<void*>(ctx->thenExpr)}
+        {"group_or_role", static_cast<void*>(ctx->group_or_role)}
     };
+    if(!IS_MEMBERContext_cls) IS_MEMBERContext_cls = PyObject_GetAttrString(translator->parser_cls, "IS_MEMBERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, IS_MEMBERContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSERVERPROPERTY(TSqlParser::SERVERPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!SERVERPROPERTYContext_cls) SERVERPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "SERVERPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SERVERPROPERTYContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSQRT(TSqlParser::SQRTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!SQRTContext_cls) SQRTContext_cls = PyObject_GetAttrString(translator->parser_cls, "SQRTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SQRTContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitATN2(TSqlParser::ATN2Context *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!ATN2Context_cls) ATN2Context_cls = PyObject_GetAttrString(translator->parser_cls, "ATN2Context");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ATN2Context_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUNICODE(TSqlParser::UNICODEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"ncharacter_expression", static_cast<void*>(ctx->ncharacter_expression)}
+    };
+    if(!UNICODEContext_cls) UNICODEContext_cls = PyObject_GetAttrString(translator->parser_cls, "UNICODEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, UNICODEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNULLIF(TSqlParser::NULLIFContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"left", static_cast<void*>(ctx->left)},
+        {"right", static_cast<void*>(ctx->right)}
+    };
+    if(!NULLIFContext_cls) NULLIFContext_cls = PyObject_GetAttrString(translator->parser_cls, "NULLIFContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, NULLIFContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSESSION_USER(TSqlParser::SESSION_USERContext *ctx){
+    if(!SESSION_USERContext_cls) SESSION_USERContext_cls = PyObject_GetAttrString(translator->parser_cls, "SESSION_USERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SESSION_USERContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCAST(TSqlParser::CASTContext *ctx){
+    if(!CASTContext_cls) CASTContext_cls = PyObject_GetAttrString(translator->parser_cls, "CASTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CASTContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATETIME2FROMPARTS(TSqlParser::DATETIME2FROMPARTSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"year", static_cast<void*>(ctx->year)},
+        {"month", static_cast<void*>(ctx->month)},
+        {"day", static_cast<void*>(ctx->day)},
+        {"hour", static_cast<void*>(ctx->hour)},
+        {"minute", static_cast<void*>(ctx->minute)},
+        {"seconds", static_cast<void*>(ctx->seconds)},
+        {"fractions", static_cast<void*>(ctx->fractions)},
+        {"precision", static_cast<void*>(ctx->precision)}
+    };
+    if(!DATETIME2FROMPARTSContext_cls) DATETIME2FROMPARTSContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATETIME2FROMPARTSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATETIME2FROMPARTSContext_cls, labels, 8);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSQUARE(TSqlParser::SQUAREContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!SQUAREContext_cls) SQUAREContext_cls = PyObject_GetAttrString(translator->parser_cls, "SQUAREContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SQUAREContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLOG(TSqlParser::LOGContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)},
+        {"base", static_cast<void*>(ctx->base)}
+    };
+    if(!LOGContext_cls) LOGContext_cls = PyObject_GetAttrString(translator->parser_cls, "LOGContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, LOGContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIIF(TSqlParser::IIFContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"cond", static_cast<void*>(ctx->cond)},
+        {"left", static_cast<void*>(ctx->left)},
+        {"right", static_cast<void*>(ctx->right)}
+    };
+    if(!IIFContext_cls) IIFContext_cls = PyObject_GetAttrString(translator->parser_cls, "IIFContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, IIFContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATEPART(TSqlParser::DATEPARTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datepart", static_cast<void*>(ctx->datepart)},
+        {"date", static_cast<void*>(ctx->date)}
+    };
+    if(!DATEPARTContext_cls) DATEPARTContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATEPARTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATEPARTContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCONTEXT_INFO(TSqlParser::CONTEXT_INFOContext *ctx){
+    if(!CONTEXT_INFOContext_cls) CONTEXT_INFOContext_cls = PyObject_GetAttrString(translator->parser_cls, "CONTEXT_INFOContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CONTEXT_INFOContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATEDIFF(TSqlParser::DATEDIFFContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datepart", static_cast<void*>(ctx->datepart)},
+        {"date_first", static_cast<void*>(ctx->date_first)},
+        {"date_second", static_cast<void*>(ctx->date_second)}
+    };
+    if(!DATEDIFFContext_cls) DATEDIFFContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATEDIFFContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATEDIFFContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOBJECTPROPERTY(TSqlParser::OBJECTPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"id_label", static_cast<void*>(ctx->id_label)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!OBJECTPROPERTYContext_cls) OBJECTPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "OBJECTPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, OBJECTPROPERTYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCHAR(TSqlParser::CHARContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"integer_expression", static_cast<void*>(ctx->integer_expression)}
+    };
+    if(!CHARContext_cls) CHARContext_cls = PyObject_GetAttrString(translator->parser_cls, "CHARContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CHARContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSTRING_ESCAPE(TSqlParser::STRING_ESCAPEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"text_", static_cast<void*>(ctx->text_)},
+        {"type_", static_cast<void*>(ctx->type_)}
+    };
+    if(!STRING_ESCAPEContext_cls) STRING_ESCAPEContext_cls = PyObject_GetAttrString(translator->parser_cls, "STRING_ESCAPEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, STRING_ESCAPEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGETANSINULL(TSqlParser::GETANSINULLContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database", static_cast<void*>(ctx->database)}
+    };
+    if(!GETANSINULLContext_cls) GETANSINULLContext_cls = PyObject_GetAttrString(translator->parser_cls, "GETANSINULLContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, GETANSINULLContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSYSTEM_USER(TSqlParser::SYSTEM_USERContext *ctx){
+    if(!SYSTEM_USERContext_cls) SYSTEM_USERContext_cls = PyObject_GetAttrString(translator->parser_cls, "SYSTEM_USERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SYSTEM_USERContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOBJECT_ID(TSqlParser::OBJECT_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_name", static_cast<void*>(ctx->object_name)},
+        {"object_type", static_cast<void*>(ctx->object_type)}
+    };
+    if(!OBJECT_IDContext_cls) OBJECT_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "OBJECT_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, OBJECT_IDContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitERROR_PROCEDURE(TSqlParser::ERROR_PROCEDUREContext *ctx){
+    if(!ERROR_PROCEDUREContext_cls) ERROR_PROCEDUREContext_cls = PyObject_GetAttrString(translator->parser_cls, "ERROR_PROCEDUREContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ERROR_PROCEDUREContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitQUOTENAME(TSqlParser::QUOTENAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_string", static_cast<void*>(ctx->character_string)},
+        {"quote_character", static_cast<void*>(ctx->quote_character)}
+    };
+    if(!QUOTENAMEContext_cls) QUOTENAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "QUOTENAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, QUOTENAMEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRIGHT(TSqlParser::RIGHTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression", static_cast<void*>(ctx->character_expression)},
+        {"integer_expression", static_cast<void*>(ctx->integer_expression)}
+    };
+    if(!RIGHTContext_cls) RIGHTContext_cls = PyObject_GetAttrString(translator->parser_cls, "RIGHTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, RIGHTContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitHOST_ID(TSqlParser::HOST_IDContext *ctx){
+    if(!HOST_IDContext_cls) HOST_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "HOST_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, HOST_IDContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATETIMEOFFSETFROMPARTS(TSqlParser::DATETIMEOFFSETFROMPARTSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"year", static_cast<void*>(ctx->year)},
+        {"month", static_cast<void*>(ctx->month)},
+        {"day", static_cast<void*>(ctx->day)},
+        {"hour", static_cast<void*>(ctx->hour)},
+        {"minute", static_cast<void*>(ctx->minute)},
+        {"seconds", static_cast<void*>(ctx->seconds)},
+        {"fractions", static_cast<void*>(ctx->fractions)},
+        {"hour_offset", static_cast<void*>(ctx->hour_offset)},
+        {"minute_offset", static_cast<void*>(ctx->minute_offset)},
+        {"precision", static_cast<void*>(ctx->precision)}
+    };
+    if(!DATETIMEOFFSETFROMPARTSContext_cls) DATETIMEOFFSETFROMPARTSContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATETIMEOFFSETFROMPARTSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATETIMEOFFSETFROMPARTSContext_cls, labels, 10);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCOS(TSqlParser::COSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!COSContext_cls) COSContext_cls = PyObject_GetAttrString(translator->parser_cls, "COSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, COSContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCOT(TSqlParser::COTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!COTContext_cls) COTContext_cls = PyObject_GetAttrString(translator->parser_cls, "COTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, COTContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFILE_ID(TSqlParser::FILE_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"file_name", static_cast<void*>(ctx->file_name)}
+    };
+    if(!FILE_IDContext_cls) FILE_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "FILE_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FILE_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitASSEMBLYPROPERTY(TSqlParser::ASSEMBLYPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"assembly_name", static_cast<void*>(ctx->assembly_name)},
+        {"property_name", static_cast<void*>(ctx->property_name)}
+    };
+    if(!ASSEMBLYPROPERTYContext_cls) ASSEMBLYPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "ASSEMBLYPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ASSEMBLYPROPERTYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSTUFF(TSqlParser::STUFFContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"str_label", static_cast<void*>(ctx->str_label)},
+        {"from_label", static_cast<void*>(ctx->from_label)},
+        {"to", static_cast<void*>(ctx->to)},
+        {"str_with", static_cast<void*>(ctx->str_with)}
+    };
+    if(!STUFFContext_cls) STUFFContext_cls = PyObject_GetAttrString(translator->parser_cls, "STUFFContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, STUFFContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitIS_ROLEMEMBER(TSqlParser::IS_ROLEMEMBERContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"role", static_cast<void*>(ctx->role)},
+        {"database_principal", static_cast<void*>(ctx->database_principal)}
+    };
+    if(!IS_ROLEMEMBERContext_cls) IS_ROLEMEMBERContext_cls = PyObject_GetAttrString(translator->parser_cls, "IS_ROLEMEMBERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, IS_ROLEMEMBERContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSQL_VARIANT_PROPERTY(TSqlParser::SQL_VARIANT_PROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"expr", static_cast<void*>(ctx->expr)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!SQL_VARIANT_PROPERTYContext_cls) SQL_VARIANT_PROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "SQL_VARIANT_PROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SQL_VARIANT_PROPERTYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGREATEST(TSqlParser::GREATESTContext *ctx){
+    if(!GREATESTContext_cls) GREATESTContext_cls = PyObject_GetAttrString(translator->parser_cls, "GREATESTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, GREATESTContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGETUTCDATE(TSqlParser::GETUTCDATEContext *ctx){
+    if(!GETUTCDATEContext_cls) GETUTCDATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "GETUTCDATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, GETUTCDATEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLOGINPROPERTY(TSqlParser::LOGINPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"login_name", static_cast<void*>(ctx->login_name)},
+        {"property_name", static_cast<void*>(ctx->property_name)}
+    };
+    if(!LOGINPROPERTYContext_cls) LOGINPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "LOGINPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, LOGINPROPERTYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCONCAT_WS(TSqlParser::CONCAT_WSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"separator", static_cast<void*>(ctx->separator)},
+        {"argument_1", static_cast<void*>(ctx->argument_1)},
+        {"argument_2", static_cast<void*>(ctx->argument_2)}
+    };
+    if(!CONCAT_WSContext_cls) CONCAT_WSContext_cls = PyObject_GetAttrString(translator->parser_cls, "CONCAT_WSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CONCAT_WSContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitERROR_STATE(TSqlParser::ERROR_STATEContext *ctx){
+    if(!ERROR_STATEContext_cls) ERROR_STATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "ERROR_STATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ERROR_STATEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDAY(TSqlParser::DAYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"date", static_cast<void*>(ctx->date)}
+    };
+    if(!DAYContext_cls) DAYContext_cls = PyObject_GetAttrString(translator->parser_cls, "DAYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DAYContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPARSENAME(TSqlParser::PARSENAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_name", static_cast<void*>(ctx->object_name)},
+        {"object_piece", static_cast<void*>(ctx->object_piece)}
+    };
+    if(!PARSENAMEContext_cls) PARSENAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "PARSENAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PARSENAMEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTAN(TSqlParser::TANContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!TANContext_cls) TANContext_cls = PyObject_GetAttrString(translator->parser_cls, "TANContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TANContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCURRENT_USER(TSqlParser::CURRENT_USERContext *ctx){
+    if(!CURRENT_USERContext_cls) CURRENT_USERContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURRENT_USERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURRENT_USERContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPERMISSIONS(TSqlParser::PERMISSIONSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_id", static_cast<void*>(ctx->object_id)},
+        {"column", static_cast<void*>(ctx->column)}
+    };
+    if(!PERMISSIONSContext_cls) PERMISSIONSContext_cls = PyObject_GetAttrString(translator->parser_cls, "PERMISSIONSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PERMISSIONSContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSYSDATETIMEOFFSET(TSqlParser::SYSDATETIMEOFFSETContext *ctx){
+    if(!SYSDATETIMEOFFSETContext_cls) SYSDATETIMEOFFSETContext_cls = PyObject_GetAttrString(translator->parser_cls, "SYSDATETIMEOFFSETContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SYSDATETIMEOFFSETContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitINDEXPROPERTY(TSqlParser::INDEXPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_id", static_cast<void*>(ctx->object_id)},
+        {"index_or_statistics_name", static_cast<void*>(ctx->index_or_statistics_name)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!INDEXPROPERTYContext_cls) INDEXPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "INDEXPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, INDEXPROPERTYContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOBJECTPROPERTYEX(TSqlParser::OBJECTPROPERTYEXContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"id_label", static_cast<void*>(ctx->id_label)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!OBJECTPROPERTYEXContext_cls) OBJECTPROPERTYEXContext_cls = PyObject_GetAttrString(translator->parser_cls, "OBJECTPROPERTYEXContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, OBJECTPROPERTYEXContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSUBSTRING(TSqlParser::SUBSTRINGContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"string_expression", static_cast<void*>(ctx->string_expression)},
+        {"start_", static_cast<void*>(ctx->start_)},
+        {"length", static_cast<void*>(ctx->length)}
+    };
+    if(!SUBSTRINGContext_cls) SUBSTRINGContext_cls = PyObject_GetAttrString(translator->parser_cls, "SUBSTRINGContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SUBSTRINGContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitBINARY_CHECKSUM(TSqlParser::BINARY_CHECKSUMContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"star", static_cast<void*>(ctx->star)}
+    };
+    if(!BINARY_CHECKSUMContext_cls) BINARY_CHECKSUMContext_cls = PyObject_GetAttrString(translator->parser_cls, "BINARY_CHECKSUMContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, BINARY_CHECKSUMContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitINDEXKEY_PROPERTY(TSqlParser::INDEXKEY_PROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_id", static_cast<void*>(ctx->object_id)},
+        {"index_id", static_cast<void*>(ctx->index_id)},
+        {"key_id", static_cast<void*>(ctx->key_id)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!INDEXKEY_PROPERTYContext_cls) INDEXKEY_PROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "INDEXKEY_PROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, INDEXKEY_PROPERTYContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPWDENCRYPT(TSqlParser::PWDENCRYPTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"password", static_cast<void*>(ctx->password)}
+    };
+    if(!PWDENCRYPTContext_cls) PWDENCRYPTContext_cls = PyObject_GetAttrString(translator->parser_cls, "PWDENCRYPTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PWDENCRYPTContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCOMPRESS(TSqlParser::COMPRESSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"expr", static_cast<void*>(ctx->expr)}
+    };
+    if(!COMPRESSContext_cls) COMPRESSContext_cls = PyObject_GetAttrString(translator->parser_cls, "COMPRESSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, COMPRESSContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCOALESCE(TSqlParser::COALESCEContext *ctx){
+    if(!COALESCEContext_cls) COALESCEContext_cls = PyObject_GetAttrString(translator->parser_cls, "COALESCEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, COALESCEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSTATS_DATE(TSqlParser::STATS_DATEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"object_id", static_cast<void*>(ctx->object_id)},
+        {"stats_id", static_cast<void*>(ctx->stats_id)}
+    };
+    if(!STATS_DATEContext_cls) STATS_DATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "STATS_DATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, STATS_DATEContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitISNUMERIC(TSqlParser::ISNUMERICContext *ctx){
+    if(!ISNUMERICContext_cls) ISNUMERICContext_cls = PyObject_GetAttrString(translator->parser_cls, "ISNUMERICContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ISNUMERICContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitACOS(TSqlParser::ACOSContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!ACOSContext_cls) ACOSContext_cls = PyObject_GetAttrString(translator->parser_cls, "ACOSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ACOSContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFILEGROUP_NAME(TSqlParser::FILEGROUP_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"filegroup_id", static_cast<void*>(ctx->filegroup_id)}
+    };
+    if(!FILEGROUP_NAMEContext_cls) FILEGROUP_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "FILEGROUP_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FILEGROUP_NAMEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCOLUMNPROPERTY(TSqlParser::COLUMNPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"id_label", static_cast<void*>(ctx->id_label)},
+        {"column", static_cast<void*>(ctx->column)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!COLUMNPROPERTYContext_cls) COLUMNPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "COLUMNPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, COLUMNPROPERTYContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDB_ID(TSqlParser::DB_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_name", static_cast<void*>(ctx->database_name)}
+    };
+    if(!DB_IDContext_cls) DB_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "DB_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DB_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSOUNDEX(TSqlParser::SOUNDEXContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression", static_cast<void*>(ctx->character_expression)}
+    };
+    if(!SOUNDEXContext_cls) SOUNDEXContext_cls = PyObject_GetAttrString(translator->parser_cls, "SOUNDEXContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SOUNDEXContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCURSOR_ROWS(TSqlParser::CURSOR_ROWSContext *ctx){
+    if(!CURSOR_ROWSContext_cls) CURSOR_ROWSContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURSOR_ROWSContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURSOR_ROWSContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFULLTEXTCATALOGPROPERTY(TSqlParser::FULLTEXTCATALOGPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"catalog_name", static_cast<void*>(ctx->catalog_name)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!FULLTEXTCATALOGPROPERTYContext_cls) FULLTEXTCATALOGPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "FULLTEXTCATALOGPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FULLTEXTCATALOGPROPERTYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTYPEPROPERTY(TSqlParser::TYPEPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"type_label", static_cast<void*>(ctx->type_label)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!TYPEPROPERTYContext_cls) TYPEPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "TYPEPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TYPEPROPERTYContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSCHEMA_NAME(TSqlParser::SCHEMA_NAMEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_id", static_cast<void*>(ctx->schema_id)}
+    };
+    if(!SCHEMA_NAMEContext_cls) SCHEMA_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "SCHEMA_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SCHEMA_NAMEContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTYPE_ID(TSqlParser::TYPE_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"type_name", static_cast<void*>(ctx->type_name)}
+    };
+    if(!TYPE_IDContext_cls) TYPE_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "TYPE_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TYPE_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTRY_CAST(TSqlParser::TRY_CASTContext *ctx){
+    if(!TRY_CASTContext_cls) TRY_CASTContext_cls = PyObject_GetAttrString(translator->parser_cls, "TRY_CASTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TRY_CASTContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAPPLOCK_MODE(TSqlParser::APPLOCK_MODEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_principal", static_cast<void*>(ctx->database_principal)},
+        {"resource_name", static_cast<void*>(ctx->resource_name)},
+        {"lock_owner", static_cast<void*>(ctx->lock_owner)}
+    };
+    if(!APPLOCK_MODEContext_cls) APPLOCK_MODEContext_cls = PyObject_GetAttrString(translator->parser_cls, "APPLOCK_MODEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, APPLOCK_MODEContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCURRENT_DATE(TSqlParser::CURRENT_DATEContext *ctx){
+    if(!CURRENT_DATEContext_cls) CURRENT_DATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURRENT_DATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURRENT_DATEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGETDATE(TSqlParser::GETDATEContext *ctx){
+    if(!GETDATEContext_cls) GETDATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "GETDATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, GETDATEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCERT_ID(TSqlParser::CERT_IDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"cert_name", static_cast<void*>(ctx->cert_name)}
+    };
+    if(!CERT_IDContext_cls) CERT_IDContext_cls = PyObject_GetAttrString(translator->parser_cls, "CERT_IDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CERT_IDContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitATAN(TSqlParser::ATANContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!ATANContext_cls) ATANContext_cls = PyObject_GetAttrString(translator->parser_cls, "ATANContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ATANContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCONNECTIONPROPERTY(TSqlParser::CONNECTIONPROPERTYContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!CONNECTIONPROPERTYContext_cls) CONNECTIONPROPERTYContext_cls = PyObject_GetAttrString(translator->parser_cls, "CONNECTIONPROPERTYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CONNECTIONPROPERTYContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitERROR_NUMBER(TSqlParser::ERROR_NUMBERContext *ctx){
+    if(!ERROR_NUMBERContext_cls) ERROR_NUMBERContext_cls = PyObject_GetAttrString(translator->parser_cls, "ERROR_NUMBERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ERROR_NUMBERContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitERROR_LINE(TSqlParser::ERROR_LINEContext *ctx){
+    if(!ERROR_LINEContext_cls) ERROR_LINEContext_cls = PyObject_GetAttrString(translator->parser_cls, "ERROR_LINEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ERROR_LINEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCURRENT_TIMESTAMP(TSqlParser::CURRENT_TIMESTAMPContext *ctx){
+    if(!CURRENT_TIMESTAMPContext_cls) CURRENT_TIMESTAMPContext_cls = PyObject_GetAttrString(translator->parser_cls, "CURRENT_TIMESTAMPContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CURRENT_TIMESTAMPContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitCONCAT(TSqlParser::CONCATContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"string_value_1", static_cast<void*>(ctx->string_value_1)},
+        {"string_value_2", static_cast<void*>(ctx->string_value_2)}
+    };
+    if(!CONCATContext_cls) CONCATContext_cls = PyObject_GetAttrString(translator->parser_cls, "CONCATContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, CONCATContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitJSON_ARRAY(TSqlParser::JSON_ARRAYContext *ctx){
+    if(!JSON_ARRAYContext_cls) JSON_ARRAYContext_cls = PyObject_GetAttrString(translator->parser_cls, "JSON_ARRAYContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, JSON_ARRAYContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitROUND(TSqlParser::ROUNDContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"numeric_expression", static_cast<void*>(ctx->numeric_expression)},
+        {"length", static_cast<void*>(ctx->length)},
+        {"function", static_cast<void*>(ctx->function)}
+    };
+    if(!ROUNDContext_cls) ROUNDContext_cls = PyObject_GetAttrString(translator->parser_cls, "ROUNDContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ROUNDContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATALENGTH(TSqlParser::DATALENGTHContext *ctx){
+    if(!DATALENGTHContext_cls) DATALENGTHContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATALENGTHContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATALENGTHContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitHOST_NAME(TSqlParser::HOST_NAMEContext *ctx){
+    if(!HOST_NAMEContext_cls) HOST_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "HOST_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, HOST_NAMEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATABASEPROPERTYEX(TSqlParser::DATABASEPROPERTYEXContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database", static_cast<void*>(ctx->database)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!DATABASEPROPERTYEXContext_cls) DATABASEPROPERTYEXContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATABASEPROPERTYEXContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATABASEPROPERTYEXContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitORIGINAL_DB_NAME(TSqlParser::ORIGINAL_DB_NAMEContext *ctx){
+    if(!ORIGINAL_DB_NAMEContext_cls) ORIGINAL_DB_NAMEContext_cls = PyObject_GetAttrString(translator->parser_cls, "ORIGINAL_DB_NAMEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, ORIGINAL_DB_NAMEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFILEPROPERTYEX(TSqlParser::FILEPROPERTYEXContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"name", static_cast<void*>(ctx->name)},
+        {"property_label", static_cast<void*>(ctx->property_label)}
+    };
+    if(!FILEPROPERTYEXContext_cls) FILEPROPERTYEXContext_cls = PyObject_GetAttrString(translator->parser_cls, "FILEPROPERTYEXContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FILEPROPERTYEXContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitRTRIM(TSqlParser::RTRIMContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"character_expression", static_cast<void*>(ctx->character_expression)}
+    };
+    if(!RTRIMContext_cls) RTRIMContext_cls = PyObject_GetAttrString(translator->parser_cls, "RTRIMContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, RTRIMContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitJSON_OBJECT(TSqlParser::JSON_OBJECTContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"key_value", static_cast<void*>(ctx->key_value)}
+    };
+    if(!JSON_OBJECTContext_cls) JSON_OBJECTContext_cls = PyObject_GetAttrString(translator->parser_cls, "JSON_OBJECTContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, JSON_OBJECTContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitXACT_STATE(TSqlParser::XACT_STATEContext *ctx){
+    if(!XACT_STATEContext_cls) XACT_STATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "XACT_STATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, XACT_STATEContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFORMATMESSAGE(TSqlParser::FORMATMESSAGEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"msg_number", static_cast<void*>(ctx->msg_number)},
+        {"msg_string", static_cast<void*>(ctx->msg_string)},
+        {"msg_variable", static_cast<void*>(ctx->msg_variable)}
+    };
+    if(!FORMATMESSAGEContext_cls) FORMATMESSAGEContext_cls = PyObject_GetAttrString(translator->parser_cls, "FORMATMESSAGEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, FORMATMESSAGEContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATEDIFF_BIG(TSqlParser::DATEDIFF_BIGContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datepart", static_cast<void*>(ctx->datepart)},
+        {"startdate", static_cast<void*>(ctx->startdate)},
+        {"enddate", static_cast<void*>(ctx->enddate)}
+    };
+    if(!DATEDIFF_BIGContext_cls) DATEDIFF_BIGContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATEDIFF_BIGContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATEDIFF_BIGContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitUSER(TSqlParser::USERContext *ctx){
+    if(!USERContext_cls) USERContext_cls = PyObject_GetAttrString(translator->parser_cls, "USERContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, USERContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDEGREES(TSqlParser::DEGREESContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"numeric_expression", static_cast<void*>(ctx->numeric_expression)}
+    };
+    if(!DEGREESContext_cls) DEGREESContext_cls = PyObject_GetAttrString(translator->parser_cls, "DEGREESContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DEGREESContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitLEN(TSqlParser::LENContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"string_expression", static_cast<void*>(ctx->string_expression)}
+    };
+    if(!LENContext_cls) LENContext_cls = PyObject_GetAttrString(translator->parser_cls, "LENContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, LENContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTRANSLATE(TSqlParser::TRANSLATEContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"inputString", static_cast<void*>(ctx->inputString)},
+        {"characters", static_cast<void*>(ctx->characters)},
+        {"translations", static_cast<void*>(ctx->translations)}
+    };
+    if(!TRANSLATEContext_cls) TRANSLATEContext_cls = PyObject_GetAttrString(translator->parser_cls, "TRANSLATEContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, TRANSLATEContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSWITCHOFFSET(TSqlParser::SWITCHOFFSETContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datetimeoffset_expression", static_cast<void*>(ctx->datetimeoffset_expression)},
+        {"timezoneoffset_expression", static_cast<void*>(ctx->timezoneoffset_expression)}
+    };
+    if(!SWITCHOFFSETContext_cls) SWITCHOFFSETContext_cls = PyObject_GetAttrString(translator->parser_cls, "SWITCHOFFSETContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, SWITCHOFFSETContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitPI(TSqlParser::PIContext *ctx){
+    if(!PIContext_cls) PIContext_cls = PyObject_GetAttrString(translator->parser_cls, "PIContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, PIContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDATE_BUCKET(TSqlParser::DATE_BUCKETContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"datepart", static_cast<void*>(ctx->datepart)},
+        {"number", static_cast<void*>(ctx->number)},
+        {"date", static_cast<void*>(ctx->date)},
+        {"origin", static_cast<void*>(ctx->origin)}
+    };
+    if(!DATE_BUCKETContext_cls) DATE_BUCKETContext_cls = PyObject_GetAttrString(translator->parser_cls, "DATE_BUCKETContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, DATE_BUCKETContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEXP(TSqlParser::EXPContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"float_expression", static_cast<void*>(ctx->float_expression)}
+    };
+    if(!EXPContext_cls) EXPContext_cls = PyObject_GetAttrString(translator->parser_cls, "EXPContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, EXPContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSTRINGAGG(TSqlParser::STRINGAGGContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"expr", static_cast<void*>(ctx->expr)},
+        {"separator", static_cast<void*>(ctx->separator)}
+    };
+    if(!STRINGAGGContext_cls) STRINGAGGContext_cls = PyObject_GetAttrString(translator->parser_cls, "STRINGAGGContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, STRINGAGGContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitXml_data_type_methods(TSqlParser::Xml_data_type_methodsContext *ctx){
+    if(!Xml_data_type_methodsContext_cls) Xml_data_type_methodsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Xml_data_type_methodsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Xml_data_type_methodsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDateparts_9(TSqlParser::Dateparts_9Context *ctx){
+    if(!Dateparts_9Context_cls) Dateparts_9Context_cls = PyObject_GetAttrString(translator->parser_cls, "Dateparts_9Context");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dateparts_9Context_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDateparts_12(TSqlParser::Dateparts_12Context *ctx){
+    if(!Dateparts_12Context_cls) Dateparts_12Context_cls = PyObject_GetAttrString(translator->parser_cls, "Dateparts_12Context");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dateparts_12Context_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDateparts_15(TSqlParser::Dateparts_15Context *ctx){
+    if(!Dateparts_15Context_cls) Dateparts_15Context_cls = PyObject_GetAttrString(translator->parser_cls, "Dateparts_15Context");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dateparts_15Context_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDateparts_datetrunc(TSqlParser::Dateparts_datetruncContext *ctx){
+    if(!Dateparts_datetruncContext_cls) Dateparts_datetruncContext_cls = PyObject_GetAttrString(translator->parser_cls, "Dateparts_datetruncContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Dateparts_datetruncContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitValue_method(TSqlParser::Value_methodContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"loc_id", static_cast<void*>(ctx->loc_id)},
+        {"value_id", static_cast<void*>(ctx->value_id)},
+        {"eventdata", static_cast<void*>(ctx->eventdata)},
+        {"query", static_cast<void*>(ctx->query)},
+        {"call", static_cast<void*>(ctx->call)}
+    };
+    if(!Value_methodContext_cls) Value_methodContext_cls = PyObject_GetAttrString(translator->parser_cls, "Value_methodContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Value_methodContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitValue_call(TSqlParser::Value_callContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"xquery", static_cast<void*>(ctx->xquery)},
+        {"sqltype", static_cast<void*>(ctx->sqltype)}
+    };
+    if(!Value_callContext_cls) Value_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Value_callContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Value_callContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitQuery_method(TSqlParser::Query_methodContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"loc_id", static_cast<void*>(ctx->loc_id)},
+        {"value_id", static_cast<void*>(ctx->value_id)},
+        {"call", static_cast<void*>(ctx->call)}
+    };
+    if(!Query_methodContext_cls) Query_methodContext_cls = PyObject_GetAttrString(translator->parser_cls, "Query_methodContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Query_methodContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitQuery_call(TSqlParser::Query_callContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"xquery", static_cast<void*>(ctx->xquery)}
+    };
+    if(!Query_callContext_cls) Query_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Query_callContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Query_callContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExist_method(TSqlParser::Exist_methodContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"loc_id", static_cast<void*>(ctx->loc_id)},
+        {"value_id", static_cast<void*>(ctx->value_id)},
+        {"call", static_cast<void*>(ctx->call)}
+    };
+    if(!Exist_methodContext_cls) Exist_methodContext_cls = PyObject_GetAttrString(translator->parser_cls, "Exist_methodContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Exist_methodContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitExist_call(TSqlParser::Exist_callContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"xquery", static_cast<void*>(ctx->xquery)}
+    };
+    if(!Exist_callContext_cls) Exist_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Exist_callContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Exist_callContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitModify_method(TSqlParser::Modify_methodContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"loc_id", static_cast<void*>(ctx->loc_id)},
+        {"value_id", static_cast<void*>(ctx->value_id)},
+        {"call", static_cast<void*>(ctx->call)}
+    };
+    if(!Modify_methodContext_cls) Modify_methodContext_cls = PyObject_GetAttrString(translator->parser_cls, "Modify_methodContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Modify_methodContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitModify_call(TSqlParser::Modify_callContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"xml_dml", static_cast<void*>(ctx->xml_dml)}
+    };
+    if(!Modify_callContext_cls) Modify_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Modify_callContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Modify_callContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitHierarchyid_call(TSqlParser::Hierarchyid_callContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"n", static_cast<void*>(ctx->n)},
+        {"child1", static_cast<void*>(ctx->child1)},
+        {"child2", static_cast<void*>(ctx->child2)},
+        {"parent_", static_cast<void*>(ctx->parent_)},
+        {"oldroot", static_cast<void*>(ctx->oldroot)},
+        {"newroot", static_cast<void*>(ctx->newroot)}
+    };
+    if(!Hierarchyid_callContext_cls) Hierarchyid_callContext_cls = PyObject_GetAttrString(translator->parser_cls, "Hierarchyid_callContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Hierarchyid_callContext_cls, labels, 6);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitHierarchyid_static_method(TSqlParser::Hierarchyid_static_methodContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"input_label", static_cast<void*>(ctx->input_label)}
+    };
+    if(!Hierarchyid_static_methodContext_cls) Hierarchyid_static_methodContext_cls = PyObject_GetAttrString(translator->parser_cls, "Hierarchyid_static_methodContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Hierarchyid_static_methodContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitNodes_method(TSqlParser::Nodes_methodContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"loc_id", static_cast<void*>(ctx->loc_id)},
+        {"value_id", static_cast<void*>(ctx->value_id)},
+        {"xquery", static_cast<void*>(ctx->xquery)}
+    };
+    if(!Nodes_methodContext_cls) Nodes_methodContext_cls = PyObject_GetAttrString(translator->parser_cls, "Nodes_methodContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Nodes_methodContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSwitch_section(TSqlParser::Switch_sectionContext *ctx){
     if(!Switch_sectionContext_cls) Switch_sectionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Switch_sectionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Switch_sectionContext_cls, labels, 2);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Switch_sectionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSwitch_search_condition_section(tsqlParser::Switch_search_condition_sectionContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"whenExpr", static_cast<void*>(ctx->whenExpr)},
-        {"thenExpr", static_cast<void*>(ctx->thenExpr)}
-    };
+antlrcpp::Any SA_TSqlTranslator::visitSwitch_search_condition_section(TSqlParser::Switch_search_condition_sectionContext *ctx){
     if(!Switch_search_condition_sectionContext_cls) Switch_search_condition_sectionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Switch_search_condition_sectionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Switch_search_condition_sectionContext_cls, labels, 2);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Switch_search_condition_sectionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWith_table_hints(tsqlParser::With_table_hintsContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAs_column_alias(TSqlParser::As_column_aliasContext *ctx){
+    if(!As_column_aliasContext_cls) As_column_aliasContext_cls = PyObject_GetAttrString(translator->parser_cls, "As_column_aliasContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, As_column_aliasContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitAs_table_alias(TSqlParser::As_table_aliasContext *ctx){
+    if(!As_table_aliasContext_cls) As_table_aliasContext_cls = PyObject_GetAttrString(translator->parser_cls, "As_table_aliasContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, As_table_aliasContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTable_alias(TSqlParser::Table_aliasContext *ctx){
+    if(!Table_aliasContext_cls) Table_aliasContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_aliasContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_aliasContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitWith_table_hints(TSqlParser::With_table_hintsContext *ctx){
     if(!With_table_hintsContext_cls) With_table_hintsContext_cls = PyObject_GetAttrString(translator->parser_cls, "With_table_hintsContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, With_table_hintsContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitInsert_with_table_hints(tsqlParser::Insert_with_table_hintsContext *ctx){
-    if(!Insert_with_table_hintsContext_cls) Insert_with_table_hintsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Insert_with_table_hintsContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Insert_with_table_hintsContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitDeprecated_table_hint(TSqlParser::Deprecated_table_hintContext *ctx){
+    if(!Deprecated_table_hintContext_cls) Deprecated_table_hintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Deprecated_table_hintContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Deprecated_table_hintContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitTable_hint(tsqlParser::Table_hintContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitSybase_legacy_hints(TSqlParser::Sybase_legacy_hintsContext *ctx){
+    if(!Sybase_legacy_hintsContext_cls) Sybase_legacy_hintsContext_cls = PyObject_GetAttrString(translator->parser_cls, "Sybase_legacy_hintsContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Sybase_legacy_hintsContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSybase_legacy_hint(TSqlParser::Sybase_legacy_hintContext *ctx){
+    if(!Sybase_legacy_hintContext_cls) Sybase_legacy_hintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Sybase_legacy_hintContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Sybase_legacy_hintContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTable_hint(TSqlParser::Table_hintContext *ctx){
     if(!Table_hintContext_cls) Table_hintContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_hintContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_hintContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitIndex_value(tsqlParser::Index_valueContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitIndex_value(TSqlParser::Index_valueContext *ctx){
     if(!Index_valueContext_cls) Index_valueContext_cls = PyObject_GetAttrString(translator->parser_cls, "Index_valueContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Index_valueContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitColumn_alias_list(tsqlParser::Column_alias_listContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitColumn_alias_list(TSqlParser::Column_alias_listContext *ctx){
     if(!Column_alias_listContext_cls) Column_alias_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_alias_listContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_alias_listContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitColumn_alias(tsqlParser::Column_aliasContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitColumn_alias(TSqlParser::Column_aliasContext *ctx){
     if(!Column_aliasContext_cls) Column_aliasContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_aliasContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_aliasContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitA_star(tsqlParser::A_starContext *ctx){
-    if(!A_starContext_cls) A_starContext_cls = PyObject_GetAttrString(translator->parser_cls, "A_starContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, A_starContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitTable_value_constructor(tsqlParser::Table_value_constructorContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitTable_value_constructor(TSqlParser::Table_value_constructorContext *ctx){
     if(!Table_value_constructorContext_cls) Table_value_constructorContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_value_constructorContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_value_constructorContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitExpression_list(tsqlParser::Expression_listContext *ctx){
-    if(!Expression_listContext_cls) Expression_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Expression_listContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Expression_listContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitExpression_list_(TSqlParser::Expression_list_Context *ctx){
+    if(!Expression_list_Context_cls) Expression_list_Context_cls = PyObject_GetAttrString(translator->parser_cls, "Expression_list_Context");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Expression_list_Context_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitValue_list(tsqlParser::Value_listContext *ctx){
-    if(!Value_listContext_cls) Value_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Value_listContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Value_listContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitNext_value_for(tsqlParser::Next_value_forContext *ctx){
-    if(!Next_value_forContext_cls) Next_value_forContext_cls = PyObject_GetAttrString(translator->parser_cls, "Next_value_forContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Next_value_forContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitNext_value_for_function(tsqlParser::Next_value_for_functionContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"args", static_cast<void*>(ctx->args)}
-    };
-    if(!Next_value_for_functionContext_cls) Next_value_for_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Next_value_for_functionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Next_value_for_functionContext_cls, labels, 1);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitRanking_windowed_function(tsqlParser::Ranking_windowed_functionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitRanking_windowed_function(TSqlParser::Ranking_windowed_functionContext *ctx){
     if(!Ranking_windowed_functionContext_cls) Ranking_windowed_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Ranking_windowed_functionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Ranking_windowed_functionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitAggregate_windowed_function(tsqlParser::Aggregate_windowed_functionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAggregate_windowed_function(TSqlParser::Aggregate_windowed_functionContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"args", static_cast<void*>(ctx->args)}
+        {"agg_func", static_cast<void*>(ctx->agg_func)},
+        {"cnt", static_cast<void*>(ctx->cnt)}
     };
     if(!Aggregate_windowed_functionContext_cls) Aggregate_windowed_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Aggregate_windowed_functionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Aggregate_windowed_functionContext_cls, labels, 1);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Aggregate_windowed_functionContext_cls, labels, 2);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitAll_distinct(tsqlParser::All_distinctContext *ctx){
-    if(!All_distinctContext_cls) All_distinctContext_cls = PyObject_GetAttrString(translator->parser_cls, "All_distinctContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, All_distinctContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitAnalytic_windowed_function(TSqlParser::Analytic_windowed_functionContext *ctx){
+    if(!Analytic_windowed_functionContext_cls) Analytic_windowed_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Analytic_windowed_functionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Analytic_windowed_functionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOver_clause(tsqlParser::Over_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAll_distinct_expression(TSqlParser::All_distinct_expressionContext *ctx){
+    if(!All_distinct_expressionContext_cls) All_distinct_expressionContext_cls = PyObject_GetAttrString(translator->parser_cls, "All_distinct_expressionContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, All_distinct_expressionContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitOver_clause(TSqlParser::Over_clauseContext *ctx){
     if(!Over_clauseContext_cls) Over_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Over_clauseContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Over_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitRow_or_range_clause(tsqlParser::Row_or_range_clauseContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitRow_or_range_clause(TSqlParser::Row_or_range_clauseContext *ctx){
     if(!Row_or_range_clauseContext_cls) Row_or_range_clauseContext_cls = PyObject_GetAttrString(translator->parser_cls, "Row_or_range_clauseContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Row_or_range_clauseContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWindow_frame_extent(tsqlParser::Window_frame_extentContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitWindow_frame_extent(TSqlParser::Window_frame_extentContext *ctx){
     if(!Window_frame_extentContext_cls) Window_frame_extentContext_cls = PyObject_GetAttrString(translator->parser_cls, "Window_frame_extentContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Window_frame_extentContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWindow_frame_bound(tsqlParser::Window_frame_boundContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitWindow_frame_bound(TSqlParser::Window_frame_boundContext *ctx){
     if(!Window_frame_boundContext_cls) Window_frame_boundContext_cls = PyObject_GetAttrString(translator->parser_cls, "Window_frame_boundContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Window_frame_boundContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWindow_frame_preceding(tsqlParser::Window_frame_precedingContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitWindow_frame_preceding(TSqlParser::Window_frame_precedingContext *ctx){
     if(!Window_frame_precedingContext_cls) Window_frame_precedingContext_cls = PyObject_GetAttrString(translator->parser_cls, "Window_frame_precedingContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Window_frame_precedingContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitWindow_frame_following(tsqlParser::Window_frame_followingContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitWindow_frame_following(TSqlParser::Window_frame_followingContext *ctx){
     if(!Window_frame_followingContext_cls) Window_frame_followingContext_cls = PyObject_GetAttrString(translator->parser_cls, "Window_frame_followingContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Window_frame_followingContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCreate_database_option(tsqlParser::Create_database_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCreate_database_option(TSqlParser::Create_database_optionContext *ctx){
     if(!Create_database_optionContext_cls) Create_database_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_database_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_database_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDatabase_filestream_option(tsqlParser::Database_filestream_optionContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDatabase_filestream_option(TSqlParser::Database_filestream_optionContext *ctx){
     if(!Database_filestream_optionContext_cls) Database_filestream_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Database_filestream_optionContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Database_filestream_optionContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDatabase_file_spec(tsqlParser::Database_file_specContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitDatabase_file_spec(TSqlParser::Database_file_specContext *ctx){
     if(!Database_file_specContext_cls) Database_file_specContext_cls = PyObject_GetAttrString(translator->parser_cls, "Database_file_specContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Database_file_specContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFile_group(tsqlParser::File_groupContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitFile_group(TSqlParser::File_groupContext *ctx){
     if(!File_groupContext_cls) File_groupContext_cls = PyObject_GetAttrString(translator->parser_cls, "File_groupContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, File_groupContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFile_spec(tsqlParser::File_specContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitFile_spec(TSqlParser::File_specContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"r_file", static_cast<void*>(ctx->r_file)}
+        {"file_label", static_cast<void*>(ctx->file_label)}
     };
     if(!File_specContext_cls) File_specContext_cls = PyObject_GetAttrString(translator->parser_cls, "File_specContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, File_specContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFull_table_name(tsqlParser::Full_table_nameContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitEntity_name(TSqlParser::Entity_nameContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"server", static_cast<void*>(ctx->server)},
         {"database", static_cast<void*>(ctx->database)},
         {"schema", static_cast<void*>(ctx->schema)},
         {"table", static_cast<void*>(ctx->table)}
     };
-    if(!Full_table_nameContext_cls) Full_table_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Full_table_nameContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Full_table_nameContext_cls, labels, 4);
+    if(!Entity_nameContext_cls) Entity_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Entity_nameContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Entity_nameContext_cls, labels, 4);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSimple_name(tsqlParser::Simple_nameContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitEntity_name_for_azure_dw(TSqlParser::Entity_name_for_azure_dwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema", static_cast<void*>(ctx->schema)},
+        {"object_name", static_cast<void*>(ctx->object_name)}
+    };
+    if(!Entity_name_for_azure_dwContext_cls) Entity_name_for_azure_dwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Entity_name_for_azure_dwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Entity_name_for_azure_dwContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEntity_name_for_parallel_dw(TSqlParser::Entity_name_for_parallel_dwContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema_database", static_cast<void*>(ctx->schema_database)},
+        {"schema", static_cast<void*>(ctx->schema)},
+        {"object_name", static_cast<void*>(ctx->object_name)}
+    };
+    if(!Entity_name_for_parallel_dwContext_cls) Entity_name_for_parallel_dwContext_cls = PyObject_GetAttrString(translator->parser_cls, "Entity_name_for_parallel_dwContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Entity_name_for_parallel_dwContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFull_table_name(TSqlParser::Full_table_nameContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"linkedServer", static_cast<void*>(ctx->linkedServer)},
+        {"schema", static_cast<void*>(ctx->schema)},
+        {"server", static_cast<void*>(ctx->server)},
+        {"database", static_cast<void*>(ctx->database)},
+        {"table", static_cast<void*>(ctx->table)}
+    };
+    if(!Full_table_nameContext_cls) Full_table_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Full_table_nameContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Full_table_nameContext_cls, labels, 5);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitTable_name(TSqlParser::Table_nameContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database", static_cast<void*>(ctx->database)},
+        {"schema", static_cast<void*>(ctx->schema)},
+        {"table", static_cast<void*>(ctx->table)},
+        {"blocking_hierarchy", static_cast<void*>(ctx->blocking_hierarchy)}
+    };
+    if(!Table_nameContext_cls) Table_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Table_nameContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Table_nameContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSimple_name(TSqlParser::Simple_nameContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"schema", static_cast<void*>(ctx->schema)},
         {"name", static_cast<void*>(ctx->name)}
@@ -1813,76 +7432,207 @@ antlrcpp::Any SA_tsqlTranslator::visitSimple_name(tsqlParser::Simple_nameContext
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFunc_proc_name(tsqlParser::Func_proc_nameContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitFunc_proc_name_schema(TSqlParser::Func_proc_name_schemaContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"schema", static_cast<void*>(ctx->schema)},
+        {"procedure", static_cast<void*>(ctx->procedure)}
+    };
+    if(!Func_proc_name_schemaContext_cls) Func_proc_name_schemaContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_proc_name_schemaContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_proc_name_schemaContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitFunc_proc_name_database_schema(TSqlParser::Func_proc_name_database_schemaContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"database", static_cast<void*>(ctx->database)},
         {"schema", static_cast<void*>(ctx->schema)},
         {"procedure", static_cast<void*>(ctx->procedure)}
     };
-    if(!Func_proc_nameContext_cls) Func_proc_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_proc_nameContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_proc_nameContext_cls, labels, 3);
+    if(!Func_proc_name_database_schemaContext_cls) Func_proc_name_database_schemaContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_proc_name_database_schemaContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_proc_name_database_schemaContext_cls, labels, 3);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDdl_object(tsqlParser::Ddl_objectContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitFunc_proc_name_server_database_schema(TSqlParser::Func_proc_name_server_database_schemaContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"server", static_cast<void*>(ctx->server)},
+        {"database", static_cast<void*>(ctx->database)},
+        {"schema", static_cast<void*>(ctx->schema)},
+        {"procedure", static_cast<void*>(ctx->procedure)}
+    };
+    if(!Func_proc_name_server_database_schemaContext_cls) Func_proc_name_server_database_schemaContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_proc_name_server_database_schemaContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_proc_name_server_database_schemaContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitDdl_object(TSqlParser::Ddl_objectContext *ctx){
     if(!Ddl_objectContext_cls) Ddl_objectContext_cls = PyObject_GetAttrString(translator->parser_cls, "Ddl_objectContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Ddl_objectContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFull_column_name(tsqlParser::Full_column_nameContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitFull_column_name(TSqlParser::Full_column_nameContext *ctx){
     speedy_antlr::LabelMap labels[] = {
-        {"table", static_cast<void*>(ctx->table)},
-        {"name", static_cast<void*>(ctx->name)}
+        {"column_name", static_cast<void*>(ctx->column_name)}
     };
     if(!Full_column_nameContext_cls) Full_column_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Full_column_nameContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Full_column_nameContext_cls, labels, 2);
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Full_column_nameContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitColumn_name_list(tsqlParser::Column_name_listContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitColumn_name_list_with_order(TSqlParser::Column_name_list_with_orderContext *ctx){
+    if(!Column_name_list_with_orderContext_cls) Column_name_list_with_orderContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_name_list_with_orderContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_name_list_with_orderContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitInsert_column_name_list(TSqlParser::Insert_column_name_listContext *ctx){
+    if(!Insert_column_name_listContext_cls) Insert_column_name_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Insert_column_name_listContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Insert_column_name_listContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitInsert_column_id(TSqlParser::Insert_column_idContext *ctx){
+    if(!Insert_column_idContext_cls) Insert_column_idContext_cls = PyObject_GetAttrString(translator->parser_cls, "Insert_column_idContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Insert_column_idContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitColumn_name_list(TSqlParser::Column_name_listContext *ctx){
     if(!Column_name_listContext_cls) Column_name_listContext_cls = PyObject_GetAttrString(translator->parser_cls, "Column_name_listContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Column_name_listContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitCursor_name(tsqlParser::Cursor_nameContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitCursor_name(TSqlParser::Cursor_nameContext *ctx){
     if(!Cursor_nameContext_cls) Cursor_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Cursor_nameContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Cursor_nameContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitOn_off(tsqlParser::On_offContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitOn_off(TSqlParser::On_offContext *ctx){
     if(!On_offContext_cls) On_offContext_cls = PyObject_GetAttrString(translator->parser_cls, "On_offContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, On_offContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitClustered(tsqlParser::ClusteredContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitClustered(TSqlParser::ClusteredContext *ctx){
     if(!ClusteredContext_cls) ClusteredContext_cls = PyObject_GetAttrString(translator->parser_cls, "ClusteredContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, ClusteredContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitNull_notnull(tsqlParser::Null_notnullContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitNull_notnull(TSqlParser::Null_notnullContext *ctx){
     if(!Null_notnullContext_cls) Null_notnullContext_cls = PyObject_GetAttrString(translator->parser_cls, "Null_notnullContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Null_notnullContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitScalar_function_name(tsqlParser::Scalar_function_nameContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitScalar_function_name(TSqlParser::Scalar_function_nameContext *ctx){
     if(!Scalar_function_nameContext_cls) Scalar_function_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Scalar_function_nameContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Scalar_function_nameContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitDefault_value(tsqlParser::Default_valueContext *ctx){
-    if(!Default_valueContext_cls) Default_valueContext_cls = PyObject_GetAttrString(translator->parser_cls, "Default_valueContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Default_valueContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitBegin_conversation_timer(TSqlParser::Begin_conversation_timerContext *ctx){
+    if(!Begin_conversation_timerContext_cls) Begin_conversation_timerContext_cls = PyObject_GetAttrString(translator->parser_cls, "Begin_conversation_timerContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Begin_conversation_timerContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitConstant(tsqlParser::ConstantContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitBegin_conversation_dialog(TSqlParser::Begin_conversation_dialogContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"dialog_handle", static_cast<void*>(ctx->dialog_handle)},
+        {"initiator_service_name", static_cast<void*>(ctx->initiator_service_name)},
+        {"target_service_name", static_cast<void*>(ctx->target_service_name)},
+        {"service_broker_guid", static_cast<void*>(ctx->service_broker_guid)}
+    };
+    if(!Begin_conversation_dialogContext_cls) Begin_conversation_dialogContext_cls = PyObject_GetAttrString(translator->parser_cls, "Begin_conversation_dialogContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Begin_conversation_dialogContext_cls, labels, 4);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitContract_name(TSqlParser::Contract_nameContext *ctx){
+    if(!Contract_nameContext_cls) Contract_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Contract_nameContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Contract_nameContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitService_name(TSqlParser::Service_nameContext *ctx){
+    if(!Service_nameContext_cls) Service_nameContext_cls = PyObject_GetAttrString(translator->parser_cls, "Service_nameContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Service_nameContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitEnd_conversation(TSqlParser::End_conversationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"conversation_handle", static_cast<void*>(ctx->conversation_handle)},
+        {"faliure_code", static_cast<void*>(ctx->faliure_code)},
+        {"failure_text", static_cast<void*>(ctx->failure_text)}
+    };
+    if(!End_conversationContext_cls) End_conversationContext_cls = PyObject_GetAttrString(translator->parser_cls, "End_conversationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, End_conversationContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitWaitfor_conversation(TSqlParser::Waitfor_conversationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"timeout", static_cast<void*>(ctx->timeout)}
+    };
+    if(!Waitfor_conversationContext_cls) Waitfor_conversationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Waitfor_conversationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Waitfor_conversationContext_cls, labels, 1);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitGet_conversation(TSqlParser::Get_conversationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"conversation_group_id", static_cast<void*>(ctx->conversation_group_id)},
+        {"queue", static_cast<void*>(ctx->queue)}
+    };
+    if(!Get_conversationContext_cls) Get_conversationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Get_conversationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Get_conversationContext_cls, labels, 2);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitQueue_id(TSqlParser::Queue_idContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"database_name", static_cast<void*>(ctx->database_name)},
+        {"schema_name", static_cast<void*>(ctx->schema_name)},
+        {"name", static_cast<void*>(ctx->name)}
+    };
+    if(!Queue_idContext_cls) Queue_idContext_cls = PyObject_GetAttrString(translator->parser_cls, "Queue_idContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Queue_idContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSend_conversation(TSqlParser::Send_conversationContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"conversation_handle", static_cast<void*>(ctx->conversation_handle)},
+        {"message_type_name", static_cast<void*>(ctx->message_type_name)},
+        {"message_body_expression", static_cast<void*>(ctx->message_body_expression)}
+    };
+    if(!Send_conversationContext_cls) Send_conversationContext_cls = PyObject_GetAttrString(translator->parser_cls, "Send_conversationContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Send_conversationContext_cls, labels, 3);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitData_type(TSqlParser::Data_typeContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"scaled", static_cast<void*>(ctx->scaled)},
+        {"ext_type", static_cast<void*>(ctx->ext_type)},
+        {"scale", static_cast<void*>(ctx->scale)},
+        {"prec", static_cast<void*>(ctx->prec)},
+        {"seed", static_cast<void*>(ctx->seed)},
+        {"inc", static_cast<void*>(ctx->inc)},
+        {"double_prec", static_cast<void*>(ctx->double_prec)},
+        {"unscaled_type", static_cast<void*>(ctx->unscaled_type)}
+    };
+    if(!Data_typeContext_cls) Data_typeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Data_typeContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Data_typeContext_cls, labels, 8);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitConstant(TSqlParser::ConstantContext *ctx){
     speedy_antlr::LabelMap labels[] = {
         {"dollar", static_cast<void*>(ctx->dollar)}
     };
@@ -1891,113 +7641,53 @@ antlrcpp::Any SA_tsqlTranslator::visitConstant(tsqlParser::ConstantContext *ctx)
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSign(tsqlParser::SignContext *ctx){
-    if(!SignContext_cls) SignContext_cls = PyObject_GetAttrString(translator->parser_cls, "SignContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, SignContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitPrimitive_constant(TSqlParser::Primitive_constantContext *ctx){
+    speedy_antlr::LabelMap labels[] = {
+        {"dollar", static_cast<void*>(ctx->dollar)}
+    };
+    if(!Primitive_constantContext_cls) Primitive_constantContext_cls = PyObject_GetAttrString(translator->parser_cls, "Primitive_constantContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Primitive_constantContext_cls, labels, 1);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitR_id(tsqlParser::R_idContext *ctx){
-    if(!R_idContext_cls) R_idContext_cls = PyObject_GetAttrString(translator->parser_cls, "R_idContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, R_idContext_cls);
+antlrcpp::Any SA_TSqlTranslator::visitKeyword(TSqlParser::KeywordContext *ctx){
+    if(!KeywordContext_cls) KeywordContext_cls = PyObject_GetAttrString(translator->parser_cls, "KeywordContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, KeywordContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitSimple_id(tsqlParser::Simple_idContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitId_(TSqlParser::Id_Context *ctx){
+    if(!Id_Context_cls) Id_Context_cls = PyObject_GetAttrString(translator->parser_cls, "Id_Context");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Id_Context_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitSimple_id(TSqlParser::Simple_idContext *ctx){
     if(!Simple_idContext_cls) Simple_idContext_cls = PyObject_GetAttrString(translator->parser_cls, "Simple_idContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Simple_idContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitComparison_operator(tsqlParser::Comparison_operatorContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitId_or_string(TSqlParser::Id_or_stringContext *ctx){
+    if(!Id_or_stringContext_cls) Id_or_stringContext_cls = PyObject_GetAttrString(translator->parser_cls, "Id_or_stringContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Id_or_stringContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitComparison_operator(TSqlParser::Comparison_operatorContext *ctx){
     if(!Comparison_operatorContext_cls) Comparison_operatorContext_cls = PyObject_GetAttrString(translator->parser_cls, "Comparison_operatorContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Comparison_operatorContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitAssignment_operator(tsqlParser::Assignment_operatorContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitAssignment_operator(TSqlParser::Assignment_operatorContext *ctx){
     if(!Assignment_operatorContext_cls) Assignment_operatorContext_cls = PyObject_GetAttrString(translator->parser_cls, "Assignment_operatorContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Assignment_operatorContext_cls);
     return py_ctx;
 }
 
-antlrcpp::Any SA_tsqlTranslator::visitFile_size(tsqlParser::File_sizeContext *ctx){
+antlrcpp::Any SA_TSqlTranslator::visitFile_size(TSqlParser::File_sizeContext *ctx){
     if(!File_sizeContext_cls) File_sizeContext_cls = PyObject_GetAttrString(translator->parser_cls, "File_sizeContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, File_sizeContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitCreate_or_alter_procedure(tsqlParser::Create_or_alter_procedureContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"proc", static_cast<void*>(ctx->proc)}
-    };
-    if(!Create_or_alter_procedureContext_cls) Create_or_alter_procedureContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_procedureContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_procedureContext_cls, labels, 1);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitCreate_or_alter_function(tsqlParser::Create_or_alter_functionContext *ctx){
-    if(!Create_or_alter_functionContext_cls) Create_or_alter_functionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Create_or_alter_functionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Create_or_alter_functionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitFunc_body_returns_select(tsqlParser::Func_body_returns_selectContext *ctx){
-    if(!Func_body_returns_selectContext_cls) Func_body_returns_selectContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_body_returns_selectContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_body_returns_selectContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitFunc_body_returns_table(tsqlParser::Func_body_returns_tableContext *ctx){
-    if(!Func_body_returns_tableContext_cls) Func_body_returns_tableContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_body_returns_tableContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_body_returns_tableContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitFunc_body_returns_scalar(tsqlParser::Func_body_returns_scalarContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"ret", static_cast<void*>(ctx->ret)}
-    };
-    if(!Func_body_returns_scalarContext_cls) Func_body_returns_scalarContext_cls = PyObject_GetAttrString(translator->parser_cls, "Func_body_returns_scalarContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Func_body_returns_scalarContext_cls, labels, 1);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitProcedure_param(tsqlParser::Procedure_paramContext *ctx){
-    speedy_antlr::LabelMap labels[] = {
-        {"default_val", static_cast<void*>(ctx->default_val)}
-    };
-    if(!Procedure_paramContext_cls) Procedure_paramContext_cls = PyObject_GetAttrString(translator->parser_cls, "Procedure_paramContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Procedure_paramContext_cls, labels, 1);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitProcedure_option(tsqlParser::Procedure_optionContext *ctx){
-    if(!Procedure_optionContext_cls) Procedure_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Procedure_optionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Procedure_optionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitFunction_option(tsqlParser::Function_optionContext *ctx){
-    if(!Function_optionContext_cls) Function_optionContext_cls = PyObject_GetAttrString(translator->parser_cls, "Function_optionContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Function_optionContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitPercentile_cont(tsqlParser::Percentile_contContext *ctx){
-    if(!Percentile_contContext_cls) Percentile_contContext_cls = PyObject_GetAttrString(translator->parser_cls, "Percentile_contContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Percentile_contContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitString_agg(tsqlParser::String_aggContext *ctx){
-    if(!String_aggContext_cls) String_aggContext_cls = PyObject_GetAttrString(translator->parser_cls, "String_aggContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, String_aggContext_cls);
-    return py_ctx;
-}
-
-antlrcpp::Any SA_tsqlTranslator::visitData_type(tsqlParser::Data_typeContext *ctx){
-    if(!Data_typeContext_cls) Data_typeContext_cls = PyObject_GetAttrString(translator->parser_cls, "Data_typeContext");
-    PyObject *py_ctx = translator->convert_ctx(this, ctx, Data_typeContext_cls);
     return py_ctx;
 }

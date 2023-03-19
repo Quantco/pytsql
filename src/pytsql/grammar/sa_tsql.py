@@ -9,8 +9,8 @@ from antlr4 import InputStream, CommonTokenStream, Token
 from antlr4.tree.Tree import ParseTree
 from antlr4.error.ErrorListener import ErrorListener
 
-from .tsqlParser import tsqlParser
-from .tsqlLexer import tsqlLexer
+from .TSqlParser import TSqlParser
+from .TSqlLexer import TSqlLexer
 
 #-------------------------------------------------------------------------------
 # User API
@@ -102,7 +102,7 @@ def _cpp_parse(stream:InputStream, entry_rule_name:str, sa_err_listener:SA_Error
     if sa_err_listener is not None and not isinstance(sa_err_listener, SA_ErrorListener):
         raise TypeError("'sa_err_listener' shall be an instance of SA_ErrorListener or None")
 
-    return sa_tsql_cpp_parser.do_parse(tsqlParser, stream, entry_rule_name, sa_err_listener)
+    return sa_tsql_cpp_parser.do_parse(TSqlParser, stream, entry_rule_name, sa_err_listener)
 
 
 #-------------------------------------------------------------------------------
@@ -137,14 +137,14 @@ def _py_parse(stream:InputStream, entry_rule_name:str, sa_err_listener:SA_ErrorL
         err_listener = _FallbackErrorTranslator(sa_err_listener, stream)
 
     # Lex
-    lexer = tsqlLexer(stream)
+    lexer = TSqlLexer(stream)
     if sa_err_listener is not None:
         lexer.removeErrorListeners()
         lexer.addErrorListener(err_listener)
     token_stream = CommonTokenStream(lexer)
 
     # Parse
-    parser = tsqlParser(token_stream)
+    parser = TSqlParser(token_stream)
     if sa_err_listener is not None:
         parser.removeErrorListeners()
         parser.addErrorListener(err_listener)

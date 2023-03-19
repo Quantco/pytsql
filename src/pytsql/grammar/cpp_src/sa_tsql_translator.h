@@ -5,61 +5,341 @@
 
 #pragma once
 
-#include "tsqlBaseVisitor.h"
+#include "TSqlParserBaseVisitor.h"
 #include "speedy_antlr.h"
 
-class SA_tsqlTranslator : public tsqlBaseVisitor {
+class SA_TSqlTranslator : public TSqlParserBaseVisitor {
     speedy_antlr::Translator *translator;
 
     // Cached context classes
     PyObject *Tsql_fileContext_cls = NULL;
     PyObject *BatchContext_cls = NULL;
+    PyObject *Batch_level_statementContext_cls = NULL;
     PyObject *Sql_clausesContext_cls = NULL;
-    PyObject *Sql_clauseContext_cls = NULL;
     PyObject *Dml_clauseContext_cls = NULL;
     PyObject *Ddl_clauseContext_cls = NULL;
+    PyObject *Backup_statementContext_cls = NULL;
     PyObject *Cfl_statementContext_cls = NULL;
-    PyObject *Cfl_clauseContext_cls = NULL;
     PyObject *Block_statementContext_cls = NULL;
     PyObject *Break_statementContext_cls = NULL;
     PyObject *Continue_statementContext_cls = NULL;
     PyObject *Goto_statementContext_cls = NULL;
-    PyObject *If_statementContext_cls = NULL;
-    PyObject *If_blockContext_cls = NULL;
     PyObject *Return_statementContext_cls = NULL;
+    PyObject *If_statementContext_cls = NULL;
     PyObject *Throw_statementContext_cls = NULL;
+    PyObject *Throw_error_numberContext_cls = NULL;
+    PyObject *Throw_messageContext_cls = NULL;
+    PyObject *Throw_stateContext_cls = NULL;
     PyObject *Try_catch_statementContext_cls = NULL;
     PyObject *Waitfor_statementContext_cls = NULL;
     PyObject *While_statementContext_cls = NULL;
     PyObject *Print_statementContext_cls = NULL;
     PyObject *Raiseerror_statementContext_cls = NULL;
+    PyObject *Empty_statementContext_cls = NULL;
     PyObject *Another_statementContext_cls = NULL;
+    PyObject *Alter_application_roleContext_cls = NULL;
+    PyObject *Alter_xml_schema_collectionContext_cls = NULL;
+    PyObject *Create_application_roleContext_cls = NULL;
+    PyObject *Drop_aggregateContext_cls = NULL;
+    PyObject *Drop_application_roleContext_cls = NULL;
+    PyObject *Alter_assemblyContext_cls = NULL;
+    PyObject *Alter_assembly_startContext_cls = NULL;
+    PyObject *Alter_assembly_clauseContext_cls = NULL;
+    PyObject *Alter_assembly_from_clauseContext_cls = NULL;
+    PyObject *Alter_assembly_from_clause_startContext_cls = NULL;
+    PyObject *Alter_assembly_drop_clauseContext_cls = NULL;
+    PyObject *Alter_assembly_drop_multiple_filesContext_cls = NULL;
+    PyObject *Alter_assembly_dropContext_cls = NULL;
+    PyObject *Alter_assembly_add_clauseContext_cls = NULL;
+    PyObject *Alter_asssembly_add_clause_startContext_cls = NULL;
+    PyObject *Alter_assembly_client_file_clauseContext_cls = NULL;
+    PyObject *Alter_assembly_file_nameContext_cls = NULL;
+    PyObject *Alter_assembly_file_bitsContext_cls = NULL;
+    PyObject *Alter_assembly_asContext_cls = NULL;
+    PyObject *Alter_assembly_with_clauseContext_cls = NULL;
+    PyObject *Alter_assembly_withContext_cls = NULL;
+    PyObject *Client_assembly_specifierContext_cls = NULL;
+    PyObject *Assembly_optionContext_cls = NULL;
+    PyObject *Network_file_shareContext_cls = NULL;
+    PyObject *Network_computerContext_cls = NULL;
+    PyObject *Network_file_startContext_cls = NULL;
+    PyObject *File_pathContext_cls = NULL;
+    PyObject *File_directory_path_separatorContext_cls = NULL;
+    PyObject *Local_fileContext_cls = NULL;
+    PyObject *Local_driveContext_cls = NULL;
+    PyObject *Multiple_local_filesContext_cls = NULL;
+    PyObject *Multiple_local_file_startContext_cls = NULL;
+    PyObject *Create_assemblyContext_cls = NULL;
+    PyObject *Drop_assemblyContext_cls = NULL;
+    PyObject *Alter_asymmetric_keyContext_cls = NULL;
+    PyObject *Alter_asymmetric_key_startContext_cls = NULL;
+    PyObject *Asymmetric_key_optionContext_cls = NULL;
+    PyObject *Asymmetric_key_option_startContext_cls = NULL;
+    PyObject *Asymmetric_key_password_change_optionContext_cls = NULL;
+    PyObject *Create_asymmetric_keyContext_cls = NULL;
+    PyObject *Drop_asymmetric_keyContext_cls = NULL;
+    PyObject *Alter_authorizationContext_cls = NULL;
+    PyObject *Authorization_granteeContext_cls = NULL;
+    PyObject *Entity_toContext_cls = NULL;
+    PyObject *Colon_colonContext_cls = NULL;
+    PyObject *Alter_authorization_startContext_cls = NULL;
+    PyObject *Alter_authorization_for_sql_databaseContext_cls = NULL;
+    PyObject *Alter_authorization_for_azure_dwContext_cls = NULL;
+    PyObject *Alter_authorization_for_parallel_dwContext_cls = NULL;
+    PyObject *Class_typeContext_cls = NULL;
+    PyObject *Class_type_for_sql_databaseContext_cls = NULL;
+    PyObject *Class_type_for_azure_dwContext_cls = NULL;
+    PyObject *Class_type_for_parallel_dwContext_cls = NULL;
+    PyObject *Class_type_for_grantContext_cls = NULL;
+    PyObject *Drop_availability_groupContext_cls = NULL;
+    PyObject *Alter_availability_groupContext_cls = NULL;
+    PyObject *Alter_availability_group_startContext_cls = NULL;
+    PyObject *Alter_availability_group_optionsContext_cls = NULL;
+    PyObject *Ip_v4_failoverContext_cls = NULL;
+    PyObject *Ip_v6_failoverContext_cls = NULL;
+    PyObject *Create_or_alter_broker_priorityContext_cls = NULL;
+    PyObject *Drop_broker_priorityContext_cls = NULL;
+    PyObject *Alter_certificateContext_cls = NULL;
+    PyObject *Alter_column_encryption_keyContext_cls = NULL;
+    PyObject *Create_column_encryption_keyContext_cls = NULL;
+    PyObject *Drop_certificateContext_cls = NULL;
+    PyObject *Drop_column_encryption_keyContext_cls = NULL;
+    PyObject *Drop_column_master_keyContext_cls = NULL;
+    PyObject *Drop_contractContext_cls = NULL;
+    PyObject *Drop_credentialContext_cls = NULL;
+    PyObject *Drop_cryptograhic_providerContext_cls = NULL;
+    PyObject *Drop_databaseContext_cls = NULL;
+    PyObject *Drop_database_audit_specificationContext_cls = NULL;
+    PyObject *Drop_database_encryption_keyContext_cls = NULL;
+    PyObject *Drop_database_scoped_credentialContext_cls = NULL;
+    PyObject *Drop_defaultContext_cls = NULL;
+    PyObject *Drop_endpointContext_cls = NULL;
+    PyObject *Drop_external_data_sourceContext_cls = NULL;
+    PyObject *Drop_external_file_formatContext_cls = NULL;
+    PyObject *Drop_external_libraryContext_cls = NULL;
+    PyObject *Drop_external_resource_poolContext_cls = NULL;
+    PyObject *Drop_external_tableContext_cls = NULL;
+    PyObject *Drop_event_notificationsContext_cls = NULL;
+    PyObject *Drop_event_sessionContext_cls = NULL;
+    PyObject *Drop_fulltext_catalogContext_cls = NULL;
+    PyObject *Drop_fulltext_indexContext_cls = NULL;
+    PyObject *Drop_fulltext_stoplistContext_cls = NULL;
+    PyObject *Drop_loginContext_cls = NULL;
+    PyObject *Drop_master_keyContext_cls = NULL;
+    PyObject *Drop_message_typeContext_cls = NULL;
+    PyObject *Drop_partition_functionContext_cls = NULL;
+    PyObject *Drop_partition_schemeContext_cls = NULL;
+    PyObject *Drop_queueContext_cls = NULL;
+    PyObject *Drop_remote_service_bindingContext_cls = NULL;
+    PyObject *Drop_resource_poolContext_cls = NULL;
+    PyObject *Drop_db_roleContext_cls = NULL;
+    PyObject *Drop_routeContext_cls = NULL;
+    PyObject *Drop_ruleContext_cls = NULL;
+    PyObject *Drop_schemaContext_cls = NULL;
+    PyObject *Drop_search_property_listContext_cls = NULL;
+    PyObject *Drop_security_policyContext_cls = NULL;
+    PyObject *Drop_sequenceContext_cls = NULL;
+    PyObject *Drop_server_auditContext_cls = NULL;
+    PyObject *Drop_server_audit_specificationContext_cls = NULL;
+    PyObject *Drop_server_roleContext_cls = NULL;
+    PyObject *Drop_serviceContext_cls = NULL;
+    PyObject *Drop_signatureContext_cls = NULL;
+    PyObject *Drop_statistics_name_azure_dw_and_pdwContext_cls = NULL;
+    PyObject *Drop_symmetric_keyContext_cls = NULL;
+    PyObject *Drop_synonymContext_cls = NULL;
+    PyObject *Drop_userContext_cls = NULL;
+    PyObject *Drop_workload_groupContext_cls = NULL;
+    PyObject *Drop_xml_schema_collectionContext_cls = NULL;
+    PyObject *Disable_triggerContext_cls = NULL;
+    PyObject *Enable_triggerContext_cls = NULL;
+    PyObject *Lock_tableContext_cls = NULL;
+    PyObject *Truncate_tableContext_cls = NULL;
+    PyObject *Create_column_master_keyContext_cls = NULL;
+    PyObject *Alter_credentialContext_cls = NULL;
+    PyObject *Create_credentialContext_cls = NULL;
+    PyObject *Alter_cryptographic_providerContext_cls = NULL;
+    PyObject *Create_cryptographic_providerContext_cls = NULL;
+    PyObject *Create_endpointContext_cls = NULL;
+    PyObject *Endpoint_encryption_alogorithm_clauseContext_cls = NULL;
+    PyObject *Endpoint_authentication_clauseContext_cls = NULL;
+    PyObject *Endpoint_listener_clauseContext_cls = NULL;
+    PyObject *Create_event_notificationContext_cls = NULL;
+    PyObject *Create_or_alter_event_sessionContext_cls = NULL;
+    PyObject *Event_session_predicate_expressionContext_cls = NULL;
+    PyObject *Event_session_predicate_factorContext_cls = NULL;
+    PyObject *Event_session_predicate_leafContext_cls = NULL;
+    PyObject *Alter_external_data_sourceContext_cls = NULL;
+    PyObject *Alter_external_libraryContext_cls = NULL;
+    PyObject *Create_external_libraryContext_cls = NULL;
+    PyObject *Alter_external_resource_poolContext_cls = NULL;
+    PyObject *Create_external_resource_poolContext_cls = NULL;
+    PyObject *Alter_fulltext_catalogContext_cls = NULL;
+    PyObject *Create_fulltext_catalogContext_cls = NULL;
+    PyObject *Alter_fulltext_stoplistContext_cls = NULL;
+    PyObject *Create_fulltext_stoplistContext_cls = NULL;
+    PyObject *Alter_login_sql_serverContext_cls = NULL;
+    PyObject *Create_login_sql_serverContext_cls = NULL;
+    PyObject *Alter_login_azure_sqlContext_cls = NULL;
+    PyObject *Create_login_azure_sqlContext_cls = NULL;
+    PyObject *Alter_login_azure_sql_dw_and_pdwContext_cls = NULL;
+    PyObject *Create_login_pdwContext_cls = NULL;
+    PyObject *Alter_master_key_sql_serverContext_cls = NULL;
+    PyObject *Create_master_key_sql_serverContext_cls = NULL;
+    PyObject *Alter_master_key_azure_sqlContext_cls = NULL;
+    PyObject *Create_master_key_azure_sqlContext_cls = NULL;
+    PyObject *Alter_message_typeContext_cls = NULL;
+    PyObject *Alter_partition_functionContext_cls = NULL;
+    PyObject *Alter_partition_schemeContext_cls = NULL;
+    PyObject *Alter_remote_service_bindingContext_cls = NULL;
+    PyObject *Create_remote_service_bindingContext_cls = NULL;
+    PyObject *Create_resource_poolContext_cls = NULL;
+    PyObject *Alter_resource_governorContext_cls = NULL;
+    PyObject *Alter_database_audit_specificationContext_cls = NULL;
+    PyObject *Audit_action_spec_groupContext_cls = NULL;
+    PyObject *Audit_action_specificationContext_cls = NULL;
+    PyObject *Action_specificationContext_cls = NULL;
+    PyObject *Audit_class_nameContext_cls = NULL;
+    PyObject *Audit_securableContext_cls = NULL;
+    PyObject *Alter_db_roleContext_cls = NULL;
+    PyObject *Create_database_audit_specificationContext_cls = NULL;
+    PyObject *Create_db_roleContext_cls = NULL;
+    PyObject *Create_routeContext_cls = NULL;
+    PyObject *Create_ruleContext_cls = NULL;
+    PyObject *Alter_schema_sqlContext_cls = NULL;
+    PyObject *Create_schemaContext_cls = NULL;
+    PyObject *Create_schema_azure_sql_dw_and_pdwContext_cls = NULL;
+    PyObject *Alter_schema_azure_sql_dw_and_pdwContext_cls = NULL;
+    PyObject *Create_search_property_listContext_cls = NULL;
+    PyObject *Create_security_policyContext_cls = NULL;
+    PyObject *Alter_sequenceContext_cls = NULL;
+    PyObject *Create_sequenceContext_cls = NULL;
+    PyObject *Alter_server_auditContext_cls = NULL;
+    PyObject *Create_server_auditContext_cls = NULL;
+    PyObject *Alter_server_audit_specificationContext_cls = NULL;
+    PyObject *Create_server_audit_specificationContext_cls = NULL;
+    PyObject *Alter_server_configurationContext_cls = NULL;
+    PyObject *Alter_server_roleContext_cls = NULL;
+    PyObject *Create_server_roleContext_cls = NULL;
+    PyObject *Alter_server_role_pdwContext_cls = NULL;
+    PyObject *Alter_serviceContext_cls = NULL;
+    PyObject *Opt_arg_clauseContext_cls = NULL;
+    PyObject *Create_serviceContext_cls = NULL;
+    PyObject *Alter_service_master_keyContext_cls = NULL;
+    PyObject *Alter_symmetric_keyContext_cls = NULL;
+    PyObject *Create_synonymContext_cls = NULL;
+    PyObject *Alter_userContext_cls = NULL;
+    PyObject *Create_userContext_cls = NULL;
+    PyObject *Create_user_azure_sql_dwContext_cls = NULL;
+    PyObject *Alter_user_azure_sqlContext_cls = NULL;
+    PyObject *Alter_workload_groupContext_cls = NULL;
+    PyObject *Create_workload_groupContext_cls = NULL;
+    PyObject *Create_xml_schema_collectionContext_cls = NULL;
+    PyObject *Create_partition_functionContext_cls = NULL;
+    PyObject *Create_partition_schemeContext_cls = NULL;
+    PyObject *Create_queueContext_cls = NULL;
+    PyObject *Queue_settingsContext_cls = NULL;
+    PyObject *Alter_queueContext_cls = NULL;
+    PyObject *Queue_actionContext_cls = NULL;
+    PyObject *Queue_rebuild_optionsContext_cls = NULL;
+    PyObject *Create_contractContext_cls = NULL;
+    PyObject *Conversation_statementContext_cls = NULL;
+    PyObject *Message_statementContext_cls = NULL;
+    PyObject *Merge_statementContext_cls = NULL;
+    PyObject *When_matchesContext_cls = NULL;
+    PyObject *Merge_matchedContext_cls = NULL;
+    PyObject *Merge_not_matchedContext_cls = NULL;
     PyObject *Delete_statementContext_cls = NULL;
     PyObject *Delete_statement_fromContext_cls = NULL;
     PyObject *Insert_statementContext_cls = NULL;
     PyObject *Insert_statement_valueContext_cls = NULL;
+    PyObject *Receive_statementContext_cls = NULL;
+    PyObject *Select_statement_standaloneContext_cls = NULL;
     PyObject *Select_statementContext_cls = NULL;
+    PyObject *TimeContext_cls = NULL;
     PyObject *Update_statementContext_cls = NULL;
-    PyObject *Where_clause_dmlContext_cls = NULL;
     PyObject *Output_clauseContext_cls = NULL;
     PyObject *Output_dml_list_elemContext_cls = NULL;
-    PyObject *Output_column_nameContext_cls = NULL;
     PyObject *Create_databaseContext_cls = NULL;
     PyObject *Create_indexContext_cls = NULL;
+    PyObject *Create_index_optionsContext_cls = NULL;
+    PyObject *Relational_index_optionContext_cls = NULL;
+    PyObject *Alter_indexContext_cls = NULL;
+    PyObject *Resumable_index_optionsContext_cls = NULL;
+    PyObject *Resumable_index_optionContext_cls = NULL;
+    PyObject *Reorganize_partitionContext_cls = NULL;
+    PyObject *Reorganize_optionsContext_cls = NULL;
+    PyObject *Reorganize_optionContext_cls = NULL;
+    PyObject *Set_index_optionsContext_cls = NULL;
+    PyObject *Set_index_optionContext_cls = NULL;
+    PyObject *Rebuild_partitionContext_cls = NULL;
+    PyObject *Rebuild_index_optionsContext_cls = NULL;
+    PyObject *Rebuild_index_optionContext_cls = NULL;
+    PyObject *Single_partition_rebuild_index_optionsContext_cls = NULL;
+    PyObject *Single_partition_rebuild_index_optionContext_cls = NULL;
+    PyObject *On_partitionsContext_cls = NULL;
+    PyObject *Create_columnstore_indexContext_cls = NULL;
+    PyObject *Create_columnstore_index_optionsContext_cls = NULL;
+    PyObject *Columnstore_index_optionContext_cls = NULL;
+    PyObject *Create_nonclustered_columnstore_indexContext_cls = NULL;
+    PyObject *Create_xml_indexContext_cls = NULL;
+    PyObject *Xml_index_optionsContext_cls = NULL;
+    PyObject *Xml_index_optionContext_cls = NULL;
+    PyObject *Create_or_alter_procedureContext_cls = NULL;
+    PyObject *As_external_nameContext_cls = NULL;
+    PyObject *Create_or_alter_triggerContext_cls = NULL;
+    PyObject *Create_or_alter_dml_triggerContext_cls = NULL;
+    PyObject *Dml_trigger_optionContext_cls = NULL;
+    PyObject *Dml_trigger_operationContext_cls = NULL;
+    PyObject *Create_or_alter_ddl_triggerContext_cls = NULL;
+    PyObject *Ddl_trigger_operationContext_cls = NULL;
+    PyObject *Create_or_alter_functionContext_cls = NULL;
+    PyObject *Func_body_returns_selectContext_cls = NULL;
+    PyObject *Func_body_returns_tableContext_cls = NULL;
+    PyObject *Func_body_returns_scalarContext_cls = NULL;
+    PyObject *Procedure_param_default_valueContext_cls = NULL;
+    PyObject *Procedure_paramContext_cls = NULL;
+    PyObject *Procedure_optionContext_cls = NULL;
+    PyObject *Function_optionContext_cls = NULL;
     PyObject *Create_statisticsContext_cls = NULL;
+    PyObject *Update_statisticsContext_cls = NULL;
+    PyObject *Update_statistics_optionsContext_cls = NULL;
+    PyObject *Update_statistics_optionContext_cls = NULL;
     PyObject *Create_tableContext_cls = NULL;
-    PyObject *Create_schemaContext_cls = NULL;
-    PyObject *Create_synonymContext_cls = NULL;
+    PyObject *Table_indicesContext_cls = NULL;
+    PyObject *Table_optionsContext_cls = NULL;
+    PyObject *Table_optionContext_cls = NULL;
+    PyObject *Create_table_index_optionsContext_cls = NULL;
+    PyObject *Create_table_index_optionContext_cls = NULL;
     PyObject *Create_viewContext_cls = NULL;
     PyObject *View_attributeContext_cls = NULL;
     PyObject *Alter_tableContext_cls = NULL;
+    PyObject *Switch_partitionContext_cls = NULL;
+    PyObject *Low_priority_lock_waitContext_cls = NULL;
     PyObject *Alter_databaseContext_cls = NULL;
+    PyObject *Add_or_modify_filesContext_cls = NULL;
+    PyObject *FilespecContext_cls = NULL;
+    PyObject *Add_or_modify_filegroupsContext_cls = NULL;
+    PyObject *Filegroup_updatability_optionContext_cls = NULL;
     PyObject *Database_optionspecContext_cls = NULL;
     PyObject *Auto_optionContext_cls = NULL;
     PyObject *Change_tracking_optionContext_cls = NULL;
     PyObject *Change_tracking_option_listContext_cls = NULL;
     PyObject *Containment_optionContext_cls = NULL;
     PyObject *Cursor_optionContext_cls = NULL;
+    PyObject *Alter_endpointContext_cls = NULL;
+    PyObject *Database_mirroring_optionContext_cls = NULL;
+    PyObject *Mirroring_set_optionContext_cls = NULL;
+    PyObject *Mirroring_partnerContext_cls = NULL;
+    PyObject *Mirroring_witnessContext_cls = NULL;
+    PyObject *Witness_partner_equalContext_cls = NULL;
+    PyObject *Partner_optionContext_cls = NULL;
+    PyObject *Witness_optionContext_cls = NULL;
+    PyObject *Witness_serverContext_cls = NULL;
+    PyObject *Partner_serverContext_cls = NULL;
+    PyObject *Mirroring_host_port_seperatorContext_cls = NULL;
+    PyObject *Partner_server_tcp_prefixContext_cls = NULL;
+    PyObject *Port_numberContext_cls = NULL;
+    PyObject *HostContext_cls = NULL;
     PyObject *Date_correlation_optimization_optionContext_cls = NULL;
     PyObject *Db_encryption_optionContext_cls = NULL;
     PyObject *Db_state_optionContext_cls = NULL;
@@ -77,142 +357,425 @@ class SA_tsqlTranslator : public tsqlBaseVisitor {
     PyObject *Target_recovery_time_optionContext_cls = NULL;
     PyObject *TerminationContext_cls = NULL;
     PyObject *Drop_indexContext_cls = NULL;
+    PyObject *Drop_relational_or_xml_or_spatial_indexContext_cls = NULL;
+    PyObject *Drop_backward_compatible_indexContext_cls = NULL;
     PyObject *Drop_procedureContext_cls = NULL;
+    PyObject *Drop_triggerContext_cls = NULL;
+    PyObject *Drop_dml_triggerContext_cls = NULL;
+    PyObject *Drop_ddl_triggerContext_cls = NULL;
+    PyObject *Drop_functionContext_cls = NULL;
     PyObject *Drop_statisticsContext_cls = NULL;
     PyObject *Drop_tableContext_cls = NULL;
-    PyObject *Drop_databaseContext_cls = NULL;
-    PyObject *Drop_synonymContext_cls = NULL;
     PyObject *Drop_viewContext_cls = NULL;
-    PyObject *Drop_schemaContext_cls = NULL;
-    PyObject *Drop_functionContext_cls = NULL;
     PyObject *Create_typeContext_cls = NULL;
     PyObject *Drop_typeContext_cls = NULL;
     PyObject *Rowset_function_limitedContext_cls = NULL;
     PyObject *OpenqueryContext_cls = NULL;
     PyObject *OpendatasourceContext_cls = NULL;
     PyObject *Declare_statementContext_cls = NULL;
+    PyObject *Xml_declarationContext_cls = NULL;
     PyObject *Cursor_statementContext_cls = NULL;
+    PyObject *Backup_databaseContext_cls = NULL;
+    PyObject *Backup_logContext_cls = NULL;
+    PyObject *Backup_certificateContext_cls = NULL;
+    PyObject *Backup_master_keyContext_cls = NULL;
+    PyObject *Backup_service_master_keyContext_cls = NULL;
+    PyObject *Kill_statementContext_cls = NULL;
+    PyObject *Kill_processContext_cls = NULL;
+    PyObject *Kill_query_notificationContext_cls = NULL;
+    PyObject *Kill_stats_jobContext_cls = NULL;
     PyObject *Execute_statementContext_cls = NULL;
+    PyObject *Execute_body_batchContext_cls = NULL;
+    PyObject *Execute_bodyContext_cls = NULL;
     PyObject *Execute_statement_argContext_cls = NULL;
+    PyObject *Execute_statement_arg_namedContext_cls = NULL;
+    PyObject *Execute_statement_arg_unnamedContext_cls = NULL;
+    PyObject *Execute_parameterContext_cls = NULL;
     PyObject *Execute_var_stringContext_cls = NULL;
     PyObject *Security_statementContext_cls = NULL;
+    PyObject *Principal_idContext_cls = NULL;
+    PyObject *Create_certificateContext_cls = NULL;
+    PyObject *Existing_keysContext_cls = NULL;
+    PyObject *Private_key_optionsContext_cls = NULL;
+    PyObject *Generate_new_keysContext_cls = NULL;
+    PyObject *Date_optionsContext_cls = NULL;
+    PyObject *Open_keyContext_cls = NULL;
+    PyObject *Close_keyContext_cls = NULL;
+    PyObject *Create_keyContext_cls = NULL;
+    PyObject *Key_optionsContext_cls = NULL;
+    PyObject *AlgorithmContext_cls = NULL;
+    PyObject *Encryption_mechanismContext_cls = NULL;
+    PyObject *Decryption_mechanismContext_cls = NULL;
     PyObject *Grant_permissionContext_cls = NULL;
     PyObject *Set_statementContext_cls = NULL;
     PyObject *Transaction_statementContext_cls = NULL;
     PyObject *Go_statementContext_cls = NULL;
     PyObject *Use_statementContext_cls = NULL;
+    PyObject *Setuser_statementContext_cls = NULL;
+    PyObject *Reconfigure_statementContext_cls = NULL;
+    PyObject *Shutdown_statementContext_cls = NULL;
+    PyObject *Checkpoint_statementContext_cls = NULL;
+    PyObject *Dbcc_checkalloc_optionContext_cls = NULL;
+    PyObject *Dbcc_checkallocContext_cls = NULL;
+    PyObject *Dbcc_checkcatalogContext_cls = NULL;
+    PyObject *Dbcc_checkconstraints_optionContext_cls = NULL;
+    PyObject *Dbcc_checkconstraintsContext_cls = NULL;
+    PyObject *Dbcc_checkdb_table_optionContext_cls = NULL;
+    PyObject *Dbcc_checkdbContext_cls = NULL;
+    PyObject *Dbcc_checkfilegroup_optionContext_cls = NULL;
+    PyObject *Dbcc_checkfilegroupContext_cls = NULL;
+    PyObject *Dbcc_checktableContext_cls = NULL;
+    PyObject *Dbcc_cleantableContext_cls = NULL;
+    PyObject *Dbcc_clonedatabase_optionContext_cls = NULL;
+    PyObject *Dbcc_clonedatabaseContext_cls = NULL;
+    PyObject *Dbcc_pdw_showspaceusedContext_cls = NULL;
+    PyObject *Dbcc_proccacheContext_cls = NULL;
+    PyObject *Dbcc_showcontig_optionContext_cls = NULL;
+    PyObject *Dbcc_showcontigContext_cls = NULL;
+    PyObject *Dbcc_shrinklogContext_cls = NULL;
+    PyObject *Dbcc_dbreindexContext_cls = NULL;
+    PyObject *Dbcc_dll_freeContext_cls = NULL;
+    PyObject *Dbcc_dropcleanbuffersContext_cls = NULL;
+    PyObject *Dbcc_clauseContext_cls = NULL;
     PyObject *Execute_clauseContext_cls = NULL;
     PyObject *Declare_localContext_cls = NULL;
     PyObject *Table_type_definitionContext_cls = NULL;
+    PyObject *Table_type_indicesContext_cls = NULL;
+    PyObject *Xml_type_definitionContext_cls = NULL;
+    PyObject *Xml_schema_collectionContext_cls = NULL;
     PyObject *Column_def_table_constraintsContext_cls = NULL;
     PyObject *Column_def_table_constraintContext_cls = NULL;
     PyObject *Column_definitionContext_cls = NULL;
+    PyObject *Column_definition_elementContext_cls = NULL;
+    PyObject *Column_modifierContext_cls = NULL;
+    PyObject *Materialized_column_definitionContext_cls = NULL;
     PyObject *Column_constraintContext_cls = NULL;
+    PyObject *Column_indexContext_cls = NULL;
+    PyObject *On_partition_or_filegroupContext_cls = NULL;
     PyObject *Table_constraintContext_cls = NULL;
-    PyObject *Index_optionsContext_cls = NULL;
-    PyObject *Index_optionContext_cls = NULL;
+    PyObject *Connection_nodeContext_cls = NULL;
+    PyObject *Primary_key_optionsContext_cls = NULL;
+    PyObject *Foreign_key_optionsContext_cls = NULL;
+    PyObject *Check_constraintContext_cls = NULL;
+    PyObject *On_deleteContext_cls = NULL;
+    PyObject *On_updateContext_cls = NULL;
+    PyObject *Alter_table_index_optionsContext_cls = NULL;
+    PyObject *Alter_table_index_optionContext_cls = NULL;
     PyObject *Declare_cursorContext_cls = NULL;
     PyObject *Declare_set_cursor_commonContext_cls = NULL;
+    PyObject *Declare_set_cursor_common_partialContext_cls = NULL;
     PyObject *Fetch_cursorContext_cls = NULL;
     PyObject *Set_specialContext_cls = NULL;
+    PyObject *Special_listContext_cls = NULL;
     PyObject *Constant_LOCAL_IDContext_cls = NULL;
-    PyObject *Binary_operator_expressionContext_cls = NULL;
-    PyObject *Unary_operator_expressionContext_cls = NULL;
-    PyObject *Function_call_expressionContext_cls = NULL;
-    PyObject *Conversion_expressionContext_cls = NULL;
-    PyObject *Case_expressionContext_cls = NULL;
-    PyObject *Column_ref_expressionContext_cls = NULL;
-    PyObject *String_agg_expressionContext_cls = NULL;
-    PyObject *Percentile_cont_expressionContext_cls = NULL;
+    PyObject *ExpressionContext_cls = NULL;
+    PyObject *ParameterContext_cls = NULL;
+    PyObject *Time_zoneContext_cls = NULL;
     PyObject *Primitive_expressionContext_cls = NULL;
+    PyObject *Case_expressionContext_cls = NULL;
+    PyObject *Unary_operator_expressionContext_cls = NULL;
     PyObject *Bracket_expressionContext_cls = NULL;
-    PyObject *Subquery_expressionContext_cls = NULL;
-    PyObject *Over_clause_expressionContext_cls = NULL;
-    PyObject *Xml_method_expressionContext_cls = NULL;
-    PyObject *Xml_method_callContext_cls = NULL;
-    PyObject *Simple_xml_method_nameContext_cls = NULL;
-    PyObject *Constant_expressionContext_cls = NULL;
     PyObject *SubqueryContext_cls = NULL;
     PyObject *With_expressionContext_cls = NULL;
     PyObject *Common_table_expressionContext_cls = NULL;
     PyObject *Update_elemContext_cls = NULL;
-    PyObject *Search_condition_listContext_cls = NULL;
-    PyObject *Search_cond_orContext_cls = NULL;
-    PyObject *Search_cond_predContext_cls = NULL;
-    PyObject *Search_cond_andContext_cls = NULL;
-    PyObject *Binary_in_expressionContext_cls = NULL;
-    PyObject *Unary_operator_expression2Context_cls = NULL;
-    PyObject *Binary_mod_expressionContext_cls = NULL;
-    PyObject *Unary_operator_expression3Context_cls = NULL;
-    PyObject *Bracket_search_expressionContext_cls = NULL;
-    PyObject *Sublink_expressionContext_cls = NULL;
-    PyObject *Binary_operator_expression3Context_cls = NULL;
-    PyObject *Binary_operator_expression2Context_cls = NULL;
-    PyObject *Decimal_expressionContext_cls = NULL;
-    PyObject *Bracket_query_expressionContext_cls = NULL;
-    PyObject *Query_specification_expressionContext_cls = NULL;
-    PyObject *Union_query_expressionContext_cls = NULL;
-    PyObject *Union_opContext_cls = NULL;
-    PyObject *Cross_apply_expressionContext_cls = NULL;
+    PyObject *Update_elem_mergeContext_cls = NULL;
+    PyObject *Search_conditionContext_cls = NULL;
+    PyObject *PredicateContext_cls = NULL;
+    PyObject *Query_expressionContext_cls = NULL;
+    PyObject *Sql_unionContext_cls = NULL;
     PyObject *Query_specificationContext_cls = NULL;
-    PyObject *Group_by_grouping_setsContext_cls = NULL;
-    PyObject *Grouping_setContext_cls = NULL;
     PyObject *Top_clauseContext_cls = NULL;
-    PyObject *Top_clause_dmContext_cls = NULL;
+    PyObject *Top_percentContext_cls = NULL;
+    PyObject *Top_countContext_cls = NULL;
     PyObject *Order_by_clauseContext_cls = NULL;
-    PyObject *Fetch_expressionContext_cls = NULL;
+    PyObject *Select_order_by_clauseContext_cls = NULL;
     PyObject *For_clauseContext_cls = NULL;
     PyObject *Xml_common_directivesContext_cls = NULL;
     PyObject *Order_by_expressionContext_cls = NULL;
+    PyObject *Grouping_sets_itemContext_cls = NULL;
     PyObject *Group_by_itemContext_cls = NULL;
     PyObject *Option_clauseContext_cls = NULL;
     PyObject *OptionContext_cls = NULL;
     PyObject *Optimize_for_argContext_cls = NULL;
     PyObject *Select_listContext_cls = NULL;
+    PyObject *Udt_method_argumentsContext_cls = NULL;
+    PyObject *AsteriskContext_cls = NULL;
+    PyObject *Udt_elemContext_cls = NULL;
+    PyObject *Expression_elemContext_cls = NULL;
     PyObject *Select_list_elemContext_cls = NULL;
     PyObject *Table_sourcesContext_cls = NULL;
-    PyObject *Cross_joinContext_cls = NULL;
-    PyObject *Table_source_item_joinContext_cls = NULL;
-    PyObject *Standard_joinContext_cls = NULL;
-    PyObject *Apply_joinContext_cls = NULL;
-    PyObject *Bracket_table_sourceContext_cls = NULL;
-    PyObject *Table_source_item_simpleContext_cls = NULL;
-    PyObject *Table_source_item_complexContext_cls = NULL;
-    PyObject *Table_source_item_nameContext_cls = NULL;
-    PyObject *Tablesample_clauseContext_cls = NULL;
-    PyObject *Sample_numberContext_cls = NULL;
-    PyObject *Repeat_seedContext_cls = NULL;
-    PyObject *Table_aliasContext_cls = NULL;
+    PyObject *Non_ansi_joinContext_cls = NULL;
+    PyObject *Table_sourceContext_cls = NULL;
+    PyObject *Table_source_itemContext_cls = NULL;
+    PyObject *Open_xmlContext_cls = NULL;
+    PyObject *Open_jsonContext_cls = NULL;
+    PyObject *Json_declarationContext_cls = NULL;
+    PyObject *Json_column_declarationContext_cls = NULL;
+    PyObject *Schema_declarationContext_cls = NULL;
+    PyObject *Column_declarationContext_cls = NULL;
     PyObject *Change_tableContext_cls = NULL;
-    PyObject *Join_typeContext_cls = NULL;
-    PyObject *Table_name_with_hintContext_cls = NULL;
+    PyObject *Change_table_changesContext_cls = NULL;
+    PyObject *Change_table_versionContext_cls = NULL;
+    PyObject *Join_partContext_cls = NULL;
+    PyObject *Join_onContext_cls = NULL;
+    PyObject *Cross_joinContext_cls = NULL;
+    PyObject *Apply_Context_cls = NULL;
+    PyObject *PivotContext_cls = NULL;
+    PyObject *UnpivotContext_cls = NULL;
+    PyObject *Pivot_clauseContext_cls = NULL;
+    PyObject *Unpivot_clauseContext_cls = NULL;
+    PyObject *Full_column_name_listContext_cls = NULL;
     PyObject *Rowset_functionContext_cls = NULL;
     PyObject *Bulk_optionContext_cls = NULL;
     PyObject *Derived_tableContext_cls = NULL;
-    PyObject *Standard_callContext_cls = NULL;
-    PyObject *Aggregate_callContext_cls = NULL;
-    PyObject *Nvf_callContext_cls = NULL;
-    PyObject *Rank_callContext_cls = NULL;
-    PyObject *Expression_callContext_cls = NULL;
-    PyObject *Simple_callContext_cls = NULL;
-    PyObject *Cast_callContext_cls = NULL;
+    PyObject *RANKING_WINDOWED_FUNCContext_cls = NULL;
+    PyObject *BUILT_IN_FUNCContext_cls = NULL;
+    PyObject *FREE_TEXTContext_cls = NULL;
+    PyObject *ANALYTIC_WINDOWED_FUNCContext_cls = NULL;
+    PyObject *SCALAR_FUNCTIONContext_cls = NULL;
+    PyObject *PARTITION_FUNCContext_cls = NULL;
+    PyObject *AGGREGATE_WINDOWED_FUNCContext_cls = NULL;
+    PyObject *HIERARCHYID_METHODContext_cls = NULL;
+    PyObject *Partition_functionContext_cls = NULL;
+    PyObject *Freetext_functionContext_cls = NULL;
+    PyObject *Freetext_predicateContext_cls = NULL;
+    PyObject *Json_key_valueContext_cls = NULL;
+    PyObject *Json_null_clauseContext_cls = NULL;
+    PyObject *COL_NAMEContext_cls = NULL;
+    PyObject *CHECKSUMContext_cls = NULL;
+    PyObject *DECOMPRESSContext_cls = NULL;
+    PyObject *CURRENT_TIMEZONE_IDContext_cls = NULL;
+    PyObject *MONTHContext_cls = NULL;
+    PyObject *RANDContext_cls = NULL;
+    PyObject *FORMATContext_cls = NULL;
+    PyObject *TRIMContext_cls = NULL;
+    PyObject *LEASTContext_cls = NULL;
+    PyObject *APP_NAMEContext_cls = NULL;
+    PyObject *USER_IDContext_cls = NULL;
+    PyObject *FILE_NAMEContext_cls = NULL;
+    PyObject *SESSION_CONTEXTContext_cls = NULL;
+    PyObject *STRContext_cls = NULL;
+    PyObject *CONVERTContext_cls = NULL;
+    PyObject *XML_DATA_TYPE_FUNCContext_cls = NULL;
+    PyObject *LOG10Context_cls = NULL;
+    PyObject *FLOORContext_cls = NULL;
+    PyObject *YEARContext_cls = NULL;
+    PyObject *PARSEContext_cls = NULL;
+    PyObject *ORIGINAL_LOGINContext_cls = NULL;
+    PyObject *MATH_SIGNContext_cls = NULL;
+    PyObject *TIMEFROMPARTSContext_cls = NULL;
+    PyObject *LEFTContext_cls = NULL;
+    PyObject *GET_FILESTREAM_TRANSACTION_CONTEXTContext_cls = NULL;
+    PyObject *FILEPROPERTYContext_cls = NULL;
+    PyObject *IDENT_SEEDContext_cls = NULL;
+    PyObject *IDENTITYContext_cls = NULL;
+    PyObject *CURRENT_TRANSACTION_IDContext_cls = NULL;
+    PyObject *LTRIMContext_cls = NULL;
+    PyObject *ROWCOUNT_BIGContext_cls = NULL;
+    PyObject *CERTENCODEDContext_cls = NULL;
+    PyObject *JSON_VALUEContext_cls = NULL;
+    PyObject *SYSDATETIMEContext_cls = NULL;
+    PyObject *CERTPRIVATEKEYContext_cls = NULL;
+    PyObject *SPACEContext_cls = NULL;
+    PyObject *UPPERContext_cls = NULL;
+    PyObject *ABSContext_cls = NULL;
+    PyObject *ISJSONContext_cls = NULL;
+    PyObject *HAS_PERMS_BY_NAMEContext_cls = NULL;
+    PyObject *SUSER_IDContext_cls = NULL;
+    PyObject *SCOPE_IDENTITYContext_cls = NULL;
+    PyObject *JSON_QUERYContext_cls = NULL;
+    PyObject *INDEX_COLContext_cls = NULL;
+    PyObject *DATABASE_PRINCIPAL_IDContext_cls = NULL;
+    PyObject *PATINDEXContext_cls = NULL;
+    PyObject *FULLTEXTSERVICEPROPERTYContext_cls = NULL;
+    PyObject *SMALLDATETIMEFROMPARTSContext_cls = NULL;
+    PyObject *IDENT_CURRENTContext_cls = NULL;
+    PyObject *SESSIONPROPERTYContext_cls = NULL;
+    PyObject *FETCH_STATUSContext_cls = NULL;
+    PyObject *POWERContext_cls = NULL;
+    PyObject *REPLICATEContext_cls = NULL;
+    PyObject *USER_NAMEContext_cls = NULL;
+    PyObject *OBJECT_DEFINITIONContext_cls = NULL;
+    PyObject *IS_SRVROLEMEMBERContext_cls = NULL;
+    PyObject *NEWSEQUENTIALIDContext_cls = NULL;
+    PyObject *OBJECT_NAMEContext_cls = NULL;
+    PyObject *JSON_PATH_EXISTSContext_cls = NULL;
+    PyObject *PWDCOMPAREContext_cls = NULL;
+    PyObject *SCHEMA_IDContext_cls = NULL;
+    PyObject *OBJECT_SCHEMA_NAMEContext_cls = NULL;
+    PyObject *SUSER_SNAMEContext_cls = NULL;
+    PyObject *DB_NAMEContext_cls = NULL;
+    PyObject *SUSER_SIDContext_cls = NULL;
+    PyObject *ASCIIContext_cls = NULL;
+    PyObject *FILE_IDEXContext_cls = NULL;
+    PyObject *ERROR_SEVERITYContext_cls = NULL;
+    PyObject *REVERSEContext_cls = NULL;
+    PyObject *ISDATEContext_cls = NULL;
+    PyObject *REPLACEContext_cls = NULL;
+    PyObject *CURSOR_STATUSContext_cls = NULL;
+    PyObject *MIN_ACTIVE_ROWVERSIONContext_cls = NULL;
+    PyObject *HAS_DBACCESSContext_cls = NULL;
+    PyObject *NEXT_VALUE_FORContext_cls = NULL;
+    PyObject *FILEGROUP_IDContext_cls = NULL;
+    PyObject *LOWERContext_cls = NULL;
+    PyObject *DATENAMEContext_cls = NULL;
+    PyObject *CEILINGContext_cls = NULL;
+    PyObject *APPLOCK_TESTContext_cls = NULL;
+    PyObject *SINContext_cls = NULL;
+    PyObject *TYPE_NAMEContext_cls = NULL;
+    PyObject *SYSUTCDATETIMEContext_cls = NULL;
+    PyObject *DATEADDContext_cls = NULL;
+    PyObject *DATETIMEFROMPARTSContext_cls = NULL;
+    PyObject *ERROR_MESSAGEContext_cls = NULL;
+    PyObject *FILEGROUPPROPERTYContext_cls = NULL;
+    PyObject *EOMONTHContext_cls = NULL;
+    PyObject *IDENT_INCRContext_cls = NULL;
+    PyObject *ASINContext_cls = NULL;
+    PyObject *NCHARContext_cls = NULL;
+    PyObject *DIFFERENCEContext_cls = NULL;
+    PyObject *CHARINDEXContext_cls = NULL;
+    PyObject *TODATETIMEOFFSETContext_cls = NULL;
+    PyObject *RADIANSContext_cls = NULL;
+    PyObject *CURRENT_TIMEZONEContext_cls = NULL;
+    PyObject *COL_LENGTHContext_cls = NULL;
+    PyObject *DATEFROMPARTSContext_cls = NULL;
+    PyObject *NEWIDContext_cls = NULL;
+    PyObject *DATETRUNCContext_cls = NULL;
+    PyObject *ISNULLContext_cls = NULL;
+    PyObject *JSON_MODIFYContext_cls = NULL;
+    PyObject *CURRENT_REQUEST_IDContext_cls = NULL;
+    PyObject *IS_MEMBERContext_cls = NULL;
+    PyObject *SERVERPROPERTYContext_cls = NULL;
+    PyObject *SQRTContext_cls = NULL;
+    PyObject *ATN2Context_cls = NULL;
+    PyObject *UNICODEContext_cls = NULL;
+    PyObject *NULLIFContext_cls = NULL;
+    PyObject *SESSION_USERContext_cls = NULL;
+    PyObject *CASTContext_cls = NULL;
+    PyObject *DATETIME2FROMPARTSContext_cls = NULL;
+    PyObject *SQUAREContext_cls = NULL;
+    PyObject *LOGContext_cls = NULL;
+    PyObject *IIFContext_cls = NULL;
+    PyObject *DATEPARTContext_cls = NULL;
+    PyObject *CONTEXT_INFOContext_cls = NULL;
+    PyObject *DATEDIFFContext_cls = NULL;
+    PyObject *OBJECTPROPERTYContext_cls = NULL;
+    PyObject *CHARContext_cls = NULL;
+    PyObject *STRING_ESCAPEContext_cls = NULL;
+    PyObject *GETANSINULLContext_cls = NULL;
+    PyObject *SYSTEM_USERContext_cls = NULL;
+    PyObject *OBJECT_IDContext_cls = NULL;
+    PyObject *ERROR_PROCEDUREContext_cls = NULL;
+    PyObject *QUOTENAMEContext_cls = NULL;
+    PyObject *RIGHTContext_cls = NULL;
+    PyObject *HOST_IDContext_cls = NULL;
+    PyObject *DATETIMEOFFSETFROMPARTSContext_cls = NULL;
+    PyObject *COSContext_cls = NULL;
+    PyObject *COTContext_cls = NULL;
+    PyObject *FILE_IDContext_cls = NULL;
+    PyObject *ASSEMBLYPROPERTYContext_cls = NULL;
+    PyObject *STUFFContext_cls = NULL;
+    PyObject *IS_ROLEMEMBERContext_cls = NULL;
+    PyObject *SQL_VARIANT_PROPERTYContext_cls = NULL;
+    PyObject *GREATESTContext_cls = NULL;
+    PyObject *GETUTCDATEContext_cls = NULL;
+    PyObject *LOGINPROPERTYContext_cls = NULL;
+    PyObject *CONCAT_WSContext_cls = NULL;
+    PyObject *ERROR_STATEContext_cls = NULL;
+    PyObject *DAYContext_cls = NULL;
+    PyObject *PARSENAMEContext_cls = NULL;
+    PyObject *TANContext_cls = NULL;
+    PyObject *CURRENT_USERContext_cls = NULL;
+    PyObject *PERMISSIONSContext_cls = NULL;
+    PyObject *SYSDATETIMEOFFSETContext_cls = NULL;
+    PyObject *INDEXPROPERTYContext_cls = NULL;
+    PyObject *OBJECTPROPERTYEXContext_cls = NULL;
+    PyObject *SUBSTRINGContext_cls = NULL;
+    PyObject *BINARY_CHECKSUMContext_cls = NULL;
+    PyObject *INDEXKEY_PROPERTYContext_cls = NULL;
+    PyObject *PWDENCRYPTContext_cls = NULL;
+    PyObject *COMPRESSContext_cls = NULL;
+    PyObject *COALESCEContext_cls = NULL;
+    PyObject *STATS_DATEContext_cls = NULL;
+    PyObject *ISNUMERICContext_cls = NULL;
+    PyObject *ACOSContext_cls = NULL;
+    PyObject *FILEGROUP_NAMEContext_cls = NULL;
+    PyObject *COLUMNPROPERTYContext_cls = NULL;
+    PyObject *DB_IDContext_cls = NULL;
+    PyObject *SOUNDEXContext_cls = NULL;
+    PyObject *CURSOR_ROWSContext_cls = NULL;
+    PyObject *FULLTEXTCATALOGPROPERTYContext_cls = NULL;
+    PyObject *TYPEPROPERTYContext_cls = NULL;
+    PyObject *SCHEMA_NAMEContext_cls = NULL;
+    PyObject *TYPE_IDContext_cls = NULL;
+    PyObject *TRY_CASTContext_cls = NULL;
+    PyObject *APPLOCK_MODEContext_cls = NULL;
+    PyObject *CURRENT_DATEContext_cls = NULL;
+    PyObject *GETDATEContext_cls = NULL;
+    PyObject *CERT_IDContext_cls = NULL;
+    PyObject *ATANContext_cls = NULL;
+    PyObject *CONNECTIONPROPERTYContext_cls = NULL;
+    PyObject *ERROR_NUMBERContext_cls = NULL;
+    PyObject *ERROR_LINEContext_cls = NULL;
+    PyObject *CURRENT_TIMESTAMPContext_cls = NULL;
+    PyObject *CONCATContext_cls = NULL;
+    PyObject *JSON_ARRAYContext_cls = NULL;
+    PyObject *ROUNDContext_cls = NULL;
+    PyObject *DATALENGTHContext_cls = NULL;
+    PyObject *HOST_NAMEContext_cls = NULL;
+    PyObject *DATABASEPROPERTYEXContext_cls = NULL;
+    PyObject *ORIGINAL_DB_NAMEContext_cls = NULL;
+    PyObject *FILEPROPERTYEXContext_cls = NULL;
+    PyObject *RTRIMContext_cls = NULL;
+    PyObject *JSON_OBJECTContext_cls = NULL;
+    PyObject *XACT_STATEContext_cls = NULL;
+    PyObject *FORMATMESSAGEContext_cls = NULL;
+    PyObject *DATEDIFF_BIGContext_cls = NULL;
+    PyObject *USERContext_cls = NULL;
+    PyObject *DEGREESContext_cls = NULL;
+    PyObject *LENContext_cls = NULL;
+    PyObject *TRANSLATEContext_cls = NULL;
+    PyObject *SWITCHOFFSETContext_cls = NULL;
+    PyObject *PIContext_cls = NULL;
+    PyObject *DATE_BUCKETContext_cls = NULL;
+    PyObject *EXPContext_cls = NULL;
+    PyObject *STRINGAGGContext_cls = NULL;
+    PyObject *Xml_data_type_methodsContext_cls = NULL;
+    PyObject *Dateparts_9Context_cls = NULL;
+    PyObject *Dateparts_12Context_cls = NULL;
+    PyObject *Dateparts_15Context_cls = NULL;
+    PyObject *Dateparts_datetruncContext_cls = NULL;
+    PyObject *Value_methodContext_cls = NULL;
+    PyObject *Value_callContext_cls = NULL;
+    PyObject *Query_methodContext_cls = NULL;
+    PyObject *Query_callContext_cls = NULL;
+    PyObject *Exist_methodContext_cls = NULL;
+    PyObject *Exist_callContext_cls = NULL;
+    PyObject *Modify_methodContext_cls = NULL;
+    PyObject *Modify_callContext_cls = NULL;
+    PyObject *Hierarchyid_callContext_cls = NULL;
+    PyObject *Hierarchyid_static_methodContext_cls = NULL;
+    PyObject *Nodes_methodContext_cls = NULL;
     PyObject *Switch_sectionContext_cls = NULL;
     PyObject *Switch_search_condition_sectionContext_cls = NULL;
+    PyObject *As_column_aliasContext_cls = NULL;
+    PyObject *As_table_aliasContext_cls = NULL;
+    PyObject *Table_aliasContext_cls = NULL;
     PyObject *With_table_hintsContext_cls = NULL;
-    PyObject *Insert_with_table_hintsContext_cls = NULL;
+    PyObject *Deprecated_table_hintContext_cls = NULL;
+    PyObject *Sybase_legacy_hintsContext_cls = NULL;
+    PyObject *Sybase_legacy_hintContext_cls = NULL;
     PyObject *Table_hintContext_cls = NULL;
     PyObject *Index_valueContext_cls = NULL;
     PyObject *Column_alias_listContext_cls = NULL;
     PyObject *Column_aliasContext_cls = NULL;
-    PyObject *A_starContext_cls = NULL;
     PyObject *Table_value_constructorContext_cls = NULL;
-    PyObject *Expression_listContext_cls = NULL;
-    PyObject *Value_listContext_cls = NULL;
-    PyObject *Next_value_forContext_cls = NULL;
-    PyObject *Next_value_for_functionContext_cls = NULL;
+    PyObject *Expression_list_Context_cls = NULL;
     PyObject *Ranking_windowed_functionContext_cls = NULL;
     PyObject *Aggregate_windowed_functionContext_cls = NULL;
-    PyObject *All_distinctContext_cls = NULL;
+    PyObject *Analytic_windowed_functionContext_cls = NULL;
+    PyObject *All_distinct_expressionContext_cls = NULL;
     PyObject *Over_clauseContext_cls = NULL;
     PyObject *Row_or_range_clauseContext_cls = NULL;
     PyObject *Window_frame_extentContext_cls = NULL;
@@ -224,522 +787,1675 @@ class SA_tsqlTranslator : public tsqlBaseVisitor {
     PyObject *Database_file_specContext_cls = NULL;
     PyObject *File_groupContext_cls = NULL;
     PyObject *File_specContext_cls = NULL;
+    PyObject *Entity_nameContext_cls = NULL;
+    PyObject *Entity_name_for_azure_dwContext_cls = NULL;
+    PyObject *Entity_name_for_parallel_dwContext_cls = NULL;
     PyObject *Full_table_nameContext_cls = NULL;
+    PyObject *Table_nameContext_cls = NULL;
     PyObject *Simple_nameContext_cls = NULL;
-    PyObject *Func_proc_nameContext_cls = NULL;
+    PyObject *Func_proc_name_schemaContext_cls = NULL;
+    PyObject *Func_proc_name_database_schemaContext_cls = NULL;
+    PyObject *Func_proc_name_server_database_schemaContext_cls = NULL;
     PyObject *Ddl_objectContext_cls = NULL;
     PyObject *Full_column_nameContext_cls = NULL;
+    PyObject *Column_name_list_with_orderContext_cls = NULL;
+    PyObject *Insert_column_name_listContext_cls = NULL;
+    PyObject *Insert_column_idContext_cls = NULL;
     PyObject *Column_name_listContext_cls = NULL;
     PyObject *Cursor_nameContext_cls = NULL;
     PyObject *On_offContext_cls = NULL;
     PyObject *ClusteredContext_cls = NULL;
     PyObject *Null_notnullContext_cls = NULL;
     PyObject *Scalar_function_nameContext_cls = NULL;
-    PyObject *Default_valueContext_cls = NULL;
+    PyObject *Begin_conversation_timerContext_cls = NULL;
+    PyObject *Begin_conversation_dialogContext_cls = NULL;
+    PyObject *Contract_nameContext_cls = NULL;
+    PyObject *Service_nameContext_cls = NULL;
+    PyObject *End_conversationContext_cls = NULL;
+    PyObject *Waitfor_conversationContext_cls = NULL;
+    PyObject *Get_conversationContext_cls = NULL;
+    PyObject *Queue_idContext_cls = NULL;
+    PyObject *Send_conversationContext_cls = NULL;
+    PyObject *Data_typeContext_cls = NULL;
     PyObject *ConstantContext_cls = NULL;
-    PyObject *SignContext_cls = NULL;
-    PyObject *R_idContext_cls = NULL;
+    PyObject *Primitive_constantContext_cls = NULL;
+    PyObject *KeywordContext_cls = NULL;
+    PyObject *Id_Context_cls = NULL;
     PyObject *Simple_idContext_cls = NULL;
+    PyObject *Id_or_stringContext_cls = NULL;
     PyObject *Comparison_operatorContext_cls = NULL;
     PyObject *Assignment_operatorContext_cls = NULL;
     PyObject *File_sizeContext_cls = NULL;
-    PyObject *Create_or_alter_procedureContext_cls = NULL;
-    PyObject *Create_or_alter_functionContext_cls = NULL;
-    PyObject *Func_body_returns_selectContext_cls = NULL;
-    PyObject *Func_body_returns_tableContext_cls = NULL;
-    PyObject *Func_body_returns_scalarContext_cls = NULL;
-    PyObject *Procedure_paramContext_cls = NULL;
-    PyObject *Procedure_optionContext_cls = NULL;
-    PyObject *Function_optionContext_cls = NULL;
-    PyObject *Percentile_contContext_cls = NULL;
-    PyObject *String_aggContext_cls = NULL;
-    PyObject *Data_typeContext_cls = NULL;
 
     public:
-    SA_tsqlTranslator(speedy_antlr::Translator *translator);
-    ~SA_tsqlTranslator();
-    antlrcpp::Any visitTsql_file(tsqlParser::Tsql_fileContext *ctx);
+    SA_TSqlTranslator(speedy_antlr::Translator *translator);
+    ~SA_TSqlTranslator();
+    antlrcpp::Any visitTsql_file(TSqlParser::Tsql_fileContext *ctx);
 
-    antlrcpp::Any visitBatch(tsqlParser::BatchContext *ctx);
+    antlrcpp::Any visitBatch(TSqlParser::BatchContext *ctx);
 
-    antlrcpp::Any visitSql_clauses(tsqlParser::Sql_clausesContext *ctx);
+    antlrcpp::Any visitBatch_level_statement(TSqlParser::Batch_level_statementContext *ctx);
 
-    antlrcpp::Any visitSql_clause(tsqlParser::Sql_clauseContext *ctx);
+    antlrcpp::Any visitSql_clauses(TSqlParser::Sql_clausesContext *ctx);
 
-    antlrcpp::Any visitDml_clause(tsqlParser::Dml_clauseContext *ctx);
+    antlrcpp::Any visitDml_clause(TSqlParser::Dml_clauseContext *ctx);
 
-    antlrcpp::Any visitDdl_clause(tsqlParser::Ddl_clauseContext *ctx);
+    antlrcpp::Any visitDdl_clause(TSqlParser::Ddl_clauseContext *ctx);
 
-    antlrcpp::Any visitCfl_statement(tsqlParser::Cfl_statementContext *ctx);
+    antlrcpp::Any visitBackup_statement(TSqlParser::Backup_statementContext *ctx);
 
-    antlrcpp::Any visitCfl_clause(tsqlParser::Cfl_clauseContext *ctx);
+    antlrcpp::Any visitCfl_statement(TSqlParser::Cfl_statementContext *ctx);
 
-    antlrcpp::Any visitBlock_statement(tsqlParser::Block_statementContext *ctx);
+    antlrcpp::Any visitBlock_statement(TSqlParser::Block_statementContext *ctx);
 
-    antlrcpp::Any visitBreak_statement(tsqlParser::Break_statementContext *ctx);
+    antlrcpp::Any visitBreak_statement(TSqlParser::Break_statementContext *ctx);
 
-    antlrcpp::Any visitContinue_statement(tsqlParser::Continue_statementContext *ctx);
+    antlrcpp::Any visitContinue_statement(TSqlParser::Continue_statementContext *ctx);
 
-    antlrcpp::Any visitGoto_statement(tsqlParser::Goto_statementContext *ctx);
+    antlrcpp::Any visitGoto_statement(TSqlParser::Goto_statementContext *ctx);
 
-    antlrcpp::Any visitIf_statement(tsqlParser::If_statementContext *ctx);
+    antlrcpp::Any visitReturn_statement(TSqlParser::Return_statementContext *ctx);
 
-    antlrcpp::Any visitIf_block(tsqlParser::If_blockContext *ctx);
+    antlrcpp::Any visitIf_statement(TSqlParser::If_statementContext *ctx);
 
-    antlrcpp::Any visitReturn_statement(tsqlParser::Return_statementContext *ctx);
+    antlrcpp::Any visitThrow_statement(TSqlParser::Throw_statementContext *ctx);
 
-    antlrcpp::Any visitThrow_statement(tsqlParser::Throw_statementContext *ctx);
+    antlrcpp::Any visitThrow_error_number(TSqlParser::Throw_error_numberContext *ctx);
 
-    antlrcpp::Any visitTry_catch_statement(tsqlParser::Try_catch_statementContext *ctx);
+    antlrcpp::Any visitThrow_message(TSqlParser::Throw_messageContext *ctx);
 
-    antlrcpp::Any visitWaitfor_statement(tsqlParser::Waitfor_statementContext *ctx);
+    antlrcpp::Any visitThrow_state(TSqlParser::Throw_stateContext *ctx);
 
-    antlrcpp::Any visitWhile_statement(tsqlParser::While_statementContext *ctx);
+    antlrcpp::Any visitTry_catch_statement(TSqlParser::Try_catch_statementContext *ctx);
 
-    antlrcpp::Any visitPrint_statement(tsqlParser::Print_statementContext *ctx);
+    antlrcpp::Any visitWaitfor_statement(TSqlParser::Waitfor_statementContext *ctx);
 
-    antlrcpp::Any visitRaiseerror_statement(tsqlParser::Raiseerror_statementContext *ctx);
+    antlrcpp::Any visitWhile_statement(TSqlParser::While_statementContext *ctx);
 
-    antlrcpp::Any visitAnother_statement(tsqlParser::Another_statementContext *ctx);
+    antlrcpp::Any visitPrint_statement(TSqlParser::Print_statementContext *ctx);
 
-    antlrcpp::Any visitDelete_statement(tsqlParser::Delete_statementContext *ctx);
+    antlrcpp::Any visitRaiseerror_statement(TSqlParser::Raiseerror_statementContext *ctx);
 
-    antlrcpp::Any visitDelete_statement_from(tsqlParser::Delete_statement_fromContext *ctx);
+    antlrcpp::Any visitEmpty_statement(TSqlParser::Empty_statementContext *ctx);
 
-    antlrcpp::Any visitInsert_statement(tsqlParser::Insert_statementContext *ctx);
+    antlrcpp::Any visitAnother_statement(TSqlParser::Another_statementContext *ctx);
 
-    antlrcpp::Any visitInsert_statement_value(tsqlParser::Insert_statement_valueContext *ctx);
+    antlrcpp::Any visitAlter_application_role(TSqlParser::Alter_application_roleContext *ctx);
 
-    antlrcpp::Any visitSelect_statement(tsqlParser::Select_statementContext *ctx);
+    antlrcpp::Any visitAlter_xml_schema_collection(TSqlParser::Alter_xml_schema_collectionContext *ctx);
 
-    antlrcpp::Any visitUpdate_statement(tsqlParser::Update_statementContext *ctx);
+    antlrcpp::Any visitCreate_application_role(TSqlParser::Create_application_roleContext *ctx);
 
-    antlrcpp::Any visitWhere_clause_dml(tsqlParser::Where_clause_dmlContext *ctx);
+    antlrcpp::Any visitDrop_aggregate(TSqlParser::Drop_aggregateContext *ctx);
 
-    antlrcpp::Any visitOutput_clause(tsqlParser::Output_clauseContext *ctx);
+    antlrcpp::Any visitDrop_application_role(TSqlParser::Drop_application_roleContext *ctx);
 
-    antlrcpp::Any visitOutput_dml_list_elem(tsqlParser::Output_dml_list_elemContext *ctx);
+    antlrcpp::Any visitAlter_assembly(TSqlParser::Alter_assemblyContext *ctx);
 
-    antlrcpp::Any visitOutput_column_name(tsqlParser::Output_column_nameContext *ctx);
+    antlrcpp::Any visitAlter_assembly_start(TSqlParser::Alter_assembly_startContext *ctx);
 
-    antlrcpp::Any visitCreate_database(tsqlParser::Create_databaseContext *ctx);
+    antlrcpp::Any visitAlter_assembly_clause(TSqlParser::Alter_assembly_clauseContext *ctx);
 
-    antlrcpp::Any visitCreate_index(tsqlParser::Create_indexContext *ctx);
+    antlrcpp::Any visitAlter_assembly_from_clause(TSqlParser::Alter_assembly_from_clauseContext *ctx);
 
-    antlrcpp::Any visitCreate_statistics(tsqlParser::Create_statisticsContext *ctx);
+    antlrcpp::Any visitAlter_assembly_from_clause_start(TSqlParser::Alter_assembly_from_clause_startContext *ctx);
 
-    antlrcpp::Any visitCreate_table(tsqlParser::Create_tableContext *ctx);
+    antlrcpp::Any visitAlter_assembly_drop_clause(TSqlParser::Alter_assembly_drop_clauseContext *ctx);
 
-    antlrcpp::Any visitCreate_schema(tsqlParser::Create_schemaContext *ctx);
+    antlrcpp::Any visitAlter_assembly_drop_multiple_files(TSqlParser::Alter_assembly_drop_multiple_filesContext *ctx);
 
-    antlrcpp::Any visitCreate_synonym(tsqlParser::Create_synonymContext *ctx);
+    antlrcpp::Any visitAlter_assembly_drop(TSqlParser::Alter_assembly_dropContext *ctx);
 
-    antlrcpp::Any visitCreate_view(tsqlParser::Create_viewContext *ctx);
+    antlrcpp::Any visitAlter_assembly_add_clause(TSqlParser::Alter_assembly_add_clauseContext *ctx);
 
-    antlrcpp::Any visitView_attribute(tsqlParser::View_attributeContext *ctx);
+    antlrcpp::Any visitAlter_asssembly_add_clause_start(TSqlParser::Alter_asssembly_add_clause_startContext *ctx);
 
-    antlrcpp::Any visitAlter_table(tsqlParser::Alter_tableContext *ctx);
+    antlrcpp::Any visitAlter_assembly_client_file_clause(TSqlParser::Alter_assembly_client_file_clauseContext *ctx);
 
-    antlrcpp::Any visitAlter_database(tsqlParser::Alter_databaseContext *ctx);
+    antlrcpp::Any visitAlter_assembly_file_name(TSqlParser::Alter_assembly_file_nameContext *ctx);
 
-    antlrcpp::Any visitDatabase_optionspec(tsqlParser::Database_optionspecContext *ctx);
+    antlrcpp::Any visitAlter_assembly_file_bits(TSqlParser::Alter_assembly_file_bitsContext *ctx);
 
-    antlrcpp::Any visitAuto_option(tsqlParser::Auto_optionContext *ctx);
+    antlrcpp::Any visitAlter_assembly_as(TSqlParser::Alter_assembly_asContext *ctx);
 
-    antlrcpp::Any visitChange_tracking_option(tsqlParser::Change_tracking_optionContext *ctx);
+    antlrcpp::Any visitAlter_assembly_with_clause(TSqlParser::Alter_assembly_with_clauseContext *ctx);
 
-    antlrcpp::Any visitChange_tracking_option_list(tsqlParser::Change_tracking_option_listContext *ctx);
+    antlrcpp::Any visitAlter_assembly_with(TSqlParser::Alter_assembly_withContext *ctx);
 
-    antlrcpp::Any visitContainment_option(tsqlParser::Containment_optionContext *ctx);
+    antlrcpp::Any visitClient_assembly_specifier(TSqlParser::Client_assembly_specifierContext *ctx);
 
-    antlrcpp::Any visitCursor_option(tsqlParser::Cursor_optionContext *ctx);
+    antlrcpp::Any visitAssembly_option(TSqlParser::Assembly_optionContext *ctx);
 
-    antlrcpp::Any visitDate_correlation_optimization_option(tsqlParser::Date_correlation_optimization_optionContext *ctx);
+    antlrcpp::Any visitNetwork_file_share(TSqlParser::Network_file_shareContext *ctx);
 
-    antlrcpp::Any visitDb_encryption_option(tsqlParser::Db_encryption_optionContext *ctx);
+    antlrcpp::Any visitNetwork_computer(TSqlParser::Network_computerContext *ctx);
 
-    antlrcpp::Any visitDb_state_option(tsqlParser::Db_state_optionContext *ctx);
+    antlrcpp::Any visitNetwork_file_start(TSqlParser::Network_file_startContext *ctx);
 
-    antlrcpp::Any visitDb_update_option(tsqlParser::Db_update_optionContext *ctx);
+    antlrcpp::Any visitFile_path(TSqlParser::File_pathContext *ctx);
 
-    antlrcpp::Any visitDb_user_access_option(tsqlParser::Db_user_access_optionContext *ctx);
+    antlrcpp::Any visitFile_directory_path_separator(TSqlParser::File_directory_path_separatorContext *ctx);
 
-    antlrcpp::Any visitDelayed_durability_option(tsqlParser::Delayed_durability_optionContext *ctx);
+    antlrcpp::Any visitLocal_file(TSqlParser::Local_fileContext *ctx);
 
-    antlrcpp::Any visitExternal_access_option(tsqlParser::External_access_optionContext *ctx);
+    antlrcpp::Any visitLocal_drive(TSqlParser::Local_driveContext *ctx);
 
-    antlrcpp::Any visitHadr_options(tsqlParser::Hadr_optionsContext *ctx);
+    antlrcpp::Any visitMultiple_local_files(TSqlParser::Multiple_local_filesContext *ctx);
 
-    antlrcpp::Any visitMixed_page_allocation_option(tsqlParser::Mixed_page_allocation_optionContext *ctx);
+    antlrcpp::Any visitMultiple_local_file_start(TSqlParser::Multiple_local_file_startContext *ctx);
 
-    antlrcpp::Any visitParameterization_option(tsqlParser::Parameterization_optionContext *ctx);
+    antlrcpp::Any visitCreate_assembly(TSqlParser::Create_assemblyContext *ctx);
 
-    antlrcpp::Any visitRecovery_option(tsqlParser::Recovery_optionContext *ctx);
+    antlrcpp::Any visitDrop_assembly(TSqlParser::Drop_assemblyContext *ctx);
 
-    antlrcpp::Any visitService_broker_option(tsqlParser::Service_broker_optionContext *ctx);
+    antlrcpp::Any visitAlter_asymmetric_key(TSqlParser::Alter_asymmetric_keyContext *ctx);
 
-    antlrcpp::Any visitSnapshot_option(tsqlParser::Snapshot_optionContext *ctx);
+    antlrcpp::Any visitAlter_asymmetric_key_start(TSqlParser::Alter_asymmetric_key_startContext *ctx);
 
-    antlrcpp::Any visitSql_option(tsqlParser::Sql_optionContext *ctx);
+    antlrcpp::Any visitAsymmetric_key_option(TSqlParser::Asymmetric_key_optionContext *ctx);
 
-    antlrcpp::Any visitTarget_recovery_time_option(tsqlParser::Target_recovery_time_optionContext *ctx);
+    antlrcpp::Any visitAsymmetric_key_option_start(TSqlParser::Asymmetric_key_option_startContext *ctx);
 
-    antlrcpp::Any visitTermination(tsqlParser::TerminationContext *ctx);
+    antlrcpp::Any visitAsymmetric_key_password_change_option(TSqlParser::Asymmetric_key_password_change_optionContext *ctx);
 
-    antlrcpp::Any visitDrop_index(tsqlParser::Drop_indexContext *ctx);
+    antlrcpp::Any visitCreate_asymmetric_key(TSqlParser::Create_asymmetric_keyContext *ctx);
 
-    antlrcpp::Any visitDrop_procedure(tsqlParser::Drop_procedureContext *ctx);
+    antlrcpp::Any visitDrop_asymmetric_key(TSqlParser::Drop_asymmetric_keyContext *ctx);
 
-    antlrcpp::Any visitDrop_statistics(tsqlParser::Drop_statisticsContext *ctx);
+    antlrcpp::Any visitAlter_authorization(TSqlParser::Alter_authorizationContext *ctx);
 
-    antlrcpp::Any visitDrop_table(tsqlParser::Drop_tableContext *ctx);
+    antlrcpp::Any visitAuthorization_grantee(TSqlParser::Authorization_granteeContext *ctx);
 
-    antlrcpp::Any visitDrop_database(tsqlParser::Drop_databaseContext *ctx);
+    antlrcpp::Any visitEntity_to(TSqlParser::Entity_toContext *ctx);
 
-    antlrcpp::Any visitDrop_synonym(tsqlParser::Drop_synonymContext *ctx);
+    antlrcpp::Any visitColon_colon(TSqlParser::Colon_colonContext *ctx);
 
-    antlrcpp::Any visitDrop_view(tsqlParser::Drop_viewContext *ctx);
+    antlrcpp::Any visitAlter_authorization_start(TSqlParser::Alter_authorization_startContext *ctx);
 
-    antlrcpp::Any visitDrop_schema(tsqlParser::Drop_schemaContext *ctx);
+    antlrcpp::Any visitAlter_authorization_for_sql_database(TSqlParser::Alter_authorization_for_sql_databaseContext *ctx);
 
-    antlrcpp::Any visitDrop_function(tsqlParser::Drop_functionContext *ctx);
+    antlrcpp::Any visitAlter_authorization_for_azure_dw(TSqlParser::Alter_authorization_for_azure_dwContext *ctx);
 
-    antlrcpp::Any visitCreate_type(tsqlParser::Create_typeContext *ctx);
+    antlrcpp::Any visitAlter_authorization_for_parallel_dw(TSqlParser::Alter_authorization_for_parallel_dwContext *ctx);
 
-    antlrcpp::Any visitDrop_type(tsqlParser::Drop_typeContext *ctx);
+    antlrcpp::Any visitClass_type(TSqlParser::Class_typeContext *ctx);
 
-    antlrcpp::Any visitRowset_function_limited(tsqlParser::Rowset_function_limitedContext *ctx);
+    antlrcpp::Any visitClass_type_for_sql_database(TSqlParser::Class_type_for_sql_databaseContext *ctx);
 
-    antlrcpp::Any visitOpenquery(tsqlParser::OpenqueryContext *ctx);
+    antlrcpp::Any visitClass_type_for_azure_dw(TSqlParser::Class_type_for_azure_dwContext *ctx);
 
-    antlrcpp::Any visitOpendatasource(tsqlParser::OpendatasourceContext *ctx);
+    antlrcpp::Any visitClass_type_for_parallel_dw(TSqlParser::Class_type_for_parallel_dwContext *ctx);
 
-    antlrcpp::Any visitDeclare_statement(tsqlParser::Declare_statementContext *ctx);
+    antlrcpp::Any visitClass_type_for_grant(TSqlParser::Class_type_for_grantContext *ctx);
 
-    antlrcpp::Any visitCursor_statement(tsqlParser::Cursor_statementContext *ctx);
+    antlrcpp::Any visitDrop_availability_group(TSqlParser::Drop_availability_groupContext *ctx);
 
-    antlrcpp::Any visitExecute_statement(tsqlParser::Execute_statementContext *ctx);
+    antlrcpp::Any visitAlter_availability_group(TSqlParser::Alter_availability_groupContext *ctx);
 
-    antlrcpp::Any visitExecute_statement_arg(tsqlParser::Execute_statement_argContext *ctx);
+    antlrcpp::Any visitAlter_availability_group_start(TSqlParser::Alter_availability_group_startContext *ctx);
 
-    antlrcpp::Any visitExecute_var_string(tsqlParser::Execute_var_stringContext *ctx);
+    antlrcpp::Any visitAlter_availability_group_options(TSqlParser::Alter_availability_group_optionsContext *ctx);
 
-    antlrcpp::Any visitSecurity_statement(tsqlParser::Security_statementContext *ctx);
+    antlrcpp::Any visitIp_v4_failover(TSqlParser::Ip_v4_failoverContext *ctx);
 
-    antlrcpp::Any visitGrant_permission(tsqlParser::Grant_permissionContext *ctx);
+    antlrcpp::Any visitIp_v6_failover(TSqlParser::Ip_v6_failoverContext *ctx);
 
-    antlrcpp::Any visitSet_statement(tsqlParser::Set_statementContext *ctx);
+    antlrcpp::Any visitCreate_or_alter_broker_priority(TSqlParser::Create_or_alter_broker_priorityContext *ctx);
 
-    antlrcpp::Any visitTransaction_statement(tsqlParser::Transaction_statementContext *ctx);
+    antlrcpp::Any visitDrop_broker_priority(TSqlParser::Drop_broker_priorityContext *ctx);
 
-    antlrcpp::Any visitGo_statement(tsqlParser::Go_statementContext *ctx);
+    antlrcpp::Any visitAlter_certificate(TSqlParser::Alter_certificateContext *ctx);
 
-    antlrcpp::Any visitUse_statement(tsqlParser::Use_statementContext *ctx);
+    antlrcpp::Any visitAlter_column_encryption_key(TSqlParser::Alter_column_encryption_keyContext *ctx);
 
-    antlrcpp::Any visitExecute_clause(tsqlParser::Execute_clauseContext *ctx);
+    antlrcpp::Any visitCreate_column_encryption_key(TSqlParser::Create_column_encryption_keyContext *ctx);
 
-    antlrcpp::Any visitDeclare_local(tsqlParser::Declare_localContext *ctx);
+    antlrcpp::Any visitDrop_certificate(TSqlParser::Drop_certificateContext *ctx);
 
-    antlrcpp::Any visitTable_type_definition(tsqlParser::Table_type_definitionContext *ctx);
+    antlrcpp::Any visitDrop_column_encryption_key(TSqlParser::Drop_column_encryption_keyContext *ctx);
 
-    antlrcpp::Any visitColumn_def_table_constraints(tsqlParser::Column_def_table_constraintsContext *ctx);
+    antlrcpp::Any visitDrop_column_master_key(TSqlParser::Drop_column_master_keyContext *ctx);
 
-    antlrcpp::Any visitColumn_def_table_constraint(tsqlParser::Column_def_table_constraintContext *ctx);
+    antlrcpp::Any visitDrop_contract(TSqlParser::Drop_contractContext *ctx);
 
-    antlrcpp::Any visitColumn_definition(tsqlParser::Column_definitionContext *ctx);
+    antlrcpp::Any visitDrop_credential(TSqlParser::Drop_credentialContext *ctx);
 
-    antlrcpp::Any visitColumn_constraint(tsqlParser::Column_constraintContext *ctx);
+    antlrcpp::Any visitDrop_cryptograhic_provider(TSqlParser::Drop_cryptograhic_providerContext *ctx);
 
-    antlrcpp::Any visitTable_constraint(tsqlParser::Table_constraintContext *ctx);
+    antlrcpp::Any visitDrop_database(TSqlParser::Drop_databaseContext *ctx);
 
-    antlrcpp::Any visitIndex_options(tsqlParser::Index_optionsContext *ctx);
+    antlrcpp::Any visitDrop_database_audit_specification(TSqlParser::Drop_database_audit_specificationContext *ctx);
 
-    antlrcpp::Any visitIndex_option(tsqlParser::Index_optionContext *ctx);
+    antlrcpp::Any visitDrop_database_encryption_key(TSqlParser::Drop_database_encryption_keyContext *ctx);
 
-    antlrcpp::Any visitDeclare_cursor(tsqlParser::Declare_cursorContext *ctx);
+    antlrcpp::Any visitDrop_database_scoped_credential(TSqlParser::Drop_database_scoped_credentialContext *ctx);
 
-    antlrcpp::Any visitDeclare_set_cursor_common(tsqlParser::Declare_set_cursor_commonContext *ctx);
+    antlrcpp::Any visitDrop_default(TSqlParser::Drop_defaultContext *ctx);
 
-    antlrcpp::Any visitFetch_cursor(tsqlParser::Fetch_cursorContext *ctx);
+    antlrcpp::Any visitDrop_endpoint(TSqlParser::Drop_endpointContext *ctx);
 
-    antlrcpp::Any visitSet_special(tsqlParser::Set_specialContext *ctx);
+    antlrcpp::Any visitDrop_external_data_source(TSqlParser::Drop_external_data_sourceContext *ctx);
 
-    antlrcpp::Any visitConstant_LOCAL_ID(tsqlParser::Constant_LOCAL_IDContext *ctx);
+    antlrcpp::Any visitDrop_external_file_format(TSqlParser::Drop_external_file_formatContext *ctx);
 
-    antlrcpp::Any visitBinary_operator_expression(tsqlParser::Binary_operator_expressionContext *ctx);
+    antlrcpp::Any visitDrop_external_library(TSqlParser::Drop_external_libraryContext *ctx);
 
-    antlrcpp::Any visitUnary_operator_expression(tsqlParser::Unary_operator_expressionContext *ctx);
+    antlrcpp::Any visitDrop_external_resource_pool(TSqlParser::Drop_external_resource_poolContext *ctx);
 
-    antlrcpp::Any visitFunction_call_expression(tsqlParser::Function_call_expressionContext *ctx);
+    antlrcpp::Any visitDrop_external_table(TSqlParser::Drop_external_tableContext *ctx);
 
-    antlrcpp::Any visitConversion_expression(tsqlParser::Conversion_expressionContext *ctx);
+    antlrcpp::Any visitDrop_event_notifications(TSqlParser::Drop_event_notificationsContext *ctx);
 
-    antlrcpp::Any visitCase_expression(tsqlParser::Case_expressionContext *ctx);
+    antlrcpp::Any visitDrop_event_session(TSqlParser::Drop_event_sessionContext *ctx);
 
-    antlrcpp::Any visitColumn_ref_expression(tsqlParser::Column_ref_expressionContext *ctx);
+    antlrcpp::Any visitDrop_fulltext_catalog(TSqlParser::Drop_fulltext_catalogContext *ctx);
 
-    antlrcpp::Any visitString_agg_expression(tsqlParser::String_agg_expressionContext *ctx);
+    antlrcpp::Any visitDrop_fulltext_index(TSqlParser::Drop_fulltext_indexContext *ctx);
 
-    antlrcpp::Any visitPercentile_cont_expression(tsqlParser::Percentile_cont_expressionContext *ctx);
+    antlrcpp::Any visitDrop_fulltext_stoplist(TSqlParser::Drop_fulltext_stoplistContext *ctx);
 
-    antlrcpp::Any visitPrimitive_expression(tsqlParser::Primitive_expressionContext *ctx);
+    antlrcpp::Any visitDrop_login(TSqlParser::Drop_loginContext *ctx);
 
-    antlrcpp::Any visitBracket_expression(tsqlParser::Bracket_expressionContext *ctx);
+    antlrcpp::Any visitDrop_master_key(TSqlParser::Drop_master_keyContext *ctx);
 
-    antlrcpp::Any visitSubquery_expression(tsqlParser::Subquery_expressionContext *ctx);
+    antlrcpp::Any visitDrop_message_type(TSqlParser::Drop_message_typeContext *ctx);
 
-    antlrcpp::Any visitOver_clause_expression(tsqlParser::Over_clause_expressionContext *ctx);
+    antlrcpp::Any visitDrop_partition_function(TSqlParser::Drop_partition_functionContext *ctx);
 
-    antlrcpp::Any visitXml_method_expression(tsqlParser::Xml_method_expressionContext *ctx);
+    antlrcpp::Any visitDrop_partition_scheme(TSqlParser::Drop_partition_schemeContext *ctx);
 
-    antlrcpp::Any visitXml_method_call(tsqlParser::Xml_method_callContext *ctx);
+    antlrcpp::Any visitDrop_queue(TSqlParser::Drop_queueContext *ctx);
 
-    antlrcpp::Any visitSimple_xml_method_name(tsqlParser::Simple_xml_method_nameContext *ctx);
+    antlrcpp::Any visitDrop_remote_service_binding(TSqlParser::Drop_remote_service_bindingContext *ctx);
 
-    antlrcpp::Any visitConstant_expression(tsqlParser::Constant_expressionContext *ctx);
+    antlrcpp::Any visitDrop_resource_pool(TSqlParser::Drop_resource_poolContext *ctx);
 
-    antlrcpp::Any visitSubquery(tsqlParser::SubqueryContext *ctx);
+    antlrcpp::Any visitDrop_db_role(TSqlParser::Drop_db_roleContext *ctx);
 
-    antlrcpp::Any visitWith_expression(tsqlParser::With_expressionContext *ctx);
+    antlrcpp::Any visitDrop_route(TSqlParser::Drop_routeContext *ctx);
 
-    antlrcpp::Any visitCommon_table_expression(tsqlParser::Common_table_expressionContext *ctx);
+    antlrcpp::Any visitDrop_rule(TSqlParser::Drop_ruleContext *ctx);
 
-    antlrcpp::Any visitUpdate_elem(tsqlParser::Update_elemContext *ctx);
+    antlrcpp::Any visitDrop_schema(TSqlParser::Drop_schemaContext *ctx);
 
-    antlrcpp::Any visitSearch_condition_list(tsqlParser::Search_condition_listContext *ctx);
+    antlrcpp::Any visitDrop_search_property_list(TSqlParser::Drop_search_property_listContext *ctx);
 
-    antlrcpp::Any visitSearch_cond_or(tsqlParser::Search_cond_orContext *ctx);
+    antlrcpp::Any visitDrop_security_policy(TSqlParser::Drop_security_policyContext *ctx);
 
-    antlrcpp::Any visitSearch_cond_pred(tsqlParser::Search_cond_predContext *ctx);
+    antlrcpp::Any visitDrop_sequence(TSqlParser::Drop_sequenceContext *ctx);
 
-    antlrcpp::Any visitSearch_cond_and(tsqlParser::Search_cond_andContext *ctx);
+    antlrcpp::Any visitDrop_server_audit(TSqlParser::Drop_server_auditContext *ctx);
 
-    antlrcpp::Any visitBinary_in_expression(tsqlParser::Binary_in_expressionContext *ctx);
+    antlrcpp::Any visitDrop_server_audit_specification(TSqlParser::Drop_server_audit_specificationContext *ctx);
 
-    antlrcpp::Any visitUnary_operator_expression2(tsqlParser::Unary_operator_expression2Context *ctx);
+    antlrcpp::Any visitDrop_server_role(TSqlParser::Drop_server_roleContext *ctx);
 
-    antlrcpp::Any visitBinary_mod_expression(tsqlParser::Binary_mod_expressionContext *ctx);
+    antlrcpp::Any visitDrop_service(TSqlParser::Drop_serviceContext *ctx);
 
-    antlrcpp::Any visitUnary_operator_expression3(tsqlParser::Unary_operator_expression3Context *ctx);
+    antlrcpp::Any visitDrop_signature(TSqlParser::Drop_signatureContext *ctx);
 
-    antlrcpp::Any visitBracket_search_expression(tsqlParser::Bracket_search_expressionContext *ctx);
+    antlrcpp::Any visitDrop_statistics_name_azure_dw_and_pdw(TSqlParser::Drop_statistics_name_azure_dw_and_pdwContext *ctx);
 
-    antlrcpp::Any visitSublink_expression(tsqlParser::Sublink_expressionContext *ctx);
+    antlrcpp::Any visitDrop_symmetric_key(TSqlParser::Drop_symmetric_keyContext *ctx);
 
-    antlrcpp::Any visitBinary_operator_expression3(tsqlParser::Binary_operator_expression3Context *ctx);
+    antlrcpp::Any visitDrop_synonym(TSqlParser::Drop_synonymContext *ctx);
 
-    antlrcpp::Any visitBinary_operator_expression2(tsqlParser::Binary_operator_expression2Context *ctx);
+    antlrcpp::Any visitDrop_user(TSqlParser::Drop_userContext *ctx);
 
-    antlrcpp::Any visitDecimal_expression(tsqlParser::Decimal_expressionContext *ctx);
+    antlrcpp::Any visitDrop_workload_group(TSqlParser::Drop_workload_groupContext *ctx);
 
-    antlrcpp::Any visitBracket_query_expression(tsqlParser::Bracket_query_expressionContext *ctx);
+    antlrcpp::Any visitDrop_xml_schema_collection(TSqlParser::Drop_xml_schema_collectionContext *ctx);
 
-    antlrcpp::Any visitQuery_specification_expression(tsqlParser::Query_specification_expressionContext *ctx);
+    antlrcpp::Any visitDisable_trigger(TSqlParser::Disable_triggerContext *ctx);
 
-    antlrcpp::Any visitUnion_query_expression(tsqlParser::Union_query_expressionContext *ctx);
+    antlrcpp::Any visitEnable_trigger(TSqlParser::Enable_triggerContext *ctx);
 
-    antlrcpp::Any visitUnion_op(tsqlParser::Union_opContext *ctx);
+    antlrcpp::Any visitLock_table(TSqlParser::Lock_tableContext *ctx);
 
-    antlrcpp::Any visitCross_apply_expression(tsqlParser::Cross_apply_expressionContext *ctx);
+    antlrcpp::Any visitTruncate_table(TSqlParser::Truncate_tableContext *ctx);
 
-    antlrcpp::Any visitQuery_specification(tsqlParser::Query_specificationContext *ctx);
+    antlrcpp::Any visitCreate_column_master_key(TSqlParser::Create_column_master_keyContext *ctx);
 
-    antlrcpp::Any visitGroup_by_grouping_sets(tsqlParser::Group_by_grouping_setsContext *ctx);
+    antlrcpp::Any visitAlter_credential(TSqlParser::Alter_credentialContext *ctx);
 
-    antlrcpp::Any visitGrouping_set(tsqlParser::Grouping_setContext *ctx);
+    antlrcpp::Any visitCreate_credential(TSqlParser::Create_credentialContext *ctx);
 
-    antlrcpp::Any visitTop_clause(tsqlParser::Top_clauseContext *ctx);
+    antlrcpp::Any visitAlter_cryptographic_provider(TSqlParser::Alter_cryptographic_providerContext *ctx);
 
-    antlrcpp::Any visitTop_clause_dm(tsqlParser::Top_clause_dmContext *ctx);
+    antlrcpp::Any visitCreate_cryptographic_provider(TSqlParser::Create_cryptographic_providerContext *ctx);
 
-    antlrcpp::Any visitOrder_by_clause(tsqlParser::Order_by_clauseContext *ctx);
+    antlrcpp::Any visitCreate_endpoint(TSqlParser::Create_endpointContext *ctx);
 
-    antlrcpp::Any visitFetch_expression(tsqlParser::Fetch_expressionContext *ctx);
+    antlrcpp::Any visitEndpoint_encryption_alogorithm_clause(TSqlParser::Endpoint_encryption_alogorithm_clauseContext *ctx);
 
-    antlrcpp::Any visitFor_clause(tsqlParser::For_clauseContext *ctx);
+    antlrcpp::Any visitEndpoint_authentication_clause(TSqlParser::Endpoint_authentication_clauseContext *ctx);
 
-    antlrcpp::Any visitXml_common_directives(tsqlParser::Xml_common_directivesContext *ctx);
+    antlrcpp::Any visitEndpoint_listener_clause(TSqlParser::Endpoint_listener_clauseContext *ctx);
 
-    antlrcpp::Any visitOrder_by_expression(tsqlParser::Order_by_expressionContext *ctx);
+    antlrcpp::Any visitCreate_event_notification(TSqlParser::Create_event_notificationContext *ctx);
 
-    antlrcpp::Any visitGroup_by_item(tsqlParser::Group_by_itemContext *ctx);
+    antlrcpp::Any visitCreate_or_alter_event_session(TSqlParser::Create_or_alter_event_sessionContext *ctx);
 
-    antlrcpp::Any visitOption_clause(tsqlParser::Option_clauseContext *ctx);
+    antlrcpp::Any visitEvent_session_predicate_expression(TSqlParser::Event_session_predicate_expressionContext *ctx);
 
-    antlrcpp::Any visitOption(tsqlParser::OptionContext *ctx);
+    antlrcpp::Any visitEvent_session_predicate_factor(TSqlParser::Event_session_predicate_factorContext *ctx);
 
-    antlrcpp::Any visitOptimize_for_arg(tsqlParser::Optimize_for_argContext *ctx);
+    antlrcpp::Any visitEvent_session_predicate_leaf(TSqlParser::Event_session_predicate_leafContext *ctx);
 
-    antlrcpp::Any visitSelect_list(tsqlParser::Select_listContext *ctx);
+    antlrcpp::Any visitAlter_external_data_source(TSqlParser::Alter_external_data_sourceContext *ctx);
 
-    antlrcpp::Any visitSelect_list_elem(tsqlParser::Select_list_elemContext *ctx);
+    antlrcpp::Any visitAlter_external_library(TSqlParser::Alter_external_libraryContext *ctx);
 
-    antlrcpp::Any visitTable_sources(tsqlParser::Table_sourcesContext *ctx);
+    antlrcpp::Any visitCreate_external_library(TSqlParser::Create_external_libraryContext *ctx);
 
-    antlrcpp::Any visitCross_join(tsqlParser::Cross_joinContext *ctx);
+    antlrcpp::Any visitAlter_external_resource_pool(TSqlParser::Alter_external_resource_poolContext *ctx);
 
-    antlrcpp::Any visitTable_source_item_join(tsqlParser::Table_source_item_joinContext *ctx);
+    antlrcpp::Any visitCreate_external_resource_pool(TSqlParser::Create_external_resource_poolContext *ctx);
 
-    antlrcpp::Any visitStandard_join(tsqlParser::Standard_joinContext *ctx);
+    antlrcpp::Any visitAlter_fulltext_catalog(TSqlParser::Alter_fulltext_catalogContext *ctx);
 
-    antlrcpp::Any visitApply_join(tsqlParser::Apply_joinContext *ctx);
+    antlrcpp::Any visitCreate_fulltext_catalog(TSqlParser::Create_fulltext_catalogContext *ctx);
 
-    antlrcpp::Any visitBracket_table_source(tsqlParser::Bracket_table_sourceContext *ctx);
+    antlrcpp::Any visitAlter_fulltext_stoplist(TSqlParser::Alter_fulltext_stoplistContext *ctx);
 
-    antlrcpp::Any visitTable_source_item_simple(tsqlParser::Table_source_item_simpleContext *ctx);
+    antlrcpp::Any visitCreate_fulltext_stoplist(TSqlParser::Create_fulltext_stoplistContext *ctx);
 
-    antlrcpp::Any visitTable_source_item_complex(tsqlParser::Table_source_item_complexContext *ctx);
+    antlrcpp::Any visitAlter_login_sql_server(TSqlParser::Alter_login_sql_serverContext *ctx);
 
-    antlrcpp::Any visitTable_source_item_name(tsqlParser::Table_source_item_nameContext *ctx);
+    antlrcpp::Any visitCreate_login_sql_server(TSqlParser::Create_login_sql_serverContext *ctx);
 
-    antlrcpp::Any visitTablesample_clause(tsqlParser::Tablesample_clauseContext *ctx);
+    antlrcpp::Any visitAlter_login_azure_sql(TSqlParser::Alter_login_azure_sqlContext *ctx);
 
-    antlrcpp::Any visitSample_number(tsqlParser::Sample_numberContext *ctx);
+    antlrcpp::Any visitCreate_login_azure_sql(TSqlParser::Create_login_azure_sqlContext *ctx);
 
-    antlrcpp::Any visitRepeat_seed(tsqlParser::Repeat_seedContext *ctx);
+    antlrcpp::Any visitAlter_login_azure_sql_dw_and_pdw(TSqlParser::Alter_login_azure_sql_dw_and_pdwContext *ctx);
 
-    antlrcpp::Any visitTable_alias(tsqlParser::Table_aliasContext *ctx);
+    antlrcpp::Any visitCreate_login_pdw(TSqlParser::Create_login_pdwContext *ctx);
 
-    antlrcpp::Any visitChange_table(tsqlParser::Change_tableContext *ctx);
+    antlrcpp::Any visitAlter_master_key_sql_server(TSqlParser::Alter_master_key_sql_serverContext *ctx);
 
-    antlrcpp::Any visitJoin_type(tsqlParser::Join_typeContext *ctx);
+    antlrcpp::Any visitCreate_master_key_sql_server(TSqlParser::Create_master_key_sql_serverContext *ctx);
 
-    antlrcpp::Any visitTable_name_with_hint(tsqlParser::Table_name_with_hintContext *ctx);
+    antlrcpp::Any visitAlter_master_key_azure_sql(TSqlParser::Alter_master_key_azure_sqlContext *ctx);
 
-    antlrcpp::Any visitRowset_function(tsqlParser::Rowset_functionContext *ctx);
+    antlrcpp::Any visitCreate_master_key_azure_sql(TSqlParser::Create_master_key_azure_sqlContext *ctx);
 
-    antlrcpp::Any visitBulk_option(tsqlParser::Bulk_optionContext *ctx);
+    antlrcpp::Any visitAlter_message_type(TSqlParser::Alter_message_typeContext *ctx);
 
-    antlrcpp::Any visitDerived_table(tsqlParser::Derived_tableContext *ctx);
+    antlrcpp::Any visitAlter_partition_function(TSqlParser::Alter_partition_functionContext *ctx);
 
-    antlrcpp::Any visitStandard_call(tsqlParser::Standard_callContext *ctx);
+    antlrcpp::Any visitAlter_partition_scheme(TSqlParser::Alter_partition_schemeContext *ctx);
 
-    antlrcpp::Any visitAggregate_call(tsqlParser::Aggregate_callContext *ctx);
+    antlrcpp::Any visitAlter_remote_service_binding(TSqlParser::Alter_remote_service_bindingContext *ctx);
 
-    antlrcpp::Any visitNvf_call(tsqlParser::Nvf_callContext *ctx);
+    antlrcpp::Any visitCreate_remote_service_binding(TSqlParser::Create_remote_service_bindingContext *ctx);
 
-    antlrcpp::Any visitRank_call(tsqlParser::Rank_callContext *ctx);
+    antlrcpp::Any visitCreate_resource_pool(TSqlParser::Create_resource_poolContext *ctx);
 
-    antlrcpp::Any visitExpression_call(tsqlParser::Expression_callContext *ctx);
+    antlrcpp::Any visitAlter_resource_governor(TSqlParser::Alter_resource_governorContext *ctx);
 
-    antlrcpp::Any visitSimple_call(tsqlParser::Simple_callContext *ctx);
+    antlrcpp::Any visitAlter_database_audit_specification(TSqlParser::Alter_database_audit_specificationContext *ctx);
 
-    antlrcpp::Any visitCast_call(tsqlParser::Cast_callContext *ctx);
+    antlrcpp::Any visitAudit_action_spec_group(TSqlParser::Audit_action_spec_groupContext *ctx);
 
-    antlrcpp::Any visitSwitch_section(tsqlParser::Switch_sectionContext *ctx);
+    antlrcpp::Any visitAudit_action_specification(TSqlParser::Audit_action_specificationContext *ctx);
 
-    antlrcpp::Any visitSwitch_search_condition_section(tsqlParser::Switch_search_condition_sectionContext *ctx);
+    antlrcpp::Any visitAction_specification(TSqlParser::Action_specificationContext *ctx);
 
-    antlrcpp::Any visitWith_table_hints(tsqlParser::With_table_hintsContext *ctx);
+    antlrcpp::Any visitAudit_class_name(TSqlParser::Audit_class_nameContext *ctx);
 
-    antlrcpp::Any visitInsert_with_table_hints(tsqlParser::Insert_with_table_hintsContext *ctx);
+    antlrcpp::Any visitAudit_securable(TSqlParser::Audit_securableContext *ctx);
 
-    antlrcpp::Any visitTable_hint(tsqlParser::Table_hintContext *ctx);
+    antlrcpp::Any visitAlter_db_role(TSqlParser::Alter_db_roleContext *ctx);
 
-    antlrcpp::Any visitIndex_value(tsqlParser::Index_valueContext *ctx);
+    antlrcpp::Any visitCreate_database_audit_specification(TSqlParser::Create_database_audit_specificationContext *ctx);
 
-    antlrcpp::Any visitColumn_alias_list(tsqlParser::Column_alias_listContext *ctx);
+    antlrcpp::Any visitCreate_db_role(TSqlParser::Create_db_roleContext *ctx);
 
-    antlrcpp::Any visitColumn_alias(tsqlParser::Column_aliasContext *ctx);
+    antlrcpp::Any visitCreate_route(TSqlParser::Create_routeContext *ctx);
 
-    antlrcpp::Any visitA_star(tsqlParser::A_starContext *ctx);
+    antlrcpp::Any visitCreate_rule(TSqlParser::Create_ruleContext *ctx);
 
-    antlrcpp::Any visitTable_value_constructor(tsqlParser::Table_value_constructorContext *ctx);
+    antlrcpp::Any visitAlter_schema_sql(TSqlParser::Alter_schema_sqlContext *ctx);
 
-    antlrcpp::Any visitExpression_list(tsqlParser::Expression_listContext *ctx);
+    antlrcpp::Any visitCreate_schema(TSqlParser::Create_schemaContext *ctx);
 
-    antlrcpp::Any visitValue_list(tsqlParser::Value_listContext *ctx);
+    antlrcpp::Any visitCreate_schema_azure_sql_dw_and_pdw(TSqlParser::Create_schema_azure_sql_dw_and_pdwContext *ctx);
 
-    antlrcpp::Any visitNext_value_for(tsqlParser::Next_value_forContext *ctx);
+    antlrcpp::Any visitAlter_schema_azure_sql_dw_and_pdw(TSqlParser::Alter_schema_azure_sql_dw_and_pdwContext *ctx);
 
-    antlrcpp::Any visitNext_value_for_function(tsqlParser::Next_value_for_functionContext *ctx);
+    antlrcpp::Any visitCreate_search_property_list(TSqlParser::Create_search_property_listContext *ctx);
 
-    antlrcpp::Any visitRanking_windowed_function(tsqlParser::Ranking_windowed_functionContext *ctx);
+    antlrcpp::Any visitCreate_security_policy(TSqlParser::Create_security_policyContext *ctx);
 
-    antlrcpp::Any visitAggregate_windowed_function(tsqlParser::Aggregate_windowed_functionContext *ctx);
+    antlrcpp::Any visitAlter_sequence(TSqlParser::Alter_sequenceContext *ctx);
 
-    antlrcpp::Any visitAll_distinct(tsqlParser::All_distinctContext *ctx);
+    antlrcpp::Any visitCreate_sequence(TSqlParser::Create_sequenceContext *ctx);
 
-    antlrcpp::Any visitOver_clause(tsqlParser::Over_clauseContext *ctx);
+    antlrcpp::Any visitAlter_server_audit(TSqlParser::Alter_server_auditContext *ctx);
 
-    antlrcpp::Any visitRow_or_range_clause(tsqlParser::Row_or_range_clauseContext *ctx);
+    antlrcpp::Any visitCreate_server_audit(TSqlParser::Create_server_auditContext *ctx);
 
-    antlrcpp::Any visitWindow_frame_extent(tsqlParser::Window_frame_extentContext *ctx);
+    antlrcpp::Any visitAlter_server_audit_specification(TSqlParser::Alter_server_audit_specificationContext *ctx);
 
-    antlrcpp::Any visitWindow_frame_bound(tsqlParser::Window_frame_boundContext *ctx);
+    antlrcpp::Any visitCreate_server_audit_specification(TSqlParser::Create_server_audit_specificationContext *ctx);
 
-    antlrcpp::Any visitWindow_frame_preceding(tsqlParser::Window_frame_precedingContext *ctx);
+    antlrcpp::Any visitAlter_server_configuration(TSqlParser::Alter_server_configurationContext *ctx);
 
-    antlrcpp::Any visitWindow_frame_following(tsqlParser::Window_frame_followingContext *ctx);
+    antlrcpp::Any visitAlter_server_role(TSqlParser::Alter_server_roleContext *ctx);
 
-    antlrcpp::Any visitCreate_database_option(tsqlParser::Create_database_optionContext *ctx);
+    antlrcpp::Any visitCreate_server_role(TSqlParser::Create_server_roleContext *ctx);
 
-    antlrcpp::Any visitDatabase_filestream_option(tsqlParser::Database_filestream_optionContext *ctx);
+    antlrcpp::Any visitAlter_server_role_pdw(TSqlParser::Alter_server_role_pdwContext *ctx);
 
-    antlrcpp::Any visitDatabase_file_spec(tsqlParser::Database_file_specContext *ctx);
+    antlrcpp::Any visitAlter_service(TSqlParser::Alter_serviceContext *ctx);
 
-    antlrcpp::Any visitFile_group(tsqlParser::File_groupContext *ctx);
+    antlrcpp::Any visitOpt_arg_clause(TSqlParser::Opt_arg_clauseContext *ctx);
 
-    antlrcpp::Any visitFile_spec(tsqlParser::File_specContext *ctx);
+    antlrcpp::Any visitCreate_service(TSqlParser::Create_serviceContext *ctx);
 
-    antlrcpp::Any visitFull_table_name(tsqlParser::Full_table_nameContext *ctx);
+    antlrcpp::Any visitAlter_service_master_key(TSqlParser::Alter_service_master_keyContext *ctx);
 
-    antlrcpp::Any visitSimple_name(tsqlParser::Simple_nameContext *ctx);
+    antlrcpp::Any visitAlter_symmetric_key(TSqlParser::Alter_symmetric_keyContext *ctx);
 
-    antlrcpp::Any visitFunc_proc_name(tsqlParser::Func_proc_nameContext *ctx);
+    antlrcpp::Any visitCreate_synonym(TSqlParser::Create_synonymContext *ctx);
 
-    antlrcpp::Any visitDdl_object(tsqlParser::Ddl_objectContext *ctx);
+    antlrcpp::Any visitAlter_user(TSqlParser::Alter_userContext *ctx);
 
-    antlrcpp::Any visitFull_column_name(tsqlParser::Full_column_nameContext *ctx);
+    antlrcpp::Any visitCreate_user(TSqlParser::Create_userContext *ctx);
 
-    antlrcpp::Any visitColumn_name_list(tsqlParser::Column_name_listContext *ctx);
+    antlrcpp::Any visitCreate_user_azure_sql_dw(TSqlParser::Create_user_azure_sql_dwContext *ctx);
 
-    antlrcpp::Any visitCursor_name(tsqlParser::Cursor_nameContext *ctx);
+    antlrcpp::Any visitAlter_user_azure_sql(TSqlParser::Alter_user_azure_sqlContext *ctx);
 
-    antlrcpp::Any visitOn_off(tsqlParser::On_offContext *ctx);
+    antlrcpp::Any visitAlter_workload_group(TSqlParser::Alter_workload_groupContext *ctx);
 
-    antlrcpp::Any visitClustered(tsqlParser::ClusteredContext *ctx);
+    antlrcpp::Any visitCreate_workload_group(TSqlParser::Create_workload_groupContext *ctx);
 
-    antlrcpp::Any visitNull_notnull(tsqlParser::Null_notnullContext *ctx);
+    antlrcpp::Any visitCreate_xml_schema_collection(TSqlParser::Create_xml_schema_collectionContext *ctx);
 
-    antlrcpp::Any visitScalar_function_name(tsqlParser::Scalar_function_nameContext *ctx);
+    antlrcpp::Any visitCreate_partition_function(TSqlParser::Create_partition_functionContext *ctx);
 
-    antlrcpp::Any visitDefault_value(tsqlParser::Default_valueContext *ctx);
+    antlrcpp::Any visitCreate_partition_scheme(TSqlParser::Create_partition_schemeContext *ctx);
 
-    antlrcpp::Any visitConstant(tsqlParser::ConstantContext *ctx);
+    antlrcpp::Any visitCreate_queue(TSqlParser::Create_queueContext *ctx);
 
-    antlrcpp::Any visitSign(tsqlParser::SignContext *ctx);
+    antlrcpp::Any visitQueue_settings(TSqlParser::Queue_settingsContext *ctx);
 
-    antlrcpp::Any visitR_id(tsqlParser::R_idContext *ctx);
+    antlrcpp::Any visitAlter_queue(TSqlParser::Alter_queueContext *ctx);
 
-    antlrcpp::Any visitSimple_id(tsqlParser::Simple_idContext *ctx);
+    antlrcpp::Any visitQueue_action(TSqlParser::Queue_actionContext *ctx);
 
-    antlrcpp::Any visitComparison_operator(tsqlParser::Comparison_operatorContext *ctx);
+    antlrcpp::Any visitQueue_rebuild_options(TSqlParser::Queue_rebuild_optionsContext *ctx);
 
-    antlrcpp::Any visitAssignment_operator(tsqlParser::Assignment_operatorContext *ctx);
+    antlrcpp::Any visitCreate_contract(TSqlParser::Create_contractContext *ctx);
 
-    antlrcpp::Any visitFile_size(tsqlParser::File_sizeContext *ctx);
+    antlrcpp::Any visitConversation_statement(TSqlParser::Conversation_statementContext *ctx);
 
-    antlrcpp::Any visitCreate_or_alter_procedure(tsqlParser::Create_or_alter_procedureContext *ctx);
+    antlrcpp::Any visitMessage_statement(TSqlParser::Message_statementContext *ctx);
 
-    antlrcpp::Any visitCreate_or_alter_function(tsqlParser::Create_or_alter_functionContext *ctx);
+    antlrcpp::Any visitMerge_statement(TSqlParser::Merge_statementContext *ctx);
 
-    antlrcpp::Any visitFunc_body_returns_select(tsqlParser::Func_body_returns_selectContext *ctx);
+    antlrcpp::Any visitWhen_matches(TSqlParser::When_matchesContext *ctx);
 
-    antlrcpp::Any visitFunc_body_returns_table(tsqlParser::Func_body_returns_tableContext *ctx);
+    antlrcpp::Any visitMerge_matched(TSqlParser::Merge_matchedContext *ctx);
 
-    antlrcpp::Any visitFunc_body_returns_scalar(tsqlParser::Func_body_returns_scalarContext *ctx);
+    antlrcpp::Any visitMerge_not_matched(TSqlParser::Merge_not_matchedContext *ctx);
 
-    antlrcpp::Any visitProcedure_param(tsqlParser::Procedure_paramContext *ctx);
+    antlrcpp::Any visitDelete_statement(TSqlParser::Delete_statementContext *ctx);
 
-    antlrcpp::Any visitProcedure_option(tsqlParser::Procedure_optionContext *ctx);
+    antlrcpp::Any visitDelete_statement_from(TSqlParser::Delete_statement_fromContext *ctx);
 
-    antlrcpp::Any visitFunction_option(tsqlParser::Function_optionContext *ctx);
+    antlrcpp::Any visitInsert_statement(TSqlParser::Insert_statementContext *ctx);
 
-    antlrcpp::Any visitPercentile_cont(tsqlParser::Percentile_contContext *ctx);
+    antlrcpp::Any visitInsert_statement_value(TSqlParser::Insert_statement_valueContext *ctx);
 
-    antlrcpp::Any visitString_agg(tsqlParser::String_aggContext *ctx);
+    antlrcpp::Any visitReceive_statement(TSqlParser::Receive_statementContext *ctx);
 
-    antlrcpp::Any visitData_type(tsqlParser::Data_typeContext *ctx);
+    antlrcpp::Any visitSelect_statement_standalone(TSqlParser::Select_statement_standaloneContext *ctx);
+
+    antlrcpp::Any visitSelect_statement(TSqlParser::Select_statementContext *ctx);
+
+    antlrcpp::Any visitTime(TSqlParser::TimeContext *ctx);
+
+    antlrcpp::Any visitUpdate_statement(TSqlParser::Update_statementContext *ctx);
+
+    antlrcpp::Any visitOutput_clause(TSqlParser::Output_clauseContext *ctx);
+
+    antlrcpp::Any visitOutput_dml_list_elem(TSqlParser::Output_dml_list_elemContext *ctx);
+
+    antlrcpp::Any visitCreate_database(TSqlParser::Create_databaseContext *ctx);
+
+    antlrcpp::Any visitCreate_index(TSqlParser::Create_indexContext *ctx);
+
+    antlrcpp::Any visitCreate_index_options(TSqlParser::Create_index_optionsContext *ctx);
+
+    antlrcpp::Any visitRelational_index_option(TSqlParser::Relational_index_optionContext *ctx);
+
+    antlrcpp::Any visitAlter_index(TSqlParser::Alter_indexContext *ctx);
+
+    antlrcpp::Any visitResumable_index_options(TSqlParser::Resumable_index_optionsContext *ctx);
+
+    antlrcpp::Any visitResumable_index_option(TSqlParser::Resumable_index_optionContext *ctx);
+
+    antlrcpp::Any visitReorganize_partition(TSqlParser::Reorganize_partitionContext *ctx);
+
+    antlrcpp::Any visitReorganize_options(TSqlParser::Reorganize_optionsContext *ctx);
+
+    antlrcpp::Any visitReorganize_option(TSqlParser::Reorganize_optionContext *ctx);
+
+    antlrcpp::Any visitSet_index_options(TSqlParser::Set_index_optionsContext *ctx);
+
+    antlrcpp::Any visitSet_index_option(TSqlParser::Set_index_optionContext *ctx);
+
+    antlrcpp::Any visitRebuild_partition(TSqlParser::Rebuild_partitionContext *ctx);
+
+    antlrcpp::Any visitRebuild_index_options(TSqlParser::Rebuild_index_optionsContext *ctx);
+
+    antlrcpp::Any visitRebuild_index_option(TSqlParser::Rebuild_index_optionContext *ctx);
+
+    antlrcpp::Any visitSingle_partition_rebuild_index_options(TSqlParser::Single_partition_rebuild_index_optionsContext *ctx);
+
+    antlrcpp::Any visitSingle_partition_rebuild_index_option(TSqlParser::Single_partition_rebuild_index_optionContext *ctx);
+
+    antlrcpp::Any visitOn_partitions(TSqlParser::On_partitionsContext *ctx);
+
+    antlrcpp::Any visitCreate_columnstore_index(TSqlParser::Create_columnstore_indexContext *ctx);
+
+    antlrcpp::Any visitCreate_columnstore_index_options(TSqlParser::Create_columnstore_index_optionsContext *ctx);
+
+    antlrcpp::Any visitColumnstore_index_option(TSqlParser::Columnstore_index_optionContext *ctx);
+
+    antlrcpp::Any visitCreate_nonclustered_columnstore_index(TSqlParser::Create_nonclustered_columnstore_indexContext *ctx);
+
+    antlrcpp::Any visitCreate_xml_index(TSqlParser::Create_xml_indexContext *ctx);
+
+    antlrcpp::Any visitXml_index_options(TSqlParser::Xml_index_optionsContext *ctx);
+
+    antlrcpp::Any visitXml_index_option(TSqlParser::Xml_index_optionContext *ctx);
+
+    antlrcpp::Any visitCreate_or_alter_procedure(TSqlParser::Create_or_alter_procedureContext *ctx);
+
+    antlrcpp::Any visitAs_external_name(TSqlParser::As_external_nameContext *ctx);
+
+    antlrcpp::Any visitCreate_or_alter_trigger(TSqlParser::Create_or_alter_triggerContext *ctx);
+
+    antlrcpp::Any visitCreate_or_alter_dml_trigger(TSqlParser::Create_or_alter_dml_triggerContext *ctx);
+
+    antlrcpp::Any visitDml_trigger_option(TSqlParser::Dml_trigger_optionContext *ctx);
+
+    antlrcpp::Any visitDml_trigger_operation(TSqlParser::Dml_trigger_operationContext *ctx);
+
+    antlrcpp::Any visitCreate_or_alter_ddl_trigger(TSqlParser::Create_or_alter_ddl_triggerContext *ctx);
+
+    antlrcpp::Any visitDdl_trigger_operation(TSqlParser::Ddl_trigger_operationContext *ctx);
+
+    antlrcpp::Any visitCreate_or_alter_function(TSqlParser::Create_or_alter_functionContext *ctx);
+
+    antlrcpp::Any visitFunc_body_returns_select(TSqlParser::Func_body_returns_selectContext *ctx);
+
+    antlrcpp::Any visitFunc_body_returns_table(TSqlParser::Func_body_returns_tableContext *ctx);
+
+    antlrcpp::Any visitFunc_body_returns_scalar(TSqlParser::Func_body_returns_scalarContext *ctx);
+
+    antlrcpp::Any visitProcedure_param_default_value(TSqlParser::Procedure_param_default_valueContext *ctx);
+
+    antlrcpp::Any visitProcedure_param(TSqlParser::Procedure_paramContext *ctx);
+
+    antlrcpp::Any visitProcedure_option(TSqlParser::Procedure_optionContext *ctx);
+
+    antlrcpp::Any visitFunction_option(TSqlParser::Function_optionContext *ctx);
+
+    antlrcpp::Any visitCreate_statistics(TSqlParser::Create_statisticsContext *ctx);
+
+    antlrcpp::Any visitUpdate_statistics(TSqlParser::Update_statisticsContext *ctx);
+
+    antlrcpp::Any visitUpdate_statistics_options(TSqlParser::Update_statistics_optionsContext *ctx);
+
+    antlrcpp::Any visitUpdate_statistics_option(TSqlParser::Update_statistics_optionContext *ctx);
+
+    antlrcpp::Any visitCreate_table(TSqlParser::Create_tableContext *ctx);
+
+    antlrcpp::Any visitTable_indices(TSqlParser::Table_indicesContext *ctx);
+
+    antlrcpp::Any visitTable_options(TSqlParser::Table_optionsContext *ctx);
+
+    antlrcpp::Any visitTable_option(TSqlParser::Table_optionContext *ctx);
+
+    antlrcpp::Any visitCreate_table_index_options(TSqlParser::Create_table_index_optionsContext *ctx);
+
+    antlrcpp::Any visitCreate_table_index_option(TSqlParser::Create_table_index_optionContext *ctx);
+
+    antlrcpp::Any visitCreate_view(TSqlParser::Create_viewContext *ctx);
+
+    antlrcpp::Any visitView_attribute(TSqlParser::View_attributeContext *ctx);
+
+    antlrcpp::Any visitAlter_table(TSqlParser::Alter_tableContext *ctx);
+
+    antlrcpp::Any visitSwitch_partition(TSqlParser::Switch_partitionContext *ctx);
+
+    antlrcpp::Any visitLow_priority_lock_wait(TSqlParser::Low_priority_lock_waitContext *ctx);
+
+    antlrcpp::Any visitAlter_database(TSqlParser::Alter_databaseContext *ctx);
+
+    antlrcpp::Any visitAdd_or_modify_files(TSqlParser::Add_or_modify_filesContext *ctx);
+
+    antlrcpp::Any visitFilespec(TSqlParser::FilespecContext *ctx);
+
+    antlrcpp::Any visitAdd_or_modify_filegroups(TSqlParser::Add_or_modify_filegroupsContext *ctx);
+
+    antlrcpp::Any visitFilegroup_updatability_option(TSqlParser::Filegroup_updatability_optionContext *ctx);
+
+    antlrcpp::Any visitDatabase_optionspec(TSqlParser::Database_optionspecContext *ctx);
+
+    antlrcpp::Any visitAuto_option(TSqlParser::Auto_optionContext *ctx);
+
+    antlrcpp::Any visitChange_tracking_option(TSqlParser::Change_tracking_optionContext *ctx);
+
+    antlrcpp::Any visitChange_tracking_option_list(TSqlParser::Change_tracking_option_listContext *ctx);
+
+    antlrcpp::Any visitContainment_option(TSqlParser::Containment_optionContext *ctx);
+
+    antlrcpp::Any visitCursor_option(TSqlParser::Cursor_optionContext *ctx);
+
+    antlrcpp::Any visitAlter_endpoint(TSqlParser::Alter_endpointContext *ctx);
+
+    antlrcpp::Any visitDatabase_mirroring_option(TSqlParser::Database_mirroring_optionContext *ctx);
+
+    antlrcpp::Any visitMirroring_set_option(TSqlParser::Mirroring_set_optionContext *ctx);
+
+    antlrcpp::Any visitMirroring_partner(TSqlParser::Mirroring_partnerContext *ctx);
+
+    antlrcpp::Any visitMirroring_witness(TSqlParser::Mirroring_witnessContext *ctx);
+
+    antlrcpp::Any visitWitness_partner_equal(TSqlParser::Witness_partner_equalContext *ctx);
+
+    antlrcpp::Any visitPartner_option(TSqlParser::Partner_optionContext *ctx);
+
+    antlrcpp::Any visitWitness_option(TSqlParser::Witness_optionContext *ctx);
+
+    antlrcpp::Any visitWitness_server(TSqlParser::Witness_serverContext *ctx);
+
+    antlrcpp::Any visitPartner_server(TSqlParser::Partner_serverContext *ctx);
+
+    antlrcpp::Any visitMirroring_host_port_seperator(TSqlParser::Mirroring_host_port_seperatorContext *ctx);
+
+    antlrcpp::Any visitPartner_server_tcp_prefix(TSqlParser::Partner_server_tcp_prefixContext *ctx);
+
+    antlrcpp::Any visitPort_number(TSqlParser::Port_numberContext *ctx);
+
+    antlrcpp::Any visitHost(TSqlParser::HostContext *ctx);
+
+    antlrcpp::Any visitDate_correlation_optimization_option(TSqlParser::Date_correlation_optimization_optionContext *ctx);
+
+    antlrcpp::Any visitDb_encryption_option(TSqlParser::Db_encryption_optionContext *ctx);
+
+    antlrcpp::Any visitDb_state_option(TSqlParser::Db_state_optionContext *ctx);
+
+    antlrcpp::Any visitDb_update_option(TSqlParser::Db_update_optionContext *ctx);
+
+    antlrcpp::Any visitDb_user_access_option(TSqlParser::Db_user_access_optionContext *ctx);
+
+    antlrcpp::Any visitDelayed_durability_option(TSqlParser::Delayed_durability_optionContext *ctx);
+
+    antlrcpp::Any visitExternal_access_option(TSqlParser::External_access_optionContext *ctx);
+
+    antlrcpp::Any visitHadr_options(TSqlParser::Hadr_optionsContext *ctx);
+
+    antlrcpp::Any visitMixed_page_allocation_option(TSqlParser::Mixed_page_allocation_optionContext *ctx);
+
+    antlrcpp::Any visitParameterization_option(TSqlParser::Parameterization_optionContext *ctx);
+
+    antlrcpp::Any visitRecovery_option(TSqlParser::Recovery_optionContext *ctx);
+
+    antlrcpp::Any visitService_broker_option(TSqlParser::Service_broker_optionContext *ctx);
+
+    antlrcpp::Any visitSnapshot_option(TSqlParser::Snapshot_optionContext *ctx);
+
+    antlrcpp::Any visitSql_option(TSqlParser::Sql_optionContext *ctx);
+
+    antlrcpp::Any visitTarget_recovery_time_option(TSqlParser::Target_recovery_time_optionContext *ctx);
+
+    antlrcpp::Any visitTermination(TSqlParser::TerminationContext *ctx);
+
+    antlrcpp::Any visitDrop_index(TSqlParser::Drop_indexContext *ctx);
+
+    antlrcpp::Any visitDrop_relational_or_xml_or_spatial_index(TSqlParser::Drop_relational_or_xml_or_spatial_indexContext *ctx);
+
+    antlrcpp::Any visitDrop_backward_compatible_index(TSqlParser::Drop_backward_compatible_indexContext *ctx);
+
+    antlrcpp::Any visitDrop_procedure(TSqlParser::Drop_procedureContext *ctx);
+
+    antlrcpp::Any visitDrop_trigger(TSqlParser::Drop_triggerContext *ctx);
+
+    antlrcpp::Any visitDrop_dml_trigger(TSqlParser::Drop_dml_triggerContext *ctx);
+
+    antlrcpp::Any visitDrop_ddl_trigger(TSqlParser::Drop_ddl_triggerContext *ctx);
+
+    antlrcpp::Any visitDrop_function(TSqlParser::Drop_functionContext *ctx);
+
+    antlrcpp::Any visitDrop_statistics(TSqlParser::Drop_statisticsContext *ctx);
+
+    antlrcpp::Any visitDrop_table(TSqlParser::Drop_tableContext *ctx);
+
+    antlrcpp::Any visitDrop_view(TSqlParser::Drop_viewContext *ctx);
+
+    antlrcpp::Any visitCreate_type(TSqlParser::Create_typeContext *ctx);
+
+    antlrcpp::Any visitDrop_type(TSqlParser::Drop_typeContext *ctx);
+
+    antlrcpp::Any visitRowset_function_limited(TSqlParser::Rowset_function_limitedContext *ctx);
+
+    antlrcpp::Any visitOpenquery(TSqlParser::OpenqueryContext *ctx);
+
+    antlrcpp::Any visitOpendatasource(TSqlParser::OpendatasourceContext *ctx);
+
+    antlrcpp::Any visitDeclare_statement(TSqlParser::Declare_statementContext *ctx);
+
+    antlrcpp::Any visitXml_declaration(TSqlParser::Xml_declarationContext *ctx);
+
+    antlrcpp::Any visitCursor_statement(TSqlParser::Cursor_statementContext *ctx);
+
+    antlrcpp::Any visitBackup_database(TSqlParser::Backup_databaseContext *ctx);
+
+    antlrcpp::Any visitBackup_log(TSqlParser::Backup_logContext *ctx);
+
+    antlrcpp::Any visitBackup_certificate(TSqlParser::Backup_certificateContext *ctx);
+
+    antlrcpp::Any visitBackup_master_key(TSqlParser::Backup_master_keyContext *ctx);
+
+    antlrcpp::Any visitBackup_service_master_key(TSqlParser::Backup_service_master_keyContext *ctx);
+
+    antlrcpp::Any visitKill_statement(TSqlParser::Kill_statementContext *ctx);
+
+    antlrcpp::Any visitKill_process(TSqlParser::Kill_processContext *ctx);
+
+    antlrcpp::Any visitKill_query_notification(TSqlParser::Kill_query_notificationContext *ctx);
+
+    antlrcpp::Any visitKill_stats_job(TSqlParser::Kill_stats_jobContext *ctx);
+
+    antlrcpp::Any visitExecute_statement(TSqlParser::Execute_statementContext *ctx);
+
+    antlrcpp::Any visitExecute_body_batch(TSqlParser::Execute_body_batchContext *ctx);
+
+    antlrcpp::Any visitExecute_body(TSqlParser::Execute_bodyContext *ctx);
+
+    antlrcpp::Any visitExecute_statement_arg(TSqlParser::Execute_statement_argContext *ctx);
+
+    antlrcpp::Any visitExecute_statement_arg_named(TSqlParser::Execute_statement_arg_namedContext *ctx);
+
+    antlrcpp::Any visitExecute_statement_arg_unnamed(TSqlParser::Execute_statement_arg_unnamedContext *ctx);
+
+    antlrcpp::Any visitExecute_parameter(TSqlParser::Execute_parameterContext *ctx);
+
+    antlrcpp::Any visitExecute_var_string(TSqlParser::Execute_var_stringContext *ctx);
+
+    antlrcpp::Any visitSecurity_statement(TSqlParser::Security_statementContext *ctx);
+
+    antlrcpp::Any visitPrincipal_id(TSqlParser::Principal_idContext *ctx);
+
+    antlrcpp::Any visitCreate_certificate(TSqlParser::Create_certificateContext *ctx);
+
+    antlrcpp::Any visitExisting_keys(TSqlParser::Existing_keysContext *ctx);
+
+    antlrcpp::Any visitPrivate_key_options(TSqlParser::Private_key_optionsContext *ctx);
+
+    antlrcpp::Any visitGenerate_new_keys(TSqlParser::Generate_new_keysContext *ctx);
+
+    antlrcpp::Any visitDate_options(TSqlParser::Date_optionsContext *ctx);
+
+    antlrcpp::Any visitOpen_key(TSqlParser::Open_keyContext *ctx);
+
+    antlrcpp::Any visitClose_key(TSqlParser::Close_keyContext *ctx);
+
+    antlrcpp::Any visitCreate_key(TSqlParser::Create_keyContext *ctx);
+
+    antlrcpp::Any visitKey_options(TSqlParser::Key_optionsContext *ctx);
+
+    antlrcpp::Any visitAlgorithm(TSqlParser::AlgorithmContext *ctx);
+
+    antlrcpp::Any visitEncryption_mechanism(TSqlParser::Encryption_mechanismContext *ctx);
+
+    antlrcpp::Any visitDecryption_mechanism(TSqlParser::Decryption_mechanismContext *ctx);
+
+    antlrcpp::Any visitGrant_permission(TSqlParser::Grant_permissionContext *ctx);
+
+    antlrcpp::Any visitSet_statement(TSqlParser::Set_statementContext *ctx);
+
+    antlrcpp::Any visitTransaction_statement(TSqlParser::Transaction_statementContext *ctx);
+
+    antlrcpp::Any visitGo_statement(TSqlParser::Go_statementContext *ctx);
+
+    antlrcpp::Any visitUse_statement(TSqlParser::Use_statementContext *ctx);
+
+    antlrcpp::Any visitSetuser_statement(TSqlParser::Setuser_statementContext *ctx);
+
+    antlrcpp::Any visitReconfigure_statement(TSqlParser::Reconfigure_statementContext *ctx);
+
+    antlrcpp::Any visitShutdown_statement(TSqlParser::Shutdown_statementContext *ctx);
+
+    antlrcpp::Any visitCheckpoint_statement(TSqlParser::Checkpoint_statementContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkalloc_option(TSqlParser::Dbcc_checkalloc_optionContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkalloc(TSqlParser::Dbcc_checkallocContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkcatalog(TSqlParser::Dbcc_checkcatalogContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkconstraints_option(TSqlParser::Dbcc_checkconstraints_optionContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkconstraints(TSqlParser::Dbcc_checkconstraintsContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkdb_table_option(TSqlParser::Dbcc_checkdb_table_optionContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkdb(TSqlParser::Dbcc_checkdbContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkfilegroup_option(TSqlParser::Dbcc_checkfilegroup_optionContext *ctx);
+
+    antlrcpp::Any visitDbcc_checkfilegroup(TSqlParser::Dbcc_checkfilegroupContext *ctx);
+
+    antlrcpp::Any visitDbcc_checktable(TSqlParser::Dbcc_checktableContext *ctx);
+
+    antlrcpp::Any visitDbcc_cleantable(TSqlParser::Dbcc_cleantableContext *ctx);
+
+    antlrcpp::Any visitDbcc_clonedatabase_option(TSqlParser::Dbcc_clonedatabase_optionContext *ctx);
+
+    antlrcpp::Any visitDbcc_clonedatabase(TSqlParser::Dbcc_clonedatabaseContext *ctx);
+
+    antlrcpp::Any visitDbcc_pdw_showspaceused(TSqlParser::Dbcc_pdw_showspaceusedContext *ctx);
+
+    antlrcpp::Any visitDbcc_proccache(TSqlParser::Dbcc_proccacheContext *ctx);
+
+    antlrcpp::Any visitDbcc_showcontig_option(TSqlParser::Dbcc_showcontig_optionContext *ctx);
+
+    antlrcpp::Any visitDbcc_showcontig(TSqlParser::Dbcc_showcontigContext *ctx);
+
+    antlrcpp::Any visitDbcc_shrinklog(TSqlParser::Dbcc_shrinklogContext *ctx);
+
+    antlrcpp::Any visitDbcc_dbreindex(TSqlParser::Dbcc_dbreindexContext *ctx);
+
+    antlrcpp::Any visitDbcc_dll_free(TSqlParser::Dbcc_dll_freeContext *ctx);
+
+    antlrcpp::Any visitDbcc_dropcleanbuffers(TSqlParser::Dbcc_dropcleanbuffersContext *ctx);
+
+    antlrcpp::Any visitDbcc_clause(TSqlParser::Dbcc_clauseContext *ctx);
+
+    antlrcpp::Any visitExecute_clause(TSqlParser::Execute_clauseContext *ctx);
+
+    antlrcpp::Any visitDeclare_local(TSqlParser::Declare_localContext *ctx);
+
+    antlrcpp::Any visitTable_type_definition(TSqlParser::Table_type_definitionContext *ctx);
+
+    antlrcpp::Any visitTable_type_indices(TSqlParser::Table_type_indicesContext *ctx);
+
+    antlrcpp::Any visitXml_type_definition(TSqlParser::Xml_type_definitionContext *ctx);
+
+    antlrcpp::Any visitXml_schema_collection(TSqlParser::Xml_schema_collectionContext *ctx);
+
+    antlrcpp::Any visitColumn_def_table_constraints(TSqlParser::Column_def_table_constraintsContext *ctx);
+
+    antlrcpp::Any visitColumn_def_table_constraint(TSqlParser::Column_def_table_constraintContext *ctx);
+
+    antlrcpp::Any visitColumn_definition(TSqlParser::Column_definitionContext *ctx);
+
+    antlrcpp::Any visitColumn_definition_element(TSqlParser::Column_definition_elementContext *ctx);
+
+    antlrcpp::Any visitColumn_modifier(TSqlParser::Column_modifierContext *ctx);
+
+    antlrcpp::Any visitMaterialized_column_definition(TSqlParser::Materialized_column_definitionContext *ctx);
+
+    antlrcpp::Any visitColumn_constraint(TSqlParser::Column_constraintContext *ctx);
+
+    antlrcpp::Any visitColumn_index(TSqlParser::Column_indexContext *ctx);
+
+    antlrcpp::Any visitOn_partition_or_filegroup(TSqlParser::On_partition_or_filegroupContext *ctx);
+
+    antlrcpp::Any visitTable_constraint(TSqlParser::Table_constraintContext *ctx);
+
+    antlrcpp::Any visitConnection_node(TSqlParser::Connection_nodeContext *ctx);
+
+    antlrcpp::Any visitPrimary_key_options(TSqlParser::Primary_key_optionsContext *ctx);
+
+    antlrcpp::Any visitForeign_key_options(TSqlParser::Foreign_key_optionsContext *ctx);
+
+    antlrcpp::Any visitCheck_constraint(TSqlParser::Check_constraintContext *ctx);
+
+    antlrcpp::Any visitOn_delete(TSqlParser::On_deleteContext *ctx);
+
+    antlrcpp::Any visitOn_update(TSqlParser::On_updateContext *ctx);
+
+    antlrcpp::Any visitAlter_table_index_options(TSqlParser::Alter_table_index_optionsContext *ctx);
+
+    antlrcpp::Any visitAlter_table_index_option(TSqlParser::Alter_table_index_optionContext *ctx);
+
+    antlrcpp::Any visitDeclare_cursor(TSqlParser::Declare_cursorContext *ctx);
+
+    antlrcpp::Any visitDeclare_set_cursor_common(TSqlParser::Declare_set_cursor_commonContext *ctx);
+
+    antlrcpp::Any visitDeclare_set_cursor_common_partial(TSqlParser::Declare_set_cursor_common_partialContext *ctx);
+
+    antlrcpp::Any visitFetch_cursor(TSqlParser::Fetch_cursorContext *ctx);
+
+    antlrcpp::Any visitSet_special(TSqlParser::Set_specialContext *ctx);
+
+    antlrcpp::Any visitSpecial_list(TSqlParser::Special_listContext *ctx);
+
+    antlrcpp::Any visitConstant_LOCAL_ID(TSqlParser::Constant_LOCAL_IDContext *ctx);
+
+    antlrcpp::Any visitExpression(TSqlParser::ExpressionContext *ctx);
+
+    antlrcpp::Any visitParameter(TSqlParser::ParameterContext *ctx);
+
+    antlrcpp::Any visitTime_zone(TSqlParser::Time_zoneContext *ctx);
+
+    antlrcpp::Any visitPrimitive_expression(TSqlParser::Primitive_expressionContext *ctx);
+
+    antlrcpp::Any visitCase_expression(TSqlParser::Case_expressionContext *ctx);
+
+    antlrcpp::Any visitUnary_operator_expression(TSqlParser::Unary_operator_expressionContext *ctx);
+
+    antlrcpp::Any visitBracket_expression(TSqlParser::Bracket_expressionContext *ctx);
+
+    antlrcpp::Any visitSubquery(TSqlParser::SubqueryContext *ctx);
+
+    antlrcpp::Any visitWith_expression(TSqlParser::With_expressionContext *ctx);
+
+    antlrcpp::Any visitCommon_table_expression(TSqlParser::Common_table_expressionContext *ctx);
+
+    antlrcpp::Any visitUpdate_elem(TSqlParser::Update_elemContext *ctx);
+
+    antlrcpp::Any visitUpdate_elem_merge(TSqlParser::Update_elem_mergeContext *ctx);
+
+    antlrcpp::Any visitSearch_condition(TSqlParser::Search_conditionContext *ctx);
+
+    antlrcpp::Any visitPredicate(TSqlParser::PredicateContext *ctx);
+
+    antlrcpp::Any visitQuery_expression(TSqlParser::Query_expressionContext *ctx);
+
+    antlrcpp::Any visitSql_union(TSqlParser::Sql_unionContext *ctx);
+
+    antlrcpp::Any visitQuery_specification(TSqlParser::Query_specificationContext *ctx);
+
+    antlrcpp::Any visitTop_clause(TSqlParser::Top_clauseContext *ctx);
+
+    antlrcpp::Any visitTop_percent(TSqlParser::Top_percentContext *ctx);
+
+    antlrcpp::Any visitTop_count(TSqlParser::Top_countContext *ctx);
+
+    antlrcpp::Any visitOrder_by_clause(TSqlParser::Order_by_clauseContext *ctx);
+
+    antlrcpp::Any visitSelect_order_by_clause(TSqlParser::Select_order_by_clauseContext *ctx);
+
+    antlrcpp::Any visitFor_clause(TSqlParser::For_clauseContext *ctx);
+
+    antlrcpp::Any visitXml_common_directives(TSqlParser::Xml_common_directivesContext *ctx);
+
+    antlrcpp::Any visitOrder_by_expression(TSqlParser::Order_by_expressionContext *ctx);
+
+    antlrcpp::Any visitGrouping_sets_item(TSqlParser::Grouping_sets_itemContext *ctx);
+
+    antlrcpp::Any visitGroup_by_item(TSqlParser::Group_by_itemContext *ctx);
+
+    antlrcpp::Any visitOption_clause(TSqlParser::Option_clauseContext *ctx);
+
+    antlrcpp::Any visitOption(TSqlParser::OptionContext *ctx);
+
+    antlrcpp::Any visitOptimize_for_arg(TSqlParser::Optimize_for_argContext *ctx);
+
+    antlrcpp::Any visitSelect_list(TSqlParser::Select_listContext *ctx);
+
+    antlrcpp::Any visitUdt_method_arguments(TSqlParser::Udt_method_argumentsContext *ctx);
+
+    antlrcpp::Any visitAsterisk(TSqlParser::AsteriskContext *ctx);
+
+    antlrcpp::Any visitUdt_elem(TSqlParser::Udt_elemContext *ctx);
+
+    antlrcpp::Any visitExpression_elem(TSqlParser::Expression_elemContext *ctx);
+
+    antlrcpp::Any visitSelect_list_elem(TSqlParser::Select_list_elemContext *ctx);
+
+    antlrcpp::Any visitTable_sources(TSqlParser::Table_sourcesContext *ctx);
+
+    antlrcpp::Any visitNon_ansi_join(TSqlParser::Non_ansi_joinContext *ctx);
+
+    antlrcpp::Any visitTable_source(TSqlParser::Table_sourceContext *ctx);
+
+    antlrcpp::Any visitTable_source_item(TSqlParser::Table_source_itemContext *ctx);
+
+    antlrcpp::Any visitOpen_xml(TSqlParser::Open_xmlContext *ctx);
+
+    antlrcpp::Any visitOpen_json(TSqlParser::Open_jsonContext *ctx);
+
+    antlrcpp::Any visitJson_declaration(TSqlParser::Json_declarationContext *ctx);
+
+    antlrcpp::Any visitJson_column_declaration(TSqlParser::Json_column_declarationContext *ctx);
+
+    antlrcpp::Any visitSchema_declaration(TSqlParser::Schema_declarationContext *ctx);
+
+    antlrcpp::Any visitColumn_declaration(TSqlParser::Column_declarationContext *ctx);
+
+    antlrcpp::Any visitChange_table(TSqlParser::Change_tableContext *ctx);
+
+    antlrcpp::Any visitChange_table_changes(TSqlParser::Change_table_changesContext *ctx);
+
+    antlrcpp::Any visitChange_table_version(TSqlParser::Change_table_versionContext *ctx);
+
+    antlrcpp::Any visitJoin_part(TSqlParser::Join_partContext *ctx);
+
+    antlrcpp::Any visitJoin_on(TSqlParser::Join_onContext *ctx);
+
+    antlrcpp::Any visitCross_join(TSqlParser::Cross_joinContext *ctx);
+
+    antlrcpp::Any visitApply_(TSqlParser::Apply_Context *ctx);
+
+    antlrcpp::Any visitPivot(TSqlParser::PivotContext *ctx);
+
+    antlrcpp::Any visitUnpivot(TSqlParser::UnpivotContext *ctx);
+
+    antlrcpp::Any visitPivot_clause(TSqlParser::Pivot_clauseContext *ctx);
+
+    antlrcpp::Any visitUnpivot_clause(TSqlParser::Unpivot_clauseContext *ctx);
+
+    antlrcpp::Any visitFull_column_name_list(TSqlParser::Full_column_name_listContext *ctx);
+
+    antlrcpp::Any visitRowset_function(TSqlParser::Rowset_functionContext *ctx);
+
+    antlrcpp::Any visitBulk_option(TSqlParser::Bulk_optionContext *ctx);
+
+    antlrcpp::Any visitDerived_table(TSqlParser::Derived_tableContext *ctx);
+
+    antlrcpp::Any visitRANKING_WINDOWED_FUNC(TSqlParser::RANKING_WINDOWED_FUNCContext *ctx);
+
+    antlrcpp::Any visitBUILT_IN_FUNC(TSqlParser::BUILT_IN_FUNCContext *ctx);
+
+    antlrcpp::Any visitFREE_TEXT(TSqlParser::FREE_TEXTContext *ctx);
+
+    antlrcpp::Any visitANALYTIC_WINDOWED_FUNC(TSqlParser::ANALYTIC_WINDOWED_FUNCContext *ctx);
+
+    antlrcpp::Any visitSCALAR_FUNCTION(TSqlParser::SCALAR_FUNCTIONContext *ctx);
+
+    antlrcpp::Any visitPARTITION_FUNC(TSqlParser::PARTITION_FUNCContext *ctx);
+
+    antlrcpp::Any visitAGGREGATE_WINDOWED_FUNC(TSqlParser::AGGREGATE_WINDOWED_FUNCContext *ctx);
+
+    antlrcpp::Any visitHIERARCHYID_METHOD(TSqlParser::HIERARCHYID_METHODContext *ctx);
+
+    antlrcpp::Any visitPartition_function(TSqlParser::Partition_functionContext *ctx);
+
+    antlrcpp::Any visitFreetext_function(TSqlParser::Freetext_functionContext *ctx);
+
+    antlrcpp::Any visitFreetext_predicate(TSqlParser::Freetext_predicateContext *ctx);
+
+    antlrcpp::Any visitJson_key_value(TSqlParser::Json_key_valueContext *ctx);
+
+    antlrcpp::Any visitJson_null_clause(TSqlParser::Json_null_clauseContext *ctx);
+
+    antlrcpp::Any visitCOL_NAME(TSqlParser::COL_NAMEContext *ctx);
+
+    antlrcpp::Any visitCHECKSUM(TSqlParser::CHECKSUMContext *ctx);
+
+    antlrcpp::Any visitDECOMPRESS(TSqlParser::DECOMPRESSContext *ctx);
+
+    antlrcpp::Any visitCURRENT_TIMEZONE_ID(TSqlParser::CURRENT_TIMEZONE_IDContext *ctx);
+
+    antlrcpp::Any visitMONTH(TSqlParser::MONTHContext *ctx);
+
+    antlrcpp::Any visitRAND(TSqlParser::RANDContext *ctx);
+
+    antlrcpp::Any visitFORMAT(TSqlParser::FORMATContext *ctx);
+
+    antlrcpp::Any visitTRIM(TSqlParser::TRIMContext *ctx);
+
+    antlrcpp::Any visitLEAST(TSqlParser::LEASTContext *ctx);
+
+    antlrcpp::Any visitAPP_NAME(TSqlParser::APP_NAMEContext *ctx);
+
+    antlrcpp::Any visitUSER_ID(TSqlParser::USER_IDContext *ctx);
+
+    antlrcpp::Any visitFILE_NAME(TSqlParser::FILE_NAMEContext *ctx);
+
+    antlrcpp::Any visitSESSION_CONTEXT(TSqlParser::SESSION_CONTEXTContext *ctx);
+
+    antlrcpp::Any visitSTR(TSqlParser::STRContext *ctx);
+
+    antlrcpp::Any visitCONVERT(TSqlParser::CONVERTContext *ctx);
+
+    antlrcpp::Any visitXML_DATA_TYPE_FUNC(TSqlParser::XML_DATA_TYPE_FUNCContext *ctx);
+
+    antlrcpp::Any visitLOG10(TSqlParser::LOG10Context *ctx);
+
+    antlrcpp::Any visitFLOOR(TSqlParser::FLOORContext *ctx);
+
+    antlrcpp::Any visitYEAR(TSqlParser::YEARContext *ctx);
+
+    antlrcpp::Any visitPARSE(TSqlParser::PARSEContext *ctx);
+
+    antlrcpp::Any visitORIGINAL_LOGIN(TSqlParser::ORIGINAL_LOGINContext *ctx);
+
+    antlrcpp::Any visitMATH_SIGN(TSqlParser::MATH_SIGNContext *ctx);
+
+    antlrcpp::Any visitTIMEFROMPARTS(TSqlParser::TIMEFROMPARTSContext *ctx);
+
+    antlrcpp::Any visitLEFT(TSqlParser::LEFTContext *ctx);
+
+    antlrcpp::Any visitGET_FILESTREAM_TRANSACTION_CONTEXT(TSqlParser::GET_FILESTREAM_TRANSACTION_CONTEXTContext *ctx);
+
+    antlrcpp::Any visitFILEPROPERTY(TSqlParser::FILEPROPERTYContext *ctx);
+
+    antlrcpp::Any visitIDENT_SEED(TSqlParser::IDENT_SEEDContext *ctx);
+
+    antlrcpp::Any visitIDENTITY(TSqlParser::IDENTITYContext *ctx);
+
+    antlrcpp::Any visitCURRENT_TRANSACTION_ID(TSqlParser::CURRENT_TRANSACTION_IDContext *ctx);
+
+    antlrcpp::Any visitLTRIM(TSqlParser::LTRIMContext *ctx);
+
+    antlrcpp::Any visitROWCOUNT_BIG(TSqlParser::ROWCOUNT_BIGContext *ctx);
+
+    antlrcpp::Any visitCERTENCODED(TSqlParser::CERTENCODEDContext *ctx);
+
+    antlrcpp::Any visitJSON_VALUE(TSqlParser::JSON_VALUEContext *ctx);
+
+    antlrcpp::Any visitSYSDATETIME(TSqlParser::SYSDATETIMEContext *ctx);
+
+    antlrcpp::Any visitCERTPRIVATEKEY(TSqlParser::CERTPRIVATEKEYContext *ctx);
+
+    antlrcpp::Any visitSPACE(TSqlParser::SPACEContext *ctx);
+
+    antlrcpp::Any visitUPPER(TSqlParser::UPPERContext *ctx);
+
+    antlrcpp::Any visitABS(TSqlParser::ABSContext *ctx);
+
+    antlrcpp::Any visitISJSON(TSqlParser::ISJSONContext *ctx);
+
+    antlrcpp::Any visitHAS_PERMS_BY_NAME(TSqlParser::HAS_PERMS_BY_NAMEContext *ctx);
+
+    antlrcpp::Any visitSUSER_ID(TSqlParser::SUSER_IDContext *ctx);
+
+    antlrcpp::Any visitSCOPE_IDENTITY(TSqlParser::SCOPE_IDENTITYContext *ctx);
+
+    antlrcpp::Any visitJSON_QUERY(TSqlParser::JSON_QUERYContext *ctx);
+
+    antlrcpp::Any visitINDEX_COL(TSqlParser::INDEX_COLContext *ctx);
+
+    antlrcpp::Any visitDATABASE_PRINCIPAL_ID(TSqlParser::DATABASE_PRINCIPAL_IDContext *ctx);
+
+    antlrcpp::Any visitPATINDEX(TSqlParser::PATINDEXContext *ctx);
+
+    antlrcpp::Any visitFULLTEXTSERVICEPROPERTY(TSqlParser::FULLTEXTSERVICEPROPERTYContext *ctx);
+
+    antlrcpp::Any visitSMALLDATETIMEFROMPARTS(TSqlParser::SMALLDATETIMEFROMPARTSContext *ctx);
+
+    antlrcpp::Any visitIDENT_CURRENT(TSqlParser::IDENT_CURRENTContext *ctx);
+
+    antlrcpp::Any visitSESSIONPROPERTY(TSqlParser::SESSIONPROPERTYContext *ctx);
+
+    antlrcpp::Any visitFETCH_STATUS(TSqlParser::FETCH_STATUSContext *ctx);
+
+    antlrcpp::Any visitPOWER(TSqlParser::POWERContext *ctx);
+
+    antlrcpp::Any visitREPLICATE(TSqlParser::REPLICATEContext *ctx);
+
+    antlrcpp::Any visitUSER_NAME(TSqlParser::USER_NAMEContext *ctx);
+
+    antlrcpp::Any visitOBJECT_DEFINITION(TSqlParser::OBJECT_DEFINITIONContext *ctx);
+
+    antlrcpp::Any visitIS_SRVROLEMEMBER(TSqlParser::IS_SRVROLEMEMBERContext *ctx);
+
+    antlrcpp::Any visitNEWSEQUENTIALID(TSqlParser::NEWSEQUENTIALIDContext *ctx);
+
+    antlrcpp::Any visitOBJECT_NAME(TSqlParser::OBJECT_NAMEContext *ctx);
+
+    antlrcpp::Any visitJSON_PATH_EXISTS(TSqlParser::JSON_PATH_EXISTSContext *ctx);
+
+    antlrcpp::Any visitPWDCOMPARE(TSqlParser::PWDCOMPAREContext *ctx);
+
+    antlrcpp::Any visitSCHEMA_ID(TSqlParser::SCHEMA_IDContext *ctx);
+
+    antlrcpp::Any visitOBJECT_SCHEMA_NAME(TSqlParser::OBJECT_SCHEMA_NAMEContext *ctx);
+
+    antlrcpp::Any visitSUSER_SNAME(TSqlParser::SUSER_SNAMEContext *ctx);
+
+    antlrcpp::Any visitDB_NAME(TSqlParser::DB_NAMEContext *ctx);
+
+    antlrcpp::Any visitSUSER_SID(TSqlParser::SUSER_SIDContext *ctx);
+
+    antlrcpp::Any visitASCII(TSqlParser::ASCIIContext *ctx);
+
+    antlrcpp::Any visitFILE_IDEX(TSqlParser::FILE_IDEXContext *ctx);
+
+    antlrcpp::Any visitERROR_SEVERITY(TSqlParser::ERROR_SEVERITYContext *ctx);
+
+    antlrcpp::Any visitREVERSE(TSqlParser::REVERSEContext *ctx);
+
+    antlrcpp::Any visitISDATE(TSqlParser::ISDATEContext *ctx);
+
+    antlrcpp::Any visitREPLACE(TSqlParser::REPLACEContext *ctx);
+
+    antlrcpp::Any visitCURSOR_STATUS(TSqlParser::CURSOR_STATUSContext *ctx);
+
+    antlrcpp::Any visitMIN_ACTIVE_ROWVERSION(TSqlParser::MIN_ACTIVE_ROWVERSIONContext *ctx);
+
+    antlrcpp::Any visitHAS_DBACCESS(TSqlParser::HAS_DBACCESSContext *ctx);
+
+    antlrcpp::Any visitNEXT_VALUE_FOR(TSqlParser::NEXT_VALUE_FORContext *ctx);
+
+    antlrcpp::Any visitFILEGROUP_ID(TSqlParser::FILEGROUP_IDContext *ctx);
+
+    antlrcpp::Any visitLOWER(TSqlParser::LOWERContext *ctx);
+
+    antlrcpp::Any visitDATENAME(TSqlParser::DATENAMEContext *ctx);
+
+    antlrcpp::Any visitCEILING(TSqlParser::CEILINGContext *ctx);
+
+    antlrcpp::Any visitAPPLOCK_TEST(TSqlParser::APPLOCK_TESTContext *ctx);
+
+    antlrcpp::Any visitSIN(TSqlParser::SINContext *ctx);
+
+    antlrcpp::Any visitTYPE_NAME(TSqlParser::TYPE_NAMEContext *ctx);
+
+    antlrcpp::Any visitSYSUTCDATETIME(TSqlParser::SYSUTCDATETIMEContext *ctx);
+
+    antlrcpp::Any visitDATEADD(TSqlParser::DATEADDContext *ctx);
+
+    antlrcpp::Any visitDATETIMEFROMPARTS(TSqlParser::DATETIMEFROMPARTSContext *ctx);
+
+    antlrcpp::Any visitERROR_MESSAGE(TSqlParser::ERROR_MESSAGEContext *ctx);
+
+    antlrcpp::Any visitFILEGROUPPROPERTY(TSqlParser::FILEGROUPPROPERTYContext *ctx);
+
+    antlrcpp::Any visitEOMONTH(TSqlParser::EOMONTHContext *ctx);
+
+    antlrcpp::Any visitIDENT_INCR(TSqlParser::IDENT_INCRContext *ctx);
+
+    antlrcpp::Any visitASIN(TSqlParser::ASINContext *ctx);
+
+    antlrcpp::Any visitNCHAR(TSqlParser::NCHARContext *ctx);
+
+    antlrcpp::Any visitDIFFERENCE(TSqlParser::DIFFERENCEContext *ctx);
+
+    antlrcpp::Any visitCHARINDEX(TSqlParser::CHARINDEXContext *ctx);
+
+    antlrcpp::Any visitTODATETIMEOFFSET(TSqlParser::TODATETIMEOFFSETContext *ctx);
+
+    antlrcpp::Any visitRADIANS(TSqlParser::RADIANSContext *ctx);
+
+    antlrcpp::Any visitCURRENT_TIMEZONE(TSqlParser::CURRENT_TIMEZONEContext *ctx);
+
+    antlrcpp::Any visitCOL_LENGTH(TSqlParser::COL_LENGTHContext *ctx);
+
+    antlrcpp::Any visitDATEFROMPARTS(TSqlParser::DATEFROMPARTSContext *ctx);
+
+    antlrcpp::Any visitNEWID(TSqlParser::NEWIDContext *ctx);
+
+    antlrcpp::Any visitDATETRUNC(TSqlParser::DATETRUNCContext *ctx);
+
+    antlrcpp::Any visitISNULL(TSqlParser::ISNULLContext *ctx);
+
+    antlrcpp::Any visitJSON_MODIFY(TSqlParser::JSON_MODIFYContext *ctx);
+
+    antlrcpp::Any visitCURRENT_REQUEST_ID(TSqlParser::CURRENT_REQUEST_IDContext *ctx);
+
+    antlrcpp::Any visitIS_MEMBER(TSqlParser::IS_MEMBERContext *ctx);
+
+    antlrcpp::Any visitSERVERPROPERTY(TSqlParser::SERVERPROPERTYContext *ctx);
+
+    antlrcpp::Any visitSQRT(TSqlParser::SQRTContext *ctx);
+
+    antlrcpp::Any visitATN2(TSqlParser::ATN2Context *ctx);
+
+    antlrcpp::Any visitUNICODE(TSqlParser::UNICODEContext *ctx);
+
+    antlrcpp::Any visitNULLIF(TSqlParser::NULLIFContext *ctx);
+
+    antlrcpp::Any visitSESSION_USER(TSqlParser::SESSION_USERContext *ctx);
+
+    antlrcpp::Any visitCAST(TSqlParser::CASTContext *ctx);
+
+    antlrcpp::Any visitDATETIME2FROMPARTS(TSqlParser::DATETIME2FROMPARTSContext *ctx);
+
+    antlrcpp::Any visitSQUARE(TSqlParser::SQUAREContext *ctx);
+
+    antlrcpp::Any visitLOG(TSqlParser::LOGContext *ctx);
+
+    antlrcpp::Any visitIIF(TSqlParser::IIFContext *ctx);
+
+    antlrcpp::Any visitDATEPART(TSqlParser::DATEPARTContext *ctx);
+
+    antlrcpp::Any visitCONTEXT_INFO(TSqlParser::CONTEXT_INFOContext *ctx);
+
+    antlrcpp::Any visitDATEDIFF(TSqlParser::DATEDIFFContext *ctx);
+
+    antlrcpp::Any visitOBJECTPROPERTY(TSqlParser::OBJECTPROPERTYContext *ctx);
+
+    antlrcpp::Any visitCHAR(TSqlParser::CHARContext *ctx);
+
+    antlrcpp::Any visitSTRING_ESCAPE(TSqlParser::STRING_ESCAPEContext *ctx);
+
+    antlrcpp::Any visitGETANSINULL(TSqlParser::GETANSINULLContext *ctx);
+
+    antlrcpp::Any visitSYSTEM_USER(TSqlParser::SYSTEM_USERContext *ctx);
+
+    antlrcpp::Any visitOBJECT_ID(TSqlParser::OBJECT_IDContext *ctx);
+
+    antlrcpp::Any visitERROR_PROCEDURE(TSqlParser::ERROR_PROCEDUREContext *ctx);
+
+    antlrcpp::Any visitQUOTENAME(TSqlParser::QUOTENAMEContext *ctx);
+
+    antlrcpp::Any visitRIGHT(TSqlParser::RIGHTContext *ctx);
+
+    antlrcpp::Any visitHOST_ID(TSqlParser::HOST_IDContext *ctx);
+
+    antlrcpp::Any visitDATETIMEOFFSETFROMPARTS(TSqlParser::DATETIMEOFFSETFROMPARTSContext *ctx);
+
+    antlrcpp::Any visitCOS(TSqlParser::COSContext *ctx);
+
+    antlrcpp::Any visitCOT(TSqlParser::COTContext *ctx);
+
+    antlrcpp::Any visitFILE_ID(TSqlParser::FILE_IDContext *ctx);
+
+    antlrcpp::Any visitASSEMBLYPROPERTY(TSqlParser::ASSEMBLYPROPERTYContext *ctx);
+
+    antlrcpp::Any visitSTUFF(TSqlParser::STUFFContext *ctx);
+
+    antlrcpp::Any visitIS_ROLEMEMBER(TSqlParser::IS_ROLEMEMBERContext *ctx);
+
+    antlrcpp::Any visitSQL_VARIANT_PROPERTY(TSqlParser::SQL_VARIANT_PROPERTYContext *ctx);
+
+    antlrcpp::Any visitGREATEST(TSqlParser::GREATESTContext *ctx);
+
+    antlrcpp::Any visitGETUTCDATE(TSqlParser::GETUTCDATEContext *ctx);
+
+    antlrcpp::Any visitLOGINPROPERTY(TSqlParser::LOGINPROPERTYContext *ctx);
+
+    antlrcpp::Any visitCONCAT_WS(TSqlParser::CONCAT_WSContext *ctx);
+
+    antlrcpp::Any visitERROR_STATE(TSqlParser::ERROR_STATEContext *ctx);
+
+    antlrcpp::Any visitDAY(TSqlParser::DAYContext *ctx);
+
+    antlrcpp::Any visitPARSENAME(TSqlParser::PARSENAMEContext *ctx);
+
+    antlrcpp::Any visitTAN(TSqlParser::TANContext *ctx);
+
+    antlrcpp::Any visitCURRENT_USER(TSqlParser::CURRENT_USERContext *ctx);
+
+    antlrcpp::Any visitPERMISSIONS(TSqlParser::PERMISSIONSContext *ctx);
+
+    antlrcpp::Any visitSYSDATETIMEOFFSET(TSqlParser::SYSDATETIMEOFFSETContext *ctx);
+
+    antlrcpp::Any visitINDEXPROPERTY(TSqlParser::INDEXPROPERTYContext *ctx);
+
+    antlrcpp::Any visitOBJECTPROPERTYEX(TSqlParser::OBJECTPROPERTYEXContext *ctx);
+
+    antlrcpp::Any visitSUBSTRING(TSqlParser::SUBSTRINGContext *ctx);
+
+    antlrcpp::Any visitBINARY_CHECKSUM(TSqlParser::BINARY_CHECKSUMContext *ctx);
+
+    antlrcpp::Any visitINDEXKEY_PROPERTY(TSqlParser::INDEXKEY_PROPERTYContext *ctx);
+
+    antlrcpp::Any visitPWDENCRYPT(TSqlParser::PWDENCRYPTContext *ctx);
+
+    antlrcpp::Any visitCOMPRESS(TSqlParser::COMPRESSContext *ctx);
+
+    antlrcpp::Any visitCOALESCE(TSqlParser::COALESCEContext *ctx);
+
+    antlrcpp::Any visitSTATS_DATE(TSqlParser::STATS_DATEContext *ctx);
+
+    antlrcpp::Any visitISNUMERIC(TSqlParser::ISNUMERICContext *ctx);
+
+    antlrcpp::Any visitACOS(TSqlParser::ACOSContext *ctx);
+
+    antlrcpp::Any visitFILEGROUP_NAME(TSqlParser::FILEGROUP_NAMEContext *ctx);
+
+    antlrcpp::Any visitCOLUMNPROPERTY(TSqlParser::COLUMNPROPERTYContext *ctx);
+
+    antlrcpp::Any visitDB_ID(TSqlParser::DB_IDContext *ctx);
+
+    antlrcpp::Any visitSOUNDEX(TSqlParser::SOUNDEXContext *ctx);
+
+    antlrcpp::Any visitCURSOR_ROWS(TSqlParser::CURSOR_ROWSContext *ctx);
+
+    antlrcpp::Any visitFULLTEXTCATALOGPROPERTY(TSqlParser::FULLTEXTCATALOGPROPERTYContext *ctx);
+
+    antlrcpp::Any visitTYPEPROPERTY(TSqlParser::TYPEPROPERTYContext *ctx);
+
+    antlrcpp::Any visitSCHEMA_NAME(TSqlParser::SCHEMA_NAMEContext *ctx);
+
+    antlrcpp::Any visitTYPE_ID(TSqlParser::TYPE_IDContext *ctx);
+
+    antlrcpp::Any visitTRY_CAST(TSqlParser::TRY_CASTContext *ctx);
+
+    antlrcpp::Any visitAPPLOCK_MODE(TSqlParser::APPLOCK_MODEContext *ctx);
+
+    antlrcpp::Any visitCURRENT_DATE(TSqlParser::CURRENT_DATEContext *ctx);
+
+    antlrcpp::Any visitGETDATE(TSqlParser::GETDATEContext *ctx);
+
+    antlrcpp::Any visitCERT_ID(TSqlParser::CERT_IDContext *ctx);
+
+    antlrcpp::Any visitATAN(TSqlParser::ATANContext *ctx);
+
+    antlrcpp::Any visitCONNECTIONPROPERTY(TSqlParser::CONNECTIONPROPERTYContext *ctx);
+
+    antlrcpp::Any visitERROR_NUMBER(TSqlParser::ERROR_NUMBERContext *ctx);
+
+    antlrcpp::Any visitERROR_LINE(TSqlParser::ERROR_LINEContext *ctx);
+
+    antlrcpp::Any visitCURRENT_TIMESTAMP(TSqlParser::CURRENT_TIMESTAMPContext *ctx);
+
+    antlrcpp::Any visitCONCAT(TSqlParser::CONCATContext *ctx);
+
+    antlrcpp::Any visitJSON_ARRAY(TSqlParser::JSON_ARRAYContext *ctx);
+
+    antlrcpp::Any visitROUND(TSqlParser::ROUNDContext *ctx);
+
+    antlrcpp::Any visitDATALENGTH(TSqlParser::DATALENGTHContext *ctx);
+
+    antlrcpp::Any visitHOST_NAME(TSqlParser::HOST_NAMEContext *ctx);
+
+    antlrcpp::Any visitDATABASEPROPERTYEX(TSqlParser::DATABASEPROPERTYEXContext *ctx);
+
+    antlrcpp::Any visitORIGINAL_DB_NAME(TSqlParser::ORIGINAL_DB_NAMEContext *ctx);
+
+    antlrcpp::Any visitFILEPROPERTYEX(TSqlParser::FILEPROPERTYEXContext *ctx);
+
+    antlrcpp::Any visitRTRIM(TSqlParser::RTRIMContext *ctx);
+
+    antlrcpp::Any visitJSON_OBJECT(TSqlParser::JSON_OBJECTContext *ctx);
+
+    antlrcpp::Any visitXACT_STATE(TSqlParser::XACT_STATEContext *ctx);
+
+    antlrcpp::Any visitFORMATMESSAGE(TSqlParser::FORMATMESSAGEContext *ctx);
+
+    antlrcpp::Any visitDATEDIFF_BIG(TSqlParser::DATEDIFF_BIGContext *ctx);
+
+    antlrcpp::Any visitUSER(TSqlParser::USERContext *ctx);
+
+    antlrcpp::Any visitDEGREES(TSqlParser::DEGREESContext *ctx);
+
+    antlrcpp::Any visitLEN(TSqlParser::LENContext *ctx);
+
+    antlrcpp::Any visitTRANSLATE(TSqlParser::TRANSLATEContext *ctx);
+
+    antlrcpp::Any visitSWITCHOFFSET(TSqlParser::SWITCHOFFSETContext *ctx);
+
+    antlrcpp::Any visitPI(TSqlParser::PIContext *ctx);
+
+    antlrcpp::Any visitDATE_BUCKET(TSqlParser::DATE_BUCKETContext *ctx);
+
+    antlrcpp::Any visitEXP(TSqlParser::EXPContext *ctx);
+
+    antlrcpp::Any visitSTRINGAGG(TSqlParser::STRINGAGGContext *ctx);
+
+    antlrcpp::Any visitXml_data_type_methods(TSqlParser::Xml_data_type_methodsContext *ctx);
+
+    antlrcpp::Any visitDateparts_9(TSqlParser::Dateparts_9Context *ctx);
+
+    antlrcpp::Any visitDateparts_12(TSqlParser::Dateparts_12Context *ctx);
+
+    antlrcpp::Any visitDateparts_15(TSqlParser::Dateparts_15Context *ctx);
+
+    antlrcpp::Any visitDateparts_datetrunc(TSqlParser::Dateparts_datetruncContext *ctx);
+
+    antlrcpp::Any visitValue_method(TSqlParser::Value_methodContext *ctx);
+
+    antlrcpp::Any visitValue_call(TSqlParser::Value_callContext *ctx);
+
+    antlrcpp::Any visitQuery_method(TSqlParser::Query_methodContext *ctx);
+
+    antlrcpp::Any visitQuery_call(TSqlParser::Query_callContext *ctx);
+
+    antlrcpp::Any visitExist_method(TSqlParser::Exist_methodContext *ctx);
+
+    antlrcpp::Any visitExist_call(TSqlParser::Exist_callContext *ctx);
+
+    antlrcpp::Any visitModify_method(TSqlParser::Modify_methodContext *ctx);
+
+    antlrcpp::Any visitModify_call(TSqlParser::Modify_callContext *ctx);
+
+    antlrcpp::Any visitHierarchyid_call(TSqlParser::Hierarchyid_callContext *ctx);
+
+    antlrcpp::Any visitHierarchyid_static_method(TSqlParser::Hierarchyid_static_methodContext *ctx);
+
+    antlrcpp::Any visitNodes_method(TSqlParser::Nodes_methodContext *ctx);
+
+    antlrcpp::Any visitSwitch_section(TSqlParser::Switch_sectionContext *ctx);
+
+    antlrcpp::Any visitSwitch_search_condition_section(TSqlParser::Switch_search_condition_sectionContext *ctx);
+
+    antlrcpp::Any visitAs_column_alias(TSqlParser::As_column_aliasContext *ctx);
+
+    antlrcpp::Any visitAs_table_alias(TSqlParser::As_table_aliasContext *ctx);
+
+    antlrcpp::Any visitTable_alias(TSqlParser::Table_aliasContext *ctx);
+
+    antlrcpp::Any visitWith_table_hints(TSqlParser::With_table_hintsContext *ctx);
+
+    antlrcpp::Any visitDeprecated_table_hint(TSqlParser::Deprecated_table_hintContext *ctx);
+
+    antlrcpp::Any visitSybase_legacy_hints(TSqlParser::Sybase_legacy_hintsContext *ctx);
+
+    antlrcpp::Any visitSybase_legacy_hint(TSqlParser::Sybase_legacy_hintContext *ctx);
+
+    antlrcpp::Any visitTable_hint(TSqlParser::Table_hintContext *ctx);
+
+    antlrcpp::Any visitIndex_value(TSqlParser::Index_valueContext *ctx);
+
+    antlrcpp::Any visitColumn_alias_list(TSqlParser::Column_alias_listContext *ctx);
+
+    antlrcpp::Any visitColumn_alias(TSqlParser::Column_aliasContext *ctx);
+
+    antlrcpp::Any visitTable_value_constructor(TSqlParser::Table_value_constructorContext *ctx);
+
+    antlrcpp::Any visitExpression_list_(TSqlParser::Expression_list_Context *ctx);
+
+    antlrcpp::Any visitRanking_windowed_function(TSqlParser::Ranking_windowed_functionContext *ctx);
+
+    antlrcpp::Any visitAggregate_windowed_function(TSqlParser::Aggregate_windowed_functionContext *ctx);
+
+    antlrcpp::Any visitAnalytic_windowed_function(TSqlParser::Analytic_windowed_functionContext *ctx);
+
+    antlrcpp::Any visitAll_distinct_expression(TSqlParser::All_distinct_expressionContext *ctx);
+
+    antlrcpp::Any visitOver_clause(TSqlParser::Over_clauseContext *ctx);
+
+    antlrcpp::Any visitRow_or_range_clause(TSqlParser::Row_or_range_clauseContext *ctx);
+
+    antlrcpp::Any visitWindow_frame_extent(TSqlParser::Window_frame_extentContext *ctx);
+
+    antlrcpp::Any visitWindow_frame_bound(TSqlParser::Window_frame_boundContext *ctx);
+
+    antlrcpp::Any visitWindow_frame_preceding(TSqlParser::Window_frame_precedingContext *ctx);
+
+    antlrcpp::Any visitWindow_frame_following(TSqlParser::Window_frame_followingContext *ctx);
+
+    antlrcpp::Any visitCreate_database_option(TSqlParser::Create_database_optionContext *ctx);
+
+    antlrcpp::Any visitDatabase_filestream_option(TSqlParser::Database_filestream_optionContext *ctx);
+
+    antlrcpp::Any visitDatabase_file_spec(TSqlParser::Database_file_specContext *ctx);
+
+    antlrcpp::Any visitFile_group(TSqlParser::File_groupContext *ctx);
+
+    antlrcpp::Any visitFile_spec(TSqlParser::File_specContext *ctx);
+
+    antlrcpp::Any visitEntity_name(TSqlParser::Entity_nameContext *ctx);
+
+    antlrcpp::Any visitEntity_name_for_azure_dw(TSqlParser::Entity_name_for_azure_dwContext *ctx);
+
+    antlrcpp::Any visitEntity_name_for_parallel_dw(TSqlParser::Entity_name_for_parallel_dwContext *ctx);
+
+    antlrcpp::Any visitFull_table_name(TSqlParser::Full_table_nameContext *ctx);
+
+    antlrcpp::Any visitTable_name(TSqlParser::Table_nameContext *ctx);
+
+    antlrcpp::Any visitSimple_name(TSqlParser::Simple_nameContext *ctx);
+
+    antlrcpp::Any visitFunc_proc_name_schema(TSqlParser::Func_proc_name_schemaContext *ctx);
+
+    antlrcpp::Any visitFunc_proc_name_database_schema(TSqlParser::Func_proc_name_database_schemaContext *ctx);
+
+    antlrcpp::Any visitFunc_proc_name_server_database_schema(TSqlParser::Func_proc_name_server_database_schemaContext *ctx);
+
+    antlrcpp::Any visitDdl_object(TSqlParser::Ddl_objectContext *ctx);
+
+    antlrcpp::Any visitFull_column_name(TSqlParser::Full_column_nameContext *ctx);
+
+    antlrcpp::Any visitColumn_name_list_with_order(TSqlParser::Column_name_list_with_orderContext *ctx);
+
+    antlrcpp::Any visitInsert_column_name_list(TSqlParser::Insert_column_name_listContext *ctx);
+
+    antlrcpp::Any visitInsert_column_id(TSqlParser::Insert_column_idContext *ctx);
+
+    antlrcpp::Any visitColumn_name_list(TSqlParser::Column_name_listContext *ctx);
+
+    antlrcpp::Any visitCursor_name(TSqlParser::Cursor_nameContext *ctx);
+
+    antlrcpp::Any visitOn_off(TSqlParser::On_offContext *ctx);
+
+    antlrcpp::Any visitClustered(TSqlParser::ClusteredContext *ctx);
+
+    antlrcpp::Any visitNull_notnull(TSqlParser::Null_notnullContext *ctx);
+
+    antlrcpp::Any visitScalar_function_name(TSqlParser::Scalar_function_nameContext *ctx);
+
+    antlrcpp::Any visitBegin_conversation_timer(TSqlParser::Begin_conversation_timerContext *ctx);
+
+    antlrcpp::Any visitBegin_conversation_dialog(TSqlParser::Begin_conversation_dialogContext *ctx);
+
+    antlrcpp::Any visitContract_name(TSqlParser::Contract_nameContext *ctx);
+
+    antlrcpp::Any visitService_name(TSqlParser::Service_nameContext *ctx);
+
+    antlrcpp::Any visitEnd_conversation(TSqlParser::End_conversationContext *ctx);
+
+    antlrcpp::Any visitWaitfor_conversation(TSqlParser::Waitfor_conversationContext *ctx);
+
+    antlrcpp::Any visitGet_conversation(TSqlParser::Get_conversationContext *ctx);
+
+    antlrcpp::Any visitQueue_id(TSqlParser::Queue_idContext *ctx);
+
+    antlrcpp::Any visitSend_conversation(TSqlParser::Send_conversationContext *ctx);
+
+    antlrcpp::Any visitData_type(TSqlParser::Data_typeContext *ctx);
+
+    antlrcpp::Any visitConstant(TSqlParser::ConstantContext *ctx);
+
+    antlrcpp::Any visitPrimitive_constant(TSqlParser::Primitive_constantContext *ctx);
+
+    antlrcpp::Any visitKeyword(TSqlParser::KeywordContext *ctx);
+
+    antlrcpp::Any visitId_(TSqlParser::Id_Context *ctx);
+
+    antlrcpp::Any visitSimple_id(TSqlParser::Simple_idContext *ctx);
+
+    antlrcpp::Any visitId_or_string(TSqlParser::Id_or_stringContext *ctx);
+
+    antlrcpp::Any visitComparison_operator(TSqlParser::Comparison_operatorContext *ctx);
+
+    antlrcpp::Any visitAssignment_operator(TSqlParser::Assignment_operatorContext *ctx);
+
+    antlrcpp::Any visitFile_size(TSqlParser::File_sizeContext *ctx);
 
 };

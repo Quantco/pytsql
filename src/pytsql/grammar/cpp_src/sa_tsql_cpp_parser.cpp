@@ -10,15 +10,15 @@
 #include <any>
 
 #include "antlr4-runtime.h"
-#include "tsqlLexer.h"
-#include "tsqlParser.h"
+#include "TSqlLexer.h"
+#include "TSqlParser.h"
 #include "speedy_antlr.h"
 
 #include "sa_tsql_translator.h"
-antlr4::tree::ParseTree* get_parse_tree_tsql_file(tsqlParser *parser) {return parser->tsql_file();}
+antlr4::tree::ParseTree* get_parse_tree_tsql_file(TSqlParser *parser) {return parser->tsql_file();}
 
-antlr4::tree::ParseTree* get_parse_tree(tsqlParser *parser, const char *entry_rule_name) {
-    static std::map<std::string, antlr4::tree::ParseTree* (*)(tsqlParser*)> table
+antlr4::tree::ParseTree* get_parse_tree(TSqlParser *parser, const char *entry_rule_name) {
+    static std::map<std::string, antlr4::tree::ParseTree* (*)(TSqlParser*)> table
     {
         {"tsql_file", &get_parse_tree_tsql_file}
     };
@@ -77,7 +77,7 @@ PyObject* do_parse(PyObject *self, PyObject *args) {
         speedy_antlr::ErrorTranslatorListener err_listener(&translator, sa_err_listener);
 
         // Lex
-        tsqlLexer lexer(&cpp_stream);
+        TSqlLexer lexer(&cpp_stream);
         if(sa_err_listener != Py_None){
             lexer.removeErrorListeners();
             lexer.addErrorListener(&err_listener);
@@ -86,7 +86,7 @@ PyObject* do_parse(PyObject *self, PyObject *args) {
         token_stream.fill();
 
         // Parse
-        tsqlParser parser(&token_stream);
+        TSqlParser parser(&token_stream);
         if(sa_err_listener != Py_None){
             parser.removeErrorListeners();
             parser.addErrorListener(&err_listener);
@@ -95,7 +95,7 @@ PyObject* do_parse(PyObject *self, PyObject *args) {
         parse_tree = get_parse_tree(&parser, entry_rule_name);
 
         // Translate Parse tree to Python
-        SA_tsqlTranslator visitor(&translator);
+        SA_TSqlTranslator visitor(&translator);
         result = std::any_cast<PyObject *>(visitor.visit(parse_tree));
 
         // Clean up data
