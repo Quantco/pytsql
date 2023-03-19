@@ -6939,7 +6939,7 @@ def serializedATN():
         14443,14447,14451,14455,14462,14466,14476,14482,14499,14505
     ]
 
-class TSqlParser ( Parser ):
+class TSqlParser( Parser ):
 
     grammarFileName = "TSqlParser.g4"
 

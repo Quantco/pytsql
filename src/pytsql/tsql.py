@@ -11,7 +11,7 @@ from antlr4 import InputStream, Token
 from sqlalchemy import text
 from sqlalchemy.engine import Connection
 
-from pytsql.grammar import USE_CPP_IMPLEMENTATION, SA_ErrorListener, parse, tsqlParser
+from pytsql.grammar import USE_CPP_IMPLEMENTATION, SA_ErrorListener, TSqlParser, parse
 
 _REPLACE_START = "<replace>"
 _REPLACE_END = "</replace>"
@@ -87,16 +87,16 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
         self.dynamics: List[str] = []
 
     def visit(
-        self, tree: tsqlParser.Sql_clauseContext, prepend_dynamics: bool = True
+        self, tree: TSqlParser.Sql_clausesContext, prepend_dynamics: bool = True
     ) -> str:
         dynamics = self.dynamics[:]
 
         chunks = tree.accept(self)
 
         # CREATE SCHEMA/VIEW must be the only statement in a batch
-        is_create_schema_or_view = tree.ddl_clause() is not None and (
-            tree.ddl_clause().create_schema() is not None
-            or tree.ddl_clause().create_view() is not None
+        is_create_schema_or_view = hasattr(tree, "ddl_clause") and (
+            hasattr(tree.ddl_clause(), "create_schema")
+            or hasattr(tree.ddl_clause(), "create_view")
         )
         if not prepend_dynamics or is_create_schema_or_view:
             return " ".join(chunks)
@@ -104,7 +104,7 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
         return " ".join(dynamics + chunks)
 
     def visitChildren(self, node: antlr4.ParserRuleContext) -> List[str]:
-        if isinstance(node, tsqlParser.Print_statementContext):
+        if isinstance(node, TSqlParser.Print_statementContext):
             # Print statements are replaced by inserts into a temporary table so that they can be evaluated
             # at the right time and fetched afterwards.
             result = (
@@ -115,7 +115,7 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
         else:
             result = super().visitChildren(node)
 
-        if isinstance(node, tsqlParser.Declare_statementContext):
+        if isinstance(node, TSqlParser.Declare_statementContext):
             self.dynamics.extend(result)
 
         return result
@@ -172,18 +172,24 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
     # in non-isolation mode.
     batches = []
     for batch in tree.batch():
-        clauses = []
-        first_clause_in_batch = True
-        for sql_clause in batch.sql_clauses().sql_clause():
-            prepend_dynamics = first_clause_in_batch or isolate_top_level_statements
-            clause = visitor.visit(sql_clause, prepend_dynamics=prepend_dynamics)
-            if clause != "":
-                clauses.append(clause)
-                first_clause_in_batch = False
-        if isolate_top_level_statements:
-            batches.extend(clauses)
+        if batch.batch_level_statement() is not None:
+            batch_level_statement = visitor.visit(
+                batch.batch_level_statement(), prepend_dynamics=False
+            )
+            batches.append(batch_level_statement)
         else:
-            batches.append("\n".join(clauses))
+            clauses = []
+            first_clause_in_batch = True
+            for sql_clause in batch.sql_clauses():
+                prepend_dynamics = first_clause_in_batch or isolate_top_level_statements
+                clause = visitor.visit(sql_clause, prepend_dynamics=prepend_dynamics)
+                if clause != "":
+                    clauses.append(clause)
+                    first_clause_in_batch = False
+            if isolate_top_level_statements:
+                batches.extend(clauses)
+            else:
+                batches.append("\n".join(clauses))
 
     logger.debug("SQL script parsed successfully.")
 
