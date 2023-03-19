@@ -3879,7 +3879,7 @@ query_specification
       columns=select_list
       // https://msdn.microsoft.com/en-us/library/ms188029.aspx
       (INTO into=table_name)?
-      (FROM from=table_sources)?
+      (FROM from_label=table_sources)?
       (WHERE where=search_condition)?
       // https://msdn.microsoft.com/en-us/library/ms177673.aspx
       (GROUP BY ((groupByAll=ALL? groupBys+=group_by_item (',' groupBys+=group_by_item)*) | GROUPING SETS '(' groupSets+=grouping_sets_item (',' groupSets+=grouping_sets_item)* ')'))?
@@ -4195,9 +4195,9 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/col-name-transact-sql?view=sql-server-ver16
     | COL_NAME '(' table_id=expression ',' column_id=expression ')'         #COL_NAME
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/columnproperty-transact-sql?view=sql-server-ver16
-    | COLUMNPROPERTY '(' id=expression ',' column=expression ',' property=expression ')' #COLUMNPROPERTY
+    | COLUMNPROPERTY '(' id_label=expression ',' column=expression ',' property_label=expression ')' #COLUMNPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/databasepropertyex-transact-sql?view=sql-server-ver16
-    | DATABASEPROPERTYEX '(' database=expression ',' property=expression ')' #DATABASEPROPERTYEX
+    | DATABASEPROPERTYEX '(' database=expression ',' property_label=expression ')' #DATABASEPROPERTYEX
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/db-id-transact-sql?view=sql-server-ver16
     | DB_ID '(' database_name=expression? ')'                               #DB_ID
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/db-name-transact-sql?view=sql-server-ver16
@@ -4213,21 +4213,21 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/filegroup-name-transact-sql?view=sql-server-ver16
     | FILEGROUP_NAME '(' filegroup_id=expression ')'                        #FILEGROUP_NAME
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/filegroupproperty-transact-sql?view=sql-server-ver16
-    | FILEGROUPPROPERTY '(' filegroup_name=expression ',' property=expression ')' #FILEGROUPPROPERTY
+    | FILEGROUPPROPERTY '(' filegroup_name=expression ',' property_label=expression ')' #FILEGROUPPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/fileproperty-transact-sql?view=sql-server-ver16
-    | FILEPROPERTY '(' file_name=expression ',' property=expression ')'     #FILEPROPERTY
+    | FILEPROPERTY '(' file_name=expression ',' property_label=expression ')'     #FILEPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/filepropertyex-transact-sql?view=sql-server-ver16
-    | FILEPROPERTYEX '(' name=expression ',' property=expression ')'        #FILEPROPERTYEX
+    | FILEPROPERTYEX '(' name=expression ',' property_label=expression ')'        #FILEPROPERTYEX
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/fulltextcatalogproperty-transact-sql?view=sql-server-ver16
-    | FULLTEXTCATALOGPROPERTY '(' catalog_name=expression ',' property=expression ')' #FULLTEXTCATALOGPROPERTY
+    | FULLTEXTCATALOGPROPERTY '(' catalog_name=expression ',' property_label=expression ')' #FULLTEXTCATALOGPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/fulltextserviceproperty-transact-sql?view=sql-server-ver16
-    | FULLTEXTSERVICEPROPERTY '(' property=expression ')'                   #FULLTEXTSERVICEPROPERTY
+    | FULLTEXTSERVICEPROPERTY '(' property_label=expression ')'                   #FULLTEXTSERVICEPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/index-col-transact-sql?view=sql-server-ver16
     | INDEX_COL '(' table_or_view_name=expression ',' index_id=expression ',' key_id=expression ')' #INDEX_COL
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/indexkey-property-transact-sql?view=sql-server-ver16
-    | INDEXKEY_PROPERTY '(' object_id=expression ',' index_id=expression ',' key_id=expression ',' property=expression ')' #INDEXKEY_PROPERTY
+    | INDEXKEY_PROPERTY '(' object_id=expression ',' index_id=expression ',' key_id=expression ',' property_label=expression ')' #INDEXKEY_PROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/indexproperty-transact-sql?view=sql-server-ver16
-    | INDEXPROPERTY '(' object_id=expression ',' index_or_statistics_name=expression ',' property=expression ')' #INDEXPROPERTY
+    | INDEXPROPERTY '(' object_id=expression ',' index_or_statistics_name=expression ',' property_label=expression ')' #INDEXPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/next-value-for-transact-sql?view=sql-server-ver16
     | NEXT VALUE FOR sequence_name=table_name ( OVER '(' order_by_clause ')' )? #NEXT_VALUE_FOR
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/object-definition-transact-sql?view=sql-server-ver16
@@ -4239,9 +4239,9 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/object-schema-name-transact-sql?view=sql-server-ver16
     | OBJECT_SCHEMA_NAME '(' object_id=expression ( ',' database_id=expression )? ')' #OBJECT_SCHEMA_NAME
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/objectproperty-transact-sql?view=sql-server-ver16
-    | OBJECTPROPERTY '(' id=expression ',' property=expression ')'          #OBJECTPROPERTY
+    | OBJECTPROPERTY '(' id_label=expression ',' property_label=expression ')'          #OBJECTPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/objectpropertyex-transact-sql?view=sql-server-ver16
-    | OBJECTPROPERTYEX '(' id=expression ',' property=expression ')'        #OBJECTPROPERTYEX
+    | OBJECTPROPERTYEX '(' id_label=expression ',' property_label=expression ')'        #OBJECTPROPERTYEX
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/original-db-name-transact-sql?view=sql-server-ver16
     | ORIGINAL_DB_NAME '(' ')'                                              #ORIGINAL_DB_NAME
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/parsename-transact-sql?view=sql-server-ver16
@@ -4253,7 +4253,7 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/scope-identity-transact-sql?view=sql-server-ver16
     | SCOPE_IDENTITY '(' ')'                                                #SCOPE_IDENTITY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/serverproperty-transact-sql?view=sql-server-ver16
-    | SERVERPROPERTY '(' property=expression ')'                            #SERVERPROPERTY
+    | SERVERPROPERTY '(' property_label=expression ')'                            #SERVERPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/stats-date-transact-sql?view=sql-server-ver16
     | STATS_DATE '(' object_id=expression ',' stats_id=expression ')'       #STATS_DATE
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/type-id-transact-sql?view=sql-server-ver16
@@ -4261,7 +4261,7 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/type-name-transact-sql?view=sql-server-ver16
     | TYPE_NAME '(' type_id=expression ')'                                  #TYPE_NAME
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/typeproperty-transact-sql?view=sql-server-ver16
-    | TYPEPROPERTY '(' type=expression ',' property=expression ')'          #TYPEPROPERTY
+    | TYPEPROPERTY '(' type_label=expression ',' property_label=expression ')'          #TYPEPROPERTY
     // String functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/ascii-transact-sql?view=sql-server-ver16
     | ASCII '(' character_expression=expression ')'                         #ASCII
@@ -4276,7 +4276,7 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/difference-transact-sql?view=sql-server-ver16
     | DIFFERENCE '(' character_expression_1=expression ',' character_expression_2=expression ')' #DIFFERENCE
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/format-transact-sql?view=sql-server-ver16
-    | FORMAT '(' value=expression ',' format=expression ( ',' culture=expression )? ')' #FORMAT
+    | FORMAT '(' value=expression ',' format_label=expression ( ',' culture=expression )? ')' #FORMAT
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/left-transact-sql?view=sql-server-ver16
     | LEFT '(' character_expression=expression ',' integer_expression=expression ')' #LEFT
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/len-transact-sql?view=sql-server-ver16
@@ -4292,7 +4292,7 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/quotename-transact-sql?view=sql-server-ver16
     | QUOTENAME '(' character_string=expression ( ',' quote_character=expression )? ')' #QUOTENAME
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/replace-transact-sql?view=sql-server-ver16
-    | REPLACE '(' input=expression ',' replacing=expression ',' with=expression ')'   #REPLACE
+    | REPLACE '(' input_label=expression ',' replacing=expression ',' with_label=expression ')'   #REPLACE
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/replicate-transact-sql?view=sql-server-ver16
     | REPLICATE '(' string_expression=expression ',' integer_expression=expression ')' #REPLICATE
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/reverse-transact-sql?view=sql-server-ver16
@@ -4312,7 +4312,7 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/string-escape-transact-sql?view=sql-server-ver16
     | STRING_ESCAPE '(' text_=expression ',' type_=expression ')'           #STRING_ESCAPE
     // https://msdn.microsoft.com/fr-fr/library/ms188043.aspx
-    | STUFF '(' str=expression ',' from=expression ',' to=expression ',' str_with=expression ')' #STUFF
+    | STUFF '(' str_label=expression ',' from_label=expression ',' to=expression ',' str_with=expression ')' #STUFF
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/substring-transact-sql?view=sql-server-ver16
     | SUBSTRING '(' string_expression=expression ',' start_=expression ',' length=expression ')' #SUBSTRING
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/translate-transact-sql?view=sql-server-ver16
@@ -4331,7 +4331,7 @@ built_in_functions
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/compress-transact-sql?view=sql-server-ver16
     | COMPRESS '(' expr=expression ')'                                      #COMPRESS
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/connectionproperty-transact-sql?view=sql-server-ver16
-    | CONNECTIONPROPERTY '(' property=STRING ')'                            #CONNECTIONPROPERTY
+    | CONNECTIONPROPERTY '(' property_label=STRING ')'                            #CONNECTIONPROPERTY
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/context-info-transact-sql?view=sql-server-ver16
     | CONTEXT_INFO '(' ')'                                                  #CONTEXT_INFO
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/current-request-id-transact-sql?view=sql-server-ver16
@@ -4407,7 +4407,7 @@ built_in_functions
     // https://learn.microsoft.com/en-us/sql/t-sql/functions/ident-seed-transact-sql?view=sql-server-ver16
     | IDENTITY '(' datatype=data_type (',' seed=DECIMAL ',' increment=DECIMAL)? ')' #IDENTITY
     // https://learn.microsoft.com/en-us/sql/t-sql/functions/ident-seed-transact-sql?view=sql-server-ver16
-    | SQL_VARIANT_PROPERTY '(' expr=expression ',' property=STRING ')' #SQL_VARIANT_PROPERTY
+    | SQL_VARIANT_PROPERTY '(' expr=expression ',' property_label=STRING ')' #SQL_VARIANT_PROPERTY
     // Date functions
     //https://infocenter.sybase.com/help/index.jsp?topic=/com.sybase.infocenter.dc36271.1572/html/blocks/CJADIDHD.htm
     | CURRENT_DATE '(' ')'                              #CURRENT_DATE
@@ -4475,7 +4475,7 @@ built_in_functions
     | NULLIF '(' left=expression ',' right=expression ')'          #NULLIF
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/parse-transact-sql
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/try-parse-transact-sql
-    | PARSE '(' str=expression AS data_type ( USING culture=expression )? ')'          #PARSE
+    | PARSE '(' str_label=expression AS data_type ( USING culture=expression )? ')'          #PARSE
     // https://docs.microsoft.com/en-us/sql/t-sql/xml/xml-data-type-methods
     | xml_data_type_methods                             #XML_DATA_TYPE_FUNC
     // https://docs.microsoft.com/en-us/sql/t-sql/functions/logical-functions-iif-transact-sql
@@ -4595,7 +4595,7 @@ built_in_functions
     // https://learn.microsoft.com/en-us/sql/t-sql/functions/user-id-transact-sql?view=sql-server-ver16
     | USER_ID '(' (user=expression)? ')'                #USER_ID
     // https://learn.microsoft.com/en-us/sql/t-sql/functions/user-name-transact-sql?view=sql-server-ver16
-    | USER_NAME '(' (id=expression)? ')' #USER_NAME
+    | USER_NAME '(' (id_label=expression)? ')' #USER_NAME
     ;
 
 xml_data_type_methods
@@ -4684,7 +4684,7 @@ hierarchyid_call
     ;
 
 hierarchyid_static_method
-    : HIERARCHYID DOUBLE_COLON (GETROOT '(' ')' | PARSE '(' input=expression ')')
+    : HIERARCHYID DOUBLE_COLON (GETROOT '(' ')' | PARSE '(' input_label=expression ')')
     ;
 
 nodes_method
@@ -4886,7 +4886,7 @@ file_group
 file_spec
     : LR_BRACKET
       NAME EQUAL ( id_ | STRING ) ','?
-      FILENAME EQUAL file = STRING ','?
+      FILENAME EQUAL file_label = STRING ','?
       ( SIZE EQUAL file_size ','? )?
       ( MAXSIZE EQUAL (file_size | UNLIMITED )','? )?
       ( FILEGROWTH EQUAL file_size ','? )?
