@@ -56,7 +56,7 @@ Add the option ``--backend=mssql-freetds`` to the test command to run the tests 
 the ``freetds`` driver.
 
 
-Creating a grammar
+Grammar
 ------------------
 
 ``pytsql`` relies on parsing the sql script at hand. In order to do so, it uses
@@ -66,7 +66,13 @@ and produces parsing Python code.
 Additionally, code generated using ``speedy-antlr-tool`` package is used to parse SQL scripts
 in C++ for better performance. The parsed tree is then converted into the Python equivalent.
 
-If you want to adapt the grammar please have a look at ``pytsql/src/pytsql/grammar/tsql.g4``.
+``pytsql``'s Transact-SQL (TSQL) grammar is based on `antlr/grammars-v4 <https://github.com/antlr/grammars-v4/tree/master/sql/tsql>`_.
+To keep the package structure lean, ``pytql`` aims to be in sync with the reference repository and generally does not maintain its own grammar.
+Therefore, if you want to extend or modify the grammar please consider contributing to the external repository instead.
+
+Update targets
+^^^^^^^^^^^^^^^^^
+
 All files in ``pytsql/src/pytsql/grammar/cpp_src/antlr4-cpp-runtime`` are taken directly from
 the `ANTLR repository release 4.11.1
 <https://github.com/antlr/antlr4/tree/4.11.1/runtime/Cpp/runtime>`_
@@ -79,8 +85,11 @@ respective ``antlr`` jar file as follows:
 
 ::
 
-    java -jar /usr/local/lib/antlr-4.9.2-complete.jar -Dlanguage=Cpp -visitor -no-listener -o cpp_src tsql.g4
-    java -jar /usr/local/lib/antlr-4.9.2-complete.jar -Dlanguage=Python3 -no-visitor -no-listener -o . tsql.g4
+    java -jar /usr/local/lib/antlr-4.9.2-complete.jar -Dlanguage=Cpp -o cpp_src TSqlLexer.g4
+    java -jar /usr/local/lib/antlr-4.9.2-complete.jar -Dlanguage=Cpp -visitor -no-listener -o cpp_src TSqlParser.g4
+
+    java -jar /usr/local/lib/antlr-4.9.2-complete.jar -Dlanguage=Python3 -o . TSqlLexer.g4
+    java -jar /usr/local/lib/antlr-4.9.2-complete.jar -Dlanguage=Python3 -no-visitor -no-listener -o . TSqlParser.g4
 
 And then running the ``speedy-antlr-tool`` in the same directory using Python
 
