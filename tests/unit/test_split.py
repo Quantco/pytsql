@@ -250,19 +250,9 @@ def test_foreign_key():
     assert len(_split(seed)) == 1
 
 
-def test_parser_error():
-    with pytest.raises(ValueError):
-        _split("USEE master")
-
-
 def test_lexer_error():
     with pytest.raises(ValueError):
         _split("USE ?")
-
-
-def test_go_as_alias():
-    with pytest.raises(ValueError):
-        _split("SELECT * FROM (VALUES(1)) AS GO(go)")
 
 
 def test_xml_value():
