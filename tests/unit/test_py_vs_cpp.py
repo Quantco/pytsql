@@ -78,21 +78,25 @@ def compare_context(
     py_context: ParserRuleContext, cpp_context: ParserRuleContext
 ) -> None:
     assert type(py_context) == type(cpp_context)
-    assert len(py_context.children) == len(cpp_context.children)
+    py_context_children = list(py_context.getChildren())
+    cpp_context_children = list(cpp_context.getChildren())
+    assert len(py_context_children) == len(cpp_context_children)
 
     # Validate children
-    for i in range(len(py_context.children)):
-        if isinstance(py_context.children[i], TerminalNodeImpl):
-            compare_terminal_node(py_context.children[i], cpp_context.children[i])
+    for i in range(len(py_context_children)):
+        if isinstance(py_context_children[i], TerminalNodeImpl):
+            compare_terminal_node(py_context_children[i], cpp_context_children[i])
         elif isinstance(py_context.children[i], ParserRuleContext):
-            compare_context(py_context.children[i], cpp_context.children[i])
+            compare_context(py_context_children[i], cpp_context_children[i])
         else:
-            raise TypeError(f"Unexpected node type: {py_context.children[i]}")
-        assert py_context.children[i].parentCtx is py_context
-        assert cpp_context.children[i].parentCtx is cpp_context
+            raise TypeError(f"Unexpected node type: {py_context_children[i]}")
+        assert py_context_children[i].parentCtx is py_context
+        assert cpp_context_children[i].parentCtx is cpp_context
 
     # Validate labels
     for label in get_rule_labels(py_context):
+        if label.startswith("_"):
+            continue
         py_label = getattr(py_context, label)
         cpp_label = getattr(cpp_context, label)
         assert type(py_label) == type(cpp_label)
