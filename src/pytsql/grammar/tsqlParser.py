@@ -24408,6 +24408,13 @@ class tsqlParser ( Parser ):
             return tsqlParser.RULE_data_type
 
 
+    @staticmethod
+    def is_top_level_statement(node: ParserRuleContext):
+        """Check wether node is a top level SQL statement."""
+        cur = node.parentCtx
+        while isinstance(cur, tsqlParser.Sql_clauseContext) or isinstance(cur, tsqlParser.Sql_clausesContext):
+            cur = cur.parentCtx
+        return isinstance(cur, tsqlParser.BatchContext)
 
 
     def data_type(self):

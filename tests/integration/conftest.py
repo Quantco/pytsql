@@ -38,6 +38,12 @@ def pytest_addoption(parser):
 
 def pytest_generate_tests(metafunc):
     if "backend" in metafunc.fixturenames:
-        metafunc.parametrize(
-            "backend", [metafunc.config.getoption("backend")], scope="module"
-        )
+        try:
+            metafunc.parametrize(
+                "backend", [metafunc.config.getoption("backend")], scope="module"
+            )
+        except ValueError:
+            # some metafunc.config objects don't have an option "backend"
+            metafunc.parametrize(
+                "backend", ["default_backend"], scope="module"
+            )
