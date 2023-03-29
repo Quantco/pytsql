@@ -74,6 +74,14 @@ def _parametrize(
     return "\n".join(non_empty_stripped_lines)
 
 
+def _text(raw_sql: str) -> str:
+    """
+    Calls sa.text() with escaped colons as in this package every colon is required verbatim.
+    """
+    raw_sql_escaped = raw_sql.replace(":", "\\:")
+    return text(raw_sql_escaped)
+
+
 class _TSQLVisitor(antlr4.ParseTreeVisitor):
     def __init__(self):
         # This attribute holds declarations of sql variables, also
@@ -191,10 +199,10 @@ def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
 
 
 def _fetch_and_clear_prints(conn: Connection):
-    prints = conn.execute(text(f"SELECT * FROM {_PRINTS_TABLE};"))
+    prints = conn.execute(_text(f"SELECT * FROM {_PRINTS_TABLE};"))
     for row in prints.all():
         logger.info(f"SQL PRINT: {row[0]}")
-    conn.execute(text(f"DELETE FROM {_PRINTS_TABLE};"))
+    conn.execute(_text(f"DELETE FROM {_PRINTS_TABLE};"))
 
 
 def executes(
@@ -224,10 +232,10 @@ def executes(
     with engine.connect().execution_options(isolation_level="AUTOCOMMIT") as conn:
         # Since the prints table is a temporary one, it will be local to the connection and it will be dropped once the
         # connection is closed. Caveat: sqlalchemy engines can pool connections, so we still have to drop it preemtively.
-        conn.execute(text(f"DROP TABLE IF EXISTS {_PRINTS_TABLE}"))
-        conn.execute(text(f"CREATE TABLE {_PRINTS_TABLE} (p NVARCHAR(4000))"))
+        conn.execute(_text(f"DROP TABLE IF EXISTS {_PRINTS_TABLE}"))
+        conn.execute(_text(f"CREATE TABLE {_PRINTS_TABLE} (p NVARCHAR(4000))"))
         for batch in _split(parametrized_code, isolate_top_level_statements):
-            sql_batch = text(batch)
+            sql_batch = _text(batch)
             conn.execute(sql_batch)
             _fetch_and_clear_prints(conn)
 
