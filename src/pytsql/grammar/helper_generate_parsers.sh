@@ -8,6 +8,13 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 antlr4="java -jar $ANTLR4_JAR_FILEPATH"
 
+# Optionally: Download grammar
+# curl -o TSqlParser.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlParser.g4
+# curl -o TSqlLexer.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlLexer.g4
+
+# Adjust grammar for C++ target
+python adjust_antlrs_grammar.py rename-protected-rule-element-labels -f TSqlParser.g4
+
 # Generate C++ target with visitor
 $antlr4 -Dlanguage=Cpp -o cpp_src TSqlLexer.g4
 $antlr4 -Dlanguage=Cpp -visitor -no-listener -o cpp_src TSqlParser.g4
@@ -26,3 +33,6 @@ generate(
     entry_rule_names=["tsql_file"],
 )
 EOF
+
+# Adjust auto-generated files for protected names on Windows
+python adjust_antlrs_grammar.py add-removal-of-specified-names-on-windows --filepath cpp_src/TSqlLexer.h
