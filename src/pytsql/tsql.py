@@ -10,6 +10,7 @@ import sqlalchemy
 from antlr4 import InputStream, Token
 from sqlalchemy import text
 from sqlalchemy.engine import Connection
+from sqlalchemy.sql.expression import TextClause
 
 from pytsql.grammar import USE_CPP_IMPLEMENTATION, SA_ErrorListener, parse, tsqlParser
 
@@ -74,7 +75,7 @@ def _parametrize(
     return "\n".join(non_empty_stripped_lines)
 
 
-def _text(raw_sql: str) -> str:
+def _text(raw_sql: str) -> TextClause:
     """
     Calls sa.text() with escaped colons as in this package every colon is required verbatim.
     """
