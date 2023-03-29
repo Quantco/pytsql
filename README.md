@@ -56,9 +56,5 @@ Please also have a look at our documentation sections on [usage](https://pytsql.
 
 ## Credits
 
-Inspiration drawn from [codebuff](https://github.com/antlr/codebuff/blob/master/grammars/org/antlr/codebuff/tsql.g4).
+Grammar is based on [antlr4/grammars-v4](https://github.com/antlr/grammars-v4/tree/master/sql/tsql).
 
-Original authors:
-[Alex Gonopolskiy](https://github.com/agonopol)
-[Kevin Klein](https://github.com/kklein)
-[Encho Mishinev](https://github.com/EnchoMishinevQC)
