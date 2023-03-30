@@ -1,6 +1,7 @@
-import click
-from pathlib import Path
 import re
+from pathlib import Path
+
+import click
 
 PROTECTED_RULE_ELEMENT_LABELS = [
     "from",
@@ -11,50 +12,50 @@ PROTECTED_RULE_ELEMENT_LABELS = [
     "input",
     "with",
     "type",
-    "file"
+    "file",
 ]
-CONFLICTING_NAMES_ON_WINDOWS = [
-    "PLATFORM"
-]
+CONFLICTING_NAMES_ON_WINDOWS = ["PLATFORM"]
 
-# CLI rename_protected_rule_element_labels
+
 @click.group()
-def rename_protected_rule_element_labels_cli():
+def adjust_antlrs_grammar():
     pass
 
 
-@rename_protected_rule_element_labels_cli.command()
+@adjust_antlrs_grammar.command()
 @click.option(
-    "-f", "--filepath",
+    "-f",
+    "--filepath",
     type=click.Path(path_type=Path),
     help="Path to a .g4 grammar file.",
 )
-def rename_protected_rule_element_labels(filepath: str) -> None:
+def rename_protected_rule_element_labels(filepath: Path) -> None:
     """
     Some rule element labels have the same name as protected objects in C++. Hence, rename those labels.
     """
     rename_policy_suffix = "_label"
 
-    with open(filepath, 'r+') as file:
+    with open(filepath, "r+") as file:
         grammar = file.read()
         for label in PROTECTED_RULE_ELEMENT_LABELS:
-            grammar = re.sub(fr"(?<=[\( |]){label}(?=[ ]?\=)", f"{label}{rename_policy_suffix}", grammar)
+            grammar = re.sub(
+                rf"(?<=[\( |]){label}(?=[ ]?\=)",
+                f"{label}{rename_policy_suffix}",
+                grammar,
+            )
 
         file.seek(0, 0)
         file.write(grammar)
 
-# CLI: add_removal_of_specified_names_on_windows
-@click.group()
-def removal_of_specified_names_on_windows_cli():
-    pass
 
-@removal_of_specified_names_on_windows_cli.command()
+@adjust_antlrs_grammar.command()
 @click.option(
-    "-f", "--filepath",
+    "-f",
+    "--filepath",
     type=click.Path(path_type=Path),
     help="Path to an auto-generated file by `speedy-antlr-tool`",
 )
-def add_removal_of_specified_names_on_windows(filepath: str) -> None:
+def add_removal_of_specified_names_on_windows(filepath: Path) -> None:
     """
     Remove certain protected names for C++ compilation on Windows.
 
@@ -68,9 +69,6 @@ def add_removal_of_specified_names_on_windows(filepath: str) -> None:
         file.seek(0, 0)
         file.write(undef_list + content)
 
-cli = click.CommandCollection(
-    sources=[rename_protected_rule_element_labels_cli, removal_of_specified_names_on_windows_cli]
-)
 
 if __name__ == "__main__":
-    cli()
+    adjust_antlrs_grammar()
