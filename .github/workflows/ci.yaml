@@ -19,8 +19,8 @@ jobs:
         uses: pre-commit/action@v3.0.0
 
 
-  linux:
-    name: "Linux - unit tests - Python ${{ matrix.PYTHON_VERSION }}"
+  unit-tests:
+    name: "Unit tests - ${{ matrix.OS }} - Python ${{ matrix.PYTHON_VERSION }}"
     runs-on: ubuntu-latest
     env:
       CI: True
@@ -28,6 +28,7 @@ jobs:
       fail-fast: true
       matrix:
         PYTHON_VERSION: ['3.7', '3.8', '3.9', '3.10']
+        OS: ['ubuntu-latest', 'windows-latest']
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
