@@ -19533,6 +19533,7 @@ public:
     antlr4::tree::TerminalNode *DOUBLE_QUOTE_BLANK();
     antlr4::tree::TerminalNode *SQUARE_BRACKET_ID();
     KeywordContext *keyword();
+    antlr4::tree::TerminalNode *RAW();
 
 
     virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;

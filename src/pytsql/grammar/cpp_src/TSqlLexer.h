@@ -1,11 +1,11 @@
-
+#undef PLATFORM
 // Generated from TSqlLexer.g4 by ANTLR 4.11.1
 
 #pragma once
 
 
 #include "antlr4-runtime.h"
-#undef PLATFORM
+
 
 
 
