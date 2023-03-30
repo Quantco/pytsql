@@ -336,3 +336,14 @@ def test_declare_as_defined_table_type():
     DECLARE @test dbo.test_type
     """
     assert len(_split(seed)) == 1
+
+
+def test_token_raw_as_id():
+    seed = """
+    CREATE SCHEMA raw;
+    CREATE TABLE raw.tbl (
+        a INT
+    );
+    SELECT * FROM raw.tbl;
+    """
+    assert len(_split(seed)) == 3
