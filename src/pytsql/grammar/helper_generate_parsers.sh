@@ -21,7 +21,7 @@ $antlr4 -Dlanguage=Cpp -visitor -no-listener -o cpp_src TSqlParser.g4
 
 # Generate Python target
 $antlr4 -Dlanguage=Python3 -o . TSqlLexer.g4
-$antlr4 -Dlanguage=Python3 -no-visitor -no-listener -o . TSqlParser.g4
+$antlr4 -Dlanguage=Python3 -no-visitor -o . TSqlParser.g4
 
 # Run speedy-antlr-tool to generate parse accelerator
 python3 <<EOF
