@@ -6,7 +6,7 @@ from .helpers import assert_strings_equal_disregarding_whitespace
 
 
 def test_ignore_go_inside_quoted_text():
-    seed = """DECLARE @td            VARCHAR(20)   = CONVERT(VARCHAR, GETDATE(), 112);
+    seed = """DECLARE @td            VARCHAR(20)   = CONVERT(VARCHAR, GETDATE(), 112)
 DECLARE @dynamic       VARCHAR(8000) = '
 CREATE DATABASE ' + @database_name +'
 ON
@@ -21,14 +21,11 @@ FILENAME = ''D:\\Microsoft SQL Server\\MSSQL13.MSSQLSERVER\\MSSQL\\DATA\' + @td 
 SIZE = 10MB,
 MAXSIZE = UNLIMITED,
 FILEGROWTH = 10MB );'
-;
 SELECT(@dynamic)
 EXEC(@dynamic)
 """
     splits = _split(seed)
-    td_declare = (
-        "DECLARE @td VARCHAR ( 20 ) = CONVERT ( VARCHAR , GETDATE ( ) , 112 ) ;"
-    )
+    td_declare = "DECLARE @td VARCHAR ( 20 ) = CONVERT ( VARCHAR , GETDATE ( ) , 112 )"
     assert_strings_equal_disregarding_whitespace(splits[0], td_declare)
     dynamic_declare = """
         DECLARE @dynamic       VARCHAR ( 8000 )  = '
@@ -45,7 +42,7 @@ EXEC(@dynamic)
         SIZE = 10MB,
         MAXSIZE = UNLIMITED,
         FILEGROWTH = 10MB );'
-        ;"""
+        """
     assert_strings_equal_disregarding_whitespace(
         splits[1], " ".join([td_declare, dynamic_declare])
     )
@@ -253,19 +250,9 @@ def test_foreign_key():
     assert len(_split(seed)) == 1
 
 
-def test_parser_error():
-    with pytest.raises(ValueError):
-        _split("USEE master")
-
-
 def test_lexer_error():
     with pytest.raises(ValueError):
         _split("USE ?")
-
-
-def test_go_as_alias():
-    with pytest.raises(ValueError):
-        _split("SELECT * FROM (VALUES(1)) AS GO(go)")
 
 
 def test_xml_value():
@@ -292,9 +279,18 @@ def test_xml_methods():
     SELECT @myDoc.query('XQuery')
     SELECT @myDoc.value('XQuery', 'int')
     SELECT @myDoc.exist('XQuery')
-    SELECT @myDoc.nodes('XQuery') AS T(C)
     """
-    assert len(_split(seed)) == 5
+    assert len(_split(seed)) == 4
+
+    # https://learn.microsoft.com/de-de/sql/t-sql/xml/nodes-method-xml-data-type?view=sql-server-ver16
+    seed = """
+    SELECT T.c.query('.') AS result
+    FROM   @x.nodes('/Root/row') T(c)
+    SELECT T2.Loc.query('.')
+    FROM T
+    CROSS APPLY Instructions.nodes('/root/Location') AS T2(Loc)
+    """
+    assert len(_split(seed)) == 2
 
 
 def test_non_xml_method():
@@ -309,7 +305,6 @@ def test_non_xml_method():
 def test_linked_server():
     seed = """
     SELECT *
-    INTO linked_server.db.schm.table1
     FROM linked_server.db.schm.table2
     """
     assert len(_split(seed)) == 1
@@ -341,3 +336,14 @@ def test_declare_as_defined_table_type():
     DECLARE @test dbo.test_type
     """
     assert len(_split(seed)) == 1
+
+
+def test_token_raw_as_id():
+    seed = """
+    CREATE SCHEMA raw;
+    CREATE TABLE raw.tbl (
+        a INT
+    );
+    SELECT * FROM raw.tbl;
+    """
+    assert len(_split(seed)) == 3

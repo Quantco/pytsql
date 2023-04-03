@@ -49,7 +49,7 @@ def test_dont_append_dynamics_on_create_schema():
 def test_dynamics_no_isolation():
     seed = """
     DECLARE @A INT = 5
-    SELECT @A
+    SELECT @A; -- currently ';' needed due to https://github.com/antlr/grammars-v4/issues/3275
     GO
     SELECT @A
     """
@@ -59,7 +59,7 @@ def test_dynamics_no_isolation():
         splits[0],
         """
         DECLARE @A INT = 5
-        SELECT @A
+        SELECT @A ;
         """,
     )
     assert_strings_equal_disregarding_whitespace(
