@@ -8,7 +8,7 @@ description = "`Pytsql` allows to run mssql sripts, typically run via GUIs, via 
 authors = [
   {name = "Alex Gonopolskiy", email = "agonopol@gmail.com"},
   {name = "Kevin Klein", email = "kevin.klein@quantco.com"},
-  {name= "Encho Mishinev", email = "encho.mishinev@quantco.com"},
+  {name= "Encho Mishinev", email = "encho.mishinev@gmail.com"},
   {name= "Sven Giegerich", email = "sven.giegerich@quantco.com"}
 ]
 
