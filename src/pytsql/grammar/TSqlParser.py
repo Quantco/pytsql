@@ -9627,6 +9627,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_tsql_file
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTsql_file" ):
+                listener.enterTsql_file(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTsql_file" ):
+                listener.exitTsql_file(self)
+
 
 
 
@@ -9714,6 +9722,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_batch
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBatch" ):
+                listener.enterBatch(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBatch" ):
+                listener.exitBatch(self)
 
 
 
@@ -9834,6 +9850,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_batch_level_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBatch_level_statement" ):
+                listener.enterBatch_level_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBatch_level_statement" ):
+                listener.exitBatch_level_statement(self)
+
 
 
 
@@ -9915,6 +9939,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_sql_clauses
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSql_clauses" ):
+                listener.enterSql_clauses(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSql_clauses" ):
+                listener.exitSql_clauses(self)
 
 
 
@@ -10056,6 +10088,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dml_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDml_clause" ):
+                listener.enterDml_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDml_clause" ):
+                listener.exitDml_clause(self)
 
 
 
@@ -10777,6 +10817,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_ddl_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDdl_clause" ):
+                listener.enterDdl_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDdl_clause" ):
+                listener.exitDdl_clause(self)
 
 
 
@@ -11819,6 +11867,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_backup_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBackup_statement" ):
+                listener.enterBackup_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBackup_statement" ):
+                listener.exitBackup_statement(self)
+
 
 
 
@@ -11927,6 +11983,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_cfl_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCfl_statement" ):
+                listener.enterCfl_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCfl_statement" ):
+                listener.exitCfl_statement(self)
 
 
 
@@ -12050,6 +12114,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_block_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBlock_statement" ):
+                listener.enterBlock_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBlock_statement" ):
+                listener.exitBlock_statement(self)
+
 
 
 
@@ -12115,6 +12187,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_break_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBreak_statement" ):
+                listener.enterBreak_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBreak_statement" ):
+                listener.exitBreak_statement(self)
+
 
 
 
@@ -12158,6 +12238,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_continue_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterContinue_statement" ):
+                listener.enterContinue_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitContinue_statement" ):
+                listener.exitContinue_statement(self)
 
 
 
@@ -12209,6 +12297,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_goto_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGoto_statement" ):
+                listener.enterGoto_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGoto_statement" ):
+                listener.exitGoto_statement(self)
 
 
 
@@ -12283,6 +12379,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_return_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReturn_statement" ):
+                listener.enterReturn_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReturn_statement" ):
+                listener.exitReturn_statement(self)
+
 
 
 
@@ -12348,6 +12452,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_if_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIf_statement" ):
+                listener.enterIf_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIf_statement" ):
+                listener.exitIf_statement(self)
 
 
 
@@ -12425,6 +12537,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_throw_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterThrow_statement" ):
+                listener.enterThrow_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitThrow_statement" ):
+                listener.exitThrow_statement(self)
+
 
 
 
@@ -12486,6 +12606,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_throw_error_number
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterThrow_error_number" ):
+                listener.enterThrow_error_number(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitThrow_error_number" ):
+                listener.exitThrow_error_number(self)
+
 
 
 
@@ -12528,6 +12656,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_throw_message
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterThrow_message" ):
+                listener.enterThrow_message(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitThrow_message" ):
+                listener.exitThrow_message(self)
+
 
 
 
@@ -12569,6 +12705,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_throw_state
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterThrow_state" ):
+                listener.enterThrow_state(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitThrow_state" ):
+                listener.exitThrow_state(self)
 
 
 
@@ -12644,6 +12788,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_try_catch_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTry_catch_statement" ):
+                listener.enterTry_catch_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTry_catch_statement" ):
+                listener.exitTry_catch_statement(self)
 
 
 
@@ -12777,6 +12929,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_waitfor_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWaitfor_statement" ):
+                listener.enterWaitfor_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWaitfor_statement" ):
+                listener.exitWaitfor_statement(self)
+
 
 
 
@@ -12875,6 +13035,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_while_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWhile_statement" ):
+                listener.enterWhile_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWhile_statement" ):
+                listener.exitWhile_statement(self)
+
 
 
 
@@ -12966,6 +13134,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_print_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrint_statement" ):
+                listener.enterPrint_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrint_statement" ):
+                listener.exitPrint_statement(self)
 
 
 
@@ -13100,6 +13276,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_raiseerror_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRaiseerror_statement" ):
+                listener.enterRaiseerror_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRaiseerror_statement" ):
+                listener.exitRaiseerror_statement(self)
 
 
 
@@ -13243,6 +13427,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_empty_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEmpty_statement" ):
+                listener.enterEmpty_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEmpty_statement" ):
+                listener.exitEmpty_statement(self)
+
 
 
 
@@ -13340,6 +13532,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_another_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnother_statement" ):
+                listener.enterAnother_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnother_statement" ):
+                listener.exitAnother_statement(self)
 
 
 
@@ -13521,6 +13721,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_application_role
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_application_role" ):
+                listener.enterAlter_application_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_application_role" ):
+                listener.exitAlter_application_role(self)
+
 
 
 
@@ -13648,6 +13856,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_xml_schema_collection
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_xml_schema_collection" ):
+                listener.enterAlter_xml_schema_collection(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_xml_schema_collection" ):
+                listener.exitAlter_xml_schema_collection(self)
+
 
 
 
@@ -13742,6 +13958,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_application_role
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_application_role" ):
+                listener.enterCreate_application_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_application_role" ):
+                listener.exitCreate_application_role(self)
 
 
 
@@ -13846,6 +14070,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_aggregate
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_aggregate" ):
+                listener.enterDrop_aggregate(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_aggregate" ):
+                listener.exitDrop_aggregate(self)
+
 
 
 
@@ -13915,6 +14147,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_application_role
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_application_role" ):
+                listener.enterDrop_application_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_application_role" ):
+                listener.exitDrop_application_role(self)
+
 
 
 
@@ -13964,6 +14204,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly" ):
+                listener.enterAlter_assembly(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly" ):
+                listener.exitAlter_assembly(self)
+
 
 
 
@@ -14003,6 +14251,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_start
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_start" ):
+                listener.enterAlter_assembly_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_start" ):
+                listener.exitAlter_assembly_start(self)
 
 
 
@@ -14051,6 +14307,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_clause" ):
+                listener.enterAlter_assembly_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_clause" ):
+                listener.exitAlter_assembly_clause(self)
 
 
 
@@ -14125,6 +14389,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_from_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_from_clause" ):
+                listener.enterAlter_assembly_from_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_from_clause" ):
+                listener.exitAlter_assembly_from_clause(self)
+
 
 
 
@@ -14172,6 +14444,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_from_clause_start
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_from_clause_start" ):
+                listener.enterAlter_assembly_from_clause_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_from_clause_start" ):
+                listener.exitAlter_assembly_from_clause_start(self)
+
 
 
 
@@ -14209,6 +14489,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_drop_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_drop_clause" ):
+                listener.enterAlter_assembly_drop_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_drop_clause" ):
+                listener.exitAlter_assembly_drop_clause(self)
 
 
 
@@ -14248,6 +14536,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_drop_multiple_files
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_drop_multiple_files" ):
+                listener.enterAlter_assembly_drop_multiple_files(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_drop_multiple_files" ):
+                listener.exitAlter_assembly_drop_multiple_files(self)
 
 
 
@@ -14295,6 +14591,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_drop
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_drop" ):
+                listener.enterAlter_assembly_drop(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_drop" ):
+                listener.exitAlter_assembly_drop(self)
+
 
 
 
@@ -14332,6 +14636,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_add_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_add_clause" ):
+                listener.enterAlter_assembly_add_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_add_clause" ):
+                listener.exitAlter_assembly_add_clause(self)
 
 
 
@@ -14373,6 +14685,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_asssembly_add_clause_start
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_asssembly_add_clause_start" ):
+                listener.enterAlter_asssembly_add_clause_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_asssembly_add_clause_start" ):
+                listener.exitAlter_asssembly_add_clause_start(self)
 
 
 
@@ -14420,6 +14740,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_client_file_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_client_file_clause" ):
+                listener.enterAlter_assembly_client_file_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_client_file_clause" ):
+                listener.exitAlter_assembly_client_file_clause(self)
+
 
 
 
@@ -14464,6 +14792,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_file_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_file_name" ):
+                listener.enterAlter_assembly_file_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_file_name" ):
+                listener.exitAlter_assembly_file_name(self)
+
 
 
 
@@ -14502,6 +14838,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_file_bits
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_file_bits" ):
+                listener.enterAlter_assembly_file_bits(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_file_bits" ):
+                listener.exitAlter_assembly_file_bits(self)
+
 
 
 
@@ -14536,6 +14880,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_as
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_as" ):
+                listener.enterAlter_assembly_as(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_as" ):
+                listener.exitAlter_assembly_as(self)
 
 
 
@@ -14575,6 +14927,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_with_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_with_clause" ):
+                listener.enterAlter_assembly_with_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_with_clause" ):
+                listener.exitAlter_assembly_with_clause(self)
+
 
 
 
@@ -14609,6 +14969,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_assembly_with
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_assembly_with" ):
+                listener.enterAlter_assembly_with(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_assembly_with" ):
+                listener.exitAlter_assembly_with(self)
 
 
 
@@ -14650,6 +15018,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_client_assembly_specifier
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClient_assembly_specifier" ):
+                listener.enterClient_assembly_specifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClient_assembly_specifier" ):
+                listener.exitClient_assembly_specifier(self)
 
 
 
@@ -14733,6 +15109,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_assembly_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssembly_option" ):
+                listener.enterAssembly_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssembly_option" ):
+                listener.exitAssembly_option(self)
 
 
 
@@ -14831,6 +15215,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_network_file_share
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNetwork_file_share" ):
+                listener.enterNetwork_file_share(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNetwork_file_share" ):
+                listener.exitNetwork_file_share(self)
+
 
 
 
@@ -14870,6 +15262,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_network_computer
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNetwork_computer" ):
+                listener.enterNetwork_computer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNetwork_computer" ):
+                listener.exitNetwork_computer(self)
+
 
 
 
@@ -14902,6 +15302,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_network_file_start
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNetwork_file_start" ):
+                listener.enterNetwork_file_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNetwork_file_start" ):
+                listener.exitNetwork_file_start(self)
 
 
 
@@ -14944,6 +15352,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_file_path
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFile_path" ):
+                listener.enterFile_path(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFile_path" ):
+                listener.exitFile_path(self)
 
 
 
@@ -14993,6 +15409,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_file_directory_path_separator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFile_directory_path_separator" ):
+                listener.enterFile_directory_path_separator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFile_directory_path_separator" ):
+                listener.exitFile_directory_path_separator(self)
+
 
 
 
@@ -15031,6 +15455,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_local_file
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_file" ):
+                listener.enterLocal_file(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_file" ):
+                listener.exitLocal_file(self)
+
 
 
 
@@ -15065,6 +15497,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_local_drive
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLocal_drive" ):
+                listener.enterLocal_drive(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLocal_drive" ):
+                listener.exitLocal_drive(self)
 
 
 
@@ -15109,6 +15549,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_multiple_local_files
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMultiple_local_files" ):
+                listener.enterMultiple_local_files(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMultiple_local_files" ):
+                listener.exitMultiple_local_files(self)
 
 
 
@@ -15161,6 +15609,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_multiple_local_file_start
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMultiple_local_file_start" ):
+                listener.enterMultiple_local_file_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMultiple_local_file_start" ):
+                listener.exitMultiple_local_file_start(self)
 
 
 
@@ -15248,6 +15704,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_assembly
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_assembly" ):
+                listener.enterCreate_assembly(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_assembly" ):
+                listener.exitCreate_assembly(self)
 
 
 
@@ -15375,6 +15839,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_assembly
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_assembly" ):
+                listener.enterDrop_assembly(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_assembly" ):
+                listener.exitDrop_assembly(self)
+
 
 
 
@@ -15474,6 +15946,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_asymmetric_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_asymmetric_key" ):
+                listener.enterAlter_asymmetric_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_asymmetric_key" ):
+                listener.exitAlter_asymmetric_key(self)
+
 
 
 
@@ -15533,6 +16013,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_asymmetric_key_start
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_asymmetric_key_start" ):
+                listener.enterAlter_asymmetric_key_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_asymmetric_key_start" ):
+                listener.exitAlter_asymmetric_key_start(self)
+
 
 
 
@@ -15583,6 +16071,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_asymmetric_key_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAsymmetric_key_option" ):
+                listener.enterAsymmetric_key_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAsymmetric_key_option" ):
+                listener.exitAsymmetric_key_option(self)
 
 
 
@@ -15641,6 +16137,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_asymmetric_key_option_start
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAsymmetric_key_option_start" ):
+                listener.enterAsymmetric_key_option_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAsymmetric_key_option_start" ):
+                listener.exitAsymmetric_key_option_start(self)
+
 
 
 
@@ -15694,6 +16198,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_asymmetric_key_password_change_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAsymmetric_key_password_change_option" ):
+                listener.enterAsymmetric_key_password_change_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAsymmetric_key_password_change_option" ):
+                listener.exitAsymmetric_key_password_change_option(self)
 
 
 
@@ -15847,6 +16359,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_asymmetric_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_asymmetric_key" ):
+                listener.enterCreate_asymmetric_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_asymmetric_key" ):
+                listener.exitCreate_asymmetric_key(self)
 
 
 
@@ -16024,6 +16544,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_asymmetric_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_asymmetric_key" ):
+                listener.enterDrop_asymmetric_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_asymmetric_key" ):
+                listener.exitDrop_asymmetric_key(self)
+
 
 
 
@@ -16097,6 +16625,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_authorization
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_authorization" ):
+                listener.enterAlter_authorization(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_authorization" ):
+                listener.exitAlter_authorization(self)
+
 
 
 
@@ -16154,6 +16690,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_authorization_grantee
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAuthorization_grantee" ):
+                listener.enterAuthorization_grantee(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAuthorization_grantee" ):
+                listener.exitAuthorization_grantee(self)
+
 
 
 
@@ -16202,6 +16746,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_entity_to
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEntity_to" ):
+                listener.enterEntity_to(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEntity_to" ):
+                listener.exitEntity_to(self)
+
 
 
 
@@ -16234,6 +16786,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_colon_colon
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColon_colon" ):
+                listener.enterColon_colon(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColon_colon" ):
+                listener.exitColon_colon(self)
 
 
 
@@ -16273,6 +16833,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_authorization_start
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_authorization_start" ):
+                listener.enterAlter_authorization_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_authorization_start" ):
+                listener.exitAlter_authorization_start(self)
 
 
 
@@ -16332,6 +16900,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_authorization_for_sql_database
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_authorization_for_sql_database" ):
+                listener.enterAlter_authorization_for_sql_database(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_authorization_for_sql_database" ):
+                listener.exitAlter_authorization_for_sql_database(self)
 
 
 
@@ -16404,6 +16980,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_authorization_for_azure_dw
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_authorization_for_azure_dw" ):
+                listener.enterAlter_authorization_for_azure_dw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_authorization_for_azure_dw" ):
+                listener.exitAlter_authorization_for_azure_dw(self)
+
 
 
 
@@ -16474,6 +17058,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_authorization_for_parallel_dw
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_authorization_for_parallel_dw" ):
+                listener.enterAlter_authorization_for_parallel_dw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_authorization_for_parallel_dw" ):
+                listener.exitAlter_authorization_for_parallel_dw(self)
 
 
 
@@ -16604,6 +17196,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_class_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_type" ):
+                listener.enterClass_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_type" ):
+                listener.exitClass_type(self)
 
 
 
@@ -16842,6 +17442,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_class_type_for_sql_database
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_type_for_sql_database" ):
+                listener.enterClass_type_for_sql_database(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_type_for_sql_database" ):
+                listener.exitClass_type_for_sql_database(self)
+
 
 
 
@@ -16973,6 +17581,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_class_type_for_azure_dw
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_type_for_azure_dw" ):
+                listener.enterClass_type_for_azure_dw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_type_for_azure_dw" ):
+                listener.exitClass_type_for_azure_dw(self)
+
 
 
 
@@ -17017,6 +17633,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_class_type_for_parallel_dw
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_type_for_parallel_dw" ):
+                listener.enterClass_type_for_parallel_dw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_type_for_parallel_dw" ):
+                listener.exitClass_type_for_parallel_dw(self)
 
 
 
@@ -17233,6 +17857,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_class_type_for_grant
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClass_type_for_grant" ):
+                listener.enterClass_type_for_grant(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClass_type_for_grant" ):
+                listener.exitClass_type_for_grant(self)
 
 
 
@@ -17633,6 +18265,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_availability_group
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_availability_group" ):
+                listener.enterDrop_availability_group(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_availability_group" ):
+                listener.exitDrop_availability_group(self)
+
 
 
 
@@ -17676,6 +18316,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_availability_group
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_availability_group" ):
+                listener.enterAlter_availability_group(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_availability_group" ):
+                listener.exitAlter_availability_group(self)
 
 
 
@@ -17722,6 +18370,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_availability_group_start
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_availability_group_start" ):
+                listener.enterAlter_availability_group_start(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_availability_group_start" ):
+                listener.exitAlter_availability_group_start(self)
 
 
 
@@ -18008,6 +18664,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_availability_group_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_availability_group_options" ):
+                listener.enterAlter_availability_group_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_availability_group_options" ):
+                listener.exitAlter_availability_group_options(self)
 
 
 
@@ -19073,6 +19737,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_ip_v4_failover
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIp_v4_failover" ):
+                listener.enterIp_v4_failover(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIp_v4_failover" ):
+                listener.exitIp_v4_failover(self)
+
 
 
 
@@ -19105,6 +19777,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_ip_v6_failover
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIp_v6_failover" ):
+                listener.enterIp_v6_failover(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIp_v6_failover" ):
+                listener.exitIp_v6_failover(self)
 
 
 
@@ -19214,6 +19894,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_or_alter_broker_priority
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_or_alter_broker_priority" ):
+                listener.enterCreate_or_alter_broker_priority(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_or_alter_broker_priority" ):
+                listener.exitCreate_or_alter_broker_priority(self)
 
 
 
@@ -19409,6 +20097,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_broker_priority
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_broker_priority" ):
+                listener.enterDrop_broker_priority(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_broker_priority" ):
+                listener.exitDrop_broker_priority(self)
+
 
 
 
@@ -19539,6 +20235,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_certificate
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_certificate" ):
+                listener.enterAlter_certificate(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_certificate" ):
+                listener.exitAlter_certificate(self)
 
 
 
@@ -19755,6 +20459,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_column_encryption_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_column_encryption_key" ):
+                listener.enterAlter_column_encryption_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_column_encryption_key" ):
+                listener.exitAlter_column_encryption_key(self)
+
 
 
 
@@ -19918,6 +20630,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_column_encryption_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_column_encryption_key" ):
+                listener.enterCreate_column_encryption_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_column_encryption_key" ):
+                listener.exitCreate_column_encryption_key(self)
+
 
 
 
@@ -20026,6 +20746,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_certificate
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_certificate" ):
+                listener.enterDrop_certificate(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_certificate" ):
+                listener.exitDrop_certificate(self)
+
 
 
 
@@ -20076,6 +20804,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_column_encryption_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_column_encryption_key" ):
+                listener.enterDrop_column_encryption_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_column_encryption_key" ):
+                listener.exitDrop_column_encryption_key(self)
 
 
 
@@ -20132,6 +20868,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_column_master_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_column_master_key" ):
+                listener.enterDrop_column_master_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_column_master_key" ):
+                listener.exitDrop_column_master_key(self)
+
 
 
 
@@ -20181,6 +20925,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_contract
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_contract" ):
+                listener.enterDrop_contract(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_contract" ):
+                listener.exitDrop_contract(self)
+
 
 
 
@@ -20225,6 +20977,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_credential
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_credential" ):
+                listener.enterDrop_credential(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_credential" ):
+                listener.exitDrop_credential(self)
 
 
 
@@ -20273,6 +21033,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_cryptograhic_provider
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_cryptograhic_provider" ):
+                listener.enterDrop_cryptograhic_provider(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_cryptograhic_provider" ):
+                listener.exitDrop_cryptograhic_provider(self)
 
 
 
@@ -20335,6 +21103,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_database
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_database" ):
+                listener.enterDrop_database(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_database" ):
+                listener.exitDrop_database(self)
 
 
 
@@ -20418,6 +21194,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_database_audit_specification
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_database_audit_specification" ):
+                listener.enterDrop_database_audit_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_database_audit_specification" ):
+                listener.exitDrop_database_audit_specification(self)
+
 
 
 
@@ -20467,6 +21251,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_database_encryption_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_database_encryption_key" ):
+                listener.enterDrop_database_encryption_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_database_encryption_key" ):
+                listener.exitDrop_database_encryption_key(self)
 
 
 
@@ -20520,6 +21312,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_database_scoped_credential
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_database_scoped_credential" ):
+                listener.enterDrop_database_scoped_credential(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_database_scoped_credential" ):
+                listener.exitDrop_database_scoped_credential(self)
 
 
 
@@ -20585,6 +21385,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_default
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_default" ):
+                listener.enterDrop_default(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_default" ):
+                listener.exitDrop_default(self)
 
 
 
@@ -20660,6 +21468,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_endpoint
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_endpoint" ):
+                listener.enterDrop_endpoint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_endpoint" ):
+                listener.exitDrop_endpoint(self)
+
 
 
 
@@ -20710,6 +21526,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_external_data_source
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_external_data_source" ):
+                listener.enterDrop_external_data_source(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_external_data_source" ):
+                listener.exitDrop_external_data_source(self)
 
 
 
@@ -20765,6 +21589,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_external_file_format
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_external_file_format" ):
+                listener.enterDrop_external_file_format(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_external_file_format" ):
+                listener.exitDrop_external_file_format(self)
 
 
 
@@ -20824,6 +21656,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_external_library
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_external_library" ):
+                listener.enterDrop_external_library(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_external_library" ):
+                listener.exitDrop_external_library(self)
 
 
 
@@ -20889,6 +21729,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_external_resource_pool
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_external_resource_pool" ):
+                listener.enterDrop_external_resource_pool(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_external_resource_pool" ):
+                listener.exitDrop_external_resource_pool(self)
+
 
 
 
@@ -20951,6 +21799,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_external_table
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_external_table" ):
+                listener.enterDrop_external_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_external_table" ):
+                listener.exitDrop_external_table(self)
 
 
 
@@ -21043,6 +21899,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_event_notifications
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_event_notifications" ):
+                listener.enterDrop_event_notifications(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_event_notifications" ):
+                listener.exitDrop_event_notifications(self)
 
 
 
@@ -21141,6 +22005,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_event_session
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_event_session" ):
+                listener.enterDrop_event_session(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_event_session" ):
+                listener.exitDrop_event_session(self)
+
 
 
 
@@ -21194,6 +22066,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_fulltext_catalog
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_fulltext_catalog" ):
+                listener.enterDrop_fulltext_catalog(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_fulltext_catalog" ):
+                listener.exitDrop_fulltext_catalog(self)
 
 
 
@@ -21254,6 +22134,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_fulltext_index
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_fulltext_index" ):
+                listener.enterDrop_fulltext_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_fulltext_index" ):
+                listener.exitDrop_fulltext_index(self)
 
 
 
@@ -21317,6 +22205,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_fulltext_stoplist
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_fulltext_stoplist" ):
+                listener.enterDrop_fulltext_stoplist(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_fulltext_stoplist" ):
+                listener.exitDrop_fulltext_stoplist(self)
+
 
 
 
@@ -21364,6 +22260,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_login
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_login" ):
+                listener.enterDrop_login(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_login" ):
+                listener.exitDrop_login(self)
+
 
 
 
@@ -21406,6 +22310,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_master_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_master_key" ):
+                listener.enterDrop_master_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_master_key" ):
+                listener.exitDrop_master_key(self)
 
 
 
@@ -21454,6 +22366,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_message_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_message_type" ):
+                listener.enterDrop_message_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_message_type" ):
+                listener.exitDrop_message_type(self)
 
 
 
@@ -21505,6 +22425,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_partition_function
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_partition_function" ):
+                listener.enterDrop_partition_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_partition_function" ):
+                listener.exitDrop_partition_function(self)
+
 
 
 
@@ -21554,6 +22482,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_partition_scheme
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_partition_scheme" ):
+                listener.enterDrop_partition_scheme(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_partition_scheme" ):
+                listener.exitDrop_partition_scheme(self)
 
 
 
@@ -21612,6 +22548,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_queue
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_queue" ):
+                listener.enterDrop_queue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_queue" ):
+                listener.exitDrop_queue(self)
 
 
 
@@ -21684,6 +22628,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_remote_service_binding
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_remote_service_binding" ):
+                listener.enterDrop_remote_service_binding(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_remote_service_binding" ):
+                listener.exitDrop_remote_service_binding(self)
+
 
 
 
@@ -21735,6 +22687,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_resource_pool
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_resource_pool" ):
+                listener.enterDrop_resource_pool(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_resource_pool" ):
+                listener.exitDrop_resource_pool(self)
 
 
 
@@ -21788,6 +22748,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_db_role
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_db_role" ):
+                listener.enterDrop_db_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_db_role" ):
+                listener.exitDrop_db_role(self)
 
 
 
@@ -21844,6 +22812,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_route
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_route" ):
+                listener.enterDrop_route(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_route" ):
+                listener.exitDrop_route(self)
 
 
 
@@ -21905,6 +22881,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_rule
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_rule" ):
+                listener.enterDrop_rule(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_rule" ):
+                listener.exitDrop_rule(self)
 
 
 
@@ -21992,6 +22976,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_schema
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_schema" ):
+                listener.enterDrop_schema(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_schema" ):
+                listener.exitDrop_schema(self)
+
 
 
 
@@ -22053,6 +23045,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_search_property_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_search_property_list" ):
+                listener.enterDrop_search_property_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_search_property_list" ):
+                listener.exitDrop_search_property_list(self)
 
 
 
@@ -22118,6 +23118,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_security_policy
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_security_policy" ):
+                listener.enterDrop_security_policy(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_security_policy" ):
+                listener.exitDrop_security_policy(self)
 
 
 
@@ -22206,6 +23214,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_sequence
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_sequence" ):
+                listener.enterDrop_sequence(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_sequence" ):
+                listener.exitDrop_sequence(self)
 
 
 
@@ -22300,6 +23316,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_server_audit
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_server_audit" ):
+                listener.enterDrop_server_audit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_server_audit" ):
+                listener.exitDrop_server_audit(self)
+
 
 
 
@@ -22353,6 +23377,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_server_audit_specification
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_server_audit_specification" ):
+                listener.enterDrop_server_audit_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_server_audit_specification" ):
+                listener.exitDrop_server_audit_specification(self)
+
 
 
 
@@ -22405,6 +23437,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_server_role
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_server_role" ):
+                listener.enterDrop_server_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_server_role" ):
+                listener.exitDrop_server_role(self)
+
 
 
 
@@ -22451,6 +23491,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_service
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_service" ):
+                listener.enterDrop_service(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_service" ):
+                listener.exitDrop_service(self)
 
 
 
@@ -22538,6 +23586,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_signature
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_signature" ):
+                listener.enterDrop_signature(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_signature" ):
+                listener.exitDrop_signature(self)
 
 
 
@@ -22666,6 +23722,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_statistics_name_azure_dw_and_pdw
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_statistics_name_azure_dw_and_pdw" ):
+                listener.enterDrop_statistics_name_azure_dw_and_pdw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_statistics_name_azure_dw_and_pdw" ):
+                listener.exitDrop_statistics_name_azure_dw_and_pdw(self)
+
 
 
 
@@ -22736,6 +23800,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_symmetric_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_symmetric_key" ):
+                listener.enterDrop_symmetric_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_symmetric_key" ):
+                listener.exitDrop_symmetric_key(self)
 
 
 
@@ -22809,6 +23881,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_synonym
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_synonym" ):
+                listener.enterDrop_synonym(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_synonym" ):
+                listener.exitDrop_synonym(self)
+
 
 
 
@@ -22881,6 +23961,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_user
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_user" ):
+                listener.enterDrop_user(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_user" ):
+                listener.exitDrop_user(self)
+
 
 
 
@@ -22939,6 +24027,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_workload_group
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_workload_group" ):
+                listener.enterDrop_workload_group(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_workload_group" ):
+                listener.exitDrop_workload_group(self)
 
 
 
@@ -22999,6 +24095,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_xml_schema_collection
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_xml_schema_collection" ):
+                listener.enterDrop_xml_schema_collection(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_xml_schema_collection" ):
+                listener.exitDrop_xml_schema_collection(self)
 
 
 
@@ -23091,6 +24195,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_disable_trigger
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDisable_trigger" ):
+                listener.enterDisable_trigger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDisable_trigger" ):
+                listener.exitDisable_trigger(self)
 
 
 
@@ -23243,6 +24355,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_enable_trigger
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnable_trigger" ):
+                listener.enterEnable_trigger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnable_trigger" ):
+                listener.exitEnable_trigger(self)
+
 
 
 
@@ -23385,6 +24505,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_lock_table
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLock_table" ):
+                listener.enterLock_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLock_table" ):
+                listener.exitLock_table(self)
+
 
 
 
@@ -23498,6 +24626,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_truncate_table
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTruncate_table" ):
+                listener.enterTruncate_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTruncate_table" ):
+                listener.exitTruncate_table(self)
 
 
 
@@ -23637,6 +24773,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_column_master_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_column_master_key" ):
+                listener.enterCreate_column_master_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_column_master_key" ):
+                listener.exitCreate_column_master_key(self)
+
 
 
 
@@ -23731,6 +24875,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_credential
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_credential" ):
+                listener.enterAlter_credential(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_credential" ):
+                listener.exitAlter_credential(self)
 
 
 
@@ -23839,6 +24991,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_credential
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_credential" ):
+                listener.enterCreate_credential(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_credential" ):
+                listener.exitCreate_credential(self)
+
 
 
 
@@ -23943,6 +25103,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_cryptographic_provider
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_cryptographic_provider" ):
+                listener.enterAlter_cryptographic_provider(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_cryptographic_provider" ):
+                listener.exitAlter_cryptographic_provider(self)
+
 
 
 
@@ -24033,6 +25201,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_cryptographic_provider
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_cryptographic_provider" ):
+                listener.enterCreate_cryptographic_provider(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_cryptographic_provider" ):
+                listener.exitCreate_cryptographic_provider(self)
 
 
 
@@ -24189,6 +25365,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_endpoint
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_endpoint" ):
+                listener.enterCreate_endpoint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_endpoint" ):
+                listener.exitCreate_endpoint(self)
 
 
 
@@ -24424,6 +25608,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_endpoint_encryption_alogorithm_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEndpoint_encryption_alogorithm_clause" ):
+                listener.enterEndpoint_encryption_alogorithm_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEndpoint_encryption_alogorithm_clause" ):
+                listener.exitEndpoint_encryption_alogorithm_clause(self)
+
 
 
 
@@ -24527,6 +25719,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_endpoint_authentication_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEndpoint_authentication_clause" ):
+                listener.enterEndpoint_authentication_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEndpoint_authentication_clause" ):
+                listener.exitEndpoint_authentication_clause(self)
 
 
 
@@ -24656,6 +25856,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_endpoint_listener_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEndpoint_listener_clause" ):
+                listener.enterEndpoint_listener_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEndpoint_listener_clause" ):
+                listener.exitEndpoint_listener_clause(self)
 
 
 
@@ -24793,6 +26001,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_event_notification
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_event_notification" ):
+                listener.enterCreate_event_notification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_event_notification" ):
+                listener.exitCreate_event_notification(self)
 
 
 
@@ -25096,6 +26312,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_or_alter_event_session
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_or_alter_event_session" ):
+                listener.enterCreate_or_alter_event_session(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_or_alter_event_session" ):
+                listener.exitCreate_or_alter_event_session(self)
 
 
 
@@ -25719,6 +26943,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_event_session_predicate_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEvent_session_predicate_expression" ):
+                listener.enterEvent_session_predicate_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEvent_session_predicate_expression" ):
+                listener.exitEvent_session_predicate_expression(self)
+
 
 
 
@@ -25819,6 +27051,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_event_session_predicate_factor
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEvent_session_predicate_factor" ):
+                listener.enterEvent_session_predicate_factor(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEvent_session_predicate_factor" ):
+                listener.exitEvent_session_predicate_factor(self)
+
 
 
 
@@ -25910,6 +27150,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_event_session_predicate_leaf
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEvent_session_predicate_leaf" ):
+                listener.enterEvent_session_predicate_leaf(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEvent_session_predicate_leaf" ):
+                listener.exitEvent_session_predicate_leaf(self)
 
 
 
@@ -26179,6 +27427,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_external_data_source
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_external_data_source" ):
+                listener.enterAlter_external_data_source(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_external_data_source" ):
+                listener.exitAlter_external_data_source(self)
+
 
 
 
@@ -26431,6 +27687,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_external_library
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_external_library" ):
+                listener.enterAlter_external_library(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_external_library" ):
+                listener.exitAlter_external_library(self)
+
 
 
 
@@ -26674,6 +27938,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_external_library
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_external_library" ):
+                listener.enterCreate_external_library(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_external_library" ):
+                listener.exitCreate_external_library(self)
 
 
 
@@ -26927,6 +28199,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_external_resource_pool
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_external_resource_pool" ):
+                listener.enterAlter_external_resource_pool(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_external_resource_pool" ):
+                listener.exitAlter_external_resource_pool(self)
 
 
 
@@ -27231,6 +28511,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_external_resource_pool
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_external_resource_pool" ):
+                listener.enterCreate_external_resource_pool(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_external_resource_pool" ):
+                listener.exitCreate_external_resource_pool(self)
+
 
 
 
@@ -27489,6 +28777,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_fulltext_catalog
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_fulltext_catalog" ):
+                listener.enterAlter_fulltext_catalog(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_fulltext_catalog" ):
+                listener.exitAlter_fulltext_catalog(self)
+
 
 
 
@@ -27623,6 +28919,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_fulltext_catalog
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_fulltext_catalog" ):
+                listener.enterCreate_fulltext_catalog(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_fulltext_catalog" ):
+                listener.exitCreate_fulltext_catalog(self)
 
 
 
@@ -27763,6 +29067,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_fulltext_stoplist
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_fulltext_stoplist" ):
+                listener.enterAlter_fulltext_stoplist(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_fulltext_stoplist" ):
+                listener.exitAlter_fulltext_stoplist(self)
+
 
 
 
@@ -27894,6 +29206,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_fulltext_stoplist
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_fulltext_stoplist" ):
+                listener.enterCreate_fulltext_stoplist(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_fulltext_stoplist" ):
+                listener.exitCreate_fulltext_stoplist(self)
 
 
 
@@ -28082,6 +29402,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_login_sql_server
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_login_sql_server" ):
+                listener.enterAlter_login_sql_server(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_login_sql_server" ):
+                listener.exitAlter_login_sql_server(self)
 
 
 
@@ -28429,6 +29757,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_login_sql_server
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_login_sql_server" ):
+                listener.enterCreate_login_sql_server(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_login_sql_server" ):
+                listener.exitCreate_login_sql_server(self)
+
 
 
 
@@ -28763,6 +30099,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_login_azure_sql
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_login_azure_sql" ):
+                listener.enterAlter_login_azure_sql(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_login_azure_sql" ):
+                listener.exitAlter_login_azure_sql(self)
+
 
 
 
@@ -28890,6 +30234,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_login_azure_sql
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_login_azure_sql" ):
+                listener.enterCreate_login_azure_sql(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_login_azure_sql" ):
+                listener.exitCreate_login_azure_sql(self)
+
 
 
 
@@ -29001,6 +30353,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_login_azure_sql_dw_and_pdw
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_login_azure_sql_dw_and_pdw" ):
+                listener.enterAlter_login_azure_sql_dw_and_pdw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_login_azure_sql_dw_and_pdw" ):
+                listener.exitAlter_login_azure_sql_dw_and_pdw(self)
 
 
 
@@ -29157,6 +30517,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_login_pdw
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_login_pdw" ):
+                listener.enterCreate_login_pdw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_login_pdw" ):
+                listener.exitCreate_login_pdw(self)
+
 
 
 
@@ -29296,6 +30664,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_master_key_sql_server
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_master_key_sql_server" ):
+                listener.enterAlter_master_key_sql_server(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_master_key_sql_server" ):
+                listener.exitAlter_master_key_sql_server(self)
+
 
 
 
@@ -29421,6 +30797,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_master_key_sql_server
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_master_key_sql_server" ):
+                listener.enterCreate_master_key_sql_server(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_master_key_sql_server" ):
+                listener.exitCreate_master_key_sql_server(self)
+
 
 
 
@@ -29514,6 +30898,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_master_key_azure_sql
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_master_key_azure_sql" ):
+                listener.enterAlter_master_key_azure_sql(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_master_key_azure_sql" ):
+                listener.exitAlter_master_key_azure_sql(self)
 
 
 
@@ -29649,6 +31041,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_master_key_azure_sql
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_master_key_azure_sql" ):
+                listener.enterCreate_master_key_azure_sql(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_master_key_azure_sql" ):
+                listener.exitCreate_master_key_azure_sql(self)
+
 
 
 
@@ -29743,6 +31143,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_message_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_message_type" ):
+                listener.enterAlter_message_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_message_type" ):
+                listener.exitAlter_message_type(self)
 
 
 
@@ -29852,6 +31260,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_partition_function
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_partition_function" ):
+                listener.enterAlter_partition_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_partition_function" ):
+                listener.exitAlter_partition_function(self)
+
 
 
 
@@ -29931,6 +31347,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_partition_scheme
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_partition_scheme" ):
+                listener.enterAlter_partition_scheme(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_partition_scheme" ):
+                listener.exitAlter_partition_scheme(self)
 
 
 
@@ -30024,6 +31448,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_remote_service_binding
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_remote_service_binding" ):
+                listener.enterAlter_remote_service_binding(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_remote_service_binding" ):
+                listener.exitAlter_remote_service_binding(self)
 
 
 
@@ -30155,6 +31587,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_remote_service_binding
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_remote_service_binding" ):
+                listener.enterCreate_remote_service_binding(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_remote_service_binding" ):
+                listener.exitCreate_remote_service_binding(self)
 
 
 
@@ -30329,6 +31769,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_resource_pool
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_resource_pool" ):
+                listener.enterCreate_resource_pool(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_resource_pool" ):
+                listener.exitCreate_resource_pool(self)
 
 
 
@@ -30695,6 +32143,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_resource_governor
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_resource_governor" ):
+                listener.enterAlter_resource_governor(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_resource_governor" ):
+                listener.exitAlter_resource_governor(self)
+
 
 
 
@@ -30861,6 +32317,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_database_audit_specification
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_database_audit_specification" ):
+                listener.enterAlter_database_audit_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_database_audit_specification" ):
+                listener.exitAlter_database_audit_specification(self)
+
 
 
 
@@ -30978,6 +32442,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_audit_action_spec_group
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAudit_action_spec_group" ):
+                listener.enterAudit_action_spec_group(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAudit_action_spec_group" ):
+                listener.exitAudit_action_spec_group(self)
+
 
 
 
@@ -31068,6 +32540,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_audit_action_specification
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAudit_action_specification" ):
+                listener.enterAudit_action_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAudit_action_specification" ):
+                listener.exitAudit_action_specification(self)
 
 
 
@@ -31163,6 +32643,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_action_specification
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAction_specification" ):
+                listener.enterAction_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAction_specification" ):
+                listener.exitAction_specification(self)
+
 
 
 
@@ -31207,6 +32695,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_audit_class_name
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAudit_class_name" ):
+                listener.enterAudit_class_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAudit_class_name" ):
+                listener.exitAudit_class_name(self)
 
 
 
@@ -31256,6 +32752,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_audit_securable
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAudit_securable" ):
+                listener.enterAudit_securable(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAudit_securable" ):
+                listener.exitAudit_securable(self)
 
 
 
@@ -31340,6 +32844,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_db_role
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_db_role" ):
+                listener.enterAlter_db_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_db_role" ):
+                listener.exitAlter_db_role(self)
 
 
 
@@ -31469,6 +32981,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_database_audit_specification
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_database_audit_specification" ):
+                listener.enterCreate_database_audit_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_database_audit_specification" ):
+                listener.exitCreate_database_audit_specification(self)
+
 
 
 
@@ -31583,6 +33103,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_db_role
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_db_role" ):
+                listener.enterCreate_db_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_db_role" ):
+                listener.exitCreate_db_role(self)
+
 
 
 
@@ -31686,6 +33214,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_route
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_route" ):
+                listener.enterCreate_route(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_route" ):
+                listener.exitCreate_route(self)
 
 
 
@@ -31847,6 +33383,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_rule
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_rule" ):
+                listener.enterCreate_rule(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_rule" ):
+                listener.exitCreate_rule(self)
+
 
 
 
@@ -31932,6 +33476,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_schema_sql
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_schema_sql" ):
+                listener.enterAlter_schema_sql(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_schema_sql" ):
+                listener.exitAlter_schema_sql(self)
 
 
 
@@ -32113,6 +33665,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_schema
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_schema" ):
+                listener.enterCreate_schema(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_schema" ):
+                listener.exitCreate_schema(self)
+
 
 
 
@@ -32277,6 +33837,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_schema_azure_sql_dw_and_pdw
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_schema_azure_sql_dw_and_pdw" ):
+                listener.enterCreate_schema_azure_sql_dw_and_pdw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_schema_azure_sql_dw_and_pdw" ):
+                listener.exitCreate_schema_azure_sql_dw_and_pdw(self)
+
 
 
 
@@ -32350,6 +33918,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_schema_azure_sql_dw_and_pdw
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_schema_azure_sql_dw_and_pdw" ):
+                listener.enterAlter_schema_azure_sql_dw_and_pdw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_schema_azure_sql_dw_and_pdw" ):
+                listener.exitAlter_schema_azure_sql_dw_and_pdw(self)
 
 
 
@@ -32440,6 +34016,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_search_property_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_search_property_list" ):
+                listener.enterCreate_search_property_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_search_property_list" ):
+                listener.exitCreate_search_property_list(self)
 
 
 
@@ -32643,6 +34227,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_security_policy
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_security_policy" ):
+                listener.enterCreate_security_policy(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_security_policy" ):
+                listener.exitCreate_security_policy(self)
 
 
 
@@ -32924,6 +34516,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_sequence
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_sequence" ):
+                listener.enterAlter_sequence(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_sequence" ):
+                listener.exitAlter_sequence(self)
+
 
 
 
@@ -33126,6 +34726,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_sequence
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_sequence" ):
+                listener.enterCreate_sequence(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_sequence" ):
+                listener.exitCreate_sequence(self)
 
 
 
@@ -33515,6 +35123,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_server_audit
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_server_audit" ):
+                listener.enterAlter_server_audit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_server_audit" ):
+                listener.exitAlter_server_audit(self)
 
 
 
@@ -34201,6 +35817,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_server_audit
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_server_audit" ):
+                listener.enterCreate_server_audit(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_server_audit" ):
+                listener.exitCreate_server_audit(self)
+
 
 
 
@@ -34760,6 +36384,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_server_audit_specification
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_server_audit_specification" ):
+                listener.enterAlter_server_audit_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_server_audit_specification" ):
+                listener.exitAlter_server_audit_specification(self)
+
 
 
 
@@ -34921,6 +36553,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_server_audit_specification
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_server_audit_specification" ):
+                listener.enterCreate_server_audit_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_server_audit_specification" ):
+                listener.exitCreate_server_audit_specification(self)
 
 
 
@@ -35164,6 +36804,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_server_configuration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_server_configuration" ):
+                listener.enterAlter_server_configuration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_server_configuration" ):
+                listener.exitAlter_server_configuration(self)
 
 
 
@@ -35605,6 +37253,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_server_role
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_server_role" ):
+                listener.enterAlter_server_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_server_role" ):
+                listener.exitAlter_server_role(self)
+
 
 
 
@@ -35692,6 +37348,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_server_role
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_server_role" ):
+                listener.enterCreate_server_role(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_server_role" ):
+                listener.exitCreate_server_role(self)
+
 
 
 
@@ -35765,6 +37429,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_server_role_pdw
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_server_role_pdw" ):
+                listener.enterAlter_server_role_pdw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_server_role_pdw" ):
+                listener.exitAlter_server_role_pdw(self)
 
 
 
@@ -35857,6 +37529,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_service
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_service" ):
+                listener.enterAlter_service(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_service" ):
+                listener.exitAlter_service(self)
 
 
 
@@ -35953,6 +37633,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_opt_arg_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOpt_arg_clause" ):
+                listener.enterOpt_arg_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOpt_arg_clause" ):
+                listener.exitOpt_arg_clause(self)
+
 
 
 
@@ -36039,6 +37727,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_service
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_service" ):
+                listener.enterCreate_service(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_service" ):
+                listener.exitCreate_service(self)
 
 
 
@@ -36195,6 +37891,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_service_master_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_service_master_key" ):
+                listener.enterAlter_service_master_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_service_master_key" ):
+                listener.exitAlter_service_master_key(self)
+
 
 
 
@@ -36344,6 +38048,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_symmetric_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_symmetric_key" ):
+                listener.enterAlter_symmetric_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_symmetric_key" ):
+                listener.exitAlter_symmetric_key(self)
+
 
 
 
@@ -36458,6 +38170,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_synonym
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_synonym" ):
+                listener.enterCreate_synonym(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_synonym" ):
+                listener.exitCreate_synonym(self)
 
 
 
@@ -36678,6 +38398,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_user
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_user" ):
+                listener.enterAlter_user(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_user" ):
+                listener.exitAlter_user(self)
 
 
 
@@ -37009,6 +38737,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_user
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_user" ):
+                listener.enterCreate_user(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_user" ):
+                listener.exitCreate_user(self)
 
 
 
@@ -37541,6 +39277,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_user_azure_sql_dw
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_user_azure_sql_dw" ):
+                listener.enterCreate_user_azure_sql_dw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_user_azure_sql_dw" ):
+                listener.exitCreate_user_azure_sql_dw(self)
+
 
 
 
@@ -37717,6 +39461,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_user_azure_sql
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_user_azure_sql" ):
+                listener.enterAlter_user_azure_sql(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_user_azure_sql" ):
+                listener.exitAlter_user_azure_sql(self)
 
 
 
@@ -37956,6 +39708,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_workload_group
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_workload_group" ):
+                listener.enterAlter_workload_group(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_workload_group" ):
+                listener.exitAlter_workload_group(self)
 
 
 
@@ -38246,6 +40006,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_workload_group
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_workload_group" ):
+                listener.enterCreate_workload_group(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_workload_group" ):
+                listener.exitCreate_workload_group(self)
+
 
 
 
@@ -38459,6 +40227,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_xml_schema_collection
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_xml_schema_collection" ):
+                listener.enterCreate_xml_schema_collection(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_xml_schema_collection" ):
+                listener.exitCreate_xml_schema_collection(self)
+
 
 
 
@@ -38581,6 +40357,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_partition_function
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_partition_function" ):
+                listener.enterCreate_partition_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_partition_function" ):
+                listener.exitCreate_partition_function(self)
+
 
 
 
@@ -38695,6 +40479,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_partition_scheme
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_partition_scheme" ):
+                listener.enterCreate_partition_scheme(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_partition_scheme" ):
+                listener.exitCreate_partition_scheme(self)
+
 
 
 
@@ -38796,6 +40588,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_queue
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_queue" ):
+                listener.enterCreate_queue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_queue" ):
+                listener.exitCreate_queue(self)
 
 
 
@@ -38949,6 +40749,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_queue_settings
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQueue_settings" ):
+                listener.enterQueue_settings(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQueue_settings" ):
+                listener.exitQueue_settings(self)
 
 
 
@@ -39191,6 +40999,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_queue
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_queue" ):
+                listener.enterAlter_queue(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_queue" ):
+                listener.exitAlter_queue(self)
+
 
 
 
@@ -39293,6 +41109,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_queue_action
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQueue_action" ):
+                listener.enterQueue_action(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQueue_action" ):
+                listener.exitQueue_action(self)
+
 
 
 
@@ -39393,6 +41217,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_queue_rebuild_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQueue_rebuild_options" ):
+                listener.enterQueue_rebuild_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQueue_rebuild_options" ):
+                listener.exitQueue_rebuild_options(self)
 
 
 
@@ -39497,6 +41329,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_contract
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_contract" ):
+                listener.enterCreate_contract(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_contract" ):
+                listener.exitCreate_contract(self)
 
 
 
@@ -39614,6 +41454,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_conversation_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConversation_statement" ):
+                listener.enterConversation_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConversation_statement" ):
+                listener.exitConversation_statement(self)
+
 
 
 
@@ -39729,6 +41577,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_message_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMessage_statement" ):
+                listener.enterMessage_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMessage_statement" ):
+                listener.exitMessage_statement(self)
 
 
 
@@ -39880,6 +41736,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_merge_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMerge_statement" ):
+                listener.enterMerge_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMerge_statement" ):
+                listener.exitMerge_statement(self)
 
 
 
@@ -40069,6 +41933,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_when_matches
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWhen_matches" ):
+                listener.enterWhen_matches(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWhen_matches" ):
+                listener.exitWhen_matches(self)
+
 
 
 
@@ -40231,6 +42103,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_merge_matched
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMerge_matched" ):
+                listener.enterMerge_matched(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMerge_matched" ):
+                listener.exitMerge_matched(self)
+
 
 
 
@@ -40313,6 +42193,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_merge_not_matched
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMerge_not_matched" ):
+                listener.enterMerge_not_matched(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMerge_not_matched" ):
+                listener.exitMerge_not_matched(self)
 
 
 
@@ -40455,6 +42343,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_delete_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDelete_statement" ):
+                listener.enterDelete_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDelete_statement" ):
+                listener.exitDelete_statement(self)
 
 
 
@@ -40641,6 +42537,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_delete_statement_from
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDelete_statement_from" ):
+                listener.enterDelete_statement_from(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDelete_statement_from" ):
+                listener.exitDelete_statement_from(self)
+
 
 
 
@@ -40756,6 +42660,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_insert_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInsert_statement" ):
+                listener.enterInsert_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInsert_statement" ):
+                listener.exitInsert_statement(self)
 
 
 
@@ -40912,6 +42824,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_insert_statement_value
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInsert_statement_value" ):
+                listener.enterInsert_statement_value(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInsert_statement_value" ):
+                listener.exitInsert_statement_value(self)
+
 
 
 
@@ -41039,6 +42959,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_receive_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReceive_statement" ):
+                listener.enterReceive_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReceive_statement" ):
+                listener.exitReceive_statement(self)
+
 
 
 
@@ -41157,6 +43085,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_select_statement_standalone
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSelect_statement_standalone" ):
+                listener.enterSelect_statement_standalone(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSelect_statement_standalone" ):
+                listener.exitSelect_statement_standalone(self)
+
 
 
 
@@ -41214,6 +43150,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_select_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSelect_statement" ):
+                listener.enterSelect_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSelect_statement" ):
+                listener.exitSelect_statement(self)
 
 
 
@@ -41284,6 +43228,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_time
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTime" ):
+                listener.enterTime(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTime" ):
+                listener.exitTime(self)
 
 
 
@@ -41423,6 +43375,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_update_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUpdate_statement" ):
+                listener.enterUpdate_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUpdate_statement" ):
+                listener.exitUpdate_statement(self)
 
 
 
@@ -41647,6 +43607,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_output_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOutput_clause" ):
+                listener.enterOutput_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOutput_clause" ):
+                listener.exitOutput_clause(self)
+
 
 
 
@@ -41737,6 +43705,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_output_dml_list_elem
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOutput_dml_list_elem" ):
+                listener.enterOutput_dml_list_elem(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOutput_dml_list_elem" ):
+                listener.exitOutput_dml_list_elem(self)
 
 
 
@@ -41852,6 +43828,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_database
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_database" ):
+                listener.enterCreate_database(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_database" ):
+                listener.exitCreate_database(self)
 
 
 
@@ -42060,6 +44044,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_index
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_index" ):
+                listener.enterCreate_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_index" ):
+                listener.exitCreate_index(self)
+
 
 
 
@@ -42193,6 +44185,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_index_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_index_options" ):
+                listener.enterCreate_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_index_options" ):
+                listener.exitCreate_index_options(self)
+
 
 
 
@@ -42258,6 +44258,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_relational_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRelational_index_option" ):
+                listener.enterRelational_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRelational_index_option" ):
+                listener.exitRelational_index_option(self)
 
 
 
@@ -42362,6 +44370,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_index
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_index" ):
+                listener.enterAlter_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_index" ):
+                listener.exitAlter_index(self)
 
 
 
@@ -42477,6 +44493,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_resumable_index_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterResumable_index_options" ):
+                listener.enterResumable_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitResumable_index_options" ):
+                listener.exitResumable_index_options(self)
+
 
 
 
@@ -42547,6 +44571,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_resumable_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterResumable_index_option" ):
+                listener.enterResumable_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitResumable_index_option" ):
+                listener.exitResumable_index_option(self)
 
 
 
@@ -42629,6 +44661,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_reorganize_partition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReorganize_partition" ):
+                listener.enterReorganize_partition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReorganize_partition" ):
+                listener.exitReorganize_partition(self)
+
 
 
 
@@ -42701,6 +44741,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_reorganize_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReorganize_options" ):
+                listener.enterReorganize_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReorganize_options" ):
+                listener.exitReorganize_options(self)
+
 
 
 
@@ -42763,6 +44811,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_reorganize_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReorganize_option" ):
+                listener.enterReorganize_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReorganize_option" ):
+                listener.exitReorganize_option(self)
 
 
 
@@ -42836,6 +44892,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_set_index_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSet_index_options" ):
+                listener.enterSet_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSet_index_options" ):
+                listener.exitSet_index_options(self)
 
 
 
@@ -42917,6 +44981,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_set_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSet_index_option" ):
+                listener.enterSet_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSet_index_option" ):
+                listener.exitSet_index_option(self)
 
 
 
@@ -43037,6 +45109,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_rebuild_partition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRebuild_partition" ):
+                listener.enterRebuild_partition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRebuild_partition" ):
+                listener.exitRebuild_partition(self)
+
 
 
 
@@ -43135,6 +45215,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_rebuild_index_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRebuild_index_options" ):
+                listener.enterRebuild_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRebuild_index_options" ):
+                listener.exitRebuild_index_options(self)
 
 
 
@@ -43276,6 +45364,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_rebuild_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRebuild_index_option" ):
+                listener.enterRebuild_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRebuild_index_option" ):
+                listener.exitRebuild_index_option(self)
 
 
 
@@ -43512,6 +45608,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_single_partition_rebuild_index_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSingle_partition_rebuild_index_options" ):
+                listener.enterSingle_partition_rebuild_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSingle_partition_rebuild_index_options" ):
+                listener.exitSingle_partition_rebuild_index_options(self)
+
 
 
 
@@ -43624,6 +45728,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_single_partition_rebuild_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSingle_partition_rebuild_index_option" ):
+                listener.enterSingle_partition_rebuild_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSingle_partition_rebuild_index_option" ):
+                listener.exitSingle_partition_rebuild_index_option(self)
 
 
 
@@ -43790,6 +45902,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_on_partitions
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOn_partitions" ):
+                listener.enterOn_partitions(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOn_partitions" ):
+                listener.exitOn_partitions(self)
+
 
 
 
@@ -43897,6 +46017,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_columnstore_index
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_columnstore_index" ):
+                listener.enterCreate_columnstore_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_columnstore_index" ):
+                listener.exitCreate_columnstore_index(self)
+
 
 
 
@@ -43988,6 +46116,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_columnstore_index_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_columnstore_index_options" ):
+                listener.enterCreate_columnstore_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_columnstore_index_options" ):
+                listener.exitCreate_columnstore_index_options(self)
+
 
 
 
@@ -44076,6 +46212,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_columnstore_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumnstore_index_option" ):
+                listener.enterColumnstore_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumnstore_index_option" ):
+                listener.exitColumnstore_index_option(self)
 
 
 
@@ -44230,6 +46374,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_nonclustered_columnstore_index
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_nonclustered_columnstore_index" ):
+                listener.enterCreate_nonclustered_columnstore_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_nonclustered_columnstore_index" ):
+                listener.exitCreate_nonclustered_columnstore_index(self)
+
 
 
 
@@ -44381,6 +46533,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_xml_index
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_xml_index" ):
+                listener.enterCreate_xml_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_xml_index" ):
+                listener.exitCreate_xml_index(self)
+
 
 
 
@@ -44509,6 +46669,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_xml_index_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXml_index_options" ):
+                listener.enterXml_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXml_index_options" ):
+                listener.exitXml_index_options(self)
+
 
 
 
@@ -44614,6 +46782,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_xml_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXml_index_option" ):
+                listener.enterXml_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXml_index_option" ):
+                listener.exitXml_index_option(self)
 
 
 
@@ -44842,6 +47018,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_or_alter_procedure
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_or_alter_procedure" ):
+                listener.enterCreate_or_alter_procedure(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_or_alter_procedure" ):
+                listener.exitCreate_or_alter_procedure(self)
+
 
 
 
@@ -45035,6 +47219,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_as_external_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAs_external_name" ):
+                listener.enterAs_external_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAs_external_name" ):
+                listener.exitAs_external_name(self)
+
 
 
 
@@ -45084,6 +47276,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_or_alter_trigger
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_or_alter_trigger" ):
+                listener.enterCreate_or_alter_trigger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_or_alter_trigger" ):
+                listener.exitCreate_or_alter_trigger(self)
 
 
 
@@ -45213,6 +47413,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_or_alter_dml_trigger
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_or_alter_dml_trigger" ):
+                listener.enterCreate_or_alter_dml_trigger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_or_alter_dml_trigger" ):
+                listener.exitCreate_or_alter_dml_trigger(self)
 
 
 
@@ -45381,6 +47589,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dml_trigger_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDml_trigger_option" ):
+                listener.enterDml_trigger_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDml_trigger_option" ):
+                listener.exitDml_trigger_option(self)
+
 
 
 
@@ -45432,6 +47648,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dml_trigger_operation
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDml_trigger_operation" ):
+                listener.enterDml_trigger_operation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDml_trigger_operation" ):
+                listener.exitDml_trigger_operation(self)
 
 
 
@@ -45538,6 +47762,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_or_alter_ddl_trigger
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_or_alter_ddl_trigger" ):
+                listener.enterCreate_or_alter_ddl_trigger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_or_alter_ddl_trigger" ):
+                listener.exitCreate_or_alter_ddl_trigger(self)
 
 
 
@@ -45682,6 +47914,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_ddl_trigger_operation
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDdl_trigger_operation" ):
+                listener.enterDdl_trigger_operation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDdl_trigger_operation" ):
+                listener.exitDdl_trigger_operation(self)
+
 
 
 
@@ -45762,6 +48002,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_or_alter_function
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_or_alter_function" ):
+                listener.enterCreate_or_alter_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_or_alter_function" ):
+                listener.exitCreate_or_alter_function(self)
 
 
 
@@ -45921,6 +48169,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_func_body_returns_select
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunc_body_returns_select" ):
+                listener.enterFunc_body_returns_select(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunc_body_returns_select" ):
+                listener.exitFunc_body_returns_select(self)
+
 
 
 
@@ -46070,6 +48326,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_func_body_returns_table
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunc_body_returns_table" ):
+                listener.enterFunc_body_returns_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunc_body_returns_table" ):
+                listener.exitFunc_body_returns_table(self)
 
 
 
@@ -46235,6 +48499,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_func_body_returns_scalar
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunc_body_returns_scalar" ):
+                listener.enterFunc_body_returns_scalar(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunc_body_returns_scalar" ):
+                listener.exitFunc_body_returns_scalar(self)
+
 
 
 
@@ -46350,6 +48622,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_procedure_param_default_value
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterProcedure_param_default_value" ):
+                listener.enterProcedure_param_default_value(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitProcedure_param_default_value" ):
+                listener.exitProcedure_param_default_value(self)
+
 
 
 
@@ -46440,6 +48720,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_procedure_param
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterProcedure_param" ):
+                listener.enterProcedure_param(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitProcedure_param" ):
+                listener.exitProcedure_param(self)
 
 
 
@@ -46533,6 +48821,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_procedure_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterProcedure_option" ):
+                listener.enterProcedure_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitProcedure_option" ):
+                listener.exitProcedure_option(self)
+
 
 
 
@@ -46608,6 +48904,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_function_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunction_option" ):
+                listener.enterFunction_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunction_option" ):
+                listener.exitFunction_option(self)
 
 
 
@@ -46750,6 +49054,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_statistics
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_statistics" ):
+                listener.enterCreate_statistics(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_statistics" ):
+                listener.exitCreate_statistics(self)
 
 
 
@@ -46896,6 +49208,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_update_statistics
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUpdate_statistics" ):
+                listener.enterUpdate_statistics(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUpdate_statistics" ):
+                listener.exitUpdate_statistics(self)
+
 
 
 
@@ -46982,6 +49302,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_update_statistics_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUpdate_statistics_options" ):
+                listener.enterUpdate_statistics_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUpdate_statistics_options" ):
+                listener.exitUpdate_statistics_options(self)
 
 
 
@@ -47099,6 +49427,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_update_statistics_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUpdate_statistics_option" ):
+                listener.enterUpdate_statistics_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUpdate_statistics_option" ):
+                listener.exitUpdate_statistics_option(self)
 
 
 
@@ -47349,6 +49685,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_table
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_table" ):
+                listener.enterCreate_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_table" ):
+                listener.exitCreate_table(self)
+
 
 
 
@@ -47521,6 +49865,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_table_indices
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_indices" ):
+                listener.enterTable_indices(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_indices" ):
+                listener.exitTable_indices(self)
+
 
 
 
@@ -47658,6 +50010,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_options" ):
+                listener.enterTable_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_options" ):
+                listener.exitTable_options(self)
 
 
 
@@ -47826,6 +50186,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_option" ):
+                listener.enterTable_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_option" ):
+                listener.exitTable_option(self)
 
 
 
@@ -48058,6 +50426,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_table_index_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_table_index_options" ):
+                listener.enterCreate_table_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_table_index_options" ):
+                listener.exitCreate_table_index_options(self)
+
 
 
 
@@ -48165,6 +50541,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_table_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_table_index_option" ):
+                listener.enterCreate_table_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_table_index_option" ):
+                listener.exitCreate_table_index_option(self)
 
 
 
@@ -48366,6 +50750,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_view
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_view" ):
+                listener.enterCreate_view(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_view" ):
+                listener.exitCreate_view(self)
+
 
 
 
@@ -48467,6 +50859,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_view_attribute
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterView_attribute" ):
+                listener.enterView_attribute(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitView_attribute" ):
+                listener.exitView_attribute(self)
 
 
 
@@ -48658,6 +51058,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_table
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_table" ):
+                listener.enterAlter_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_table" ):
+                listener.exitAlter_table(self)
 
 
 
@@ -48952,6 +51360,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_switch_partition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitch_partition" ):
+                listener.enterSwitch_partition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitch_partition" ):
+                listener.exitSwitch_partition(self)
+
 
 
 
@@ -49062,6 +51478,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_low_priority_lock_wait
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLow_priority_lock_wait" ):
+                listener.enterLow_priority_lock_wait(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLow_priority_lock_wait" ):
+                listener.exitLow_priority_lock_wait(self)
 
 
 
@@ -49181,6 +51605,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_database
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_database" ):
+                listener.enterAlter_database(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_database" ):
+                listener.exitAlter_database(self)
 
 
 
@@ -49324,6 +51756,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_add_or_modify_files
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAdd_or_modify_files" ):
+                listener.enterAdd_or_modify_files(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAdd_or_modify_files" ):
+                listener.exitAdd_or_modify_files(self)
 
 
 
@@ -49500,6 +51940,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_filespec
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFilespec" ):
+                listener.enterFilespec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFilespec" ):
+                listener.exitFilespec(self)
+
 
 
 
@@ -49674,6 +52122,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_add_or_modify_filegroups
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAdd_or_modify_filegroups" ):
+                listener.enterAdd_or_modify_filegroups(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAdd_or_modify_filegroups" ):
+                listener.exitAdd_or_modify_filegroups(self)
+
 
 
 
@@ -49791,6 +52247,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_filegroup_updatability_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFilegroup_updatability_option" ):
+                listener.enterFilegroup_updatability_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFilegroup_updatability_option" ):
+                listener.exitFilegroup_updatability_option(self)
 
 
 
@@ -49918,6 +52382,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_database_optionspec
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDatabase_optionspec" ):
+                listener.enterDatabase_optionspec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDatabase_optionspec" ):
+                listener.exitDatabase_optionspec(self)
 
 
 
@@ -50118,6 +52590,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_auto_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAuto_option" ):
+                listener.enterAuto_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAuto_option" ):
+                listener.exitAuto_option(self)
+
 
 
 
@@ -50246,6 +52726,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_change_tracking_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterChange_tracking_option" ):
+                listener.enterChange_tracking_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitChange_tracking_option" ):
+                listener.exitChange_tracking_option(self)
+
 
 
 
@@ -50344,6 +52832,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_change_tracking_option_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterChange_tracking_option_list" ):
+                listener.enterChange_tracking_option_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitChange_tracking_option_list" ):
+                listener.exitChange_tracking_option_list(self)
+
 
 
 
@@ -50415,6 +52911,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_containment_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterContainment_option" ):
+                listener.enterContainment_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitContainment_option" ):
+                listener.exitContainment_option(self)
+
 
 
 
@@ -50470,6 +52974,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_cursor_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCursor_option" ):
+                listener.enterCursor_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCursor_option" ):
+                listener.exitCursor_option(self)
 
 
 
@@ -50635,6 +53147,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_endpoint
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_endpoint" ):
+                listener.enterAlter_endpoint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_endpoint" ):
+                listener.exitAlter_endpoint(self)
 
 
 
@@ -50850,6 +53370,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_database_mirroring_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDatabase_mirroring_option" ):
+                listener.enterDatabase_mirroring_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDatabase_mirroring_option" ):
+                listener.exitDatabase_mirroring_option(self)
+
 
 
 
@@ -50895,6 +53423,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_mirroring_set_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMirroring_set_option" ):
+                listener.enterMirroring_set_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMirroring_set_option" ):
+                listener.exitMirroring_set_option(self)
 
 
 
@@ -50946,6 +53482,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_mirroring_partner
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMirroring_partner" ):
+                listener.enterMirroring_partner(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMirroring_partner" ):
+                listener.exitMirroring_partner(self)
+
 
 
 
@@ -50979,6 +53523,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_mirroring_witness
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMirroring_witness" ):
+                listener.enterMirroring_witness(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMirroring_witness" ):
+                listener.exitMirroring_witness(self)
+
 
 
 
@@ -51011,6 +53563,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_witness_partner_equal
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWitness_partner_equal" ):
+                listener.enterWitness_partner_equal(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWitness_partner_equal" ):
+                listener.exitWitness_partner_equal(self)
 
 
 
@@ -51076,6 +53636,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_partner_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPartner_option" ):
+                listener.enterPartner_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPartner_option" ):
+                listener.exitPartner_option(self)
 
 
 
@@ -51173,6 +53741,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_witness_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWitness_option" ):
+                listener.enterWitness_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWitness_option" ):
+                listener.exitWitness_option(self)
+
 
 
 
@@ -51222,6 +53798,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_witness_server
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWitness_server" ):
+                listener.enterWitness_server(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWitness_server" ):
+                listener.exitWitness_server(self)
+
 
 
 
@@ -51268,6 +53852,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_partner_server
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPartner_server" ):
+                listener.enterPartner_server(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPartner_server" ):
+                listener.exitPartner_server(self)
+
 
 
 
@@ -51306,6 +53898,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_mirroring_host_port_seperator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMirroring_host_port_seperator" ):
+                listener.enterMirroring_host_port_seperator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMirroring_host_port_seperator" ):
+                listener.exitMirroring_host_port_seperator(self)
 
 
 
@@ -51346,6 +53946,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_partner_server_tcp_prefix
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPartner_server_tcp_prefix" ):
+                listener.enterPartner_server_tcp_prefix(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPartner_server_tcp_prefix" ):
+                listener.exitPartner_server_tcp_prefix(self)
+
 
 
 
@@ -51383,6 +53991,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_port_number
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPort_number" ):
+                listener.enterPort_number(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPort_number" ):
+                listener.exitPort_number(self)
 
 
 
@@ -51424,6 +54040,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_host
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHost" ):
+                listener.enterHost(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHost" ):
+                listener.exitHost(self)
 
 
 
@@ -51493,6 +54117,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_date_correlation_optimization_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDate_correlation_optimization_option" ):
+                listener.enterDate_correlation_optimization_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDate_correlation_optimization_option" ):
+                listener.exitDate_correlation_optimization_option(self)
+
 
 
 
@@ -51531,6 +54163,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_db_encryption_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDb_encryption_option" ):
+                listener.enterDb_encryption_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDb_encryption_option" ):
+                listener.exitDb_encryption_option(self)
 
 
 
@@ -51573,6 +54213,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_db_state_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDb_state_option" ):
+                listener.enterDb_state_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDb_state_option" ):
+                listener.exitDb_state_option(self)
+
 
 
 
@@ -51614,6 +54262,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_db_update_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDb_update_option" ):
+                listener.enterDb_update_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDb_update_option" ):
+                listener.exitDb_update_option(self)
 
 
 
@@ -51659,6 +54315,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_db_user_access_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDb_user_access_option" ):
+                listener.enterDb_user_access_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDb_user_access_option" ):
+                listener.exitDb_user_access_option(self)
 
 
 
@@ -51710,6 +54374,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_delayed_durability_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDelayed_durability_option" ):
+                listener.enterDelayed_durability_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDelayed_durability_option" ):
+                listener.exitDelayed_durability_option(self)
 
 
 
@@ -51794,6 +54466,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_external_access_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExternal_access_option" ):
+                listener.enterExternal_access_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExternal_access_option" ):
+                listener.exitExternal_access_option(self)
 
 
 
@@ -51948,6 +54628,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_hadr_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHadr_options" ):
+                listener.enterHadr_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHadr_options" ):
+                listener.exitHadr_options(self)
+
 
 
 
@@ -52025,6 +54713,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_mixed_page_allocation_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMixed_page_allocation_option" ):
+                listener.enterMixed_page_allocation_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMixed_page_allocation_option" ):
+                listener.exitMixed_page_allocation_option(self)
+
 
 
 
@@ -52071,6 +54767,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_parameterization_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParameterization_option" ):
+                listener.enterParameterization_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParameterization_option" ):
+                listener.exitParameterization_option(self)
 
 
 
@@ -52143,6 +54847,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_recovery_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRecovery_option" ):
+                listener.enterRecovery_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRecovery_option" ):
+                listener.exitRecovery_option(self)
 
 
 
@@ -52237,6 +54949,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_service_broker_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterService_broker_option" ):
+                listener.enterService_broker_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitService_broker_option" ):
+                listener.exitService_broker_option(self)
+
 
 
 
@@ -52313,6 +55033,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_snapshot_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSnapshot_option" ):
+                listener.enterSnapshot_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSnapshot_option" ):
+                listener.exitSnapshot_option(self)
 
 
 
@@ -52417,6 +55145,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_sql_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSql_option" ):
+                listener.enterSql_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSql_option" ):
+                listener.exitSql_option(self)
 
 
 
@@ -52538,6 +55274,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_target_recovery_time_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTarget_recovery_time_option" ):
+                listener.enterTarget_recovery_time_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTarget_recovery_time_option" ):
+                listener.exitTarget_recovery_time_option(self)
+
 
 
 
@@ -52595,6 +55339,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_termination
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTermination" ):
+                listener.enterTermination(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTermination" ):
+                listener.exitTermination(self)
 
 
 
@@ -52685,6 +55437,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_index
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_index" ):
+                listener.enterDrop_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_index" ):
+                listener.exitDrop_index(self)
 
 
 
@@ -52787,6 +55547,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_relational_or_xml_or_spatial_index
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_relational_or_xml_or_spatial_index" ):
+                listener.enterDrop_relational_or_xml_or_spatial_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_relational_or_xml_or_spatial_index" ):
+                listener.exitDrop_relational_or_xml_or_spatial_index(self)
+
 
 
 
@@ -52836,6 +55604,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_backward_compatible_index
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_backward_compatible_index" ):
+                listener.enterDrop_backward_compatible_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_backward_compatible_index" ):
+                listener.exitDrop_backward_compatible_index(self)
 
 
 
@@ -52912,6 +55688,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_procedure
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_procedure" ):
+                listener.enterDrop_procedure(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_procedure" ):
+                listener.exitDrop_procedure(self)
 
 
 
@@ -52992,6 +55776,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_trigger
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_trigger" ):
+                listener.enterDrop_trigger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_trigger" ):
+                listener.exitDrop_trigger(self)
+
 
 
 
@@ -53062,6 +55854,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_dml_trigger
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_dml_trigger" ):
+                listener.enterDrop_dml_trigger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_dml_trigger" ):
+                listener.exitDrop_dml_trigger(self)
 
 
 
@@ -53167,6 +55967,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_ddl_trigger
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_ddl_trigger" ):
+                listener.enterDrop_ddl_trigger(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_ddl_trigger" ):
+                listener.exitDrop_ddl_trigger(self)
 
 
 
@@ -53279,6 +56087,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_function
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_function" ):
+                listener.enterDrop_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_function" ):
+                listener.exitDrop_function(self)
+
 
 
 
@@ -53380,6 +56196,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_statistics
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_statistics" ):
+                listener.enterDrop_statistics(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_statistics" ):
+                listener.exitDrop_statistics(self)
+
 
 
 
@@ -53473,6 +56297,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_table
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_table" ):
+                listener.enterDrop_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_table" ):
+                listener.exitDrop_table(self)
+
 
 
 
@@ -53565,6 +56397,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_view
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_view" ):
+                listener.enterDrop_view(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_view" ):
+                listener.exitDrop_view(self)
 
 
 
@@ -53669,6 +56509,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_create_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_type" ):
+                listener.enterCreate_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_type" ):
+                listener.exitCreate_type(self)
+
 
 
 
@@ -53755,6 +56603,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_drop_type
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDrop_type" ):
+                listener.enterDrop_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDrop_type" ):
+                listener.exitDrop_type(self)
+
 
 
 
@@ -53807,6 +56663,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_rowset_function_limited
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRowset_function_limited" ):
+                listener.enterRowset_function_limited(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRowset_function_limited" ):
+                listener.exitRowset_function_limited(self)
 
 
 
@@ -53871,6 +56735,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_openquery
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOpenquery" ):
+                listener.enterOpenquery(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOpenquery" ):
+                listener.exitOpenquery(self)
 
 
 
@@ -53947,6 +56819,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_opendatasource
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOpendatasource" ):
+                listener.enterOpendatasource(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOpendatasource" ):
+                listener.exitOpendatasource(self)
 
 
 
@@ -54074,6 +56954,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_declare_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeclare_statement" ):
+                listener.enterDeclare_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeclare_statement" ):
+                listener.exitDeclare_statement(self)
 
 
 
@@ -54224,6 +57112,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_xml_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXml_declaration" ):
+                listener.enterXml_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXml_declaration" ):
+                listener.exitXml_declaration(self)
+
 
 
 
@@ -54302,6 +57198,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_cursor_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCursor_statement" ):
+                listener.enterCursor_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCursor_statement" ):
+                listener.exitCursor_statement(self)
 
 
 
@@ -54767,6 +57671,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_backup_database
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBackup_database" ):
+                listener.enterBackup_database(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBackup_database" ):
+                listener.exitBackup_database(self)
 
 
 
@@ -55944,6 +58856,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_backup_log
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBackup_log" ):
+                listener.enterBackup_log(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBackup_log" ):
+                listener.exitBackup_log(self)
+
 
 
 
@@ -56833,6 +59753,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_backup_certificate
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBackup_certificate" ):
+                listener.enterBackup_certificate(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBackup_certificate" ):
+                listener.exitBackup_certificate(self)
+
 
 
 
@@ -57003,6 +59931,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_backup_master_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBackup_master_key" ):
+                listener.enterBackup_master_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBackup_master_key" ):
+                listener.exitBackup_master_key(self)
+
 
 
 
@@ -57096,6 +60032,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_backup_service_master_key
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBackup_service_master_key" ):
+                listener.enterBackup_service_master_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBackup_service_master_key" ):
+                listener.exitBackup_service_master_key(self)
+
 
 
 
@@ -57165,6 +60109,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_kill_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKill_statement" ):
+                listener.enterKill_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKill_statement" ):
+                listener.exitKill_statement(self)
+
 
 
 
@@ -57228,6 +60180,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_kill_process
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKill_process" ):
+                listener.enterKill_process(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKill_process" ):
+                listener.exitKill_process(self)
 
 
 
@@ -57304,6 +60264,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_kill_query_notification
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKill_query_notification" ):
+                listener.enterKill_query_notification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKill_query_notification" ):
+                listener.exitKill_query_notification(self)
+
 
 
 
@@ -57362,6 +60330,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_kill_stats_job
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKill_stats_job" ):
+                listener.enterKill_stats_job(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKill_stats_job" ):
+                listener.exitKill_stats_job(self)
+
 
 
 
@@ -57405,6 +60381,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_statement" ):
+                listener.enterExecute_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_statement" ):
+                listener.exitExecute_statement(self)
 
 
 
@@ -57465,6 +60449,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_body_batch
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_body_batch" ):
+                listener.enterExecute_body_batch(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_body_batch" ):
+                listener.exitExecute_body_batch(self)
 
 
 
@@ -57581,6 +60573,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_body
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_body" ):
+                listener.enterExecute_body(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_body" ):
+                listener.exitExecute_body(self)
 
 
 
@@ -57753,6 +60753,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_statement_arg
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_statement_arg" ):
+                listener.enterExecute_statement_arg(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_statement_arg" ):
+                listener.exitExecute_statement_arg(self)
+
 
 
 
@@ -57834,6 +60842,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_statement_arg_named
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_statement_arg_named" ):
+                listener.enterExecute_statement_arg_named(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_statement_arg_named" ):
+                listener.exitExecute_statement_arg_named(self)
+
 
 
 
@@ -57872,6 +60888,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_statement_arg_unnamed
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_statement_arg_unnamed" ):
+                listener.enterExecute_statement_arg_unnamed(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_statement_arg_unnamed" ):
+                listener.exitExecute_statement_arg_unnamed(self)
 
 
 
@@ -57925,6 +60949,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_parameter
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_parameter" ):
+                listener.enterExecute_parameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_parameter" ):
+                listener.exitExecute_parameter(self)
 
 
 
@@ -58018,6 +61050,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_var_string
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_var_string" ):
+                listener.enterExecute_var_string(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_var_string" ):
+                listener.exitExecute_var_string(self)
 
 
 
@@ -58219,6 +61259,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_security_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSecurity_statement" ):
+                listener.enterSecurity_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSecurity_statement" ):
+                listener.exitSecurity_statement(self)
 
 
 
@@ -58433,6 +61481,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_principal_id
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrincipal_id" ):
+                listener.enterPrincipal_id(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrincipal_id" ):
+                listener.exitPrincipal_id(self)
+
 
 
 
@@ -58528,6 +61584,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_certificate
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_certificate" ):
+                listener.enterCreate_certificate(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_certificate" ):
+                listener.exitCreate_certificate(self)
 
 
 
@@ -58648,6 +61712,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_existing_keys
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExisting_keys" ):
+                listener.enterExisting_keys(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExisting_keys" ):
+                listener.exitExisting_keys(self)
+
 
 
 
@@ -58759,6 +61831,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_private_key_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrivate_key_options" ):
+                listener.enterPrivate_key_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrivate_key_options" ):
+                listener.exitPrivate_key_options(self)
+
 
 
 
@@ -58864,6 +61944,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_generate_new_keys
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGenerate_new_keys" ):
+                listener.enterGenerate_new_keys(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGenerate_new_keys" ):
+                listener.exitGenerate_new_keys(self)
+
 
 
 
@@ -58941,6 +62029,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_date_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDate_options" ):
+                listener.enterDate_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDate_options" ):
+                listener.exitDate_options(self)
+
 
 
 
@@ -59017,6 +62113,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_open_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOpen_key" ):
+                listener.enterOpen_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOpen_key" ):
+                listener.exitOpen_key(self)
 
 
 
@@ -59109,6 +62213,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_close_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClose_key" ):
+                listener.enterClose_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClose_key" ):
+                listener.exitClose_key(self)
 
 
 
@@ -59250,6 +62362,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_key
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_key" ):
+                listener.enterCreate_key(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_key" ):
+                listener.exitCreate_key(self)
 
 
 
@@ -59411,6 +62531,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_key_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKey_options" ):
+                listener.enterKey_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKey_options" ):
+                listener.exitKey_options(self)
+
 
 
 
@@ -59525,6 +62653,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_algorithm
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlgorithm" ):
+                listener.enterAlgorithm(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlgorithm" ):
+                listener.exitAlgorithm(self)
+
 
 
 
@@ -59588,6 +62724,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_encryption_mechanism
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEncryption_mechanism" ):
+                listener.enterEncryption_mechanism(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEncryption_mechanism" ):
+                listener.exitEncryption_mechanism(self)
 
 
 
@@ -59686,6 +62830,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_decryption_mechanism
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDecryption_mechanism" ):
+                listener.enterDecryption_mechanism(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDecryption_mechanism" ):
+                listener.exitDecryption_mechanism(self)
 
 
 
@@ -60093,6 +63245,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_grant_permission
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGrant_permission" ):
+                listener.enterGrant_permission(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGrant_permission" ):
+                listener.exitGrant_permission(self)
 
 
 
@@ -60921,6 +64081,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_set_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSet_statement" ):
+                listener.enterSet_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSet_statement" ):
+                listener.exitSet_statement(self)
+
 
 
 
@@ -61098,6 +64266,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_transaction_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTransaction_statement" ):
+                listener.enterTransaction_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTransaction_statement" ):
+                listener.exitTransaction_statement(self)
 
 
 
@@ -61360,6 +64536,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_go_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGo_statement" ):
+                listener.enterGo_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGo_statement" ):
+                listener.exitGo_statement(self)
+
 
 
 
@@ -61407,6 +64591,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_use_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUse_statement" ):
+                listener.enterUse_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUse_statement" ):
+                listener.exitUse_statement(self)
+
 
 
 
@@ -61445,6 +64637,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_setuser_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSetuser_statement" ):
+                listener.enterSetuser_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSetuser_statement" ):
+                listener.exitSetuser_statement(self)
 
 
 
@@ -61493,6 +64693,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_reconfigure_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterReconfigure_statement" ):
+                listener.enterReconfigure_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitReconfigure_statement" ):
+                listener.exitReconfigure_statement(self)
 
 
 
@@ -61543,6 +64751,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_shutdown_statement
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterShutdown_statement" ):
+                listener.enterShutdown_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitShutdown_statement" ):
+                listener.exitShutdown_statement(self)
+
 
 
 
@@ -61589,6 +64805,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_checkpoint_statement
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCheckpoint_statement" ):
+                listener.enterCheckpoint_statement(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCheckpoint_statement" ):
+                listener.exitCheckpoint_statement(self)
 
 
 
@@ -61640,6 +64864,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkalloc_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkalloc_option" ):
+                listener.enterDbcc_checkalloc_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkalloc_option" ):
+                listener.exitDbcc_checkalloc_option(self)
 
 
 
@@ -61727,6 +64959,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkalloc
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkalloc" ):
+                listener.enterDbcc_checkalloc(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkalloc" ):
+                listener.exitDbcc_checkalloc(self)
 
 
 
@@ -61859,6 +65099,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkcatalog
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkcatalog" ):
+                listener.enterDbcc_checkcatalog(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkcatalog" ):
+                listener.exitDbcc_checkcatalog(self)
+
 
 
 
@@ -61936,6 +65184,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkconstraints_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkconstraints_option" ):
+                listener.enterDbcc_checkconstraints_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkconstraints_option" ):
+                listener.exitDbcc_checkconstraints_option(self)
+
 
 
 
@@ -62007,6 +65263,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkconstraints
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkconstraints" ):
+                listener.enterDbcc_checkconstraints(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkconstraints" ):
+                listener.exitDbcc_checkconstraints(self)
 
 
 
@@ -62115,6 +65379,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkdb_table_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkdb_table_option" ):
+                listener.enterDbcc_checkdb_table_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkdb_table_option" ):
+                listener.exitDbcc_checkdb_table_option(self)
 
 
 
@@ -62244,6 +65516,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkdb
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkdb" ):
+                listener.enterDbcc_checkdb(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkdb" ):
+                listener.exitDbcc_checkdb(self)
+
 
 
 
@@ -62365,6 +65645,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkfilegroup_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkfilegroup_option" ):
+                listener.enterDbcc_checkfilegroup_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkfilegroup_option" ):
+                listener.exitDbcc_checkfilegroup_option(self)
+
 
 
 
@@ -62478,6 +65766,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checkfilegroup
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checkfilegroup" ):
+                listener.enterDbcc_checkfilegroup(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checkfilegroup" ):
+                listener.exitDbcc_checkfilegroup(self)
 
 
 
@@ -62618,6 +65914,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_checktable
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_checktable" ):
+                listener.enterDbcc_checktable(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_checktable" ):
+                listener.exitDbcc_checktable(self)
 
 
 
@@ -62762,6 +66066,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_cleantable
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_cleantable" ):
+                listener.enterDbcc_cleantable(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_cleantable" ):
+                listener.exitDbcc_cleantable(self)
+
 
 
 
@@ -62866,6 +66178,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_clonedatabase_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_clonedatabase_option" ):
+                listener.enterDbcc_clonedatabase_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_clonedatabase_option" ):
+                listener.exitDbcc_clonedatabase_option(self)
+
 
 
 
@@ -62937,6 +66257,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_clonedatabase
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_clonedatabase" ):
+                listener.enterDbcc_clonedatabase(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_clonedatabase" ):
+                listener.exitDbcc_clonedatabase(self)
 
 
 
@@ -63023,6 +66351,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_pdw_showspaceused
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_pdw_showspaceused" ):
+                listener.enterDbcc_pdw_showspaceused(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_pdw_showspaceused" ):
+                listener.exitDbcc_pdw_showspaceused(self)
+
 
 
 
@@ -63086,6 +66422,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_proccache
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_proccache" ):
+                listener.enterDbcc_proccache(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_proccache" ):
+                listener.exitDbcc_proccache(self)
+
 
 
 
@@ -63140,6 +66484,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_showcontig_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_showcontig_option" ):
+                listener.enterDbcc_showcontig_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_showcontig_option" ):
+                listener.exitDbcc_showcontig_option(self)
 
 
 
@@ -63212,6 +66564,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_showcontig
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_showcontig" ):
+                listener.enterDbcc_showcontig(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_showcontig" ):
+                listener.exitDbcc_showcontig(self)
 
 
 
@@ -63326,6 +66686,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_shrinklog
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_shrinklog" ):
+                listener.enterDbcc_shrinklog(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_shrinklog" ):
+                listener.exitDbcc_shrinklog(self)
+
 
 
 
@@ -63439,6 +66807,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_dbreindex
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_dbreindex" ):
+                listener.enterDbcc_dbreindex(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_dbreindex" ):
+                listener.exitDbcc_dbreindex(self)
+
 
 
 
@@ -63528,6 +66904,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_dll_free
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_dll_free" ):
+                listener.enterDbcc_dll_free(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_dll_free" ):
+                listener.exitDbcc_dll_free(self)
+
 
 
 
@@ -63596,6 +66980,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_dropcleanbuffers
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_dropcleanbuffers" ):
+                listener.enterDbcc_dropcleanbuffers(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_dropcleanbuffers" ):
+                listener.exitDbcc_dropcleanbuffers(self)
 
 
 
@@ -63715,6 +67107,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dbcc_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDbcc_clause" ):
+                listener.enterDbcc_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDbcc_clause" ):
+                listener.exitDbcc_clause(self)
 
 
 
@@ -63844,6 +67244,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_execute_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExecute_clause" ):
+                listener.enterExecute_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExecute_clause" ):
+                listener.exitExecute_clause(self)
+
 
 
 
@@ -63901,6 +67309,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_declare_local
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeclare_local" ):
+                listener.enterDeclare_local(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeclare_local" ):
+                listener.exitDeclare_local(self)
 
 
 
@@ -63978,6 +67394,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_type_definition
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_type_definition" ):
+                listener.enterTable_type_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_type_definition" ):
+                listener.exitTable_type_definition(self)
 
 
 
@@ -64072,6 +67496,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_type_indices
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_type_indices" ):
+                listener.enterTable_type_indices(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_type_indices" ):
+                listener.exitTable_type_indices(self)
 
 
 
@@ -64189,6 +67621,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_xml_type_definition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXml_type_definition" ):
+                listener.enterXml_type_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXml_type_definition" ):
+                listener.exitXml_type_definition(self)
+
 
 
 
@@ -64248,6 +67688,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_xml_schema_collection
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXml_schema_collection" ):
+                listener.enterXml_schema_collection(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXml_schema_collection" ):
+                listener.exitXml_schema_collection(self)
+
 
 
 
@@ -64294,6 +67742,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_column_def_table_constraints
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_def_table_constraints" ):
+                listener.enterColumn_def_table_constraints(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_def_table_constraints" ):
+                listener.exitColumn_def_table_constraints(self)
 
 
 
@@ -64356,6 +67812,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_column_def_table_constraint
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_def_table_constraint" ):
+                listener.enterColumn_def_table_constraint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_def_table_constraint" ):
+                listener.exitColumn_def_table_constraint(self)
 
 
 
@@ -64434,6 +67898,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_column_definition
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_definition" ):
+                listener.enterColumn_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_definition" ):
+                listener.exitColumn_definition(self)
 
 
 
@@ -64641,6 +68113,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_column_definition_element
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_definition_element" ):
+                listener.enterColumn_definition_element(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_definition_element" ):
+                listener.exitColumn_definition_element(self)
 
 
 
@@ -64897,6 +68377,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_column_modifier
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_modifier" ):
+                listener.enterColumn_modifier(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_modifier" ):
+                listener.exitColumn_modifier(self)
+
 
 
 
@@ -65023,6 +68511,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_materialized_column_definition
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMaterialized_column_definition" ):
+                listener.enterMaterialized_column_definition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMaterialized_column_definition" ):
+                listener.exitMaterialized_column_definition(self)
+
 
 
 
@@ -65116,6 +68612,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_column_constraint
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_constraint" ):
+                listener.enterColumn_constraint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_constraint" ):
+                listener.exitColumn_constraint(self)
 
 
 
@@ -65242,6 +68746,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_column_index
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_index" ):
+                listener.enterColumn_index(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_index" ):
+                listener.exitColumn_index(self)
+
 
 
 
@@ -65342,6 +68854,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_on_partition_or_filegroup
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOn_partition_or_filegroup" ):
+                listener.enterOn_partition_or_filegroup(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOn_partition_or_filegroup" ):
+                listener.exitOn_partition_or_filegroup(self)
 
 
 
@@ -65485,6 +69005,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_constraint
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_constraint" ):
+                listener.enterTable_constraint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_constraint" ):
+                listener.exitTable_constraint(self)
 
 
 
@@ -65637,6 +69165,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_connection_node
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConnection_node" ):
+                listener.enterConnection_node(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConnection_node" ):
+                listener.exitConnection_node(self)
+
 
 
 
@@ -65690,6 +69226,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_primary_key_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimary_key_options" ):
+                listener.enterPrimary_key_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimary_key_options" ):
+                listener.exitPrimary_key_options(self)
 
 
 
@@ -65791,6 +69335,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_foreign_key_options
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterForeign_key_options" ):
+                listener.enterForeign_key_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitForeign_key_options" ):
+                listener.exitForeign_key_options(self)
+
 
 
 
@@ -65886,6 +69438,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_check_constraint
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCheck_constraint" ):
+                listener.enterCheck_constraint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCheck_constraint" ):
+                listener.exitCheck_constraint(self)
+
 
 
 
@@ -65958,6 +69518,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_on_delete
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOn_delete" ):
+                listener.enterOn_delete(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOn_delete" ):
+                listener.exitOn_delete(self)
 
 
 
@@ -66045,6 +69613,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_on_update
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOn_update" ):
+                listener.enterOn_update(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOn_update" ):
+                listener.exitOn_update(self)
+
 
 
 
@@ -66128,6 +69704,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_table_index_options
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_table_index_options" ):
+                listener.enterAlter_table_index_options(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_table_index_options" ):
+                listener.exitAlter_table_index_options(self)
 
 
 
@@ -66306,6 +69890,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_alter_table_index_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAlter_table_index_option" ):
+                listener.enterAlter_table_index_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAlter_table_index_option" ):
+                listener.exitAlter_table_index_option(self)
 
 
 
@@ -66638,6 +70230,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_declare_cursor
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeclare_cursor" ):
+                listener.enterDeclare_cursor(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeclare_cursor" ):
+                listener.exitDeclare_cursor(self)
+
 
 
 
@@ -66790,6 +70390,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_declare_set_cursor_common
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeclare_set_cursor_common" ):
+                listener.enterDeclare_set_cursor_common(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeclare_set_cursor_common" ):
+                listener.exitDeclare_set_cursor_common(self)
+
 
 
 
@@ -66868,6 +70476,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_declare_set_cursor_common_partial
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeclare_set_cursor_common_partial" ):
+                listener.enterDeclare_set_cursor_common_partial(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeclare_set_cursor_common_partial" ):
+                listener.exitDeclare_set_cursor_common_partial(self)
 
 
 
@@ -67000,6 +70616,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_fetch_cursor
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFetch_cursor" ):
+                listener.enterFetch_cursor(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFetch_cursor" ):
+                listener.exitFetch_cursor(self)
 
 
 
@@ -67212,6 +70836,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_set_special
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSet_special" ):
+                listener.enterSet_special(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSet_special" ):
+                listener.exitSet_special(self)
 
 
 
@@ -67524,6 +71156,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_special_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSpecial_list" ):
+                listener.enterSpecial_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSpecial_list" ):
+                listener.exitSpecial_list(self)
+
 
 
 
@@ -67566,6 +71206,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_constant_LOCAL_ID
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstant_LOCAL_ID" ):
+                listener.enterConstant_LOCAL_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstant_LOCAL_ID" ):
+                listener.exitConstant_LOCAL_ID(self)
 
 
 
@@ -67709,6 +71357,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression" ):
+                listener.enterExpression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression" ):
+                listener.exitExpression(self)
 
 
 
@@ -67913,6 +71569,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_parameter
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterParameter" ):
+                listener.enterParameter(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitParameter" ):
+                listener.exitParameter(self)
+
 
 
 
@@ -67955,6 +71619,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_time_zone
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTime_zone" ):
+                listener.enterTime_zone(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTime_zone" ):
+                listener.exitTime_zone(self)
 
 
 
@@ -68004,6 +71676,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_primitive_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimitive_expression" ):
+                listener.enterPrimitive_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimitive_expression" ):
+                listener.exitPrimitive_expression(self)
 
 
 
@@ -68089,6 +71769,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_case_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCase_expression" ):
+                listener.enterCase_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCase_expression" ):
+                listener.exitCase_expression(self)
 
 
 
@@ -68198,6 +71886,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_unary_operator_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnary_operator_expression" ):
+                listener.enterUnary_operator_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnary_operator_expression" ):
+                listener.exitUnary_operator_expression(self)
+
 
 
 
@@ -68266,6 +71962,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_bracket_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBracket_expression" ):
+                listener.enterBracket_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBracket_expression" ):
+                listener.exitBracket_expression(self)
+
 
 
 
@@ -68321,6 +72025,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_subquery
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSubquery" ):
+                listener.enterSubquery(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSubquery" ):
+                listener.exitSubquery(self)
+
 
 
 
@@ -68368,6 +72080,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_with_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWith_expression" ):
+                listener.enterWith_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWith_expression" ):
+                listener.exitWith_expression(self)
 
 
 
@@ -68445,6 +72165,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_common_table_expression
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCommon_table_expression" ):
+                listener.enterCommon_table_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCommon_table_expression" ):
+                listener.exitCommon_table_expression(self)
 
 
 
@@ -68539,6 +72267,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_update_elem
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUpdate_elem" ):
+                listener.enterUpdate_elem(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUpdate_elem" ):
+                listener.exitUpdate_elem(self)
 
 
 
@@ -68687,6 +72423,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_update_elem_merge
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUpdate_elem_merge" ):
+                listener.enterUpdate_elem_merge(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUpdate_elem_merge" ):
+                listener.exitUpdate_elem_merge(self)
+
 
 
 
@@ -68796,6 +72540,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_search_condition
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSearch_condition" ):
+                listener.enterSearch_condition(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSearch_condition" ):
+                listener.exitSearch_condition(self)
 
 
 
@@ -68970,6 +72722,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_predicate
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPredicate" ):
+                listener.enterPredicate(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPredicate" ):
+                listener.exitPredicate(self)
 
 
 
@@ -69198,6 +72958,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_query_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQuery_expression" ):
+                listener.enterQuery_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQuery_expression" ):
+                listener.exitQuery_expression(self)
+
 
 
 
@@ -69311,6 +73079,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_sql_union
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSql_union" ):
+                listener.enterSql_union(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSql_union" ):
+                listener.exitSql_union(self)
 
 
 
@@ -69481,6 +73257,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_query_specification
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQuery_specification" ):
+                listener.enterQuery_specification(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQuery_specification" ):
+                listener.exitQuery_specification(self)
 
 
 
@@ -69662,6 +73446,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_top_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTop_clause" ):
+                listener.enterTop_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTop_clause" ):
+                listener.exitTop_clause(self)
+
 
 
 
@@ -69741,6 +73533,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_top_percent
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTop_percent" ):
+                listener.enterTop_percent(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTop_percent" ):
+                listener.exitTop_percent(self)
+
 
 
 
@@ -69814,6 +73614,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_top_count
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTop_count" ):
+                listener.enterTop_count(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTop_count" ):
+                listener.exitTop_count(self)
+
 
 
 
@@ -69881,6 +73689,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_order_by_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOrder_by_clause" ):
+                listener.enterOrder_by_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOrder_by_clause" ):
+                listener.exitOrder_by_clause(self)
 
 
 
@@ -69973,6 +73789,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_select_order_by_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSelect_order_by_clause" ):
+                listener.enterSelect_order_by_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSelect_order_by_clause" ):
+                listener.exitSelect_order_by_clause(self)
 
 
 
@@ -70138,6 +73962,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_for_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFor_clause" ):
+                listener.enterFor_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFor_clause" ):
+                listener.exitFor_clause(self)
 
 
 
@@ -70442,6 +74274,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_xml_common_directives
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXml_common_directives" ):
+                listener.enterXml_common_directives(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXml_common_directives" ):
+                listener.exitXml_common_directives(self)
+
 
 
 
@@ -70517,6 +74357,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_order_by_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOrder_by_expression" ):
+                listener.enterOrder_by_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOrder_by_expression" ):
+                listener.exitOrder_by_expression(self)
+
 
 
 
@@ -70582,6 +74430,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_grouping_sets_item
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGrouping_sets_item" ):
+                listener.enterGrouping_sets_item(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGrouping_sets_item" ):
+                listener.exitGrouping_sets_item(self)
 
 
 
@@ -70663,6 +74519,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_group_by_item
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGroup_by_item" ):
+                listener.enterGroup_by_item(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGroup_by_item" ):
+                listener.exitGroup_by_item(self)
+
 
 
 
@@ -70716,6 +74580,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_option_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOption_clause" ):
+                listener.enterOption_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOption_clause" ):
+                listener.exitOption_clause(self)
 
 
 
@@ -70876,6 +74748,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOption" ):
+                listener.enterOption(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOption" ):
+                listener.exitOption(self)
 
 
 
@@ -71099,6 +74979,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_optimize_for_arg
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOptimize_for_arg" ):
+                listener.enterOptimize_for_arg(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOptimize_for_arg" ):
+                listener.exitOptimize_for_arg(self)
+
 
 
 
@@ -71172,6 +75060,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_select_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSelect_list" ):
+                listener.enterSelect_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSelect_list" ):
+                listener.exitSelect_list(self)
+
 
 
 
@@ -71238,6 +75134,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_udt_method_arguments
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUdt_method_arguments" ):
+                listener.enterUdt_method_arguments(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUdt_method_arguments" ):
+                listener.exitUdt_method_arguments(self)
+
 
 
 
@@ -71302,6 +75206,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_asterisk
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAsterisk" ):
+                listener.enterAsterisk(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAsterisk" ):
+                listener.exitAsterisk(self)
 
 
 
@@ -71389,6 +75301,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_udt_elem
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUdt_elem" ):
+                listener.enterUdt_elem(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUdt_elem" ):
+                listener.exitUdt_elem(self)
 
 
 
@@ -71486,6 +75406,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_expression_elem
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression_elem" ):
+                listener.enterExpression_elem(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression_elem" ):
+                listener.exitExpression_elem(self)
+
 
 
 
@@ -71566,6 +75494,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_select_list_elem
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSelect_list_elem" ):
+                listener.enterSelect_list_elem(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSelect_list_elem" ):
+                listener.exitSelect_list_elem(self)
 
 
 
@@ -71657,6 +75593,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_table_sources
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_sources" ):
+                listener.enterTable_sources(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_sources" ):
+                listener.exitTable_sources(self)
+
 
 
 
@@ -71730,6 +75674,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_non_ansi_join
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNon_ansi_join" ):
+                listener.enterNon_ansi_join(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNon_ansi_join" ):
+                listener.exitNon_ansi_join(self)
+
 
 
 
@@ -71789,6 +75741,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_source
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_source" ):
+                listener.enterTable_source(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_source" ):
+                listener.exitTable_source(self)
 
 
 
@@ -71906,6 +75866,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_source_item
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_source_item" ):
+                listener.enterTable_source_item(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_source_item" ):
+                listener.exitTable_source_item(self)
 
 
 
@@ -72193,6 +76161,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_open_xml
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOpen_xml" ):
+                listener.enterOpen_xml(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOpen_xml" ):
+                listener.exitOpen_xml(self)
+
 
 
 
@@ -72302,6 +76278,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_open_json
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOpen_json" ):
+                listener.enterOpen_json(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOpen_json" ):
+                listener.exitOpen_json(self)
+
 
 
 
@@ -72386,6 +76370,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_json_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJson_declaration" ):
+                listener.enterJson_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJson_declaration" ):
+                listener.exitJson_declaration(self)
+
 
 
 
@@ -72440,6 +76432,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_json_column_declaration
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJson_column_declaration" ):
+                listener.enterJson_column_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJson_column_declaration" ):
+                listener.exitJson_column_declaration(self)
 
 
 
@@ -72497,6 +76497,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_schema_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSchema_declaration" ):
+                listener.enterSchema_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSchema_declaration" ):
+                listener.exitSchema_declaration(self)
+
 
 
 
@@ -72553,6 +76561,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_column_declaration
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_declaration" ):
+                listener.enterColumn_declaration(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_declaration" ):
+                listener.exitColumn_declaration(self)
+
 
 
 
@@ -72601,6 +76617,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_change_table
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterChange_table" ):
+                listener.enterChange_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitChange_table" ):
+                listener.exitChange_table(self)
 
 
 
@@ -72674,6 +76698,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_change_table_changes
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterChange_table_changes" ):
+                listener.enterChange_table_changes(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitChange_table_changes" ):
+                listener.exitChange_table_changes(self)
 
 
 
@@ -72757,6 +76789,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_change_table_version
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterChange_table_version" ):
+                listener.enterChange_table_version(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitChange_table_version" ):
+                listener.exitChange_table_version(self)
+
 
 
 
@@ -72822,6 +76862,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_join_part
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJoin_part" ):
+                listener.enterJoin_part(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJoin_part" ):
+                listener.exitJoin_part(self)
 
 
 
@@ -72931,6 +76979,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_join_on
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJoin_on" ):
+                listener.enterJoin_on(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJoin_on" ):
+                listener.exitJoin_on(self)
+
 
 
 
@@ -73026,6 +77082,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_cross_join
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCross_join" ):
+                listener.enterCross_join(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCross_join" ):
+                listener.exitCross_join(self)
+
 
 
 
@@ -73074,6 +77138,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_apply_
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterApply_" ):
+                listener.enterApply_(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitApply_" ):
+                listener.exitApply_(self)
 
 
 
@@ -73127,6 +77199,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_pivot
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPivot" ):
+                listener.enterPivot(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPivot" ):
+                listener.exitPivot(self)
+
 
 
 
@@ -73171,6 +77251,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_unpivot
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnpivot" ):
+                listener.enterUnpivot(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnpivot" ):
+                listener.exitUnpivot(self)
 
 
 
@@ -73229,6 +77317,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_pivot_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPivot_clause" ):
+                listener.enterPivot_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPivot_clause" ):
+                listener.exitPivot_clause(self)
 
 
 
@@ -73303,6 +77399,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_unpivot_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUnpivot_clause" ):
+                listener.enterUnpivot_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUnpivot_clause" ):
+                listener.exitUnpivot_clause(self)
+
 
 
 
@@ -73363,6 +77467,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_full_column_name_list
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFull_column_name_list" ):
+                listener.enterFull_column_name_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFull_column_name_list" ):
+                listener.exitFull_column_name_list(self)
 
 
 
@@ -73447,6 +77559,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_rowset_function
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRowset_function" ):
+                listener.enterRowset_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRowset_function" ):
+                listener.exitRowset_function(self)
 
 
 
@@ -73556,6 +77676,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_bulk_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBulk_option" ):
+                listener.enterBulk_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBulk_option" ):
+                listener.exitBulk_option(self)
+
 
 
 
@@ -73625,6 +77753,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_derived_table
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDerived_table" ):
+                listener.enterDerived_table(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDerived_table" ):
+                listener.exitDerived_table(self)
 
 
 
@@ -73721,6 +77857,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.Ranking_windowed_functionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRANKING_WINDOWED_FUNC" ):
+                listener.enterRANKING_WINDOWED_FUNC(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRANKING_WINDOWED_FUNC" ):
+                listener.exitRANKING_WINDOWED_FUNC(self)
+
 
     class BUILT_IN_FUNCContext(Function_callContext):
 
@@ -73731,6 +77875,14 @@ class TSqlParser ( Parser ):
         def built_in_functions(self):
             return self.getTypedRuleContext(TSqlParser.Built_in_functionsContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBUILT_IN_FUNC" ):
+                listener.enterBUILT_IN_FUNC(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBUILT_IN_FUNC" ):
+                listener.exitBUILT_IN_FUNC(self)
 
 
     class FREE_TEXTContext(Function_callContext):
@@ -73743,6 +77895,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.Freetext_functionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFREE_TEXT" ):
+                listener.enterFREE_TEXT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFREE_TEXT" ):
+                listener.exitFREE_TEXT(self)
+
 
     class ANALYTIC_WINDOWED_FUNCContext(Function_callContext):
 
@@ -73753,6 +77913,14 @@ class TSqlParser ( Parser ):
         def analytic_windowed_function(self):
             return self.getTypedRuleContext(TSqlParser.Analytic_windowed_functionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterANALYTIC_WINDOWED_FUNC" ):
+                listener.enterANALYTIC_WINDOWED_FUNC(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitANALYTIC_WINDOWED_FUNC" ):
+                listener.exitANALYTIC_WINDOWED_FUNC(self)
 
 
     class SCALAR_FUNCTIONContext(Function_callContext):
@@ -73772,6 +77940,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.Expression_list_Context,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSCALAR_FUNCTION" ):
+                listener.enterSCALAR_FUNCTION(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSCALAR_FUNCTION" ):
+                listener.exitSCALAR_FUNCTION(self)
+
 
     class PARTITION_FUNCContext(Function_callContext):
 
@@ -73782,6 +77958,14 @@ class TSqlParser ( Parser ):
         def partition_function(self):
             return self.getTypedRuleContext(TSqlParser.Partition_functionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPARTITION_FUNC" ):
+                listener.enterPARTITION_FUNC(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPARTITION_FUNC" ):
+                listener.exitPARTITION_FUNC(self)
 
 
     class AGGREGATE_WINDOWED_FUNCContext(Function_callContext):
@@ -73794,6 +77978,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.Aggregate_windowed_functionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAGGREGATE_WINDOWED_FUNC" ):
+                listener.enterAGGREGATE_WINDOWED_FUNC(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAGGREGATE_WINDOWED_FUNC" ):
+                listener.exitAGGREGATE_WINDOWED_FUNC(self)
+
 
     class HIERARCHYID_METHODContext(Function_callContext):
 
@@ -73804,6 +77996,14 @@ class TSqlParser ( Parser ):
         def hierarchyid_static_method(self):
             return self.getTypedRuleContext(TSqlParser.Hierarchyid_static_methodContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHIERARCHYID_METHOD" ):
+                listener.enterHIERARCHYID_METHOD(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHIERARCHYID_METHOD" ):
+                listener.exitHIERARCHYID_METHOD(self)
 
 
 
@@ -73932,6 +78132,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_partition_function
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPartition_function" ):
+                listener.enterPartition_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPartition_function" ):
+                listener.exitPartition_function(self)
+
 
 
 
@@ -74039,6 +78247,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_freetext_function
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFreetext_function" ):
+                listener.enterFreetext_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFreetext_function" ):
+                listener.exitFreetext_function(self)
 
 
 
@@ -74286,6 +78502,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_freetext_predicate
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFreetext_predicate" ):
+                listener.enterFreetext_predicate(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFreetext_predicate" ):
+                listener.exitFreetext_predicate(self)
+
 
 
 
@@ -74458,6 +78682,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_json_key_value
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJson_key_value" ):
+                listener.enterJson_key_value(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJson_key_value" ):
+                listener.exitJson_key_value(self)
+
 
 
 
@@ -74503,6 +78735,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_json_null_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJson_null_clause" ):
+                listener.enterJson_null_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJson_null_clause" ):
+                listener.exitJson_null_clause(self)
 
 
 
@@ -74574,6 +78814,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCOL_NAME" ):
+                listener.enterCOL_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCOL_NAME" ):
+                listener.exitCOL_NAME(self)
+
 
     class CHECKSUMContext(Built_in_functionsContext):
 
@@ -74602,6 +78850,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getToken(TSqlParser.COMMA, i)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCHECKSUM" ):
+                listener.enterCHECKSUM(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCHECKSUM" ):
+                listener.exitCHECKSUM(self)
+
 
     class DECOMPRESSContext(Built_in_functionsContext):
 
@@ -74620,6 +78876,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDECOMPRESS" ):
+                listener.enterDECOMPRESS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDECOMPRESS" ):
+                listener.exitDECOMPRESS(self)
+
 
     class CURRENT_TIMEZONE_IDContext(Built_in_functionsContext):
 
@@ -74633,6 +78897,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURRENT_TIMEZONE_ID" ):
+                listener.enterCURRENT_TIMEZONE_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURRENT_TIMEZONE_ID" ):
+                listener.exitCURRENT_TIMEZONE_ID(self)
 
 
     class MONTHContext(Built_in_functionsContext):
@@ -74652,6 +78924,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMONTH" ):
+                listener.enterMONTH(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMONTH" ):
+                listener.exitMONTH(self)
+
 
     class RANDContext(Built_in_functionsContext):
 
@@ -74669,6 +78949,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRAND" ):
+                listener.enterRAND(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRAND" ):
+                listener.exitRAND(self)
 
 
     class FORMATContext(Built_in_functionsContext):
@@ -74698,6 +78986,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFORMAT" ):
+                listener.enterFORMAT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFORMAT" ):
+                listener.exitFORMAT(self)
+
 
     class TRIMContext(Built_in_functionsContext):
 
@@ -74722,6 +79018,14 @@ class TSqlParser ( Parser ):
         def FROM(self):
             return self.getToken(TSqlParser.FROM, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTRIM" ):
+                listener.enterTRIM(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTRIM" ):
+                listener.exitTRIM(self)
+
 
     class LEASTContext(Built_in_functionsContext):
 
@@ -74739,6 +79043,14 @@ class TSqlParser ( Parser ):
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLEAST" ):
+                listener.enterLEAST(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLEAST" ):
+                listener.exitLEAST(self)
+
 
     class APP_NAMEContext(Built_in_functionsContext):
 
@@ -74752,6 +79064,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAPP_NAME" ):
+                listener.enterAPP_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAPP_NAME" ):
+                listener.exitAPP_NAME(self)
 
 
     class USER_IDContext(Built_in_functionsContext):
@@ -74771,6 +79091,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUSER_ID" ):
+                listener.enterUSER_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUSER_ID" ):
+                listener.exitUSER_ID(self)
+
 
     class FILE_NAMEContext(Built_in_functionsContext):
 
@@ -74789,6 +79117,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFILE_NAME" ):
+                listener.enterFILE_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFILE_NAME" ):
+                listener.exitFILE_NAME(self)
+
 
     class SESSION_CONTEXTContext(Built_in_functionsContext):
 
@@ -74805,6 +79141,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
         def STRING(self):
             return self.getToken(TSqlParser.STRING, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSESSION_CONTEXT" ):
+                listener.enterSESSION_CONTEXT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSESSION_CONTEXT" ):
+                listener.exitSESSION_CONTEXT(self)
 
 
     class STRContext(Built_in_functionsContext):
@@ -74833,6 +79177,14 @@ class TSqlParser ( Parser ):
                 return self.getTokens(TSqlParser.COMMA)
             else:
                 return self.getToken(TSqlParser.COMMA, i)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSTR" ):
+                listener.enterSTR(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSTR" ):
+                listener.exitSTR(self)
 
 
     class CONVERTContext(Built_in_functionsContext):
@@ -74865,6 +79217,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCONVERT" ):
+                listener.enterCONVERT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCONVERT" ):
+                listener.exitCONVERT(self)
+
 
     class XML_DATA_TYPE_FUNCContext(Built_in_functionsContext):
 
@@ -74875,6 +79235,14 @@ class TSqlParser ( Parser ):
         def xml_data_type_methods(self):
             return self.getTypedRuleContext(TSqlParser.Xml_data_type_methodsContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXML_DATA_TYPE_FUNC" ):
+                listener.enterXML_DATA_TYPE_FUNC(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXML_DATA_TYPE_FUNC" ):
+                listener.exitXML_DATA_TYPE_FUNC(self)
 
 
     class LOG10Context(Built_in_functionsContext):
@@ -74894,6 +79262,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLOG10" ):
+                listener.enterLOG10(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLOG10" ):
+                listener.exitLOG10(self)
+
 
     class FLOORContext(Built_in_functionsContext):
 
@@ -74912,6 +79288,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFLOOR" ):
+                listener.enterFLOOR(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFLOOR" ):
+                listener.exitFLOOR(self)
+
 
     class YEARContext(Built_in_functionsContext):
 
@@ -74929,6 +79313,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterYEAR" ):
+                listener.enterYEAR(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitYEAR" ):
+                listener.exitYEAR(self)
 
 
     class PARSEContext(Built_in_functionsContext):
@@ -74959,6 +79351,14 @@ class TSqlParser ( Parser ):
         def USING(self):
             return self.getToken(TSqlParser.USING, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPARSE" ):
+                listener.enterPARSE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPARSE" ):
+                listener.exitPARSE(self)
+
 
     class ORIGINAL_LOGINContext(Built_in_functionsContext):
 
@@ -74972,6 +79372,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterORIGINAL_LOGIN" ):
+                listener.enterORIGINAL_LOGIN(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitORIGINAL_LOGIN" ):
+                listener.exitORIGINAL_LOGIN(self)
 
 
     class MATH_SIGNContext(Built_in_functionsContext):
@@ -74990,6 +79398,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMATH_SIGN" ):
+                listener.enterMATH_SIGN(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMATH_SIGN" ):
+                listener.exitMATH_SIGN(self)
 
 
     class TIMEFROMPARTSContext(Built_in_functionsContext):
@@ -75023,6 +79439,14 @@ class TSqlParser ( Parser ):
         def DECIMAL(self):
             return self.getToken(TSqlParser.DECIMAL, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTIMEFROMPARTS" ):
+                listener.enterTIMEFROMPARTS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTIMEFROMPARTS" ):
+                listener.exitTIMEFROMPARTS(self)
+
 
     class LEFTContext(Built_in_functionsContext):
 
@@ -75047,6 +79471,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLEFT" ):
+                listener.enterLEFT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLEFT" ):
+                listener.exitLEFT(self)
+
 
     class GET_FILESTREAM_TRANSACTION_CONTEXTContext(Built_in_functionsContext):
 
@@ -75060,6 +79492,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGET_FILESTREAM_TRANSACTION_CONTEXT" ):
+                listener.enterGET_FILESTREAM_TRANSACTION_CONTEXT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGET_FILESTREAM_TRANSACTION_CONTEXT" ):
+                listener.exitGET_FILESTREAM_TRANSACTION_CONTEXT(self)
 
 
     class FILEPROPERTYContext(Built_in_functionsContext):
@@ -75085,6 +79525,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFILEPROPERTY" ):
+                listener.enterFILEPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFILEPROPERTY" ):
+                listener.exitFILEPROPERTY(self)
+
 
     class IDENT_SEEDContext(Built_in_functionsContext):
 
@@ -75102,6 +79550,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIDENT_SEED" ):
+                listener.enterIDENT_SEED(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIDENT_SEED" ):
+                listener.exitIDENT_SEED(self)
 
 
     class IDENTITYContext(Built_in_functionsContext):
@@ -75133,6 +79589,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getToken(TSqlParser.DECIMAL, i)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIDENTITY" ):
+                listener.enterIDENTITY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIDENTITY" ):
+                listener.exitIDENTITY(self)
+
 
     class CURRENT_TRANSACTION_IDContext(Built_in_functionsContext):
 
@@ -75146,6 +79610,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURRENT_TRANSACTION_ID" ):
+                listener.enterCURRENT_TRANSACTION_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURRENT_TRANSACTION_ID" ):
+                listener.exitCURRENT_TRANSACTION_ID(self)
 
 
     class LTRIMContext(Built_in_functionsContext):
@@ -75165,6 +79637,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLTRIM" ):
+                listener.enterLTRIM(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLTRIM" ):
+                listener.exitLTRIM(self)
+
 
     class ROWCOUNT_BIGContext(Built_in_functionsContext):
 
@@ -75178,6 +79658,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterROWCOUNT_BIG" ):
+                listener.enterROWCOUNT_BIG(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitROWCOUNT_BIG" ):
+                listener.exitROWCOUNT_BIG(self)
 
 
     class CERTENCODEDContext(Built_in_functionsContext):
@@ -75196,6 +79684,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCERTENCODED" ):
+                listener.enterCERTENCODED(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCERTENCODED" ):
+                listener.exitCERTENCODED(self)
 
 
     class JSON_VALUEContext(Built_in_functionsContext):
@@ -75221,6 +79717,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJSON_VALUE" ):
+                listener.enterJSON_VALUE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJSON_VALUE" ):
+                listener.exitJSON_VALUE(self)
+
 
     class SYSDATETIMEContext(Built_in_functionsContext):
 
@@ -75234,6 +79738,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSYSDATETIME" ):
+                listener.enterSYSDATETIME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSYSDATETIME" ):
+                listener.exitSYSDATETIME(self)
 
 
     class CERTPRIVATEKEYContext(Built_in_functionsContext):
@@ -75263,6 +79775,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCERTPRIVATEKEY" ):
+                listener.enterCERTPRIVATEKEY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCERTPRIVATEKEY" ):
+                listener.exitCERTPRIVATEKEY(self)
+
 
     class SPACEContext(Built_in_functionsContext):
 
@@ -75280,6 +79800,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSPACE" ):
+                listener.enterSPACE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSPACE" ):
+                listener.exitSPACE(self)
 
 
     class UPPERContext(Built_in_functionsContext):
@@ -75299,6 +79827,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUPPER" ):
+                listener.enterUPPER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUPPER" ):
+                listener.exitUPPER(self)
+
 
     class ABSContext(Built_in_functionsContext):
 
@@ -75316,6 +79852,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterABS" ):
+                listener.enterABS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitABS" ):
+                listener.exitABS(self)
 
 
     class ISJSONContext(Built_in_functionsContext):
@@ -75340,6 +79884,14 @@ class TSqlParser ( Parser ):
 
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterISJSON" ):
+                listener.enterISJSON(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitISJSON" ):
+                listener.exitISJSON(self)
 
 
     class HAS_PERMS_BY_NAMEContext(Built_in_functionsContext):
@@ -75371,6 +79923,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHAS_PERMS_BY_NAME" ):
+                listener.enterHAS_PERMS_BY_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHAS_PERMS_BY_NAME" ):
+                listener.exitHAS_PERMS_BY_NAME(self)
+
 
     class SUSER_IDContext(Built_in_functionsContext):
 
@@ -75389,6 +79949,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSUSER_ID" ):
+                listener.enterSUSER_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSUSER_ID" ):
+                listener.exitSUSER_ID(self)
+
 
     class SCOPE_IDENTITYContext(Built_in_functionsContext):
 
@@ -75402,6 +79970,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSCOPE_IDENTITY" ):
+                listener.enterSCOPE_IDENTITY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSCOPE_IDENTITY" ):
+                listener.exitSCOPE_IDENTITY(self)
 
 
     class JSON_QUERYContext(Built_in_functionsContext):
@@ -75426,6 +80002,14 @@ class TSqlParser ( Parser ):
 
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJSON_QUERY" ):
+                listener.enterJSON_QUERY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJSON_QUERY" ):
+                listener.exitJSON_QUERY(self)
 
 
     class INDEX_COLContext(Built_in_functionsContext):
@@ -75455,6 +80039,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterINDEX_COL" ):
+                listener.enterINDEX_COL(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitINDEX_COL" ):
+                listener.exitINDEX_COL(self)
+
 
     class DATABASE_PRINCIPAL_IDContext(Built_in_functionsContext):
 
@@ -75472,6 +80064,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATABASE_PRINCIPAL_ID" ):
+                listener.enterDATABASE_PRINCIPAL_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATABASE_PRINCIPAL_ID" ):
+                listener.exitDATABASE_PRINCIPAL_ID(self)
 
 
     class PATINDEXContext(Built_in_functionsContext):
@@ -75497,6 +80097,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPATINDEX" ):
+                listener.enterPATINDEX(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPATINDEX" ):
+                listener.exitPATINDEX(self)
+
 
     class FULLTEXTSERVICEPROPERTYContext(Built_in_functionsContext):
 
@@ -75514,6 +80122,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFULLTEXTSERVICEPROPERTY" ):
+                listener.enterFULLTEXTSERVICEPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFULLTEXTSERVICEPROPERTY" ):
+                listener.exitFULLTEXTSERVICEPROPERTY(self)
 
 
     class SMALLDATETIMEFROMPARTSContext(Built_in_functionsContext):
@@ -75545,6 +80161,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSMALLDATETIMEFROMPARTS" ):
+                listener.enterSMALLDATETIMEFROMPARTS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSMALLDATETIMEFROMPARTS" ):
+                listener.exitSMALLDATETIMEFROMPARTS(self)
+
 
     class IDENT_CURRENTContext(Built_in_functionsContext):
 
@@ -75562,6 +80186,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIDENT_CURRENT" ):
+                listener.enterIDENT_CURRENT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIDENT_CURRENT" ):
+                listener.exitIDENT_CURRENT(self)
 
 
     class SESSIONPROPERTYContext(Built_in_functionsContext):
@@ -75581,6 +80213,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSESSIONPROPERTY" ):
+                listener.enterSESSIONPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSESSIONPROPERTY" ):
+                listener.exitSESSIONPROPERTY(self)
+
 
     class FETCH_STATUSContext(Built_in_functionsContext):
 
@@ -75590,6 +80230,14 @@ class TSqlParser ( Parser ):
 
         def FETCH_STATUS(self):
             return self.getToken(TSqlParser.FETCH_STATUS, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFETCH_STATUS" ):
+                listener.enterFETCH_STATUS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFETCH_STATUS" ):
+                listener.exitFETCH_STATUS(self)
 
 
     class POWERContext(Built_in_functionsContext):
@@ -75615,6 +80263,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPOWER" ):
+                listener.enterPOWER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPOWER" ):
+                listener.exitPOWER(self)
+
 
     class REPLICATEContext(Built_in_functionsContext):
 
@@ -75639,6 +80295,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterREPLICATE" ):
+                listener.enterREPLICATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitREPLICATE" ):
+                listener.exitREPLICATE(self)
+
 
     class USER_NAMEContext(Built_in_functionsContext):
 
@@ -75657,6 +80321,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUSER_NAME" ):
+                listener.enterUSER_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUSER_NAME" ):
+                listener.exitUSER_NAME(self)
+
 
     class OBJECT_DEFINITIONContext(Built_in_functionsContext):
 
@@ -75674,6 +80346,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOBJECT_DEFINITION" ):
+                listener.enterOBJECT_DEFINITION(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOBJECT_DEFINITION" ):
+                listener.exitOBJECT_DEFINITION(self)
 
 
     class IS_SRVROLEMEMBERContext(Built_in_functionsContext):
@@ -75699,6 +80379,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIS_SRVROLEMEMBER" ):
+                listener.enterIS_SRVROLEMEMBER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIS_SRVROLEMEMBER" ):
+                listener.exitIS_SRVROLEMEMBER(self)
+
 
     class NEWSEQUENTIALIDContext(Built_in_functionsContext):
 
@@ -75712,6 +80400,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNEWSEQUENTIALID" ):
+                listener.enterNEWSEQUENTIALID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNEWSEQUENTIALID" ):
+                listener.exitNEWSEQUENTIALID(self)
 
 
     class OBJECT_NAMEContext(Built_in_functionsContext):
@@ -75737,6 +80433,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOBJECT_NAME" ):
+                listener.enterOBJECT_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOBJECT_NAME" ):
+                listener.exitOBJECT_NAME(self)
+
 
     class JSON_PATH_EXISTSContext(Built_in_functionsContext):
 
@@ -75760,6 +80464,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJSON_PATH_EXISTS" ):
+                listener.enterJSON_PATH_EXISTS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJSON_PATH_EXISTS" ):
+                listener.exitJSON_PATH_EXISTS(self)
 
 
     class PWDCOMPAREContext(Built_in_functionsContext):
@@ -75789,6 +80501,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPWDCOMPARE" ):
+                listener.enterPWDCOMPARE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPWDCOMPARE" ):
+                listener.exitPWDCOMPARE(self)
+
 
     class SCHEMA_IDContext(Built_in_functionsContext):
 
@@ -75806,6 +80526,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSCHEMA_ID" ):
+                listener.enterSCHEMA_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSCHEMA_ID" ):
+                listener.exitSCHEMA_ID(self)
 
 
     class OBJECT_SCHEMA_NAMEContext(Built_in_functionsContext):
@@ -75831,6 +80559,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOBJECT_SCHEMA_NAME" ):
+                listener.enterOBJECT_SCHEMA_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOBJECT_SCHEMA_NAME" ):
+                listener.exitOBJECT_SCHEMA_NAME(self)
+
 
     class SUSER_SNAMEContext(Built_in_functionsContext):
 
@@ -75851,6 +80587,14 @@ class TSqlParser ( Parser ):
         def SUSER_SNAME(self):
             return self.getToken(TSqlParser.SUSER_SNAME, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSUSER_SNAME" ):
+                listener.enterSUSER_SNAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSUSER_SNAME" ):
+                listener.exitSUSER_SNAME(self)
+
 
     class DB_NAMEContext(Built_in_functionsContext):
 
@@ -75868,6 +80612,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDB_NAME" ):
+                listener.enterDB_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDB_NAME" ):
+                listener.exitDB_NAME(self)
 
 
     class SUSER_SIDContext(Built_in_functionsContext):
@@ -75893,6 +80645,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSUSER_SID" ):
+                listener.enterSUSER_SID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSUSER_SID" ):
+                listener.exitSUSER_SID(self)
+
 
     class ASCIIContext(Built_in_functionsContext):
 
@@ -75910,6 +80670,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterASCII" ):
+                listener.enterASCII(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitASCII" ):
+                listener.exitASCII(self)
 
 
     class FILE_IDEXContext(Built_in_functionsContext):
@@ -75929,6 +80697,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFILE_IDEX" ):
+                listener.enterFILE_IDEX(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFILE_IDEX" ):
+                listener.exitFILE_IDEX(self)
+
 
     class ERROR_SEVERITYContext(Built_in_functionsContext):
 
@@ -75942,6 +80718,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterERROR_SEVERITY" ):
+                listener.enterERROR_SEVERITY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitERROR_SEVERITY" ):
+                listener.exitERROR_SEVERITY(self)
 
 
     class REVERSEContext(Built_in_functionsContext):
@@ -75961,6 +80745,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterREVERSE" ):
+                listener.enterREVERSE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitREVERSE" ):
+                listener.exitREVERSE(self)
+
 
     class ISDATEContext(Built_in_functionsContext):
 
@@ -75977,6 +80769,14 @@ class TSqlParser ( Parser ):
 
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterISDATE" ):
+                listener.enterISDATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitISDATE" ):
+                listener.exitISDATE(self)
 
 
     class REPLACEContext(Built_in_functionsContext):
@@ -76006,6 +80806,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterREPLACE" ):
+                listener.enterREPLACE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitREPLACE" ):
+                listener.exitREPLACE(self)
+
 
     class CURSOR_STATUSContext(Built_in_functionsContext):
 
@@ -76029,6 +80837,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURSOR_STATUS" ):
+                listener.enterCURSOR_STATUS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURSOR_STATUS" ):
+                listener.exitCURSOR_STATUS(self)
+
 
     class MIN_ACTIVE_ROWVERSIONContext(Built_in_functionsContext):
 
@@ -76042,6 +80858,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterMIN_ACTIVE_ROWVERSION" ):
+                listener.enterMIN_ACTIVE_ROWVERSION(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitMIN_ACTIVE_ROWVERSION" ):
+                listener.exitMIN_ACTIVE_ROWVERSION(self)
 
 
     class HAS_DBACCESSContext(Built_in_functionsContext):
@@ -76060,6 +80884,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHAS_DBACCESS" ):
+                listener.enterHAS_DBACCESS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHAS_DBACCESS" ):
+                listener.exitHAS_DBACCESS(self)
 
 
     class NEXT_VALUE_FORContext(Built_in_functionsContext):
@@ -76088,6 +80920,14 @@ class TSqlParser ( Parser ):
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNEXT_VALUE_FOR" ):
+                listener.enterNEXT_VALUE_FOR(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNEXT_VALUE_FOR" ):
+                listener.exitNEXT_VALUE_FOR(self)
+
 
     class FILEGROUP_IDContext(Built_in_functionsContext):
 
@@ -76106,6 +80946,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFILEGROUP_ID" ):
+                listener.enterFILEGROUP_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFILEGROUP_ID" ):
+                listener.exitFILEGROUP_ID(self)
+
 
     class LOWERContext(Built_in_functionsContext):
 
@@ -76123,6 +80971,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLOWER" ):
+                listener.enterLOWER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLOWER" ):
+                listener.exitLOWER(self)
 
 
     class DATENAMEContext(Built_in_functionsContext):
@@ -76148,6 +81004,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATENAME" ):
+                listener.enterDATENAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATENAME" ):
+                listener.exitDATENAME(self)
+
 
     class CEILINGContext(Built_in_functionsContext):
 
@@ -76165,6 +81029,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCEILING" ):
+                listener.enterCEILING(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCEILING" ):
+                listener.exitCEILING(self)
 
 
     class APPLOCK_TESTContext(Built_in_functionsContext):
@@ -76195,6 +81067,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAPPLOCK_TEST" ):
+                listener.enterAPPLOCK_TEST(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAPPLOCK_TEST" ):
+                listener.exitAPPLOCK_TEST(self)
+
 
     class SINContext(Built_in_functionsContext):
 
@@ -76212,6 +81092,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSIN" ):
+                listener.enterSIN(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSIN" ):
+                listener.exitSIN(self)
 
 
     class TYPE_NAMEContext(Built_in_functionsContext):
@@ -76231,6 +81119,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTYPE_NAME" ):
+                listener.enterTYPE_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTYPE_NAME" ):
+                listener.exitTYPE_NAME(self)
+
 
     class SYSUTCDATETIMEContext(Built_in_functionsContext):
 
@@ -76244,6 +81140,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSYSUTCDATETIME" ):
+                listener.enterSYSUTCDATETIME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSYSUTCDATETIME" ):
+                listener.exitSYSUTCDATETIME(self)
 
 
     class DATEADDContext(Built_in_functionsContext):
@@ -76275,6 +81179,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATEADD" ):
+                listener.enterDATEADD(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATEADD" ):
+                listener.exitDATEADD(self)
 
 
     class DATETIMEFROMPARTSContext(Built_in_functionsContext):
@@ -76308,6 +81220,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATETIMEFROMPARTS" ):
+                listener.enterDATETIMEFROMPARTS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATETIMEFROMPARTS" ):
+                listener.exitDATETIMEFROMPARTS(self)
+
 
     class ERROR_MESSAGEContext(Built_in_functionsContext):
 
@@ -76321,6 +81241,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterERROR_MESSAGE" ):
+                listener.enterERROR_MESSAGE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitERROR_MESSAGE" ):
+                listener.exitERROR_MESSAGE(self)
 
 
     class FILEGROUPPROPERTYContext(Built_in_functionsContext):
@@ -76346,6 +81274,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFILEGROUPPROPERTY" ):
+                listener.enterFILEGROUPPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFILEGROUPPROPERTY" ):
+                listener.exitFILEGROUPPROPERTY(self)
+
 
     class EOMONTHContext(Built_in_functionsContext):
 
@@ -76370,6 +81306,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEOMONTH" ):
+                listener.enterEOMONTH(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEOMONTH" ):
+                listener.exitEOMONTH(self)
+
 
     class IDENT_INCRContext(Built_in_functionsContext):
 
@@ -76387,6 +81331,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIDENT_INCR" ):
+                listener.enterIDENT_INCR(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIDENT_INCR" ):
+                listener.exitIDENT_INCR(self)
 
 
     class ASINContext(Built_in_functionsContext):
@@ -76406,6 +81358,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterASIN" ):
+                listener.enterASIN(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitASIN" ):
+                listener.exitASIN(self)
+
 
     class NCHARContext(Built_in_functionsContext):
 
@@ -76423,6 +81383,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNCHAR" ):
+                listener.enterNCHAR(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNCHAR" ):
+                listener.exitNCHAR(self)
 
 
     class DIFFERENCEContext(Built_in_functionsContext):
@@ -76447,6 +81415,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDIFFERENCE" ):
+                listener.enterDIFFERENCE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDIFFERENCE" ):
+                listener.exitDIFFERENCE(self)
 
 
     class CHARINDEXContext(Built_in_functionsContext):
@@ -76476,6 +81452,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCHARINDEX" ):
+                listener.enterCHARINDEX(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCHARINDEX" ):
+                listener.exitCHARINDEX(self)
+
 
     class TODATETIMEOFFSETContext(Built_in_functionsContext):
 
@@ -76500,6 +81484,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTODATETIMEOFFSET" ):
+                listener.enterTODATETIMEOFFSET(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTODATETIMEOFFSET" ):
+                listener.exitTODATETIMEOFFSET(self)
+
 
     class RADIANSContext(Built_in_functionsContext):
 
@@ -76518,6 +81510,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRADIANS" ):
+                listener.enterRADIANS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRADIANS" ):
+                listener.exitRADIANS(self)
+
 
     class CURRENT_TIMEZONEContext(Built_in_functionsContext):
 
@@ -76531,6 +81531,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURRENT_TIMEZONE" ):
+                listener.enterCURRENT_TIMEZONE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURRENT_TIMEZONE" ):
+                listener.exitCURRENT_TIMEZONE(self)
 
 
     class COL_LENGTHContext(Built_in_functionsContext):
@@ -76555,6 +81563,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCOL_LENGTH" ):
+                listener.enterCOL_LENGTH(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCOL_LENGTH" ):
+                listener.exitCOL_LENGTH(self)
 
 
     class DATEFROMPARTSContext(Built_in_functionsContext):
@@ -76584,6 +81600,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATEFROMPARTS" ):
+                listener.enterDATEFROMPARTS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATEFROMPARTS" ):
+                listener.exitDATEFROMPARTS(self)
+
 
     class NEWIDContext(Built_in_functionsContext):
 
@@ -76597,6 +81621,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNEWID" ):
+                listener.enterNEWID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNEWID" ):
+                listener.exitNEWID(self)
 
 
     class DATETRUNCContext(Built_in_functionsContext):
@@ -76622,6 +81654,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATETRUNC" ):
+                listener.enterDATETRUNC(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATETRUNC" ):
+                listener.exitDATETRUNC(self)
+
 
     class ISNULLContext(Built_in_functionsContext):
 
@@ -76645,6 +81685,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterISNULL" ):
+                listener.enterISNULL(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitISNULL" ):
+                listener.exitISNULL(self)
 
 
     class JSON_MODIFYContext(Built_in_functionsContext):
@@ -76674,6 +81722,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJSON_MODIFY" ):
+                listener.enterJSON_MODIFY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJSON_MODIFY" ):
+                listener.exitJSON_MODIFY(self)
+
 
     class CURRENT_REQUEST_IDContext(Built_in_functionsContext):
 
@@ -76687,6 +81743,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURRENT_REQUEST_ID" ):
+                listener.enterCURRENT_REQUEST_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURRENT_REQUEST_ID" ):
+                listener.exitCURRENT_REQUEST_ID(self)
 
 
     class IS_MEMBERContext(Built_in_functionsContext):
@@ -76706,6 +81770,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIS_MEMBER" ):
+                listener.enterIS_MEMBER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIS_MEMBER" ):
+                listener.exitIS_MEMBER(self)
+
 
     class SERVERPROPERTYContext(Built_in_functionsContext):
 
@@ -76724,6 +81796,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSERVERPROPERTY" ):
+                listener.enterSERVERPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSERVERPROPERTY" ):
+                listener.exitSERVERPROPERTY(self)
+
 
     class SQRTContext(Built_in_functionsContext):
 
@@ -76741,6 +81821,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSQRT" ):
+                listener.enterSQRT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSQRT" ):
+                listener.exitSQRT(self)
 
 
     class ATN2Context(Built_in_functionsContext):
@@ -76765,6 +81853,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterATN2" ):
+                listener.enterATN2(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitATN2" ):
+                listener.exitATN2(self)
+
 
     class UNICODEContext(Built_in_functionsContext):
 
@@ -76782,6 +81878,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUNICODE" ):
+                listener.enterUNICODE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUNICODE" ):
+                listener.exitUNICODE(self)
 
 
     class NULLIFContext(Built_in_functionsContext):
@@ -76807,6 +81911,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNULLIF" ):
+                listener.enterNULLIF(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNULLIF" ):
+                listener.exitNULLIF(self)
+
 
     class SESSION_USERContext(Built_in_functionsContext):
 
@@ -76816,6 +81928,14 @@ class TSqlParser ( Parser ):
 
         def SESSION_USER(self):
             return self.getToken(TSqlParser.SESSION_USER, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSESSION_USER" ):
+                listener.enterSESSION_USER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSESSION_USER" ):
+                listener.exitSESSION_USER(self)
 
 
     class CASTContext(Built_in_functionsContext):
@@ -76838,6 +81958,14 @@ class TSqlParser ( Parser ):
 
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCAST" ):
+                listener.enterCAST(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCAST" ):
+                listener.exitCAST(self)
 
 
     class DATETIME2FROMPARTSContext(Built_in_functionsContext):
@@ -76872,6 +82000,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATETIME2FROMPARTS" ):
+                listener.enterDATETIME2FROMPARTS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATETIME2FROMPARTS" ):
+                listener.exitDATETIME2FROMPARTS(self)
+
 
     class SQUAREContext(Built_in_functionsContext):
 
@@ -76889,6 +82025,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSQUARE" ):
+                listener.enterSQUARE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSQUARE" ):
+                listener.exitSQUARE(self)
 
 
     class LOGContext(Built_in_functionsContext):
@@ -76913,6 +82057,14 @@ class TSqlParser ( Parser ):
 
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLOG" ):
+                listener.enterLOG(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLOG" ):
+                listener.exitLOG(self)
 
 
     class IIFContext(Built_in_functionsContext):
@@ -76945,6 +82097,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIIF" ):
+                listener.enterIIF(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIIF" ):
+                listener.exitIIF(self)
+
 
     class DATEPARTContext(Built_in_functionsContext):
 
@@ -76969,6 +82129,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATEPART" ):
+                listener.enterDATEPART(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATEPART" ):
+                listener.exitDATEPART(self)
+
 
     class CONTEXT_INFOContext(Built_in_functionsContext):
 
@@ -76982,6 +82150,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCONTEXT_INFO" ):
+                listener.enterCONTEXT_INFO(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCONTEXT_INFO" ):
+                listener.exitCONTEXT_INFO(self)
 
 
     class DATEDIFFContext(Built_in_functionsContext):
@@ -77014,6 +82190,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATEDIFF" ):
+                listener.enterDATEDIFF(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATEDIFF" ):
+                listener.exitDATEDIFF(self)
+
 
     class OBJECTPROPERTYContext(Built_in_functionsContext):
 
@@ -77038,6 +82222,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOBJECTPROPERTY" ):
+                listener.enterOBJECTPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOBJECTPROPERTY" ):
+                listener.exitOBJECTPROPERTY(self)
+
 
     class CHARContext(Built_in_functionsContext):
 
@@ -77055,6 +82247,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCHAR" ):
+                listener.enterCHAR(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCHAR" ):
+                listener.exitCHAR(self)
 
 
     class STRING_ESCAPEContext(Built_in_functionsContext):
@@ -77080,6 +82280,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSTRING_ESCAPE" ):
+                listener.enterSTRING_ESCAPE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSTRING_ESCAPE" ):
+                listener.exitSTRING_ESCAPE(self)
+
 
     class GETANSINULLContext(Built_in_functionsContext):
 
@@ -77097,6 +82305,14 @@ class TSqlParser ( Parser ):
         def STRING(self):
             return self.getToken(TSqlParser.STRING, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGETANSINULL" ):
+                listener.enterGETANSINULL(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGETANSINULL" ):
+                listener.exitGETANSINULL(self)
+
 
     class SYSTEM_USERContext(Built_in_functionsContext):
 
@@ -77106,6 +82322,14 @@ class TSqlParser ( Parser ):
 
         def SYSTEM_USER(self):
             return self.getToken(TSqlParser.SYSTEM_USER, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSYSTEM_USER" ):
+                listener.enterSYSTEM_USER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSYSTEM_USER" ):
+                listener.exitSYSTEM_USER(self)
 
 
     class OBJECT_IDContext(Built_in_functionsContext):
@@ -77131,6 +82355,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOBJECT_ID" ):
+                listener.enterOBJECT_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOBJECT_ID" ):
+                listener.exitOBJECT_ID(self)
+
 
     class ERROR_PROCEDUREContext(Built_in_functionsContext):
 
@@ -77144,6 +82376,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterERROR_PROCEDURE" ):
+                listener.enterERROR_PROCEDURE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitERROR_PROCEDURE" ):
+                listener.exitERROR_PROCEDURE(self)
 
 
     class QUOTENAMEContext(Built_in_functionsContext):
@@ -77169,6 +82409,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQUOTENAME" ):
+                listener.enterQUOTENAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQUOTENAME" ):
+                listener.exitQUOTENAME(self)
+
 
     class RIGHTContext(Built_in_functionsContext):
 
@@ -77193,6 +82441,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRIGHT" ):
+                listener.enterRIGHT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRIGHT" ):
+                listener.exitRIGHT(self)
+
 
     class HOST_IDContext(Built_in_functionsContext):
 
@@ -77206,6 +82462,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHOST_ID" ):
+                listener.enterHOST_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHOST_ID" ):
+                listener.exitHOST_ID(self)
 
 
     class DATETIMEOFFSETFROMPARTSContext(Built_in_functionsContext):
@@ -77244,6 +82508,14 @@ class TSqlParser ( Parser ):
         def DECIMAL(self):
             return self.getToken(TSqlParser.DECIMAL, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATETIMEOFFSETFROMPARTS" ):
+                listener.enterDATETIMEOFFSETFROMPARTS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATETIMEOFFSETFROMPARTS" ):
+                listener.exitDATETIMEOFFSETFROMPARTS(self)
+
 
     class COSContext(Built_in_functionsContext):
 
@@ -77261,6 +82533,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCOS" ):
+                listener.enterCOS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCOS" ):
+                listener.exitCOS(self)
 
 
     class COTContext(Built_in_functionsContext):
@@ -77280,6 +82560,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCOT" ):
+                listener.enterCOT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCOT" ):
+                listener.exitCOT(self)
+
 
     class FILE_IDContext(Built_in_functionsContext):
 
@@ -77297,6 +82585,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFILE_ID" ):
+                listener.enterFILE_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFILE_ID" ):
+                listener.exitFILE_ID(self)
 
 
     class ASSEMBLYPROPERTYContext(Built_in_functionsContext):
@@ -77321,6 +82617,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterASSEMBLYPROPERTY" ):
+                listener.enterASSEMBLYPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitASSEMBLYPROPERTY" ):
+                listener.exitASSEMBLYPROPERTY(self)
 
 
     class STUFFContext(Built_in_functionsContext):
@@ -77351,6 +82655,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSTUFF" ):
+                listener.enterSTUFF(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSTUFF" ):
+                listener.exitSTUFF(self)
+
 
     class IS_ROLEMEMBERContext(Built_in_functionsContext):
 
@@ -77375,6 +82687,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIS_ROLEMEMBER" ):
+                listener.enterIS_ROLEMEMBER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIS_ROLEMEMBER" ):
+                listener.exitIS_ROLEMEMBER(self)
+
 
     class SQL_VARIANT_PROPERTYContext(Built_in_functionsContext):
 
@@ -77398,6 +82718,14 @@ class TSqlParser ( Parser ):
         def STRING(self):
             return self.getToken(TSqlParser.STRING, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSQL_VARIANT_PROPERTY" ):
+                listener.enterSQL_VARIANT_PROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSQL_VARIANT_PROPERTY" ):
+                listener.exitSQL_VARIANT_PROPERTY(self)
+
 
     class GREATESTContext(Built_in_functionsContext):
 
@@ -77415,6 +82743,14 @@ class TSqlParser ( Parser ):
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGREATEST" ):
+                listener.enterGREATEST(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGREATEST" ):
+                listener.exitGREATEST(self)
+
 
     class GETUTCDATEContext(Built_in_functionsContext):
 
@@ -77428,6 +82764,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGETUTCDATE" ):
+                listener.enterGETUTCDATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGETUTCDATE" ):
+                listener.exitGETUTCDATE(self)
 
 
     class LOGINPROPERTYContext(Built_in_functionsContext):
@@ -77452,6 +82796,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLOGINPROPERTY" ):
+                listener.enterLOGINPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLOGINPROPERTY" ):
+                listener.exitLOGINPROPERTY(self)
 
 
     class CONCAT_WSContext(Built_in_functionsContext):
@@ -77483,6 +82835,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCONCAT_WS" ):
+                listener.enterCONCAT_WS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCONCAT_WS" ):
+                listener.exitCONCAT_WS(self)
+
 
     class ERROR_STATEContext(Built_in_functionsContext):
 
@@ -77496,6 +82856,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterERROR_STATE" ):
+                listener.enterERROR_STATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitERROR_STATE" ):
+                listener.exitERROR_STATE(self)
 
 
     class DAYContext(Built_in_functionsContext):
@@ -77514,6 +82882,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDAY" ):
+                listener.enterDAY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDAY" ):
+                listener.exitDAY(self)
 
 
     class PARSENAMEContext(Built_in_functionsContext):
@@ -77539,6 +82915,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPARSENAME" ):
+                listener.enterPARSENAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPARSENAME" ):
+                listener.exitPARSENAME(self)
+
 
     class TANContext(Built_in_functionsContext):
 
@@ -77557,6 +82941,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTAN" ):
+                listener.enterTAN(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTAN" ):
+                listener.exitTAN(self)
+
 
     class CURRENT_USERContext(Built_in_functionsContext):
 
@@ -77566,6 +82958,14 @@ class TSqlParser ( Parser ):
 
         def CURRENT_USER(self):
             return self.getToken(TSqlParser.CURRENT_USER, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURRENT_USER" ):
+                listener.enterCURRENT_USER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURRENT_USER" ):
+                listener.exitCURRENT_USER(self)
 
 
     class PERMISSIONSContext(Built_in_functionsContext):
@@ -77591,6 +82991,14 @@ class TSqlParser ( Parser ):
         def COMMA(self):
             return self.getToken(TSqlParser.COMMA, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPERMISSIONS" ):
+                listener.enterPERMISSIONS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPERMISSIONS" ):
+                listener.exitPERMISSIONS(self)
+
 
     class SYSDATETIMEOFFSETContext(Built_in_functionsContext):
 
@@ -77604,6 +83012,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSYSDATETIMEOFFSET" ):
+                listener.enterSYSDATETIMEOFFSET(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSYSDATETIMEOFFSET" ):
+                listener.exitSYSDATETIMEOFFSET(self)
 
 
     class INDEXPROPERTYContext(Built_in_functionsContext):
@@ -77633,6 +83049,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterINDEXPROPERTY" ):
+                listener.enterINDEXPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitINDEXPROPERTY" ):
+                listener.exitINDEXPROPERTY(self)
+
 
     class OBJECTPROPERTYEXContext(Built_in_functionsContext):
 
@@ -77656,6 +83080,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOBJECTPROPERTYEX" ):
+                listener.enterOBJECTPROPERTYEX(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOBJECTPROPERTYEX" ):
+                listener.exitOBJECTPROPERTYEX(self)
 
 
     class SUBSTRINGContext(Built_in_functionsContext):
@@ -77685,6 +83117,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSUBSTRING" ):
+                listener.enterSUBSTRING(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSUBSTRING" ):
+                listener.exitSUBSTRING(self)
+
 
     class BINARY_CHECKSUMContext(Built_in_functionsContext):
 
@@ -77712,6 +83152,14 @@ class TSqlParser ( Parser ):
                 return self.getTokens(TSqlParser.COMMA)
             else:
                 return self.getToken(TSqlParser.COMMA, i)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBINARY_CHECKSUM" ):
+                listener.enterBINARY_CHECKSUM(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBINARY_CHECKSUM" ):
+                listener.exitBINARY_CHECKSUM(self)
 
 
     class INDEXKEY_PROPERTYContext(Built_in_functionsContext):
@@ -77742,6 +83190,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterINDEXKEY_PROPERTY" ):
+                listener.enterINDEXKEY_PROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitINDEXKEY_PROPERTY" ):
+                listener.exitINDEXKEY_PROPERTY(self)
+
 
     class PWDENCRYPTContext(Built_in_functionsContext):
 
@@ -77759,6 +83215,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPWDENCRYPT" ):
+                listener.enterPWDENCRYPT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPWDENCRYPT" ):
+                listener.exitPWDENCRYPT(self)
 
 
     class COMPRESSContext(Built_in_functionsContext):
@@ -77778,6 +83242,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCOMPRESS" ):
+                listener.enterCOMPRESS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCOMPRESS" ):
+                listener.exitCOMPRESS(self)
+
 
     class COALESCEContext(Built_in_functionsContext):
 
@@ -77794,6 +83266,14 @@ class TSqlParser ( Parser ):
 
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCOALESCE" ):
+                listener.enterCOALESCE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCOALESCE" ):
+                listener.exitCOALESCE(self)
 
 
     class STATS_DATEContext(Built_in_functionsContext):
@@ -77819,6 +83299,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSTATS_DATE" ):
+                listener.enterSTATS_DATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSTATS_DATE" ):
+                listener.exitSTATS_DATE(self)
+
 
     class ISNUMERICContext(Built_in_functionsContext):
 
@@ -77835,6 +83323,14 @@ class TSqlParser ( Parser ):
 
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterISNUMERIC" ):
+                listener.enterISNUMERIC(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitISNUMERIC" ):
+                listener.exitISNUMERIC(self)
 
 
     class ACOSContext(Built_in_functionsContext):
@@ -77854,6 +83350,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterACOS" ):
+                listener.enterACOS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitACOS" ):
+                listener.exitACOS(self)
+
 
     class FILEGROUP_NAMEContext(Built_in_functionsContext):
 
@@ -77871,6 +83375,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFILEGROUP_NAME" ):
+                listener.enterFILEGROUP_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFILEGROUP_NAME" ):
+                listener.exitFILEGROUP_NAME(self)
 
 
     class COLUMNPROPERTYContext(Built_in_functionsContext):
@@ -77900,6 +83412,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCOLUMNPROPERTY" ):
+                listener.enterCOLUMNPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCOLUMNPROPERTY" ):
+                listener.exitCOLUMNPROPERTY(self)
+
 
     class DB_IDContext(Built_in_functionsContext):
 
@@ -77917,6 +83437,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDB_ID" ):
+                listener.enterDB_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDB_ID" ):
+                listener.exitDB_ID(self)
 
 
     class SOUNDEXContext(Built_in_functionsContext):
@@ -77936,6 +83464,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSOUNDEX" ):
+                listener.enterSOUNDEX(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSOUNDEX" ):
+                listener.exitSOUNDEX(self)
+
 
     class CURSOR_ROWSContext(Built_in_functionsContext):
 
@@ -77945,6 +83481,14 @@ class TSqlParser ( Parser ):
 
         def CURSOR_ROWS(self):
             return self.getToken(TSqlParser.CURSOR_ROWS, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURSOR_ROWS" ):
+                listener.enterCURSOR_ROWS(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURSOR_ROWS" ):
+                listener.exitCURSOR_ROWS(self)
 
 
     class FULLTEXTCATALOGPROPERTYContext(Built_in_functionsContext):
@@ -77970,6 +83514,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFULLTEXTCATALOGPROPERTY" ):
+                listener.enterFULLTEXTCATALOGPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFULLTEXTCATALOGPROPERTY" ):
+                listener.exitFULLTEXTCATALOGPROPERTY(self)
+
 
     class TYPEPROPERTYContext(Built_in_functionsContext):
 
@@ -77994,6 +83546,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTYPEPROPERTY" ):
+                listener.enterTYPEPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTYPEPROPERTY" ):
+                listener.exitTYPEPROPERTY(self)
+
 
     class SCHEMA_NAMEContext(Built_in_functionsContext):
 
@@ -78012,6 +83572,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSCHEMA_NAME" ):
+                listener.enterSCHEMA_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSCHEMA_NAME" ):
+                listener.exitSCHEMA_NAME(self)
+
 
     class TYPE_IDContext(Built_in_functionsContext):
 
@@ -78029,6 +83597,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTYPE_ID" ):
+                listener.enterTYPE_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTYPE_ID" ):
+                listener.exitTYPE_ID(self)
 
 
     class TRY_CASTContext(Built_in_functionsContext):
@@ -78051,6 +83627,14 @@ class TSqlParser ( Parser ):
 
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTRY_CAST" ):
+                listener.enterTRY_CAST(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTRY_CAST" ):
+                listener.exitTRY_CAST(self)
 
 
     class APPLOCK_MODEContext(Built_in_functionsContext):
@@ -78080,6 +83664,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAPPLOCK_MODE" ):
+                listener.enterAPPLOCK_MODE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAPPLOCK_MODE" ):
+                listener.exitAPPLOCK_MODE(self)
+
 
     class CURRENT_DATEContext(Built_in_functionsContext):
 
@@ -78094,6 +83686,14 @@ class TSqlParser ( Parser ):
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURRENT_DATE" ):
+                listener.enterCURRENT_DATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURRENT_DATE" ):
+                listener.exitCURRENT_DATE(self)
+
 
     class GETDATEContext(Built_in_functionsContext):
 
@@ -78107,6 +83707,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGETDATE" ):
+                listener.enterGETDATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGETDATE" ):
+                listener.exitGETDATE(self)
 
 
     class CERT_IDContext(Built_in_functionsContext):
@@ -78126,6 +83734,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCERT_ID" ):
+                listener.enterCERT_ID(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCERT_ID" ):
+                listener.exitCERT_ID(self)
+
 
     class ATANContext(Built_in_functionsContext):
 
@@ -78144,6 +83760,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterATAN" ):
+                listener.enterATAN(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitATAN" ):
+                listener.exitATAN(self)
+
 
     class CONNECTIONPROPERTYContext(Built_in_functionsContext):
 
@@ -78161,6 +83785,14 @@ class TSqlParser ( Parser ):
         def STRING(self):
             return self.getToken(TSqlParser.STRING, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCONNECTIONPROPERTY" ):
+                listener.enterCONNECTIONPROPERTY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCONNECTIONPROPERTY" ):
+                listener.exitCONNECTIONPROPERTY(self)
+
 
     class ERROR_NUMBERContext(Built_in_functionsContext):
 
@@ -78174,6 +83806,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterERROR_NUMBER" ):
+                listener.enterERROR_NUMBER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitERROR_NUMBER" ):
+                listener.exitERROR_NUMBER(self)
 
 
     class ERROR_LINEContext(Built_in_functionsContext):
@@ -78189,6 +83829,14 @@ class TSqlParser ( Parser ):
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterERROR_LINE" ):
+                listener.enterERROR_LINE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitERROR_LINE" ):
+                listener.exitERROR_LINE(self)
+
 
     class CURRENT_TIMESTAMPContext(Built_in_functionsContext):
 
@@ -78198,6 +83846,14 @@ class TSqlParser ( Parser ):
 
         def CURRENT_TIMESTAMP(self):
             return self.getToken(TSqlParser.CURRENT_TIMESTAMP, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCURRENT_TIMESTAMP" ):
+                listener.enterCURRENT_TIMESTAMP(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCURRENT_TIMESTAMP" ):
+                listener.exitCURRENT_TIMESTAMP(self)
 
 
     class CONCATContext(Built_in_functionsContext):
@@ -78228,6 +83884,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCONCAT" ):
+                listener.enterCONCAT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCONCAT" ):
+                listener.exitCONCAT(self)
+
 
     class JSON_ARRAYContext(Built_in_functionsContext):
 
@@ -78247,6 +83911,14 @@ class TSqlParser ( Parser ):
         def json_null_clause(self):
             return self.getTypedRuleContext(TSqlParser.Json_null_clauseContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJSON_ARRAY" ):
+                listener.enterJSON_ARRAY(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJSON_ARRAY" ):
+                listener.exitJSON_ARRAY(self)
 
 
     class ROUNDContext(Built_in_functionsContext):
@@ -78276,6 +83948,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterROUND" ):
+                listener.enterROUND(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitROUND" ):
+                listener.exitROUND(self)
+
 
     class DATALENGTHContext(Built_in_functionsContext):
 
@@ -78293,6 +83973,14 @@ class TSqlParser ( Parser ):
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATALENGTH" ):
+                listener.enterDATALENGTH(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATALENGTH" ):
+                listener.exitDATALENGTH(self)
+
 
     class HOST_NAMEContext(Built_in_functionsContext):
 
@@ -78306,6 +83994,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHOST_NAME" ):
+                listener.enterHOST_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHOST_NAME" ):
+                listener.exitHOST_NAME(self)
 
 
     class DATABASEPROPERTYEXContext(Built_in_functionsContext):
@@ -78331,6 +84027,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATABASEPROPERTYEX" ):
+                listener.enterDATABASEPROPERTYEX(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATABASEPROPERTYEX" ):
+                listener.exitDATABASEPROPERTYEX(self)
+
 
     class ORIGINAL_DB_NAMEContext(Built_in_functionsContext):
 
@@ -78344,6 +84048,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterORIGINAL_DB_NAME" ):
+                listener.enterORIGINAL_DB_NAME(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitORIGINAL_DB_NAME" ):
+                listener.exitORIGINAL_DB_NAME(self)
 
 
     class FILEPROPERTYEXContext(Built_in_functionsContext):
@@ -78369,6 +84081,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFILEPROPERTYEX" ):
+                listener.enterFILEPROPERTYEX(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFILEPROPERTYEX" ):
+                listener.exitFILEPROPERTYEX(self)
+
 
     class RTRIMContext(Built_in_functionsContext):
 
@@ -78386,6 +84106,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRTRIM" ):
+                listener.enterRTRIM(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRTRIM" ):
+                listener.exitRTRIM(self)
 
 
     class JSON_OBJECTContext(Built_in_functionsContext):
@@ -78416,6 +84144,14 @@ class TSqlParser ( Parser ):
             else:
                 return self.getToken(TSqlParser.COMMA, i)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterJSON_OBJECT" ):
+                listener.enterJSON_OBJECT(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitJSON_OBJECT" ):
+                listener.exitJSON_OBJECT(self)
+
 
     class XACT_STATEContext(Built_in_functionsContext):
 
@@ -78429,6 +84165,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXACT_STATE" ):
+                listener.enterXACT_STATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXACT_STATE" ):
+                listener.exitXACT_STATE(self)
 
 
     class FORMATMESSAGEContext(Built_in_functionsContext):
@@ -78464,6 +84208,14 @@ class TSqlParser ( Parser ):
         def LOCAL_ID(self):
             return self.getToken(TSqlParser.LOCAL_ID, 0)
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFORMATMESSAGE" ):
+                listener.enterFORMATMESSAGE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFORMATMESSAGE" ):
+                listener.exitFORMATMESSAGE(self)
+
 
     class DATEDIFF_BIGContext(Built_in_functionsContext):
 
@@ -78495,6 +84247,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATEDIFF_BIG" ):
+                listener.enterDATEDIFF_BIG(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATEDIFF_BIG" ):
+                listener.exitDATEDIFF_BIG(self)
+
 
     class USERContext(Built_in_functionsContext):
 
@@ -78504,6 +84264,14 @@ class TSqlParser ( Parser ):
 
         def USER(self):
             return self.getToken(TSqlParser.USER, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterUSER" ):
+                listener.enterUSER(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitUSER" ):
+                listener.exitUSER(self)
 
 
     class DEGREESContext(Built_in_functionsContext):
@@ -78523,6 +84291,14 @@ class TSqlParser ( Parser ):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDEGREES" ):
+                listener.enterDEGREES(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDEGREES" ):
+                listener.exitDEGREES(self)
+
 
     class LENContext(Built_in_functionsContext):
 
@@ -78540,6 +84316,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterLEN" ):
+                listener.enterLEN(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitLEN" ):
+                listener.exitLEN(self)
 
 
     class TRANSLATEContext(Built_in_functionsContext):
@@ -78569,6 +84353,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTRANSLATE" ):
+                listener.enterTRANSLATE(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTRANSLATE" ):
+                listener.exitTRANSLATE(self)
+
 
     class SWITCHOFFSETContext(Built_in_functionsContext):
 
@@ -78593,6 +84385,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSWITCHOFFSET" ):
+                listener.enterSWITCHOFFSET(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSWITCHOFFSET" ):
+                listener.exitSWITCHOFFSET(self)
+
 
     class PIContext(Built_in_functionsContext):
 
@@ -78606,6 +84406,14 @@ class TSqlParser ( Parser ):
             return self.getToken(TSqlParser.LR_BRACKET, 0)
         def RR_BRACKET(self):
             return self.getToken(TSqlParser.RR_BRACKET, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPI" ):
+                listener.enterPI(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPI" ):
+                listener.exitPI(self)
 
 
     class DATE_BUCKETContext(Built_in_functionsContext):
@@ -78639,6 +84447,14 @@ class TSqlParser ( Parser ):
                 return self.getTypedRuleContext(TSqlParser.ExpressionContext,i)
 
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDATE_BUCKET" ):
+                listener.enterDATE_BUCKET(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDATE_BUCKET" ):
+                listener.exitDATE_BUCKET(self)
+
 
     class EXPContext(Built_in_functionsContext):
 
@@ -78656,6 +84472,14 @@ class TSqlParser ( Parser ):
         def expression(self):
             return self.getTypedRuleContext(TSqlParser.ExpressionContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEXP" ):
+                listener.enterEXP(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEXP" ):
+                listener.exitEXP(self)
 
 
     class STRINGAGGContext(Built_in_functionsContext):
@@ -78693,6 +84517,14 @@ class TSqlParser ( Parser ):
         def order_by_clause(self):
             return self.getTypedRuleContext(TSqlParser.Order_by_clauseContext,0)
 
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSTRINGAGG" ):
+                listener.enterSTRINGAGG(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSTRINGAGG" ):
+                listener.exitSTRINGAGG(self)
 
 
 
@@ -82261,6 +88093,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_xml_data_type_methods
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterXml_data_type_methods" ):
+                listener.enterXml_data_type_methods(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitXml_data_type_methods" ):
+                listener.exitXml_data_type_methods(self)
+
 
 
 
@@ -82370,6 +88210,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dateparts_9
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDateparts_9" ):
+                listener.enterDateparts_9(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDateparts_9" ):
+                listener.exitDateparts_9(self)
+
 
 
 
@@ -82427,6 +88275,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dateparts_12
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDateparts_12" ):
+                listener.enterDateparts_12(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDateparts_12" ):
+                listener.exitDateparts_12(self)
 
 
 
@@ -82518,6 +88374,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_dateparts_15
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDateparts_15" ):
+                listener.enterDateparts_15(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDateparts_15" ):
+                listener.exitDateparts_15(self)
+
 
 
 
@@ -82607,6 +88471,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_dateparts_datetrunc
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDateparts_datetrunc" ):
+                listener.enterDateparts_datetrunc(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDateparts_datetrunc" ):
+                listener.exitDateparts_datetrunc(self)
 
 
 
@@ -82712,6 +88584,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_value_method
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterValue_method" ):
+                listener.enterValue_method(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitValue_method" ):
+                listener.exitValue_method(self)
+
 
 
 
@@ -82804,6 +88684,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_value_call
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterValue_call" ):
+                listener.enterValue_call(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitValue_call" ):
+                listener.exitValue_call(self)
+
 
 
 
@@ -82877,6 +88765,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_query_method
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQuery_method" ):
+                listener.enterQuery_method(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQuery_method" ):
+                listener.exitQuery_method(self)
+
 
 
 
@@ -82947,6 +88843,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_query_call
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQuery_call" ):
+                listener.enterQuery_call(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQuery_call" ):
+                listener.exitQuery_call(self)
+
 
 
 
@@ -83015,6 +88919,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_exist_method
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExist_method" ):
+                listener.enterExist_method(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExist_method" ):
+                listener.exitExist_method(self)
 
 
 
@@ -83086,6 +88998,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_exist_call
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExist_call" ):
+                listener.enterExist_call(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExist_call" ):
+                listener.exitExist_call(self)
+
 
 
 
@@ -83154,6 +89074,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_modify_method
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterModify_method" ):
+                listener.enterModify_method(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitModify_method" ):
+                listener.exitModify_method(self)
 
 
 
@@ -83224,6 +89152,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_modify_call
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterModify_call" ):
+                listener.enterModify_call(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitModify_call" ):
+                listener.exitModify_call(self)
 
 
 
@@ -83306,6 +89242,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_hierarchyid_call
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHierarchyid_call" ):
+                listener.enterHierarchyid_call(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHierarchyid_call" ):
+                listener.exitHierarchyid_call(self)
 
 
 
@@ -83433,6 +89377,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_hierarchyid_static_method
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterHierarchyid_static_method" ):
+                listener.enterHierarchyid_static_method(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitHierarchyid_static_method" ):
+                listener.exitHierarchyid_static_method(self)
+
 
 
 
@@ -83524,6 +89476,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_nodes_method
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNodes_method" ):
+                listener.enterNodes_method(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNodes_method" ):
+                listener.exitNodes_method(self)
+
 
 
 
@@ -83597,6 +89557,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_switch_section
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitch_section" ):
+                listener.enterSwitch_section(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitch_section" ):
+                listener.exitSwitch_section(self)
+
 
 
 
@@ -83647,6 +89615,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_switch_search_condition_section
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSwitch_search_condition_section" ):
+                listener.enterSwitch_search_condition_section(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSwitch_search_condition_section" ):
+                listener.exitSwitch_search_condition_section(self)
+
 
 
 
@@ -83689,6 +89665,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_as_column_alias
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAs_column_alias" ):
+                listener.enterAs_column_alias(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAs_column_alias" ):
+                listener.exitAs_column_alias(self)
 
 
 
@@ -83736,6 +89720,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_as_table_alias
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAs_table_alias" ):
+                listener.enterAs_table_alias(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAs_table_alias" ):
+                listener.exitAs_table_alias(self)
+
 
 
 
@@ -83778,6 +89770,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_alias
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_alias" ):
+                listener.enterTable_alias(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_alias" ):
+                listener.exitTable_alias(self)
 
 
 
@@ -83832,6 +89832,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_with_table_hints
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWith_table_hints" ):
+                listener.enterWith_table_hints(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWith_table_hints" ):
+                listener.exitWith_table_hints(self)
 
 
 
@@ -83900,6 +89908,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_deprecated_table_hint
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDeprecated_table_hint" ):
+                listener.enterDeprecated_table_hint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDeprecated_table_hint" ):
+                listener.exitDeprecated_table_hint(self)
+
 
 
 
@@ -83940,6 +89956,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_sybase_legacy_hints
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSybase_legacy_hints" ):
+                listener.enterSybase_legacy_hints(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSybase_legacy_hints" ):
+                listener.exitSybase_legacy_hints(self)
 
 
 
@@ -83994,6 +90018,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_sybase_legacy_hint
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSybase_legacy_hint" ):
+                listener.enterSybase_legacy_hint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSybase_legacy_hint" ):
+                listener.exitSybase_legacy_hint(self)
 
 
 
@@ -84140,6 +90172,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_table_hint
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_hint" ):
+                listener.enterTable_hint(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_hint" ):
+                listener.exitTable_hint(self)
 
 
 
@@ -84372,6 +90412,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_index_value
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterIndex_value" ):
+                listener.enterIndex_value(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitIndex_value" ):
+                listener.exitIndex_value(self)
+
 
 
 
@@ -84436,6 +90484,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_column_alias_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_alias_list" ):
+                listener.enterColumn_alias_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_alias_list" ):
+                listener.exitColumn_alias_list(self)
+
 
 
 
@@ -84491,6 +90547,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_column_alias
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_alias" ):
+                listener.enterColumn_alias(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_alias" ):
+                listener.exitColumn_alias(self)
 
 
 
@@ -84565,6 +90629,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_table_value_constructor
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_value_constructor" ):
+                listener.enterTable_value_constructor(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_value_constructor" ):
+                listener.exitTable_value_constructor(self)
+
 
 
 
@@ -84634,6 +90706,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_expression_list_
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterExpression_list_" ):
+                listener.enterExpression_list_(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitExpression_list_" ):
+                listener.exitExpression_list_(self)
 
 
 
@@ -84705,6 +90785,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_ranking_windowed_function
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRanking_windowed_function" ):
+                listener.enterRanking_windowed_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRanking_windowed_function" ):
+                listener.exitRanking_windowed_function(self)
 
 
 
@@ -84834,6 +90922,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_aggregate_windowed_function
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAggregate_windowed_function" ):
+                listener.enterAggregate_windowed_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAggregate_windowed_function" ):
+                listener.exitAggregate_windowed_function(self)
 
 
 
@@ -85040,6 +91136,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_analytic_windowed_function
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnalytic_windowed_function" ):
+                listener.enterAnalytic_windowed_function(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnalytic_windowed_function" ):
+                listener.exitAnalytic_windowed_function(self)
+
 
 
 
@@ -85218,6 +91322,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_all_distinct_expression
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAll_distinct_expression" ):
+                listener.enterAll_distinct_expression(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAll_distinct_expression" ):
+                listener.exitAll_distinct_expression(self)
+
 
 
 
@@ -85288,6 +91400,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_over_clause
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOver_clause" ):
+                listener.enterOver_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOver_clause" ):
+                listener.exitOver_clause(self)
 
 
 
@@ -85362,6 +91482,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_row_or_range_clause
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterRow_or_range_clause" ):
+                listener.enterRow_or_range_clause(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitRow_or_range_clause" ):
+                listener.exitRow_or_range_clause(self)
+
 
 
 
@@ -85416,6 +91544,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_window_frame_extent
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWindow_frame_extent" ):
+                listener.enterWindow_frame_extent(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWindow_frame_extent" ):
+                listener.exitWindow_frame_extent(self)
 
 
 
@@ -85474,6 +91610,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_window_frame_bound
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWindow_frame_bound" ):
+                listener.enterWindow_frame_bound(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWindow_frame_bound" ):
+                listener.exitWindow_frame_bound(self)
+
 
 
 
@@ -85531,6 +91675,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_window_frame_preceding
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWindow_frame_preceding" ):
+                listener.enterWindow_frame_preceding(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWindow_frame_preceding" ):
+                listener.exitWindow_frame_preceding(self)
 
 
 
@@ -85594,6 +91746,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_window_frame_following
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWindow_frame_following" ):
+                listener.enterWindow_frame_following(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWindow_frame_following" ):
+                listener.exitWindow_frame_following(self)
 
 
 
@@ -85697,6 +91857,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_create_database_option
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCreate_database_option" ):
+                listener.enterCreate_database_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCreate_database_option" ):
+                listener.exitCreate_database_option(self)
 
 
 
@@ -85883,6 +92051,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_database_filestream_option
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDatabase_filestream_option" ):
+                listener.enterDatabase_filestream_option(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDatabase_filestream_option" ):
+                listener.exitDatabase_filestream_option(self)
+
 
 
 
@@ -85950,6 +92126,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_database_file_spec
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDatabase_file_spec" ):
+                listener.enterDatabase_file_spec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDatabase_file_spec" ):
+                listener.exitDatabase_file_spec(self)
 
 
 
@@ -86028,6 +92212,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_file_group
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFile_group" ):
+                listener.enterFile_group(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFile_group" ):
+                listener.exitFile_group(self)
 
 
 
@@ -86158,6 +92350,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_file_spec
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFile_spec" ):
+                listener.enterFile_spec(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFile_spec" ):
+                listener.exitFile_spec(self)
 
 
 
@@ -86321,6 +92521,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_entity_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEntity_name" ):
+                listener.enterEntity_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEntity_name" ):
+                listener.exitEntity_name(self)
+
 
 
 
@@ -86404,6 +92612,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_entity_name_for_azure_dw
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEntity_name_for_azure_dw" ):
+                listener.enterEntity_name_for_azure_dw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEntity_name_for_azure_dw" ):
+                listener.exitEntity_name_for_azure_dw(self)
+
 
 
 
@@ -86463,6 +92679,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_entity_name_for_parallel_dw
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEntity_name_for_parallel_dw" ):
+                listener.enterEntity_name_for_parallel_dw(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEntity_name_for_parallel_dw" ):
+                listener.exitEntity_name_for_parallel_dw(self)
 
 
 
@@ -86528,6 +92752,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_full_table_name
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFull_table_name" ):
+                listener.enterFull_table_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFull_table_name" ):
+                listener.exitFull_table_name(self)
 
 
 
@@ -86632,6 +92864,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_table_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterTable_name" ):
+                listener.enterTable_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitTable_name" ):
+                listener.exitTable_name(self)
+
 
 
 
@@ -86713,6 +92953,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_simple_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSimple_name" ):
+                listener.enterSimple_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSimple_name" ):
+                listener.exitSimple_name(self)
+
 
 
 
@@ -86764,6 +93012,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_func_proc_name_schema
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunc_proc_name_schema" ):
+                listener.enterFunc_proc_name_schema(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunc_proc_name_schema" ):
+                listener.exitFunc_proc_name_schema(self)
 
 
 
@@ -86824,6 +93080,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_func_proc_name_database_schema
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunc_proc_name_database_schema" ):
+                listener.enterFunc_proc_name_database_schema(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunc_proc_name_database_schema" ):
+                listener.exitFunc_proc_name_database_schema(self)
 
 
 
@@ -86910,6 +93174,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_func_proc_name_server_database_schema
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFunc_proc_name_server_database_schema" ):
+                listener.enterFunc_proc_name_server_database_schema(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFunc_proc_name_server_database_schema" ):
+                listener.exitFunc_proc_name_server_database_schema(self)
+
 
 
 
@@ -86991,6 +93263,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_ddl_object
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterDdl_object" ):
+                listener.enterDdl_object(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitDdl_object" ):
+                listener.exitDdl_object(self)
+
 
 
 
@@ -87060,6 +93340,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_full_column_name
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFull_column_name" ):
+                listener.enterFull_column_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFull_column_name" ):
+                listener.exitFull_column_name(self)
 
 
 
@@ -87163,6 +93451,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_column_name_list_with_order
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_name_list_with_order" ):
+                listener.enterColumn_name_list_with_order(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_name_list_with_order" ):
+                listener.exitColumn_name_list_with_order(self)
+
 
 
 
@@ -87247,6 +93543,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_insert_column_name_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInsert_column_name_list" ):
+                listener.enterInsert_column_name_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInsert_column_name_list" ):
+                listener.exitInsert_column_name_list(self)
+
 
 
 
@@ -87306,6 +93610,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_insert_column_id
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterInsert_column_id" ):
+                listener.enterInsert_column_id(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitInsert_column_id" ):
+                listener.exitInsert_column_id(self)
 
 
 
@@ -87373,6 +93685,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_column_name_list
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterColumn_name_list" ):
+                listener.enterColumn_name_list(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitColumn_name_list" ):
+                listener.exitColumn_name_list(self)
+
 
 
 
@@ -87425,6 +93745,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_cursor_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCursor_name" ):
+                listener.enterCursor_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCursor_name" ):
+                listener.exitCursor_name(self)
+
 
 
 
@@ -87474,6 +93802,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_on_off
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOn_off" ):
+                listener.enterOn_off(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOn_off" ):
+                listener.exitOn_off(self)
+
 
 
 
@@ -87516,6 +93852,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_clustered
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterClustered" ):
+                listener.enterClustered(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitClustered" ):
+                listener.exitClustered(self)
+
 
 
 
@@ -87557,6 +93901,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_null_notnull
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterNull_notnull" ):
+                listener.enterNull_notnull(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitNull_notnull" ):
+                listener.exitNull_notnull(self)
 
 
 
@@ -87612,6 +93964,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_scalar_function_name
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterScalar_function_name" ):
+                listener.enterScalar_function_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitScalar_function_name" ):
+                listener.exitScalar_function_name(self)
 
 
 
@@ -87704,6 +94064,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_begin_conversation_timer
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBegin_conversation_timer" ):
+                listener.enterBegin_conversation_timer(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBegin_conversation_timer" ):
+                listener.exitBegin_conversation_timer(self)
 
 
 
@@ -87846,6 +94214,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_begin_conversation_dialog
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterBegin_conversation_dialog" ):
+                listener.enterBegin_conversation_dialog(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitBegin_conversation_dialog" ):
+                listener.exitBegin_conversation_dialog(self)
 
 
 
@@ -88004,6 +94380,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_contract_name
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterContract_name" ):
+                listener.enterContract_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitContract_name" ):
+                listener.exitContract_name(self)
+
 
 
 
@@ -88053,6 +94437,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_service_name
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterService_name" ):
+                listener.enterService_name(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitService_name" ):
+                listener.exitService_name(self)
 
 
 
@@ -88137,6 +94529,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_end_conversation
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterEnd_conversation" ):
+                listener.enterEnd_conversation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitEnd_conversation" ):
+                listener.exitEnd_conversation(self)
 
 
 
@@ -88254,6 +94654,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_waitfor_conversation
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterWaitfor_conversation" ):
+                listener.enterWaitfor_conversation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitWaitfor_conversation" ):
+                listener.exitWaitfor_conversation(self)
+
 
 
 
@@ -88350,6 +94758,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_get_conversation
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterGet_conversation" ):
+                listener.enterGet_conversation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitGet_conversation" ):
+                listener.exitGet_conversation(self)
+
 
 
 
@@ -88420,6 +94836,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_queue_id
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterQueue_id" ):
+                listener.enterQueue_id(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitQueue_id" ):
+                listener.exitQueue_id(self)
 
 
 
@@ -88514,6 +94938,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_send_conversation
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSend_conversation" ):
+                listener.enterSend_conversation(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSend_conversation" ):
+                listener.exitSend_conversation(self)
 
 
 
@@ -88643,6 +95075,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_data_type
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterData_type" ):
+                listener.enterData_type(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitData_type" ):
+                listener.exitData_type(self)
 
 
 
@@ -88798,6 +95238,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_constant
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterConstant" ):
+                listener.enterConstant(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitConstant" ):
+                listener.exitConstant(self)
+
 
 
 
@@ -88929,6 +95377,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_primitive_constant
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterPrimitive_constant" ):
+                listener.enterPrimitive_constant(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitPrimitive_constant" ):
+                listener.exitPrimitive_constant(self)
 
 
 
@@ -91903,6 +98359,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_keyword
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterKeyword" ):
+                listener.enterKeyword(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitKeyword" ):
+                listener.exitKeyword(self)
+
 
 
 
@@ -91960,6 +98424,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_id_
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterId_" ):
+                listener.enterId_(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitId_" ):
+                listener.exitId_(self)
 
 
 
@@ -92032,6 +98504,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_simple_id
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterSimple_id" ):
+                listener.enterSimple_id(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitSimple_id" ):
+                listener.exitSimple_id(self)
+
 
 
 
@@ -92068,6 +98548,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_id_or_string
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterId_or_string" ):
+                listener.enterId_or_string(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitId_or_string" ):
+                listener.exitId_or_string(self)
 
 
 
@@ -92123,6 +98611,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_comparison_operator
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterComparison_operator" ):
+                listener.enterComparison_operator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitComparison_operator" ):
+                listener.exitComparison_operator(self)
 
 
 
@@ -92245,6 +98741,14 @@ class TSqlParser ( Parser ):
         def getRuleIndex(self):
             return TSqlParser.RULE_assignment_operator
 
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAssignment_operator" ):
+                listener.enterAssignment_operator(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAssignment_operator" ):
+                listener.exitAssignment_operator(self)
+
 
 
 
@@ -92298,6 +98802,14 @@ class TSqlParser ( Parser ):
 
         def getRuleIndex(self):
             return TSqlParser.RULE_file_size
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFile_size" ):
+                listener.enterFile_size(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFile_size" ):
+                listener.exitFile_size(self)
 
 
 
