@@ -1,15 +1,9 @@
+from unittest.mock import MagicMock
+
 import antlr4.tree.Tree
 from antlr4 import InputStream
 
-from pytsql.grammar import TSqlParserListener, parse
-
-
-class TestTSqlParserListener(TSqlParserListener.ParseTreeListener):
-    def __init__(self):
-        self.called = False
-
-    def enterTsql_file(self, ctx):
-        self.called = True
+from pytsql.grammar import parse
 
 
 def test_parser_listener_called_at_enter_tsql_file():
@@ -17,7 +11,8 @@ def test_parser_listener_called_at_enter_tsql_file():
 
     tree = parse(InputStream(data=seeed), "tsql_file")
     walker = antlr4.ParseTreeWalker()
-    test_listener = TestTSqlParserListener()
+    test_listener = MagicMock()
+    test_listener.enterTsql_file = MagicMock()
     walker.walk(test_listener, tree)
 
-    assert test_listener.called
+    assert test_listener.enterTsql_file.called
