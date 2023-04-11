@@ -12,7 +12,6 @@ def test_parser_listener_called_at_enter_tsql_file():
     tree = parse(InputStream(data=seeed), "tsql_file")
     walker = antlr4.ParseTreeWalker()
     test_listener = MagicMock()
-    test_listener.enterTsql_file = MagicMock()
     walker.walk(test_listener, tree)
 
     assert test_listener.enterTsql_file.called
