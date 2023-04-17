@@ -5,7 +5,7 @@ repos:
      - id: black-conda
        args:
          - --safe
-         - --target-version=py37
+         - --target-version=py38
        exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-flake8
    rev: v3.8.4
@@ -30,4 +30,4 @@ repos:
     - id: pyupgrade-conda
       exclude: ^src/pytsql/grammar/
       args:
-          - --py37-plus
+          - --py38-plus
