@@ -9,8 +9,8 @@ cd "$( dirname "${BASH_SOURCE[0]}" )"
 antlr4="java -jar $ANTLR4_JAR_FILEPATH"
 
 # Optionally: Download grammar
-# curl -o TSqlParser.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlParser.g4
-# curl -o TSqlLexer.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlLexer.g4
+curl -o TSqlParser.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlParser.g4
+curl -o TSqlLexer.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlLexer.g4
 
 # Adjust grammar for C++ target
 python adjust_antlrs_grammar.py rename-protected-rule-element-labels -f TSqlParser.g4

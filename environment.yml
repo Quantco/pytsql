@@ -19,3 +19,4 @@ dependencies:
   - speedy-antlr-tool==1.4.1
   - antlr4-python3-runtime==4.11.1
   - click
+  - openjdk
