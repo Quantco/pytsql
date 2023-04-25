@@ -1,0 +1,42 @@
+name: Update Grammar
+on:
+    schedule:
+        - cron: '0 0 1 * *'
+    workflow_dispatch:
+
+
+jobs:
+    update-grammar:
+        name: Update TSQL grammar based on antlr4's grammar
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout branch
+              uses: actions/checkout@v3
+              with:
+                ref: ${{ github.head_ref }}
+            - name: Set up Miniconda
+              uses: conda-incubator/setup-miniconda@v2
+              with:
+                python-version: 3.11
+                miniforge-variant: Mambaforge
+                miniforge-version: 4.11.0-2
+                use-mamba: true
+                environment-file: environment.yml
+                activate-environment: pytsql
+            - name: Download ANTLR
+              working-directory: src/pytsql/grammar
+              run: wget https://repo1.maven.org/maven2/org/antlr/antlr4/4.11.1/antlr4-4.11.1-complete.jar
+            - name: Download latest grammar definition and re-generate grammar targets
+              working-directory: src/pytsql/grammar
+              run: bash helper_generate_grammar_targets.sh antlr4-4.11.1-complete.jar -d
+            - name: Install package
+              run: pip install .
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v5
+              with:
+                delete-branch: true
+                title: "Autoupdate grammar targets based on antlr/grammars-v4's TSQL grammar definition"
+                commit-message: "Autoupdate grammar targets"
+                body: |
+                  This PR was created automatically as [antlr/grammars-v4](https://github.com/antlr/grammars-v4/tree/master/sql/tsql) TSQL grammar definition changed.
+                branch: autoupdate_grammar_based_on_antlr_grammars-v4

@@ -105,4 +105,4 @@ And then running the ``speedy-antlr-tool`` in the same directory using Python
 
 |
 
-**helper_generate_parsers.sh** Instead of running the steps manually, you can also simply run ``bash helper_generate_parsers.sh <ANTLR4_JAR_FILEPATH>``.
+**helper_generate_grammar_targets.sh** Instead of running the steps manually, you can also simply run ``bash helper_generate_grammar_targets.sh <ANTLR4_JAR_FILEPATH>``.

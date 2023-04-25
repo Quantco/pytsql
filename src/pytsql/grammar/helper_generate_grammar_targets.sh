@@ -3,14 +3,17 @@
 set -exuo pipefail
 
 ANTLR4_JAR_FILEPATH=$1
+OPTIONAL_DOWNLOAD_GRAMMAR=$2
 
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 
 antlr4="java -jar $ANTLR4_JAR_FILEPATH"
 
-# Optionally: Download grammar
-# curl -o TSqlParser.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlParser.g4
-# curl -o TSqlLexer.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlLexer.g4
+# Optionally: Download latest grammar definition before generating grammar
+if [[ "$2" == "download" || "$2" == "-d" ]]; then
+  curl -o TSqlParser.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlParser.g4
+  curl -o TSqlLexer.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlLexer.g4
+fi
 
 # Adjust grammar for C++ target
 python adjust_antlrs_grammar.py rename-protected-rule-element-labels -f TSqlParser.g4
