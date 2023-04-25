@@ -26,8 +26,17 @@ jobs:
             - name: Download ANTLR
               working-directory: src/pytsql/grammar
               run: wget https://repo1.maven.org/maven2/org/antlr/antlr4/4.11.1/antlr4-4.11.1-complete.jar
-            - name: Download and re-generate
+            - name: Download latest grammar definition and re-generate grammar targets
               working-directory: src/pytsql/grammar
-              run: bash helper_generate_parsers.sh antlr4-4.11.1-complete.jar
+              run: bash helper_generate_grammar_targets.sh antlr4-4.11.1-complete.jar -d
             - name: Install package
               run: pip install -e .
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v5
+              with:
+                delete-branch: true
+                title: "Autoupdate grammar targets based on antlr/grammars-v4's TSQL grammar definition"
+                commit-message: "Autoupdate grammar targets"
+                body: |
+                  This PR was created automatically as [antlr/grammars-v4](https://github.com/antlr/grammars-v4/tree/master/sql/tsql) TSQL grammar definition changed.
+                branch: autoupdate_grammar_based_on_antlr_grammars-v4
