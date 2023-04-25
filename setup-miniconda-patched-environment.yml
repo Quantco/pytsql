@@ -1,0 +1,23 @@
+name: pytsql
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python>=3.8
+  - setuptools_scm
+  - pre-commit
+  - pytest
+  - pytest-mock
+  - pytest-cov
+  - make
+  - numpydoc
+  - sphinx
+  - sphinx_rtd_theme
+  - sphinxcontrib-apidoc
+  - sqlalchemy>=1.4
+  - pyodbc
+  - speedy-antlr-tool==1.4.1
+  - antlr4-python3-runtime==4.11.1
+  - click
+  - openjdk
+  - python=3.11
