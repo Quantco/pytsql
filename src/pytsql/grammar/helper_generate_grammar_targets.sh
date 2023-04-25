@@ -11,7 +11,6 @@ antlr4="java -jar $ANTLR4_JAR_FILEPATH"
 
 # Optionally: Download latest grammar definition before generating grammar
 if [[ "$2" == "download" || "$2" == "-d" ]]; then
-  echo "he"
   curl -o TSqlParser.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlParser.g4
   curl -o TSqlLexer.g4 https://raw.githubusercontent.com/antlr/grammars-v4/master/sql/tsql/TSqlLexer.g4
 fi
