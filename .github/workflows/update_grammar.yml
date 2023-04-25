@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
           run:
-            shell: bash -l {0}
+            shell: bash -el {0}
         steps:
             - name: Checkout branch
               uses: actions/checkout@v3
@@ -25,12 +25,16 @@ jobs:
                 miniforge-version: 4.11.0-2
                 use-mamba: true
                 environment-file: environment.yml
+            - name: Clean up after Miniconda
+              run: rm setup-miniconda-patched-environment.yml
             - name: Download ANTLR
               working-directory: src/pytsql/grammar
               run: wget https://repo1.maven.org/maven2/org/antlr/antlr4/4.11.1/antlr4-4.11.1-complete.jar
             - name: Download latest grammar definition and re-generate grammar targets
               working-directory: src/pytsql/grammar
-              run: bash helper_generate_grammar_targets.sh antlr4-4.11.1-complete.jar -d
+              run: |
+                bash helper_generate_grammar_targets.sh antlr4-4.11.1-complete.jar -d
+                rm antlr4-4.11.1-complete.jar
             - name: Install package
               run: pip install .
             - name: Create Pull Request
