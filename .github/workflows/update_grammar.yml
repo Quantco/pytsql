@@ -9,6 +9,9 @@ jobs:
     update-grammar:
         name: Update TSQL grammar based on antlr4's grammar
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            shell: bash -el {0}
         steps:
             - name: Checkout branch
               uses: actions/checkout@v3
@@ -22,13 +25,13 @@ jobs:
                 miniforge-version: 4.11.0-2
                 use-mamba: true
                 environment-file: environment.yml
-                activate-environment: pytsql
             - name: Download ANTLR
               working-directory: src/pytsql/grammar
               run: wget https://repo1.maven.org/maven2/org/antlr/antlr4/4.11.1/antlr4-4.11.1-complete.jar
             - name: Download latest grammar definition and re-generate grammar targets
               working-directory: src/pytsql/grammar
-              run: bash helper_generate_grammar_targets.sh antlr4-4.11.1-complete.jar -d
+              run: |
+                bash helper_generate_grammar_targets.sh antlr4-4.11.1-complete.jar -d
             - name: Install package
               run: pip install .
             - name: Create Pull Request
@@ -40,3 +43,4 @@ jobs:
                 body: |
                   This PR was created automatically as [antlr/grammars-v4](https://github.com/antlr/grammars-v4/tree/master/sql/tsql) TSQL grammar definition changed.
                 branch: autoupdate_grammar_based_on_antlr_grammars-v4
+                add-paths: src/pytsql/grammar
