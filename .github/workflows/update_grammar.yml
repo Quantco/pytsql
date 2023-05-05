@@ -25,8 +25,6 @@ jobs:
                 miniforge-version: 4.11.0-2
                 use-mamba: true
                 environment-file: environment.yml
-            - name: Clean up after Miniconda
-              run: rm setup-miniconda-patched-environment.yml
             - name: Download ANTLR
               working-directory: src/pytsql/grammar
               run: wget https://repo1.maven.org/maven2/org/antlr/antlr4/4.11.1/antlr4-4.11.1-complete.jar
@@ -46,3 +44,4 @@ jobs:
                 body: |
                   This PR was created automatically as [antlr/grammars-v4](https://github.com/antlr/grammars-v4/tree/master/sql/tsql) TSQL grammar definition changed.
                 branch: autoupdate_grammar_based_on_antlr_grammars-v4
+                add-paths: [src/pytsql/grammar/**]
