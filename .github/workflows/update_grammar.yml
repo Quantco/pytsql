@@ -32,7 +32,6 @@ jobs:
               working-directory: src/pytsql/grammar
               run: |
                 bash helper_generate_grammar_targets.sh antlr4-4.11.1-complete.jar -d
-                rm antlr4-4.11.1-complete.jar
             - name: Install package
               run: pip install .
             - name: Create Pull Request
