@@ -8560,6 +8560,7 @@ public:
     Id_Context* id_(size_t i);
     std::vector<antlr4::tree::TerminalNode *> DEFAULT();
     antlr4::tree::TerminalNode* DEFAULT(size_t i);
+    On_partition_or_filegroupContext *on_partition_or_filegroup();
     antlr4::tree::TerminalNode *TEXTIMAGE_ON();
     antlr4::tree::TerminalNode *SEMI();
 
@@ -8711,11 +8712,12 @@ public:
   public:
     Create_viewContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *CREATE();
     antlr4::tree::TerminalNode *VIEW();
     Simple_nameContext *simple_name();
     antlr4::tree::TerminalNode *AS();
     Select_statement_standaloneContext *select_statement_standalone();
+    antlr4::tree::TerminalNode *CREATE();
+    antlr4::tree::TerminalNode *ALTER();
     antlr4::tree::TerminalNode *LR_BRACKET();
     Column_name_listContext *column_name_list();
     antlr4::tree::TerminalNode *RR_BRACKET();
@@ -8726,6 +8728,7 @@ public:
     antlr4::tree::TerminalNode *CHECK();
     antlr4::tree::TerminalNode *OPTION();
     antlr4::tree::TerminalNode *SEMI();
+    antlr4::tree::TerminalNode *OR();
     std::vector<antlr4::tree::TerminalNode *> COMMA();
     antlr4::tree::TerminalNode* COMMA(size_t i);
 
