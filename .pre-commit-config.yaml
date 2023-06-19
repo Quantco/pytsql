@@ -25,7 +25,7 @@ repos:
       additional_dependencies: [ -c, conda-forge, types-setuptools ]
       exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-pyupgrade
-   rev: 3.6.0
+   rev: 3.7.0
    hooks:
     - id: pyupgrade-conda
       exclude: ^src/pytsql/grammar/
