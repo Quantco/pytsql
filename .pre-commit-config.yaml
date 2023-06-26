@@ -19,7 +19,7 @@ repos:
       additional_dependencies: [toml]
       exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-mypy
-   rev: "1.3.0"
+   rev: "1.4.0"
    hooks:
     - id: mypy-conda
       additional_dependencies: [ -c, conda-forge, types-setuptools ]
