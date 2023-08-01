@@ -4201,7 +4201,7 @@ def serializedATN():
         0,7909,7873,1,0,0,0,7909,7876,1,0,0,0,7909,7879,1,0,0,0,7909,7882,
         1,0,0,0,7909,7885,1,0,0,0,7909,7888,1,0,0,0,7909,7891,1,0,0,0,7909,
         7894,1,0,0,0,7909,7897,1,0,0,0,7909,7903,1,0,0,0,7910,595,1,0,0,
-        0,7911,7914,5,197,0,0,7912,7913,5,665,0,0,7913,7915,5,35,0,0,7914,
+        0,7911,7914,5,197,0,0,7912,7913,5,665,0,0,7913,7915,7,66,0,0,7914,
         7912,1,0,0,0,7914,7915,1,0,0,0,7915,7918,1,0,0,0,7916,7918,5,35,
         0,0,7917,7911,1,0,0,0,7917,7916,1,0,0,0,7918,7919,1,0,0,0,7919,7920,
         5,1051,0,0,7920,7925,3,1150,575,0,7921,7922,5,1192,0,0,7922,7923,
@@ -50760,6 +50760,9 @@ class TSqlParser ( Parser ):
         def OR(self):
             return self.getToken(TSqlParser.OR, 0)
 
+        def REPLACE(self):
+            return self.getToken(TSqlParser.REPLACE, 0)
+
         def COMMA(self, i:int=None):
             if i is None:
                 return self.getTokens(TSqlParser.COMMA)
@@ -50800,7 +50803,12 @@ class TSqlParser ( Parser ):
                     self.state = 7912
                     self.match(TSqlParser.OR)
                     self.state = 7913
-                    self.match(TSqlParser.ALTER)
+                    _la = self._input.LA(1)
+                    if not(_la==35 or _la==788):
+                        self._errHandler.recoverInline(self)
+                    else:
+                        self._errHandler.reportMatch(self)
+                        self.consume()
 
 
                 pass
