@@ -51,7 +51,7 @@ def get_rule_labels(context_cls: ParserRuleContext) -> List[str]:
 
 
 def compare_common_token(py_token: CommonToken, cpp_token: CommonToken) -> None:
-    assert type(py_token) == type(cpp_token)
+    assert type(py_token) == type(cpp_token)  # noqa: E721
     if py_token is None:
         return
     assert py_token.type == cpp_token.type
@@ -77,7 +77,7 @@ def compare_terminal_node(
 def compare_context(
     py_context: ParserRuleContext, cpp_context: ParserRuleContext
 ) -> None:
-    assert type(py_context) == type(cpp_context)
+    assert type(py_context) == type(cpp_context)  # noqa: E721
     py_context_children = list(py_context.getChildren())
     cpp_context_children = list(cpp_context.getChildren())
     assert len(py_context_children) == len(cpp_context_children)
@@ -99,7 +99,7 @@ def compare_context(
             continue
         py_label = getattr(py_context, label)
         cpp_label = getattr(cpp_context, label)
-        assert type(py_label) == type(cpp_label)
+        assert type(py_label) == type(cpp_label)  # noqa: E721
         if isinstance(py_label, CommonToken):
             compare_common_token(py_label, cpp_label)
         elif isinstance(py_label, ParserRuleContext):
