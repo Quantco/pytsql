@@ -7,7 +7,6 @@ import pytest
 from antlr4 import InputStream, ParserRuleContext
 from antlr4.Token import CommonToken
 from antlr4.tree.Tree import TerminalNodeImpl
-
 from pytsql.grammar import sa_tsql
 from pytsql.tsql import _split
 
