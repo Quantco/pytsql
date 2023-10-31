@@ -86,3 +86,6 @@ select = [
 ]
 target-version = "py38"
 exclude=["src/pytsql/grammar/**/*.py"]
+
+[tool.ruff.isort]
+known-first-party = ["pytsql"]
