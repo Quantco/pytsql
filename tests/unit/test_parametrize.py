@@ -1,5 +1,4 @@
 import pytest
-
 from pytsql.tsql import _parametrize
 
 

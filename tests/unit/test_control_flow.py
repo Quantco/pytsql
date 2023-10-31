@@ -1,5 +1,4 @@
 import pytest
-
 from pytsql.tsql import _split
 
 from .helpers import assert_strings_equal_disregarding_whitespace

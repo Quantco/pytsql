@@ -2,11 +2,10 @@ from typing import Optional
 
 import pytest
 import sqlalchemy as sa
+from pytsql.tsql import executes
 from sqlalchemy import text
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import ProgrammingError
-
-from pytsql.tsql import executes
 
 
 def test_multiple_statements_middle_should_break_due_to_existing_table(engine):
