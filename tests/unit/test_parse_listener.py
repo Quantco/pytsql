@@ -2,6 +2,7 @@ from unittest.mock import MagicMock
 
 import antlr4.tree.Tree
 from antlr4 import InputStream
+
 from pytsql.grammar import parse
 
 
