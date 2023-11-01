@@ -112,7 +112,7 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
 
         return " ".join(dynamics + chunks)
 
-    def visitChildren(self, node: antlr4.ParserRuleContext) -> List[str]:
+    def visitChildren(self, node: antlr4.ParserRuleContext) -> List[str]:  # noqa: N802
         if isinstance(node, TSqlParser.Print_statementContext):
             # Print statements are replaced by inserts into a temporary table so that they can be evaluated
             # at the right time and fetched afterwards.
@@ -129,20 +129,20 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
 
         return result
 
-    def visitTerminal(self, node: antlr4.TerminalNode) -> List[str]:
+    def visitTerminal(self, node: antlr4.TerminalNode) -> List[str]:  # noqa: N802
         return [str(node)]
 
-    def defaultResult(self) -> List[str]:
+    def defaultResult(self) -> List[str]:  # noqa: N802
         return []
 
-    def aggregateResult(
+    def aggregateResult(  # noqa: N802
         self, aggregate: List[str], next_result: List[str]
     ) -> List[str]:
         return aggregate + next_result
 
 
 class _RaisingErrorListener(SA_ErrorListener):
-    def syntaxError(
+    def syntaxError(  # noqa: N802
         self,
         input_stream: InputStream,
         offendingSymbol: Optional[Token],

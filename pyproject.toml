@@ -68,3 +68,24 @@ default_section = 'THIRDPARTY'
 [[tool.mypy.overrides]]
 module = "pytsql.grammar.*"
 follow_imports = "silent"
+
+[tool.ruff]
+ignore = ["E501", "N803", "N806"]
+line-length = 88
+select = [
+  # pyflakes
+  "F",
+  # pycodestyle
+  "E", "W",
+  # isort
+  "I",
+  # pep8-naming
+  "N",
+  # pyupgrade
+  "UP",
+]
+target-version = "py38"
+exclude=["src/pytsql/grammar/**/*.py"]
+
+[tool.ruff.isort]
+known-first-party = ["pytsql"]
