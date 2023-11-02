@@ -1,5 +1,5 @@
 
-// Generated from TSqlLexer.g4 by ANTLR 4.11.1
+// Generated from TSqlLexer.g4 by ANTLR 4.13.1
 
 
 #include "TSqlLexer.h"
@@ -42,10 +42,19 @@ struct TSqlLexerStaticData final {
 };
 
 ::antlr4::internal::OnceFlag tsqllexerLexerOnceFlag;
+#if ANTLR4_USE_THREAD_LOCAL_CACHE
+static thread_local
+#endif
 TSqlLexerStaticData *tsqllexerLexerStaticData = nullptr;
 
 void tsqllexerLexerInitialize() {
+#if ANTLR4_USE_THREAD_LOCAL_CACHE
+  if (tsqllexerLexerStaticData != nullptr) {
+    return;
+  }
+#else
   assert(tsqllexerLexerStaticData == nullptr);
+#endif
   auto staticData = std::make_unique<TSqlLexerStaticData>(
     std::vector<std::string>{
       "ABORT", "ABORT_AFTER_WAIT", "ABSENT", "ABSOLUTE", "ACCELERATED_DATABASE_RECOVERY", 
@@ -6160,5 +6169,9 @@ const atn::ATN& TSqlLexer::getATN() const {
 
 
 void TSqlLexer::initialize() {
+#if ANTLR4_USE_THREAD_LOCAL_CACHE
+  tsqllexerLexerInitialize();
+#else
   ::antlr4::internal::call_once(tsqllexerLexerOnceFlag, tsqllexerLexerInitialize);
+#endif
 }

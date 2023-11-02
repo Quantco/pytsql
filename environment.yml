@@ -16,7 +16,7 @@ dependencies:
   - sphinxcontrib-apidoc
   - sqlalchemy>=1.4
   - pyodbc
-  - speedy-antlr-tool==1.4.1
-  - antlr4-python3-runtime==4.11.1
+  - speedy-antlr-tool==1.4.3
+  - antlr4-python3-runtime==4.13.1
   - click
   - openjdk
