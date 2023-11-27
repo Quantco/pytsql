@@ -513,6 +513,8 @@ public:
 
     virtual std::any visitOutput_dml_list_elem(TSqlParser::Output_dml_list_elemContext *context) = 0;
 
+    virtual std::any visitBulk_insert_statement(TSqlParser::Bulk_insert_statementContext *context) = 0;
+
     virtual std::any visitCreate_database(TSqlParser::Create_databaseContext *context) = 0;
 
     virtual std::any visitCreate_index(TSqlParser::Create_indexContext *context) = 0;

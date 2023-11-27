@@ -259,6 +259,7 @@ class SA_TSqlTranslator : public TSqlParserBaseVisitor {
     PyObject *Update_statementContext_cls = NULL;
     PyObject *Output_clauseContext_cls = NULL;
     PyObject *Output_dml_list_elemContext_cls = NULL;
+    PyObject *Bulk_insert_statementContext_cls = NULL;
     PyObject *Create_databaseContext_cls = NULL;
     PyObject *Create_indexContext_cls = NULL;
     PyObject *Create_index_optionsContext_cls = NULL;
@@ -1323,6 +1324,8 @@ class SA_TSqlTranslator : public TSqlParserBaseVisitor {
     antlrcpp::Any visitOutput_clause(TSqlParser::Output_clauseContext *ctx);
 
     antlrcpp::Any visitOutput_dml_list_elem(TSqlParser::Output_dml_list_elemContext *ctx);
+
+    antlrcpp::Any visitBulk_insert_statement(TSqlParser::Bulk_insert_statementContext *ctx);
 
     antlrcpp::Any visitCreate_database(TSqlParser::Create_databaseContext *ctx);
 

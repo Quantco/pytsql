@@ -1003,6 +1003,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual std::any visitBulk_insert_statement(TSqlParser::Bulk_insert_statementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual std::any visitCreate_database(TSqlParser::Create_databaseContext *ctx) override {
     return visitChildren(ctx);
   }

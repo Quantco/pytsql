@@ -61,6 +61,7 @@ dml_clause
     | insert_statement
     | select_statement_standalone
     | update_statement
+    | bulk_insert_statement
     ;
 
 // Data Definition Language: https://msdn.microsoft.com/en-us/library/ff848799.aspx)
@@ -1992,6 +1993,12 @@ output_clause
 
 output_dml_list_elem
     : (expression | asterisk) as_column_alias?
+    ;
+
+bulk_insert_statement
+    : BULK INSERT
+    ddl_object
+    FROM STRING
     ;
 
 // DDL

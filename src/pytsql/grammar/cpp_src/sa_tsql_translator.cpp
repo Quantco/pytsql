@@ -258,6 +258,7 @@ SA_TSqlTranslator::~SA_TSqlTranslator() {
     Py_XDECREF(Update_statementContext_cls);
     Py_XDECREF(Output_clauseContext_cls);
     Py_XDECREF(Output_dml_list_elemContext_cls);
+    Py_XDECREF(Bulk_insert_statementContext_cls);
     Py_XDECREF(Create_databaseContext_cls);
     Py_XDECREF(Create_indexContext_cls);
     Py_XDECREF(Create_index_optionsContext_cls);
@@ -3026,6 +3027,12 @@ antlrcpp::Any SA_TSqlTranslator::visitOutput_clause(TSqlParser::Output_clauseCon
 antlrcpp::Any SA_TSqlTranslator::visitOutput_dml_list_elem(TSqlParser::Output_dml_list_elemContext *ctx){
     if(!Output_dml_list_elemContext_cls) Output_dml_list_elemContext_cls = PyObject_GetAttrString(translator->parser_cls, "Output_dml_list_elemContext");
     PyObject *py_ctx = translator->convert_ctx(this, ctx, Output_dml_list_elemContext_cls);
+    return py_ctx;
+}
+
+antlrcpp::Any SA_TSqlTranslator::visitBulk_insert_statement(TSqlParser::Bulk_insert_statementContext *ctx){
+    if(!Bulk_insert_statementContext_cls) Bulk_insert_statementContext_cls = PyObject_GetAttrString(translator->parser_cls, "Bulk_insert_statementContext");
+    PyObject *py_ctx = translator->convert_ctx(this, ctx, Bulk_insert_statementContext_cls);
     return py_ctx;
 }
 

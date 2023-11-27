@@ -2231,6 +2231,15 @@ class TSqlParserListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by TSqlParser#bulk_insert_statement.
+    def enterBulk_insert_statement(self, ctx:TSqlParser.Bulk_insert_statementContext):
+        pass
+
+    # Exit a parse tree produced by TSqlParser#bulk_insert_statement.
+    def exitBulk_insert_statement(self, ctx:TSqlParser.Bulk_insert_statementContext):
+        pass
+
+
     # Enter a parse tree produced by TSqlParser#create_database.
     def enterCreate_database(self, ctx:TSqlParser.Create_databaseContext):
         pass
