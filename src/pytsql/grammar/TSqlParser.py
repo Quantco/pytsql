@@ -74598,7 +74598,7 @@ class TSqlParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
             self._option = None # OptionContext
-            self.options = list() # of OptionContexts
+            self.options_ = list() # of OptionContexts
 
         def OPTION(self):
             return self.getToken(TSqlParser.OPTION, 0)
@@ -74649,7 +74649,7 @@ class TSqlParser ( Parser ):
             self.match(TSqlParser.LR_BRACKET)
             self.state = 11562
             localctx._option = self.option()
-            localctx.options.append(localctx._option)
+            localctx.options_.append(localctx._option)
             self.state = 11567
             self._errHandler.sync(self)
             _la = self._input.LA(1)
@@ -74658,7 +74658,7 @@ class TSqlParser ( Parser ):
                 self.match(TSqlParser.COMMA)
                 self.state = 11564
                 localctx._option = self.option()
-                localctx.options.append(localctx._option)
+                localctx.options_.append(localctx._option)
                 self.state = 11569
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)

@@ -13181,7 +13181,7 @@ public:
   class  Option_clauseContext : public antlr4::ParserRuleContext {
   public:
     TSqlParser::OptionContext *optionContext = nullptr;
-    std::vector<OptionContext *> options;
+    std::vector<OptionContext *> options_;
     Option_clauseContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *OPTION();
