@@ -18,7 +18,7 @@ jobs:
               with:
                 ref: ${{ github.head_ref }}
             - name: Set up Miniconda
-              uses: conda-incubator/setup-miniconda@v2
+              uses: conda-incubator/setup-miniconda@v3
               with:
                 python-version: 3.11
                 miniforge-variant: Mambaforge
