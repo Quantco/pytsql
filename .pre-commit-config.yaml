@@ -1,6 +1,6 @@
 repos:
  - repo: https://github.com/Quantco/pre-commit-mirrors-black
-   rev: 24.1.1
+   rev: 24.2.0
    hooks:
      - id: black-conda
        args:
@@ -8,7 +8,7 @@ repos:
          - --target-version=py38
        exclude: ^src/pytsql/grammar/
  - repo: https://github.com/Quantco/pre-commit-mirrors-ruff
-   rev: 0.2.0
+   rev: 0.3.0
    hooks:
     - id: ruff-conda
       exclude: ^src/pytsql/grammar/
