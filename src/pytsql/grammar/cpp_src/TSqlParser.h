@@ -8080,7 +8080,6 @@ public:
     antlr4::tree::TerminalNode* COMMA(size_t i);
     antlr4::tree::TerminalNode *RR_BRACKET();
     antlr4::tree::TerminalNode *OR();
-    antlr4::tree::TerminalNode *REPLACE();
 
 
     virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -8154,7 +8153,6 @@ public:
     std::vector<Sql_clausesContext *> sql_clauses();
     Sql_clausesContext* sql_clauses(size_t i);
     antlr4::tree::TerminalNode *OR();
-    antlr4::tree::TerminalNode *REPLACE();
 
 
     virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -8217,7 +8215,6 @@ public:
     std::vector<Sql_clausesContext *> sql_clauses();
     Sql_clausesContext* sql_clauses(size_t i);
     antlr4::tree::TerminalNode *OR();
-    antlr4::tree::TerminalNode *REPLACE();
 
 
     virtual std::any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
@@ -8729,7 +8726,6 @@ public:
     antlr4::tree::TerminalNode *OPTION();
     antlr4::tree::TerminalNode *SEMI();
     antlr4::tree::TerminalNode *OR();
-    antlr4::tree::TerminalNode *REPLACE();
     std::vector<antlr4::tree::TerminalNode *> COMMA();
     antlr4::tree::TerminalNode* COMMA(size_t i);
 
