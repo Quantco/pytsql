@@ -35,7 +35,7 @@ jobs:
             - name: Install package
               run: pip install .
             - name: Create Pull Request
-              uses: peter-evans/create-pull-request@v6
+              uses: peter-evans/create-pull-request@v7
               with:
                 delete-branch: true
                 title: "Autoupdate grammar targets based on antlr/grammars-v4's TSQL grammar definition"
