@@ -3,7 +3,7 @@ import re
 import warnings
 from pathlib import Path
 from re import Match
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Optional, Union
 
 import antlr4.tree.Tree
 import sqlalchemy
@@ -28,7 +28,7 @@ def _code(path: Union[str, Path], encoding: str) -> str:
         return "\n".join(fh.readlines())
 
 
-def _process_replacement(line: str, parameters: Dict[str, Any]) -> str:
+def _process_replacement(line: str, parameters: dict[str, Any]) -> str:
     """Appropriately replace a single <replace> statement."""
     new_line = line.format(**parameters)
     if None in parameters.values():
@@ -42,7 +42,7 @@ def _process_replacement(line: str, parameters: Dict[str, Any]) -> str:
 
 def _parametrize(
     source: str,
-    parameters: Dict[str, Any],
+    parameters: dict[str, Any],
     start: str = _REPLACE_START,
     end: str = _REPLACE_END,
 ) -> str:
@@ -93,7 +93,7 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
         # session information is lost after the execution of a batch.
         # We therefore need to manually prepend it to all following
         # batches.
-        self.dynamics: List[str] = []
+        self.dynamics: list[str] = []
 
     def visit(
         self, tree: TSqlParser.Sql_clausesContext, prepend_dynamics: bool = True
@@ -112,7 +112,7 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
 
         return " ".join(dynamics + chunks)
 
-    def visitChildren(self, node: antlr4.ParserRuleContext) -> List[str]:  # noqa: N802
+    def visitChildren(self, node: antlr4.ParserRuleContext) -> list[str]:  # noqa: N802
         if isinstance(node, TSqlParser.Print_statementContext):
             # Print statements are replaced by inserts into a temporary table so that they can be evaluated
             # at the right time and fetched afterwards.
@@ -129,15 +129,15 @@ class _TSQLVisitor(antlr4.ParseTreeVisitor):
 
         return result
 
-    def visitTerminal(self, node: antlr4.TerminalNode) -> List[str]:  # noqa: N802
+    def visitTerminal(self, node: antlr4.TerminalNode) -> list[str]:  # noqa: N802
         return [str(node)]
 
-    def defaultResult(self) -> List[str]:  # noqa: N802
+    def defaultResult(self) -> list[str]:  # noqa: N802
         return []
 
     def aggregateResult(  # noqa: N802
-        self, aggregate: List[str], next_result: List[str]
-    ) -> List[str]:
+        self, aggregate: list[str], next_result: list[str]
+    ) -> list[str]:
         return aggregate + next_result
 
 
@@ -158,7 +158,7 @@ class _RaisingErrorListener(SA_ErrorListener):
         raise ValueError(f"Error parsing SQL script: {error_message}")
 
 
-def _split(code: str, isolate_top_level_statements: bool = True) -> List[str]:
+def _split(code: str, isolate_top_level_statements: bool = True) -> list[str]:
     if not USE_CPP_IMPLEMENTATION:
         warnings.warn(
             "Can not find C++ version of the parser, Python version will be used instead."
@@ -215,7 +215,7 @@ def _fetch_and_clear_prints(conn: Connection):
 def executes(
     code: str,
     engine: sqlalchemy.engine.Engine,
-    parameters: Optional[Dict[str, Any]] = None,
+    parameters: Optional[dict[str, Any]] = None,
     isolate_top_level_statements=True,
 ) -> None:
     """Execute a given sql string through a sqlalchemy.engine.Engine connection.
@@ -250,7 +250,7 @@ def executes(
 def execute(
     path: Union[str, Path],
     engine: sqlalchemy.engine.Engine,
-    parameters: Optional[Dict[str, Any]] = None,
+    parameters: Optional[dict[str, Any]] = None,
     isolate_top_level_statements=True,
     encoding: str = "utf-8",
 ) -> None:

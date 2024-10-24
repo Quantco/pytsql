@@ -73,8 +73,10 @@ module = "pytsql.grammar.*"
 follow_imports = "silent"
 
 [tool.ruff]
-ignore = ["E501", "N803", "N806"]
 line-length = 88
+
+[tool.ruff.lint]
+ignore = ["E501", "N803", "N806"]
 select = [
   # pyflakes
   "F",
@@ -89,5 +91,5 @@ select = [
 ]
 exclude=["src/pytsql/grammar/**/*.py"]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["pytsql"]
