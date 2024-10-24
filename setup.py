@@ -1,6 +1,5 @@
 import glob
 import platform
-from time import time
 
 import setuptools
 
