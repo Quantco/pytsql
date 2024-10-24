@@ -20,3 +20,4 @@ dependencies:
   - antlr4-python3-runtime==4.13.1 # keep `.github/workflows/update_grammar.yml` in sync
   - click
   - openjdk
+  - compilers
