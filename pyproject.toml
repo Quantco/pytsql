@@ -2,6 +2,10 @@
 requires = ['setuptools', 'setuptools-scm', 'wheel']
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools_scm]
+version_scheme = "post-release"
+
+
 [project]
 name = "pytsql"
 description = "`Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI."
