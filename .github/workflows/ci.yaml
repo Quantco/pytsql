@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        PYTHON_VERSION: ['3.8', '3.9', '3.10', '3.11']
+        PYTHON_VERSION: ['3.9', '3.10', '3.11']
         OS: ['ubuntu-latest', 'windows-latest']
     steps:
       - name: Checkout branch
@@ -56,7 +56,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        PYTHON_VERSION: ['3.8', '3.9', '3.10', '3.11']
+        PYTHON_VERSION: ['3.9', '3.10', '3.11']
     services:
       DB:
         image: mcr.microsoft.com/mssql/server:2019-latest
