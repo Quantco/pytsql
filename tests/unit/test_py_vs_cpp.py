@@ -1,6 +1,5 @@
 import inspect
 import re
-from typing import List
 from unittest import mock
 
 import pytest
@@ -36,7 +35,7 @@ WHERE kind = 1
 GROUP BY nr, short_nr;"""
 
 
-def get_rule_labels(context_cls: ParserRuleContext) -> List[str]:
+def get_rule_labels(context_cls: ParserRuleContext) -> list[str]:
     init_func = context_cls.__init__
 
     # Detect any context/token labels from the init function's assignments

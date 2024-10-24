@@ -2,6 +2,10 @@
 requires = ['setuptools', 'setuptools-scm', 'wheel']
 build-backend = "setuptools.build_meta"
 
+[tool.setuptools_scm]
+version_scheme = "post-release"
+
+
 [project]
 name = "pytsql"
 description = "`Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI."
@@ -25,7 +29,6 @@ classifiers = [
   "License :: OSI Approved :: BSD License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
@@ -34,7 +37,7 @@ classifiers = [
 readme = "README.md"
 dynamic = ["version"]
 
-requires-python = ">=3.8.0"
+requires-python = ">=3.9"
 
 dependencies = [
     "sqlalchemy >=1.4",
@@ -70,8 +73,10 @@ module = "pytsql.grammar.*"
 follow_imports = "silent"
 
 [tool.ruff]
-ignore = ["E501", "N803", "N806"]
 line-length = 88
+
+[tool.ruff.lint]
+ignore = ["E501", "N803", "N806"]
 select = [
   # pyflakes
   "F",
@@ -84,8 +89,7 @@ select = [
   # pyupgrade
   "UP",
 ]
-target-version = "py38"
 exclude=["src/pytsql/grammar/**/*.py"]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["pytsql"]
