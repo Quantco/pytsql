@@ -9,15 +9,12 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          ref: ${{ github.head_ref }}
-      - name: Install Python 3.8
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.8
-      - name: Run pre-commit checks
-        uses: pre-commit/action@v3.0.1
-
+          environments: default lint
+      - name: pre-commit
+        run: pixi run pre-commit-run --color=always --show-diff-on-failure
 
   unit-tests:
     name: "Unit tests - ${{ matrix.OS }} - Python ${{ matrix.PYTHON_VERSION }}"
@@ -27,26 +24,20 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        PYTHON_VERSION: ['3.9', '3.10', '3.11', '3.12', '3.13']
-        OS: ['ubuntu-latest', 'windows-latest']
+        # PYTHON_VERSION: ['3.9', '3.10', '3.11', '3.12', '3.13']
+        env: ["py39", "py310", "py311", "py312", "py313"]
+        os: ['ubuntu-latest', 'windows-latest']
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          ref: ${{ github.head_ref }}
-      - uses: conda-incubator/setup-miniconda@v3
-        with:
-          python-version: ${{ matrix.PYTHON_VERSION }}
-          miniforge-variant: Mambaforge
-          miniforge-version: 4.11.0-2
-          use-mamba: true
-          environment-file: environment.yml
-          activate-environment: pytsql
-      - name: Run Unit Tests
-        shell: bash -l {0}
+          environments: ${{ matrix.env }}
+      - name: Install repository and generate code coverage report
         run: |
-          pip install . --no-build-isolation --no-deps --disable-pip-version-check
-          pytest tests/unit
+          pixi run -e ${{ matrix.env }} postinstall
+          pixi run -e ${{ matrix.env }} pytest test/unit
 
   linux-integration_tests-sqlserver:
     name: "Linux - integration tests - Python ${{ matrix.PYTHON_VERSION }} - mssql"
@@ -56,7 +47,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        PYTHON_VERSION: ['3.9', '3.10', '3.11', '3.12', '3.13']
+        # PYTHON_VERSION: ['3.9', '3.10', '3.11', '3.12', '3.13']
+        env: ["py39", "py310", "py311", "py312", "py313"]
     services:
       DB:
         image: mcr.microsoft.com/mssql/server:2019-latest
@@ -69,17 +61,10 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.head_ref }}
-      - name: Fetch full git history
-        run: git fetch --prune --unshallow
-      - uses: conda-incubator/setup-miniconda@v3
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@v0.8.1
         with:
-          python-version: ${{ matrix.PYTHON_VERSION }}
-          miniforge-variant: Mambaforge
-          miniforge-version: 4.11.0-2
-          use-mamba: true
-          environment-file: environment.yml
-          activate-environment: pytsql
+          environments: ${{ matrix.env }}
       - name: Install msodbcsql17 driver
         shell: bash -l {0}
         run: |
@@ -88,8 +73,8 @@ jobs:
       - name: Wait for SQL Server
         timeout-minutes: 1
         run: until docker logs "${{ job.services.db.id }}" 2>&1 | grep -q "SQL Server is now ready"; do sleep 10; done
-      - name: Run Unit Tests
+      - name: Run Integration Tests
         shell: bash -l {0}
         run: |
-          pip install . --no-build-isolation --no-deps --disable-pip-version-check
-          pytest --backend=mssql tests/integration
+          pixi run -e ${{ matrix.env }} postinstall
+          pixi run -e ${{ martix.env }} pytest --backend=mssql tests/integration
