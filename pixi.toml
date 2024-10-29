@@ -1,0 +1,66 @@
+[project]
+name = "pytsql"
+channels = ["conda-forge", "nodefaults"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
+
+[tasks]
+postinstall = "pip install --no-build-isolation --no-deps --disable-pip-version-check -e ."
+integration-test = "pytest --backend=mssql tests/integration"
+
+[dependencies]
+setuptools_scm = "*"
+python = ">=3.9"
+pytest = "*"
+pytest-mock = "*"
+pytest-cov = "*"
+sqlalchemy = ">=1.4"
+pyodbc = "*"
+speedy-antlr-tool = "==1.4.3"
+antlr4-python3-runtime = "==4.13.1"
+click = "*"
+openjdk = "*"
+compilers = "*"
+mypy = "*"
+
+[feature.docs.dependencies]
+make = "*"
+numpydoc = "*"
+sphinx = "*"
+sphinx_rtd_theme = "*"
+sphinxcontrib-apidoc = "*"
+
+[feature.lint.dependencies]
+pre-commit = "*"
+black = "*"
+ruff = "*"
+
+[feature.lint.tasks]
+pre-commit-install = "pre-commit install"
+pre-commit-run = "pre-commit run -a"
+
+# [feature.build.dependencies]
+# build = "*"
+
+[feature.py39.dependencies]
+python = "3.9.*"
+[feature.py310.dependencies]
+python = "3.10.*"
+[feature.py311.dependencies]
+python = "3.11.*"
+[feature.py312.dependencies]
+python = "3.12.*"
+[feature.py313.dependencies]
+python = "3.13.*"
+
+[environments]
+py39 = ["py39"]
+py310 = ["py310"]
+py311 = ["py311"]
+py312 = ["py312"]
+py313 = ["py313"]
+
+lint = { features = ["lint"], no-default-feature = true }
+
+docs = ["docs"]
+
+# build = ["build"]
