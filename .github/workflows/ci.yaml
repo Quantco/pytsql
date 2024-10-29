@@ -4,7 +4,7 @@ on: [push]
 jobs:
  
   pre-commit-checks:
-    name: "Linux - pre-commit checks - Python 3.8"
+    name: "Linux - pre-commit checks"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
