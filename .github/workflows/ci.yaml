@@ -60,7 +60,6 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
-        with:
       - name: Set up pixi
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
@@ -77,4 +76,4 @@ jobs:
         shell: bash -l {0}
         run: |
           pixi run -e ${{ matrix.env }} postinstall
-          pixi run -e ${{ martix.env }} pytest --backend=mssql tests/integration
+          pixi run -e ${{ matrix.env }} pytest --backend=mssql tests/integration
