@@ -1,10 +1,14 @@
 name: CI
 on: [push]
 
+defaults:
+  run:
+    shell: bash -el {0}
+
 jobs:
- 
+
   pre-commit-checks:
-    name: "Linux - pre-commit checks"
+    name: "Pre-commit checks"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout branch
@@ -17,14 +21,13 @@ jobs:
         run: pixi run pre-commit-run --color=always --show-diff-on-failure
 
   unit-tests:
-    name: "Unit tests - ${{ matrix.OS }} - Python ${{ matrix.PYTHON_VERSION }}"
+    name: "Unit tests"
     runs-on: ubuntu-latest
     env:
       CI: True
     strategy:
       fail-fast: true
       matrix:
-        # PYTHON_VERSION: ['3.9', '3.10', '3.11', '3.12', '3.13']
         env: ["py39", "py310", "py311", "py312", "py313"]
         os: ['ubuntu-latest', 'windows-latest']
     steps:
@@ -34,20 +37,19 @@ jobs:
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
           environments: ${{ matrix.env }}
-      - name: Install repository and generate code coverage report
+      - name: Run unit tests
         run: |
           pixi run -e ${{ matrix.env }} postinstall
           pixi run -e ${{ matrix.env }} pytest test/unit
 
   linux-integration_tests-sqlserver:
-    name: "Linux - integration tests - Python ${{ matrix.PYTHON_VERSION }} - mssql"
+    name: "Integration tests"
     runs-on: ubuntu-latest
     env:
       CI: True
     strategy:
       fail-fast: false
       matrix:
-        # PYTHON_VERSION: ['3.9', '3.10', '3.11', '3.12', '3.13']
         env: ["py39", "py310", "py311", "py312", "py313"]
     services:
       DB:
@@ -65,15 +67,13 @@ jobs:
         with:
           environments: ${{ matrix.env }}
       - name: Install msodbcsql17 driver
-        shell: bash -l {0}
         run: |
           wget https://packages.microsoft.com/ubuntu/20.04/prod/pool/main/m/msodbcsql17/msodbcsql17_17.10.1.1-1_amd64.deb
           ACCEPT_EULA=Y sudo apt install ./msodbcsql17_17.10.1.1-1_amd64.deb --allow-downgrades
       - name: Wait for SQL Server
         timeout-minutes: 1
         run: until docker logs "${{ job.services.db.id }}" 2>&1 | grep -q "SQL Server is now ready"; do sleep 10; done
-      - name: Run Integration Tests
-        shell: bash -l {0}
+      - name: Run integration tests
         run: |
           pixi run -e ${{ matrix.env }} postinstall
           pixi run -e ${{ matrix.env }} pytest --backend=mssql tests/integration
