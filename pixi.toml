@@ -8,7 +8,6 @@ postinstall = "pip install --no-build-isolation --no-deps --disable-pip-version-
 integration-test = "pytest --backend=mssql tests/integration"
 
 [dependencies]
-setuptools_scm = "*"
 python = ">=3.9"
 pytest = "*"
 pytest-mock = "*"
@@ -19,8 +18,12 @@ speedy-antlr-tool = "==1.4.3"
 antlr4-python3-runtime = "==4.13.1"
 click = "*"
 openjdk = "*"
-compilers = "*"
 mypy = "*"
+
+[host-dependencies]
+pip = "*"
+setuptools-scm = "*"
+compilers = "*"
 
 [feature.docs.dependencies]
 make = "*"
