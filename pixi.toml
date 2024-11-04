@@ -38,9 +38,6 @@ ruff = "*"
 pre-commit-install = "pre-commit install"
 pre-commit-run = "pre-commit run -a"
 
-# [feature.build.dependencies]
-# build = "*"
-
 [feature.py39.dependencies]
 python = "3.9.*"
 [feature.py310.dependencies]
@@ -62,5 +59,3 @@ py313 = ["py313"]
 lint = { features = ["lint"], no-default-feature = true }
 
 docs = ["docs"]
-
-# build = ["build"]
