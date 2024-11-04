@@ -36,6 +36,9 @@ sphinxcontrib-apidoc = "*"
 [feature.lint.dependencies]
 pre-commit = "*"
 ruff = "*"
+pre-commit-hooks = "*"
+typos = "*"
+taplo = "*"
 
 [feature.lint.tasks]
 pre-commit-install = "pre-commit install"

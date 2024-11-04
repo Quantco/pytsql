@@ -10,20 +10,14 @@ version_scheme = "post-release"
 name = "pytsql"
 description = "`Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI."
 authors = [
-  {name = "Alex Gonopolskiy", email = "agonopol@gmail.com"},
-  {name = "Kevin Klein", email = "kevin.klein@quantco.com"},
-  {name= "Encho Mishinev", email = "encho.mishinev@gmail.com"},
-  {name= "Sven Giegerich", email = "sven.giegerich@quantco.com"}
+  { name = "Alex Gonopolskiy", email = "agonopol@gmail.com" },
+  { name = "Kevin Klein", email = "kevin.klein@quantco.com" },
+  { name = "Encho Mishinev", email = "encho.mishinev@gmail.com" },
+  { name = "Sven Giegerich", email = "sven.giegerich@quantco.com" },
 ]
 
-maintainers = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
-keywords = [
-  "sql",
-  "mssql",
-  "databases",
-  "automation",
-  "parametrization",
-]
+maintainers = [{ name = "Kevin Klein", email = "kevin.klein@quantco.com" }]
+keywords = ["sql", "mssql", "databases", "automation", "parametrization"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "License :: OSI Approved :: BSD License",
@@ -34,7 +28,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13",
-  "Topic :: Database"
+  "Topic :: Database",
 ]
 readme = "README.md"
 dynamic = ["version"]
@@ -42,10 +36,10 @@ dynamic = ["version"]
 requires-python = ">=3.9"
 
 dependencies = [
-    "sqlalchemy >=1.4,<3",
-    "antlr4-python3-runtime >=4.9,<4.14",
-    "pyodbc >=4.0.30",
-    "click",
+  "sqlalchemy >=1.4,<3",
+  "antlr4-python3-runtime >=4.9,<4.14",
+  "pyodbc >=4.0.30",
+  "click",
 ]
 
 [project.urls]
@@ -64,7 +58,8 @@ select = [
   # pyflakes
   "F",
   # pycodestyle
-  "E", "W",
+  "E",
+  "W",
   # isort
   "I",
   # pep8-naming
@@ -72,7 +67,10 @@ select = [
   # pyupgrade
   "UP",
 ]
-exclude=["src/pytsql/grammar/**/*.py"]
+exclude = ["src/pytsql/grammar/**/*.py"]
+
+[tool.typos.default.extend-words]
+hax = "hax"
 
 [tool.ruff.lint.isort]
 known-first-party = ["pytsql"]
