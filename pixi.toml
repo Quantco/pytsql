@@ -69,6 +69,7 @@ sqlalchemy = ">=1.4,<2"
 sqlalchemy = "2.*"
 
 [environments]
+default = ["test"]
 py39 = ["py39", "test"]
 py310 = ["py310", "test"]
 py311 = ["py311", "test"]
