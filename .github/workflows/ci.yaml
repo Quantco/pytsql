@@ -42,7 +42,7 @@ jobs:
       - name: Run unit tests
         run: |
           pixi run -e ${{ matrix.env }} postinstall
-          pixi run -e ${{ matrix.env }} pytest test/unit
+          pixi run -e ${{ matrix.env }} pytest tests/unit
 
   linux-integration_tests-sqlserver:
     name: "Integration tests"
