@@ -1,20 +1,61 @@
+exclude: (^\.pixi)|(^src\/pytsql\/grammar\/)
 repos:
- - repo: https://github.com/Quantco/pre-commit-mirrors-black
-   rev: 24.4.2
-   hooks:
-     - id: black-conda
-       args:
-         - --safe
-         - --target-version=py38
-       exclude: ^src/pytsql/grammar/
- - repo: https://github.com/Quantco/pre-commit-mirrors-ruff
-   rev: 0.6.2
-   hooks:
-    - id: ruff-conda
-      exclude: ^src/pytsql/grammar/
- - repo: https://github.com/Quantco/pre-commit-mirrors-mypy
-   rev: "1.10.1"
-   hooks:
-    - id: mypy-conda
-      additional_dependencies: [ -c, conda-forge, types-setuptools ]
-      exclude: ^src/pytsql/grammar/
+  - repo: local
+    hooks:
+      # ensure pixi environments are up to date
+      # workaround for https://github.com/prefix-dev/pixi/issues/1482
+      - id: pixi-install
+        name: pixi-install
+        entry: pixi install -e default -e lint
+        language: system
+        always_run: true
+        require_serial: true
+        pass_filenames: false
+      - id: ruff
+        name: ruff
+        entry: pixi run -e lint ruff check --fix --exit-non-zero-on-fix --force-exclude
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
+      - id: ruff-format
+        name: ruff-format
+        entry: pixi run -e lint ruff format --force-exclude
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
+      - id: mypy
+        name: mypy
+        entry: pixi run -e default mypy
+        language: system
+        types: [python]
+        args: ["--ignore-missing-imports", "--scripts-are-modules"]
+        require_serial: true
+      # taplo
+      - id: taplo
+        name: taplo
+        entry: pixi run -e lint taplo format
+        language: system
+        types: [toml]
+      # pre-commit-hooks
+      - id: trailing-whitespace-fixer
+        name: trailing-whitespace-fixer
+        entry: pixi run -e lint trailing-whitespace-fixer
+        language: system
+        types: [text]
+      - id: end-of-file-fixer
+        name: end-of-file-fixer
+        entry: pixi run -e lint end-of-file-fixer
+        language: system
+        types: [text]
+      - id: check-merge-conflict
+        name: check-merge-conflict
+        entry: pixi run -e lint check-merge-conflict --assume-in-merge
+        language: system
+        types: [text]
+      # typos
+      - id: typos
+        name: typos
+        entry: pixi run -e lint typos --force-exclude
+        language: system
+        types: [text]
+        require_serial: true

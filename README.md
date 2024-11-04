@@ -57,4 +57,3 @@ Please also have a look at our documentation sections on [usage](https://pytsql.
 ## Credits
 
 Grammar is based on [antlr4/grammars-v4](https://github.com/antlr/grammars-v4/tree/master/sql/tsql).
-

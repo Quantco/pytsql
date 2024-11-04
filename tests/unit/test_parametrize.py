@@ -74,7 +74,7 @@ select * from [master].[dbo].[table];
 def test_double_replacement():
     seed = """
 USE master;
-SELECT * 
+SELECT *
 FROM dbo./* <replace> */table/* </replace>{tableName} */ t1
 JOIN dbo./* <replace> */table/* </replace>{tableName} */ t2
 ON t1.id = t2.id;

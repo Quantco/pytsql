@@ -10,20 +10,14 @@ version_scheme = "post-release"
 name = "pytsql"
 description = "`Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI."
 authors = [
-  {name = "Alex Gonopolskiy", email = "agonopol@gmail.com"},
-  {name = "Kevin Klein", email = "kevin.klein@quantco.com"},
-  {name= "Encho Mishinev", email = "encho.mishinev@gmail.com"},
-  {name= "Sven Giegerich", email = "sven.giegerich@quantco.com"}
+  { name = "Alex Gonopolskiy", email = "agonopol@gmail.com" },
+  { name = "Kevin Klein", email = "kevin.klein@quantco.com" },
+  { name = "Encho Mishinev", email = "encho.mishinev@gmail.com" },
+  { name = "Sven Giegerich", email = "sven.giegerich@quantco.com" },
 ]
 
-maintainers = [{name = "Kevin Klein", email = "kevin.klein@quantco.com"}]
-keywords = [
-  "sql",
-  "mssql",
-  "databases",
-  "automation",
-  "parametrization",
-]
+maintainers = [{ name = "Kevin Klein", email = "kevin.klein@quantco.com" }]
+keywords = ["sql", "mssql", "databases", "automation", "parametrization"]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "License :: OSI Approved :: BSD License",
@@ -32,7 +26,9 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Topic :: Database"
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Database",
 ]
 readme = "README.md"
 dynamic = ["version"]
@@ -40,33 +36,14 @@ dynamic = ["version"]
 requires-python = ">=3.9"
 
 dependencies = [
-    "sqlalchemy >=1.4",
-    "antlr4-python3-runtime ==4.13.1",
-    "pyodbc >=4.0.30"
+  "sqlalchemy >=1.4,<3",
+  "antlr4-python3-runtime >=4.10,<4.14",
+  "pyodbc >=4.0.30",
+  "click",
 ]
 
 [project.urls]
 Source = "https://github.com/quantco/pytsql"
-
-[tool.black]
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.venv
-  | build
-  | dist
-)/
-'''
-
-[tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-ensure_newline_before_comments = true
-line_length = 88
-known_first_party = "pytsql"
-skip_glob = '\.eggs/*,\.git/*,\.venv/*,build/*,dist/*'
-default_section = 'THIRDPARTY'
 
 [[tool.mypy.overrides]]
 module = "pytsql.grammar.*"
@@ -81,7 +58,8 @@ select = [
   # pyflakes
   "F",
   # pycodestyle
-  "E", "W",
+  "E",
+  "W",
   # isort
   "I",
   # pep8-naming
@@ -89,7 +67,10 @@ select = [
   # pyupgrade
   "UP",
 ]
-exclude=["src/pytsql/grammar/**/*.py"]
+exclude = ["src/pytsql/grammar/**/*.py"]
+
+[tool.typos.default.extend-words]
+hax = "hax"
 
 [tool.ruff.lint.isort]
 known-first-party = ["pytsql"]

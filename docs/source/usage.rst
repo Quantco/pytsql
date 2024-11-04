@@ -61,4 +61,3 @@ or what the mean of a newly created column turned out to be.
 If such mechanisms are already in place, ``pytsql`` is able to reuse them. Given that
 a python logger has been set up in the script calling ``pytsql.execute``, ``pytsql``
 will log the results of any ``PRINT`` statements with level ``INFO``.
-

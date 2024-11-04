@@ -1,4 +1,4 @@
-"""`Pytsql` allows to run mssql sripts, typically run via GUIs, via CLI."""
+"""`Pytsql` allows to run mssql scripts, typically run via GUIs, via CLI."""
 
 import importlib.metadata
 import warnings

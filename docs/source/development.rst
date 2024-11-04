@@ -2,26 +2,21 @@ Development
 ===========
 
 
-The repository comes with a development environment file. We suggest to use ``conda``
-and ``mamba``.
+The repository relies on ``pixi`` to manage dependencies. Please make sure you have a running version of `pixi <https://pixi.sh/latest/>`_.
 
-In order to get going, you can run
+In order to get going, you can run the following
 
-::
+.. code-block:: bash
 
     # Clone the repository
-    git clone git@github.com:Quantco/pytsql.git
-    cd pytsql
+    $ git clone git@github.com:Quantco/pytsql.git
+    $ cd pytsql
 
-    # Set up a conda environment with name "pytsql" and activate it.
-    mamba env create
-    conda activate pytsql
-
-    # Set up our pre-commit hooks for black, mypy, isort and flake8.
-    pre-commit install
+    # Set up our pre-commit hooks for e.g. black, mypy and ruff.
+    $ pixi run pre-commit-install
 
     # Install this package in editable mode.
-    pip install --no-build-isolation -e .
+    $ pixi run postinstall
 
 
 Unit tests
@@ -30,11 +25,9 @@ Unit tests
 ``pytsql`` comes with some unit tests. Provided that the environment has been set
 up as illustrated in the previous step, they can be run as such:
 
-::
+.. code-block:: bash
 
-    conda activate pytsql
-    cd pytsql
-    pytest tests/unit/
+    $ pixi run pytest tests/unit/
 
 
 Integration tests
@@ -46,18 +39,17 @@ just execute the ``start_mssql.sql`` script provided.
 
 Once the docker container is up and running, you can run the tests:
 
-::
+.. code-block:: bash
 
-    conda activate pytsql
-    cd pytsql
-    pytest tests/integration/
+    $ pixi run pytest tests/integration/
+
 
 Add the option ``--backend=mssql-freetds`` to the test command to run the tests using
 the ``freetds`` driver.
 
 
 Grammar
-------------------
+-------
 
 ``pytsql`` relies on parsing the sql script at hand. In order to do so, it uses
 `antlr <https://www.antlr.org>`_, a parser generator. ``antlr`` expects grammar files
@@ -71,7 +63,7 @@ To keep the package structure lean, ``pytql`` aims to be in sync with the refere
 Therefore, if you want to extend or modify the grammar please consider contributing to the external repository instead.
 
 Update targets
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
 
 All files in ``pytsql/src/pytsql/grammar/cpp_src/antlr4-cpp-runtime`` are taken directly from
 the `ANTLR repository release 4.11.1
