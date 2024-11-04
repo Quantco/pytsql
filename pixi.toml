@@ -9,21 +9,22 @@ integration-test = "pytest --backend=mssql tests/integration"
 
 [dependencies]
 python = ">=3.9"
-pytest = "*"
-pytest-mock = "*"
-pytest-cov = "*"
-sqlalchemy = ">=1.4"
-pyodbc = "*"
-speedy-antlr-tool = "==1.4.3"
-antlr4-python3-runtime = "==4.13.1"
+sqlalchemy = ">=1.4, <3"
+pyodbc = ">=4.0.30"
+antlr4-python3-runtime = ">=4.9,<4.14"
 click = "*"
 openjdk = "*"
-mypy = "*"
 
 [host-dependencies]
 pip = "*"
 setuptools-scm = "*"
 compilers = "*"
+
+[feature.test.dependencies]
+pytest = "*"
+pytest-mock = "*"
+pytest-cov = "*"
+mypy = "*"
 
 [feature.docs.dependencies]
 make = "*"
@@ -34,7 +35,6 @@ sphinxcontrib-apidoc = "*"
 
 [feature.lint.dependencies]
 pre-commit = "*"
-black = "*"
 ruff = "*"
 
 [feature.lint.tasks]
@@ -52,12 +52,35 @@ python = "3.12.*"
 [feature.py313.dependencies]
 python = "3.13.*"
 
+[feature.antlr49.dependencies]
+antlr4-python3-runtime = "4.9.*"
+[feature.antlr410.dependencies]
+antlr4-python3-runtime = "4.10.*"
+[feature.antlr411.dependencies]
+antlr4-python3-runtime = "4.11.*"
+[feature.antlr412.dependencies]
+antlr4-python3-runtime = "4.12.*"
+[feature.antlr413.dependencies]
+antlr4-python3-runtime = "4.13.*"
+
+[feature.sa1.dependencies]
+sqlalchemy = ">=1.4,<2"
+[feature.sa2.dependencies]
+sqlalchemy = "2.*"
+
 [environments]
-py39 = ["py39"]
-py310 = ["py310"]
-py311 = ["py311"]
-py312 = ["py312"]
-py313 = ["py313"]
+py39 = ["py39", "test"]
+py310 = ["py310", "test"]
+py311 = ["py311", "test"]
+py312 = ["py312", "test"]
+py313 = ["py313", "test"]
+antlr49 = ["antlr49", "test"]
+antlr410 = ["antlr410", "test"]
+antlr411 = ["antlr411", "test"]
+antlr412 = ["antlr412", "test"]
+antlr413 = ["antlr413", "test"]
+sa1 = ["sa1", "test"]
+sa2 = ["sa2", "test"]
 
 lint = { features = ["lint"], no-default-feature = true }
 

@@ -22,14 +22,24 @@ jobs:
 
   unit-tests:
     name: "Unit tests"
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     env:
       CI: True
     strategy:
       fail-fast: true
       matrix:
-        env: ["py39", "py310", "py311", "py312", "py313"]
-        os: ['ubuntu-latest', 'windows-latest']
+        env:
+          - py39
+          - py310
+          - py311
+          - py312
+          - py313
+          - antlr49
+          - antlr410
+          - antlr411
+          - antlr412
+          - antlr413
+        os: ['ubuntu-latest', 'windows-latest', 'macos-latest']
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
@@ -52,7 +62,19 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        env: ["py39", "py310", "py311", "py312", "py313"]
+        env:
+          - py39
+          - py310
+          - py311
+          - py312
+          - py313
+          - antlr49
+          - antlr410
+          - antlr411
+          - antlr412
+          - antlr413
+          - sa1
+          - sa2
     services:
       DB:
         image: mcr.microsoft.com/mssql/server:2019-latest
