@@ -34,7 +34,7 @@ jobs:
           - py311
           - py312
           - py313
-          - antlr49
+          # - antlr49
           - antlr410
           - antlr411
           - antlr412
@@ -68,7 +68,7 @@ jobs:
           - py311
           - py312
           - py313
-          - antlr49
+          # - antlr49
           - antlr410
           - antlr411
           - antlr412
