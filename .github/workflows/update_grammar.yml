@@ -16,15 +16,9 @@ jobs:
             - name: Checkout branch
               uses: actions/checkout@v4
               with:
-                ref: ${{ github.head_ref }}
-            - name: Set up Miniconda
-              uses: conda-incubator/setup-miniconda@v3
-              with:
-                python-version: 3.11
-                miniforge-variant: Mambaforge
-                miniforge-version: 4.11.0-2
-                use-mamba: true
-                environment-file: environment.yml
+                fetch-depth: 0
+            - name: Set up pixi
+              uses: prefix-dev/setup-pixi@v0.8.1
             - name: Download ANTLR
               working-directory: src/pytsql/grammar
               run: wget https://repo1.maven.org/maven2/org/antlr/antlr4/4.13.1/antlr4-4.13.1-complete.jar
@@ -32,8 +26,9 @@ jobs:
               working-directory: src/pytsql/grammar
               run: |
                 bash helper_generate_grammar_targets.sh antlr4-4.13.1-complete.jar -d
-            - name: Install package
-              run: pip install .
+            - name: Install package (test compilation)
+              run:
+                pixi run pip install .
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v7
               with:
