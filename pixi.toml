@@ -13,7 +13,6 @@ sqlalchemy = ">=1.4, <3"
 pyodbc = ">=4.0.30"
 antlr4-python3-runtime = ">=4.10,<4.14"
 click = "*"
-openjdk = "*"
 
 [host-dependencies]
 pip = "*"
@@ -43,6 +42,12 @@ taplo = "*"
 [feature.lint.tasks]
 pre-commit-install = "pre-commit install"
 pre-commit-run = "pre-commit run -a"
+
+[feature.grammar.dependencies]
+openjdk = "*"
+speedy-antlr-tool = "1.4.3"
+[feature.grammar.tasks]
+update-grammar = "cd ./src/pytsql/grammar/ && ./helper_generate_grammar_targets.sh antlr4-4.13.1-complete.jar -d"
 
 [feature.py39.dependencies]
 python = "3.9.*"
@@ -86,3 +91,5 @@ sa2 = ["sa2", "test"]
 lint = { features = ["lint"], no-default-feature = true }
 
 docs = ["docs"]
+
+grammar = ["grammar"]
