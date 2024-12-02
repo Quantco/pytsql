@@ -40,13 +40,13 @@ def _process_replacement(line: str, parameters: dict[str, Any]) -> str:
     return new_line
 
 
-def _parametrize(
+def _parameterize(
     source: str,
     parameters: dict[str, Any],
     start: str = _REPLACE_START,
     end: str = _REPLACE_END,
 ) -> str:
-    """Replace all {start} and {end} statements, i.e. parametrizes the SQL script.
+    """Replace all {start} and {end} statements, i.e. parameterizes the SQL script.
 
     Parameters
     ----------
@@ -57,19 +57,19 @@ def _parametrize(
         the input source code, separated by newlines, with parameter replacements
     """
 
-    def parametrization_replacer(match: Match) -> str:
+    def parameterization_replacer(match: Match) -> str:
         return _process_replacement(match.group(1), parameters)
 
-    # The pattern matches all parametrization patterns, including those within a string literal.
+    # The pattern matches all parameterization patterns, including those within a string literal.
     pattern = re.compile(
         rf"/\* {re.escape(start)} \*/.*?/\* {re.escape(end)}(.*?) \*/",
         re.DOTALL | re.MULTILINE,
     )
 
-    parametrized = re.sub(pattern, parametrization_replacer, source)
+    parameterized = re.sub(pattern, parameterization_replacer, source)
 
     non_empty_stripped_lines = [
-        x.strip() for x in parametrized.split("\n") if x.strip() != ""
+        x.strip() for x in parameterized.split("\n") if x.strip() != ""
     ]
 
     return "\n".join(non_empty_stripped_lines)
@@ -235,13 +235,13 @@ def executes(
     None
 
     """
-    parametrized_code = _parametrize(code, parameters) if parameters else code
+    parameterized_code = _parameterize(code, parameters) if parameters else code
     with engine.connect().execution_options(isolation_level="AUTOCOMMIT") as conn:
         # Since the prints table is a temporary one, it will be local to the connection and it will be dropped once the
         # connection is closed. Caveat: sqlalchemy engines can pool connections, so we still have to drop it preemtively.
         conn.execute(_text(f"DROP TABLE IF EXISTS {_PRINTS_TABLE}"))
         conn.execute(_text(f"CREATE TABLE {_PRINTS_TABLE} (p NVARCHAR(4000))"))
-        for batch in _split(parametrized_code, isolate_top_level_statements):
+        for batch in _split(parameterized_code, isolate_top_level_statements):
             sql_batch = _text(batch)
             conn.execute(sql_batch)
             _fetch_and_clear_prints(conn)

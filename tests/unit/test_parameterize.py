@@ -1,6 +1,6 @@
 import pytest
 
-from pytsql.tsql import _parametrize
+from pytsql.tsql import _parameterize
 
 
 def test_replace_comment():
@@ -14,7 +14,7 @@ from
 /* </replace> select {alpha},b,{charlie} from x */
     """  # noqa: W291
     expected = """select first,b,second from x"""
-    assert _parametrize(seed, {"alpha": "first", "charlie": "second"}) == expected
+    assert _parameterize(seed, {"alpha": "first", "charlie": "second"}) == expected
 
 
 def test_replace_comment_second():
@@ -26,7 +26,7 @@ select * from [master].[dbo].[table];
     """
     expected = """USE master;
 select * from [master].[dbo].[new_table];"""
-    assert _parametrize(seed, {"tableName": "new_table"}) == expected
+    assert _parameterize(seed, {"tableName": "new_table"}) == expected
 
 
 def test_replace_comment_int():
@@ -38,7 +38,7 @@ select top 42 * from [master].[dbo].[table];
     """
     expected = """USE master;
 select top 1337 * from [master].[dbo].[table];"""
-    assert _parametrize(seed, {"n_rows": 1337}) == expected
+    assert _parameterize(seed, {"n_rows": 1337}) == expected
 
 
 def test_replace_comment_class():
@@ -57,7 +57,7 @@ select * from [master].[dbo].[table];
     """
     expected = """USE master;
 select * from master.dbo.table;"""
-    assert _parametrize(seed, {"table_qualifier": MyClass("table")}) == expected
+    assert _parameterize(seed, {"table_qualifier": MyClass("table")}) == expected
 
 
 def test_none_replacement():
@@ -68,7 +68,7 @@ select * from [master].[dbo].[table];
 /* </replace> select * from [master].[dbo].[{tableName}]; */
     """
     with pytest.raises(ValueError):
-        _parametrize(seed, {"tableName": None})
+        _parameterize(seed, {"tableName": None})
 
 
 def test_double_replacement():
@@ -84,7 +84,7 @@ SELECT *
 FROM dbo.new_table t1
 JOIN dbo.new_table t2
 ON t1.id = t2.id;"""  # noqa: W291
-    assert _parametrize(seed, {"tableName": "new_table"}) == expected
+    assert _parameterize(seed, {"tableName": "new_table"}) == expected
 
 
 def test_multiline_replacement():
@@ -96,7 +96,7 @@ select * from [master].[dbo].[table];
     """
     expected = """USE master;
 select * from [master].[dbo].[new_table];"""
-    assert _parametrize(seed, {"tableName": "new_table"}) == expected
+    assert _parameterize(seed, {"tableName": "new_table"}) == expected
 
 
 def test_multi_multiline_replacements():
@@ -115,7 +115,7 @@ select * from [master].[dbo].[new_table];
 USE newTable;
 select * from [master].[dbo].[second_table];"""  # noqa: W291
     assert (
-        _parametrize(seed, {"tableName": "new_table", "otherTable": "second_table"})
+        _parameterize(seed, {"tableName": "new_table", "otherTable": "second_table"})
         == expected
     )
 
@@ -127,7 +127,7 @@ select * from [master].[dbo].[table];
     """
     expected = """USE master; /* this is a regular comment */
 select * from [master].[dbo].[table];"""
-    assert _parametrize(seed, {"branch": "new_master"}) == expected
+    assert _parameterize(seed, {"branch": "new_master"}) == expected
 
 
 def test_unknown_parameter_exception():
@@ -138,7 +138,7 @@ USE master;
 select * from [master].[dbo].[table];
     """
     with pytest.raises(KeyError):
-        _parametrize(seed, {"key": "value"})
+        _parameterize(seed, {"key": "value"})
 
 
 def test_same_line_replacement():
@@ -146,7 +146,7 @@ def test_same_line_replacement():
 select a,b,/* <replace> */c/* </replace>{otherC} */ from x
     """
     expected = """select a,b,newC from x"""
-    assert _parametrize(seed, {"otherC": "newC"}) == expected
+    assert _parameterize(seed, {"otherC": "newC"}) == expected
 
 
 def test_multi_same_line_replacements():
@@ -156,12 +156,12 @@ FROM table;
     """
     expected = """SELECT newA, newB
 FROM table;"""
-    assert _parametrize(seed, {"newA": "newA", "newB": "newB"}) == expected
+    assert _parameterize(seed, {"newA": "newA", "newB": "newB"}) == expected
 
 
 def test_replace_in_string_literal():
     seed = """SELECT '/* <replace> */a/* </replace>{newA} */'"""
-    assert _parametrize(seed, {"newA": "newA"}) == "SELECT 'newA'"
+    assert _parameterize(seed, {"newA": "newA"}) == "SELECT 'newA'"
 
 
 def test_custom_replace_keywords():
@@ -170,7 +170,7 @@ def test_custom_replace_keywords():
         """
     expected = """SELECT a,/* <replace> */b/* </replace>{otherB} */,newC FROM x"""
     assert (
-        _parametrize(
+        _parameterize(
             seed,
             {"otherB": "newB", "otherC": "newC"},
             start="*repl_start*",
