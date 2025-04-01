@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@ee63bf16da6cddfb925f542f2c7b59ad50e93969 # v2.22.0
+        uses: pypa/cibuildwheel@d04cacbc9866d432033b1d09142936e6a0e2121a # v2.23.2
         env:
           CIBW_SKIP: pp*
 
@@ -60,7 +60,7 @@ jobs:
       contents: write
     if: github.event_name == 'release' && github.event.action == 'published'
     steps:
-      - uses: actions/download-artifact@v4.1.9
+      - uses: actions/download-artifact@v4.2.1
         with:
           pattern: pytsql-*
           merge-multiple: true
