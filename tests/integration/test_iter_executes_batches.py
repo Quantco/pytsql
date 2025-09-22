@@ -21,3 +21,8 @@ def test_executes_batches(engine):
 
     assert len(batches) == 5
     assert "USE [tempdb]" in batches[0]
+
+    with engine.connect() as conn:
+        result = conn.execute("SELECT COUNT(*) FROM test_table_batches")
+        count = result.scalar()
+        assert count == 3
