@@ -1,7 +1,7 @@
 from pytsql.tsql import iter_executes_batches
 
 
-def test_executes_text_with_semicolon(engine):
+def test_executes_batches(engine):
     seed = """
     CREATE TABLE test_table (
         col_test VARCHAR(10)
