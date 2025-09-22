@@ -22,6 +22,33 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Patch chrono usage
+        if: matrix.os == 'windows-2022'
+        shell: pwsh
+        run: |
+          $f = "src/pytsql/grammar/cpp_src/antlr4-cpp-runtime/atn/ProfilingATNSimulator.cpp"
+          if (!(Get-Content $f | Select-String -SimpleMatch "<chrono>")) {
+            (Get-Content $f) | Set-Content $f  # touch to ensure CRLF normalized
+            Add-Content -Path $f -Value ""     # no-op; optional
+            # insert include at top (after existing includes)
+            $lines = Get-Content $f
+            $idx = ($lines | Select-String -Pattern "^\s*#include\s+").Count
+            $out = @()
+            $injected = $false
+            foreach ($line in $lines) {
+              if (-not $injected -and $line -match "^\s*#include\s+") {
+                $out += $line
+                continue
+              }
+              if (-not $injected) {
+                $out += "#include <chrono>"
+                $injected = $true
+              }
+              $out += $line
+            }
+            $out | Set-Content $f
+          }
+
       - name: Build wheels
         uses: pypa/cibuildwheel@faf86a6ed7efa889faf6996aa23820831055001a # v2.23.3
         env:
