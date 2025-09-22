@@ -1,3 +1,5 @@
+import sqlalchemy as sa
+
 from pytsql.tsql import iter_executes_batches
 
 
@@ -23,6 +25,6 @@ def test_executes_batches(engine):
     assert "USE [tempdb]" in batches[0]
 
     with engine.connect() as conn:
-        result = conn.execute("SELECT COUNT(*) FROM test_table_batches")
+        result = conn.execute(sa.text("SELECT COUNT(*) FROM test_table_batches"))
         count = result.scalar()
         assert count == 3
