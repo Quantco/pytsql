@@ -1,9 +1,10 @@
 import logging
 import re
 import warnings
+from collections.abc import Iterator
 from pathlib import Path
 from re import Match
-from typing import Any, Optional, Union
+from typing import Any, Callable, Optional, Union
 
 import antlr4.tree.Tree
 import sqlalchemy
@@ -245,6 +246,54 @@ def executes(
             sql_batch = _text(batch)
             conn.execute(sql_batch)
             _fetch_and_clear_prints(conn)
+
+
+def iter_executes_batches(
+    code: str,
+    engine: sqlalchemy.engine.Engine,
+    parameters: Optional[dict[str, Any]] = None,
+    isolate_top_level_statements: bool = True,
+) -> Iterator[tuple[str, Callable[[], None]]]:
+    """
+    Yields (sql_batch_string, run) for each batch. Mimics executes() but returns a generator
+    where run() can be called to execute each batch.
+
+    Args
+    ----
+    code T-SQL string to be executed
+    engine (sqlalchemy.engine.Engine): established mssql connection
+    parameters An optional dictionary of parameters to substituted in the sql script
+    isolate_top_level_statements: whether to execute statements one by one or in whole batches
+
+    Returns
+    -------
+    Iterator of (sql_batch_string, run) tuples where run() executes the batch.
+    """
+    parametrized_code = _parameterize(code, parameters) if parameters else code
+
+    # I would love to use a context manager here, but that would close the connection
+    # before the caller has a chance to call run(). So we have to do it manually.
+    # Alternatively we could accept a connection instead of an engine, but that would
+    # not align with the interface of the other functions.
+    conn = engine.connect().execution_options(isolation_level="AUTOCOMMIT")
+    try:
+        conn.execute(_text(f"DROP TABLE IF EXISTS {_PRINTS_TABLE}"))
+        conn.execute(_text(f"CREATE TABLE {_PRINTS_TABLE} (p NVARCHAR(4000))"))
+
+        for batch in _split(parametrized_code, isolate_top_level_statements):
+            sql_batch = _text(batch)
+
+            def run(sql=sql_batch, _conn=conn):
+                _conn.execute(sql)
+                _fetch_and_clear_prints(_conn)
+
+            # Yield the raw string (or TextClause) and a bound runner
+            yield batch, run
+
+    finally:
+        # This is a bit ugly, but we have to close the connection and drop the temp table.
+        conn.execute(_text(f"DROP TABLE IF EXISTS {_PRINTS_TABLE}"))
+        conn.close()
 
 
 def execute(
