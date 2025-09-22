@@ -3,11 +3,16 @@ from pytsql.tsql import iter_executes_batches
 
 def test_executes_batches(engine):
     seed = """
-    CREATE TABLE test_table (
-        col_test VARCHAR(10)
-    );
-    INSERT INTO test_table
-    VALUES (':foo')
+    USE [tempdb]
+    GO
+    DROP TABLE IF EXISTS [test_table]
+    CREATE TABLE [test_table] (
+        col VARCHAR(3)
+    )
+    GO
+    INSERT INTO [test_table] (col)
+    VALUES ('A'), ('AB'), ('ABC')
+    PRINT('Affected ' + CAST(@@ROWCOUNT AS VARCHAR) + ' rows')
     """
 
     for sql, run in iter_executes_batches(seed, engine, None):
