@@ -19,5 +19,5 @@ def test_executes_batches(engine):
         run()
         batches.append(sql)
 
-    assert len(batches) == 3
-    assert "DROP TABLE IF EXISTS [test_table_batches]" in batches[0]
+    assert len(batches) == 5
+    assert "USE [tempdb]" in batches[0]
