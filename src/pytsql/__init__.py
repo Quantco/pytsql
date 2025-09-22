@@ -3,7 +3,7 @@
 import importlib.metadata
 import warnings
 
-from .tsql import execute, executes
+from .tsql import execute, executes, iter_executes_batches
 
 try:
     __version__ = importlib.metadata.version(__name__)
@@ -12,4 +12,4 @@ except importlib.metadata.PackageNotFoundError as e:  # pragma: no cover
     __version__ = "unknown"
 
 
-__all__ = ["execute", "executes"]
+__all__ = ["execute", "executes", "iter_executes_batches"]
