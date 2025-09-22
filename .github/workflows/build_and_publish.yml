@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         # macos-13 is pre-ARM
-        os: [ ubuntu-24.04, windows-2019, macos-13, macos-latest ]
+        os: [ ubuntu-24.04, windows-2022, macos-13, macos-latest ]
 
     steps:
       - uses: actions/checkout@v4
