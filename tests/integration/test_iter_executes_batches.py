@@ -1,5 +1,4 @@
 from pytsql.tsql import iter_executes_batches
-import logging
 
 
 def test_executes_batches(engine):
@@ -15,7 +14,10 @@ def test_executes_batches(engine):
     VALUES ('A'), ('AB'), ('ABC')
     PRINT('Affected ' + CAST(@@ROWCOUNT AS VARCHAR) + ' rows')
     """
-
+    batches = []
     for sql, run in iter_executes_batches(seed, engine, None):
-        logging.info(sql)
         run()
+        batches.append(sql)
+
+    assert len(batches) == 3
+    assert "DROP TABLE IF EXISTS [test_table_batches]" in batches[0]

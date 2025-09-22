@@ -28,10 +28,10 @@ def test_semi_persistent_set(engine, caplog):
     caplog.set_level(logging.INFO)
 
     seed = """
-    DECLARE @A INT = 12
-    DECLARE @B INT = 34
-    SET @A = 56
-    SET @B = 78
+    DECLARE @A INT = 123
+    DECLARE @B INT = 345
+    SET @A = 567
+    SET @B = 789
     PRINT(@A)
     GO
     PRINT(@B)
@@ -39,7 +39,7 @@ def test_semi_persistent_set(engine, caplog):
 
     executes(seed, engine, isolate_top_level_statements=False)
 
-    assert "56" in caplog.text
-    assert "34" in caplog.text
-    assert "12" not in caplog.text
-    assert "78" not in caplog.text
+    assert "567" in caplog.text
+    assert "345" in caplog.text
+    assert "123" not in caplog.text
+    assert "789" not in caplog.text
