@@ -8,6 +8,7 @@
 #include "Parser.h"
 #include "atn/ATNConfigSet.h"
 #include "support/CPPUtils.h"
+#include <chrono>
 
 #include "atn/ProfilingATNSimulator.h"
 
