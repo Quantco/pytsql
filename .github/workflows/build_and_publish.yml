@@ -27,7 +27,7 @@ jobs:
         env:
           CIBW_SKIP: pp*
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: pytsql-wheel-${{ matrix.os }}
           path: ./wheelhouse/*.whl
@@ -44,7 +44,7 @@ jobs:
       - name: Build sdist
         run: pipx run build --sdist
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6
         with:
           name: pytsql-sdist
           path: dist/*.tar.gz
@@ -60,7 +60,7 @@ jobs:
       contents: write
     if: github.event_name == 'release' && github.event.action == 'published'
     steps:
-      - uses: actions/download-artifact@v6.0.0
+      - uses: actions/download-artifact@v7.0.0
         with:
           pattern: pytsql-*
           merge-multiple: true
